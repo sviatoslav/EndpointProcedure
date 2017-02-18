@@ -8,7 +8,7 @@
 
 import ProcedureKit
 
-public class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
+open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
     public var output: Pending<ProcedureResult<Result>>
 
     public init<L: Procedure, D: Procedure, I: Procedure, M: Procedure>(dataLoadingProcedure: L, deserializationProcedure: D, interceptionProcedure: I, resultMappingProcedure: M) where L: OutputProcedure, L.Output == Data,
@@ -41,7 +41,7 @@ public class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
         return TransformProcedure {$0}
     }
 
-    public override func procedureDidFinish(withErrors: [Error]) {
+    final public override func procedureDidFinish(withErrors: [Error]) {
         guard case .pending = self.output, let error = withErrors.first else {
             return
         }

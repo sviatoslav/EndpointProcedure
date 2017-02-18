@@ -10,7 +10,7 @@ import XCTest
 import ProcedureKit
 import Alamofire
 import EndpointProcedure
-import AlamofireProcedureFactory
+@testable import AlamofireProcedureFactory
 
 class AlamofireProcedureTests: XCTestCase {
 
@@ -67,6 +67,6 @@ class AlamofireProcedureTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(procedure.output.error.map {"\($0)"}, "\(AlamofireProcedure.Error.invalidDataRequest)")
+        XCTAssertEqual(procedure.output.error.map {"\($0)"}, "\(AlamofireProcedureError.invalidDataRequest)")
     }
 }

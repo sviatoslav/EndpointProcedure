@@ -18,7 +18,7 @@ private enum EndpointProcedureInitialization<Result> {
     case dataFlowProcedure(DataFlowProcedure<Result>)
 }
 
-public class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
+open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
     public var output: Pending<ProcedureResult<Result>> {
         get {
             switch self.initialization {
@@ -145,22 +145,3 @@ extension EndpointProcedure {
                   configuration: configuration)
     }
 }
-
-//fileprivate let endpointProcedureDefaultQueue: ProcedureQueue = {
-//    var queue = ProcedureQueue()
-//    queue.name = "EndpointProcedureQueue"
-//    return queue
-//}()
-//
-//extension EndpointProcedure {
-//    func enqueue(on queue: ProcedureQueue = endpointProcedureDefaultQueue,
-//                 completion: @escaping (ProcedureResult<EndpointProcedure.Output>) -> Void = {_ in}) {
-//        self.addDidFinishBlockObserver {
-//            switch $0.0.output {
-//            case .ready(let result): completion(result)
-//            case .pending: completion(.failure(EndpointProcedureError.pendingOutputAfterCompletion))
-//            }
-//        }
-//        queue.add(operation: self)
-//    }
-//}
