@@ -1,0 +1,1415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		046525B3DC7C9010EBC6EC0F /* Pods_MagicalRecordMappingProcedureFactoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C471B65FE6454545CA1F527 /* Pods_MagicalRecordMappingProcedureFactoryTests.framework */; };
+		487701BD525737E713E72906 /* Pods_AlamofireProcedureFactoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB08D1EFF61A901E4FD7EBC /* Pods_AlamofireProcedureFactoryTests.framework */; };
+		653FB9711E5794F800216AA2 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653FB9671E5794F800216AA2 /* EndpointProcedure.framework */; };
+		653FBA2D1E58B3C200216AA2 /* AlamofireProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653FBA241E58B3C100216AA2 /* AlamofireProcedureFactory.framework */; };
+		653FBA4B1E58B43900216AA2 /* MagicalRecordMappingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653FBA421E58B43900216AA2 /* MagicalRecordMappingProcedureFactory.framework */; };
+		653FBA911E58B48E00216AA2 /* AnyDataDeserializationProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA601E58B48E00216AA2 /* AnyDataDeserializationProcedureFactory.swift */; };
+		653FBA921E58B48E00216AA2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA611E58B48E00216AA2 /* Configuration.swift */; };
+		653FBA931E58B48E00216AA2 /* ContentsOfURLLoadingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA621E58B48E00216AA2 /* ContentsOfURLLoadingProcedure.swift */; };
+		653FBA941E58B48E00216AA2 /* DataDeserializationProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA631E58B48E00216AA2 /* DataDeserializationProcedureFactory.swift */; };
+		653FBA951E58B48E00216AA2 /* DataFlowProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA641E58B48E00216AA2 /* DataFlowProcedure.swift */; };
+		653FBA961E58B48E00216AA2 /* EndpointProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA651E58B48E00216AA2 /* EndpointProcedure.swift */; };
+		653FBA971E58B48E00216AA2 /* HTTPDataFlowProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA661E58B48E00216AA2 /* HTTPDataFlowProcedure.swift */; };
+		653FBA981E58B48E00216AA2 /* HTTPDataLoadingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA671E58B48E00216AA2 /* HTTPDataLoadingProcedureFactory.swift */; };
+		653FBA991E58B48E00216AA2 /* HTTPRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA681E58B48E00216AA2 /* HTTPRequestData.swift */; };
+		653FBA9A1E58B48E00216AA2 /* HTTPResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA691E58B48E00216AA2 /* HTTPResponseData.swift */; };
+		653FBA9B1E58B48E00216AA2 /* HTTPURLResponseProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA6A1E58B48E00216AA2 /* HTTPURLResponseProcedure.swift */; };
+		653FBA9C1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA6B1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift */; };
+		653FBAB61E58B4D200216AA2 /* AlamofireProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7A1E58B48E00216AA2 /* AlamofireProcedureFactoryTests.swift */; };
+		653FBAB71E58B4D200216AA2 /* AlamofireProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7B1E58B48E00216AA2 /* AlamofireProcedureTests.swift */; };
+		653FBAB81E58B4DA00216AA2 /* Enqueueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA841E58B48E00216AA2 /* Enqueueable.swift */; };
+		653FBAB91E58B4DB00216AA2 /* Enqueueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA841E58B48E00216AA2 /* Enqueueable.swift */; };
+		653FBABA1E58B4DC00216AA2 /* Enqueueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA841E58B48E00216AA2 /* Enqueueable.swift */; };
+		653FBABB1E58B4E400216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7D1E58B48E00216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift */; };
+		653FBABC1E58B4E400216AA2 /* contents-of-url-test.json in Resources */ = {isa = PBXBuildFile; fileRef = 653FBA7E1E58B48E00216AA2 /* contents-of-url-test.json */; };
+		653FBABD1E58B4E400216AA2 /* ContentsOfURLLoadingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7F1E58B48E00216AA2 /* ContentsOfURLLoadingProcedureTests.swift */; };
+		653FBABE1E58B4E400216AA2 /* DataFlowProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA801E58B48E00216AA2 /* DataFlowProcedureTests.swift */; };
+		653FBABF1E58B4E400216AA2 /* EndpointProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA811E58B48E00216AA2 /* EndpointProcedureTests.swift */; };
+		653FBAC01E58B4E400216AA2 /* HTTPDataFlowProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA821E58B48E00216AA2 /* HTTPDataFlowProcedureTests.swift */; };
+		653FBAC11E58B4E400216AA2 /* HTTPRequestDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA831E58B48E00216AA2 /* HTTPRequestDataTests.swift */; };
+		653FBAC21E58B4F400216AA2 /* InvalidEntityNameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA861E58B48E00216AA2 /* InvalidEntityNameObject.swift */; };
+		653FBAC31E58B4F400216AA2 /* InvalidTestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA871E58B48E00216AA2 /* InvalidTestObject.swift */; };
+		653FBAC41E58B4F400216AA2 /* MagicalRecordMappingProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA881E58B48E00216AA2 /* MagicalRecordMappingProcedureFactoryTests.swift */; };
+		653FBAC51E58B4F400216AA2 /* MagicalRecordMappingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA891E58B48E00216AA2 /* MagicalRecordMappingProcedureTests.swift */; };
+		653FBAC61E58B4F400216AA2 /* MagicalRecordObjectsArrayMappingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA8A1E58B48E00216AA2 /* MagicalRecordObjectsArrayMappingProcedureTests.swift */; };
+		653FBAC71E58B4F400216AA2 /* MagicalRecordSingleObjectMappingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA8B1E58B48E00216AA2 /* MagicalRecordSingleObjectMappingProcedureTests.swift */; };
+		653FBAC81E58B4F400216AA2 /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA8E1E58B48E00216AA2 /* TestObject.swift */; };
+		653FBAC91E58B4FB00216AA2 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA8C1E58B48E00216AA2 /* TestModel.xcdatamodeld */; };
+		653FBACA1E58B50600216AA2 /* AlamofireProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA5D1E58B48E00216AA2 /* AlamofireProcedure.swift */; };
+		653FBACB1E58B50600216AA2 /* AlamofireProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA5E1E58B48E00216AA2 /* AlamofireProcedureFactory.swift */; };
+		653FBACC1E58B50B00216AA2 /* MagicalRecordMappingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA6D1E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory.swift */; };
+		65FC9CD91E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CD81E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift */; };
+		65FC9CDB1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CDA1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift */; };
+		65FC9CDD1E58C254000FCF11 /* ElementsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CDC1E58C254000FCF11 /* ElementsContainer.swift */; };
+		65FC9CDF1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CDE1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift */; };
+		65FC9CE11E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CE01E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift */; };
+		7380D3BDAE22BCBE157E9128 /* Pods_EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4D5CCAC44F6FD255475EAE /* Pods_EndpointProcedure.framework */; };
+		83B18DBC66FA0A2C10E5455C /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2404313FC3E0BB3E4B35DECA /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework */; };
+		8BC735E83F14C25729D57E54 /* Pods_EndpointProcedureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847B479F881E0E5983637038 /* Pods_EndpointProcedureTests.framework */; };
+		E5EB7867A522B8E10DAB5DE1 /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719EEB5E5525632E0FDD8B42 /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		653FB9721E5794F800216AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653FB9661E5794F800216AA2;
+			remoteInfo = EndpointProcedure;
+		};
+		653FBA2E1E58B3C200216AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653FBA231E58B3C100216AA2;
+			remoteInfo = AlamofireProcedureFactory;
+		};
+		653FBA3B1E58B3E200216AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653FB9661E5794F800216AA2;
+			remoteInfo = EndpointProcedure;
+		};
+		653FBA4C1E58B43900216AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653FBA411E58B43900216AA2;
+			remoteInfo = MagicalRecordMappingProcedureFactory;
+		};
+		653FBA591E58B44A00216AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653FB9661E5794F800216AA2;
+			remoteInfo = EndpointProcedure;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		062006E72143FFF29E148712 /* Pods-AlamofireProcedureFactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireProcedureFactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		0640B1C1FAE53B28C3ADC4C1 /* Pods-MagicalRecordMappingProcedureFactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicalRecordMappingProcedureFactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		12E4FFB1E94F34B58C3DD925 /* Pods-EndpointProcedure-AlamofireProcedureFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-AlamofireProcedureFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-AlamofireProcedureFactory/Pods-EndpointProcedure-AlamofireProcedureFactory.release.xcconfig"; sourceTree = "<group>"; };
+		2404313FC3E0BB3E4B35DECA /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB324BA32E63C4D771E2CE3 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig"; sourceTree = "<group>"; };
+		33201BABE2CB17103239B14A /* Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-AlamofireProcedureFactory/Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig"; sourceTree = "<group>"; };
+		653FB9671E5794F800216AA2 /* EndpointProcedure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EndpointProcedure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		653FB9701E5794F800216AA2 /* EndpointProcedureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EndpointProcedureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		653FBA241E58B3C100216AA2 /* AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		653FBA2C1E58B3C200216AA2 /* AlamofireProcedureFactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlamofireProcedureFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		653FBA421E58B43900216AA2 /* MagicalRecordMappingProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagicalRecordMappingProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		653FBA4A1E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicalRecordMappingProcedureFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		653FBA5D1E58B48E00216AA2 /* AlamofireProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireProcedure.swift; sourceTree = "<group>"; };
+		653FBA5E1E58B48E00216AA2 /* AlamofireProcedureFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureFactory.swift; sourceTree = "<group>"; };
+		653FBA601E58B48E00216AA2 /* AnyDataDeserializationProcedureFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDataDeserializationProcedureFactory.swift; sourceTree = "<group>"; };
+		653FBA611E58B48E00216AA2 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		653FBA621E58B48E00216AA2 /* ContentsOfURLLoadingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsOfURLLoadingProcedure.swift; sourceTree = "<group>"; };
+		653FBA631E58B48E00216AA2 /* DataDeserializationProcedureFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeserializationProcedureFactory.swift; sourceTree = "<group>"; };
+		653FBA641E58B48E00216AA2 /* DataFlowProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlowProcedure.swift; sourceTree = "<group>"; };
+		653FBA651E58B48E00216AA2 /* EndpointProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointProcedure.swift; sourceTree = "<group>"; };
+		653FBA661E58B48E00216AA2 /* HTTPDataFlowProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedure.swift; sourceTree = "<group>"; };
+		653FBA671E58B48E00216AA2 /* HTTPDataLoadingProcedureFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPDataLoadingProcedureFactory.swift; sourceTree = "<group>"; };
+		653FBA681E58B48E00216AA2 /* HTTPRequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestData.swift; sourceTree = "<group>"; };
+		653FBA691E58B48E00216AA2 /* HTTPResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResponseData.swift; sourceTree = "<group>"; };
+		653FBA6A1E58B48E00216AA2 /* HTTPURLResponseProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponseProcedure.swift; sourceTree = "<group>"; };
+		653FBA6B1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMappingProcedureFactory.swift; sourceTree = "<group>"; };
+		653FBA6D1E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordMappingProcedureFactory.swift; sourceTree = "<group>"; };
+		653FBA701E58B48E00216AA2 /* AlamofireProcedureFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlamofireProcedureFactory.h; sourceTree = "<group>"; };
+		653FBA711E58B48E00216AA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		653FBA731E58B48E00216AA2 /* EndpointProcedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointProcedure.h; sourceTree = "<group>"; };
+		653FBA741E58B48E00216AA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		653FBA761E58B48E00216AA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		653FBA771E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordMappingProcedureFactory.h; sourceTree = "<group>"; };
+		653FBA7A1E58B48E00216AA2 /* AlamofireProcedureFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		653FBA7B1E58B48E00216AA2 /* AlamofireProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA7D1E58B48E00216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDataDeserializationProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		653FBA7E1E58B48E00216AA2 /* contents-of-url-test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "contents-of-url-test.json"; sourceTree = "<group>"; };
+		653FBA7F1E58B48E00216AA2 /* ContentsOfURLLoadingProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsOfURLLoadingProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA801E58B48E00216AA2 /* DataFlowProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlowProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA811E58B48E00216AA2 /* EndpointProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA821E58B48E00216AA2 /* HTTPDataFlowProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA831E58B48E00216AA2 /* HTTPRequestDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataTests.swift; sourceTree = "<group>"; };
+		653FBA841E58B48E00216AA2 /* Enqueueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enqueueable.swift; sourceTree = "<group>"; };
+		653FBA861E58B48E00216AA2 /* InvalidEntityNameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidEntityNameObject.swift; sourceTree = "<group>"; };
+		653FBA871E58B48E00216AA2 /* InvalidTestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidTestObject.swift; sourceTree = "<group>"; };
+		653FBA881E58B48E00216AA2 /* MagicalRecordMappingProcedureFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordMappingProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		653FBA891E58B48E00216AA2 /* MagicalRecordMappingProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordMappingProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA8A1E58B48E00216AA2 /* MagicalRecordObjectsArrayMappingProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordObjectsArrayMappingProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA8B1E58B48E00216AA2 /* MagicalRecordSingleObjectMappingProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordSingleObjectMappingProcedureTests.swift; sourceTree = "<group>"; };
+		653FBA8D1E58B48E00216AA2 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
+		653FBA8E1E58B48E00216AA2 /* TestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
+		65FC9CD81E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordMappingProcedureError.swift; sourceTree = "<group>"; };
+		65FC9CDA1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordMappingProcedure.swift; sourceTree = "<group>"; };
+		65FC9CDC1E58C254000FCF11 /* ElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementsContainer.swift; sourceTree = "<group>"; };
+		65FC9CDE1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordSingleObjectMappingProcedure.swift; sourceTree = "<group>"; };
+		65FC9CE01E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordObjectsArrayMappingProcedure.swift; sourceTree = "<group>"; };
+		6C4D5CCAC44F6FD255475EAE /* Pods_EndpointProcedure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		719EEB5E5525632E0FDD8B42 /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedure_AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75110213079BFAE46EBAE15D /* Pods-EndpointProcedureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests.release.xcconfig"; sourceTree = "<group>"; };
+		80B0464598446B55E0806FE0 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig"; sourceTree = "<group>"; };
+		80F62542D68AECDE45C63F17 /* Pods-EndpointProcedure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure/Pods-EndpointProcedure.debug.xcconfig"; sourceTree = "<group>"; };
+		847B479F881E0E5983637038 /* Pods_EndpointProcedureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C471B65FE6454545CA1F527 /* Pods_MagicalRecordMappingProcedureFactoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagicalRecordMappingProcedureFactoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2ED633DA9D89567D2EA5464 /* Pods-EndpointProcedure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure/Pods-EndpointProcedure.release.xcconfig"; sourceTree = "<group>"; };
+		DB3A2C29DADC4104EDF3F44D /* Pods-AlamofireProcedureFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireProcedureFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DCB08D1EFF61A901E4FD7EBC /* Pods_AlamofireProcedureFactoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireProcedureFactoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2C1EF4D1ED152A715D97B1 /* Pods-EndpointProcedureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedureTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8A11E87BAD5CA07C070190C /* Pods-MagicalRecordMappingProcedureFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicalRecordMappingProcedureFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		653FB9631E5794F800216AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7380D3BDAE22BCBE157E9128 /* Pods_EndpointProcedure.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FB96D1E5794F800216AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FB9711E5794F800216AA2 /* EndpointProcedure.framework in Frameworks */,
+				8BC735E83F14C25729D57E54 /* Pods_EndpointProcedureTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA201E58B3C100216AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5EB7867A522B8E10DAB5DE1 /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA291E58B3C200216AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBA2D1E58B3C200216AA2 /* AlamofireProcedureFactory.framework in Frameworks */,
+				487701BD525737E713E72906 /* Pods_AlamofireProcedureFactoryTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA3E1E58B43900216AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83B18DBC66FA0A2C10E5455C /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA471E58B43900216AA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBA4B1E58B43900216AA2 /* MagicalRecordMappingProcedureFactory.framework in Frameworks */,
+				046525B3DC7C9010EBC6EC0F /* Pods_MagicalRecordMappingProcedureFactoryTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2403DFC82CA254B2F8FA5392 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C4D5CCAC44F6FD255475EAE /* Pods_EndpointProcedure.framework */,
+				847B479F881E0E5983637038 /* Pods_EndpointProcedureTests.framework */,
+				DCB08D1EFF61A901E4FD7EBC /* Pods_AlamofireProcedureFactoryTests.framework */,
+				719EEB5E5525632E0FDD8B42 /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework */,
+				2404313FC3E0BB3E4B35DECA /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework */,
+				8C471B65FE6454545CA1F527 /* Pods_MagicalRecordMappingProcedureFactoryTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A76354F00F9806AFFE9A50D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80F62542D68AECDE45C63F17 /* Pods-EndpointProcedure.debug.xcconfig */,
+				A2ED633DA9D89567D2EA5464 /* Pods-EndpointProcedure.release.xcconfig */,
+				DF2C1EF4D1ED152A715D97B1 /* Pods-EndpointProcedureTests.debug.xcconfig */,
+				75110213079BFAE46EBAE15D /* Pods-EndpointProcedureTests.release.xcconfig */,
+				DB3A2C29DADC4104EDF3F44D /* Pods-AlamofireProcedureFactoryTests.debug.xcconfig */,
+				062006E72143FFF29E148712 /* Pods-AlamofireProcedureFactoryTests.release.xcconfig */,
+				33201BABE2CB17103239B14A /* Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig */,
+				12E4FFB1E94F34B58C3DD925 /* Pods-EndpointProcedure-AlamofireProcedureFactory.release.xcconfig */,
+				2FB324BA32E63C4D771E2CE3 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig */,
+				80B0464598446B55E0806FE0 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig */,
+				E8A11E87BAD5CA07C070190C /* Pods-MagicalRecordMappingProcedureFactoryTests.debug.xcconfig */,
+				0640B1C1FAE53B28C3ADC4C1 /* Pods-MagicalRecordMappingProcedureFactoryTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		653FB95D1E5794F800216AA2 = {
+			isa = PBXGroup;
+			children = (
+				653FBA5B1E58B48E00216AA2 /* Sources */,
+				653FBA781E58B48E00216AA2 /* Tests */,
+				653FBA6E1E58B48E00216AA2 /* Supporting Files */,
+				653FB9681E5794F800216AA2 /* Products */,
+				3A76354F00F9806AFFE9A50D /* Pods */,
+				2403DFC82CA254B2F8FA5392 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		653FB9681E5794F800216AA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				653FB9671E5794F800216AA2 /* EndpointProcedure.framework */,
+				653FB9701E5794F800216AA2 /* EndpointProcedureTests.xctest */,
+				653FBA241E58B3C100216AA2 /* AlamofireProcedureFactory.framework */,
+				653FBA2C1E58B3C200216AA2 /* AlamofireProcedureFactoryTests.xctest */,
+				653FBA421E58B43900216AA2 /* MagicalRecordMappingProcedureFactory.framework */,
+				653FBA4A1E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		653FBA5B1E58B48E00216AA2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA5C1E58B48E00216AA2 /* Alamofire */,
+				653FBA5F1E58B48E00216AA2 /* Core */,
+				653FBA6C1E58B48E00216AA2 /* MagicalRecord */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		653FBA5C1E58B48E00216AA2 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA5D1E58B48E00216AA2 /* AlamofireProcedure.swift */,
+				653FBA5E1E58B48E00216AA2 /* AlamofireProcedureFactory.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		653FBA5F1E58B48E00216AA2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA601E58B48E00216AA2 /* AnyDataDeserializationProcedureFactory.swift */,
+				653FBA611E58B48E00216AA2 /* Configuration.swift */,
+				653FBA621E58B48E00216AA2 /* ContentsOfURLLoadingProcedure.swift */,
+				653FBA631E58B48E00216AA2 /* DataDeserializationProcedureFactory.swift */,
+				653FBA641E58B48E00216AA2 /* DataFlowProcedure.swift */,
+				653FBA651E58B48E00216AA2 /* EndpointProcedure.swift */,
+				653FBA661E58B48E00216AA2 /* HTTPDataFlowProcedure.swift */,
+				653FBA671E58B48E00216AA2 /* HTTPDataLoadingProcedureFactory.swift */,
+				653FBA681E58B48E00216AA2 /* HTTPRequestData.swift */,
+				653FBA691E58B48E00216AA2 /* HTTPResponseData.swift */,
+				653FBA6A1E58B48E00216AA2 /* HTTPURLResponseProcedure.swift */,
+				653FBA6B1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		653FBA6C1E58B48E00216AA2 /* MagicalRecord */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA6D1E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory.swift */,
+				65FC9CD81E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift */,
+				65FC9CDA1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift */,
+				65FC9CDC1E58C254000FCF11 /* ElementsContainer.swift */,
+				65FC9CDE1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift */,
+				65FC9CE01E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift */,
+			);
+			path = MagicalRecord;
+			sourceTree = "<group>";
+		};
+		653FBA6E1E58B48E00216AA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA6F1E58B48E00216AA2 /* Alamofire */,
+				653FBA721E58B48E00216AA2 /* Core */,
+				653FBA751E58B48E00216AA2 /* MagicalRecord */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		653FBA6F1E58B48E00216AA2 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA701E58B48E00216AA2 /* AlamofireProcedureFactory.h */,
+				653FBA711E58B48E00216AA2 /* Info.plist */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		653FBA721E58B48E00216AA2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA731E58B48E00216AA2 /* EndpointProcedure.h */,
+				653FBA741E58B48E00216AA2 /* Info.plist */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		653FBA751E58B48E00216AA2 /* MagicalRecord */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA761E58B48E00216AA2 /* Info.plist */,
+				653FBA771E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory.h */,
+			);
+			path = MagicalRecord;
+			sourceTree = "<group>";
+		};
+		653FBA781E58B48E00216AA2 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA791E58B48E00216AA2 /* Alamofire */,
+				653FBA7C1E58B48E00216AA2 /* Core */,
+				653FBA841E58B48E00216AA2 /* Enqueueable.swift */,
+				653FBA851E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		653FBA791E58B48E00216AA2 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA7A1E58B48E00216AA2 /* AlamofireProcedureFactoryTests.swift */,
+				653FBA7B1E58B48E00216AA2 /* AlamofireProcedureTests.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		653FBA7C1E58B48E00216AA2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA7D1E58B48E00216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift */,
+				653FBA7E1E58B48E00216AA2 /* contents-of-url-test.json */,
+				653FBA7F1E58B48E00216AA2 /* ContentsOfURLLoadingProcedureTests.swift */,
+				653FBA801E58B48E00216AA2 /* DataFlowProcedureTests.swift */,
+				653FBA811E58B48E00216AA2 /* EndpointProcedureTests.swift */,
+				653FBA821E58B48E00216AA2 /* HTTPDataFlowProcedureTests.swift */,
+				653FBA831E58B48E00216AA2 /* HTTPRequestDataTests.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		653FBA851E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory */ = {
+			isa = PBXGroup;
+			children = (
+				653FBA861E58B48E00216AA2 /* InvalidEntityNameObject.swift */,
+				653FBA871E58B48E00216AA2 /* InvalidTestObject.swift */,
+				653FBA881E58B48E00216AA2 /* MagicalRecordMappingProcedureFactoryTests.swift */,
+				653FBA891E58B48E00216AA2 /* MagicalRecordMappingProcedureTests.swift */,
+				653FBA8A1E58B48E00216AA2 /* MagicalRecordObjectsArrayMappingProcedureTests.swift */,
+				653FBA8B1E58B48E00216AA2 /* MagicalRecordSingleObjectMappingProcedureTests.swift */,
+				653FBA8C1E58B48E00216AA2 /* TestModel.xcdatamodeld */,
+				653FBA8E1E58B48E00216AA2 /* TestObject.swift */,
+			);
+			path = MagicalRecordMappingProcedureFactory;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		653FB9641E5794F800216AA2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA211E58B3C100216AA2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA3F1E58B43900216AA2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		653FB9661E5794F800216AA2 /* EndpointProcedure */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653FB97B1E5794F800216AA2 /* Build configuration list for PBXNativeTarget "EndpointProcedure" */;
+			buildPhases = (
+				190C48A98AF81414C208E8EC /* [CP] Check Pods Manifest.lock */,
+				653FB9621E5794F800216AA2 /* Sources */,
+				653FB9631E5794F800216AA2 /* Frameworks */,
+				653FB9641E5794F800216AA2 /* Headers */,
+				653FB9651E5794F800216AA2 /* Resources */,
+				F1EEFBD99A011777AE2906AB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EndpointProcedure;
+			productName = EndpointProcedure;
+			productReference = 653FB9671E5794F800216AA2 /* EndpointProcedure.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		653FB96F1E5794F800216AA2 /* EndpointProcedureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653FB97E1E5794F800216AA2 /* Build configuration list for PBXNativeTarget "EndpointProcedureTests" */;
+			buildPhases = (
+				2B2D7B582EC3A27B6CE175DF /* [CP] Check Pods Manifest.lock */,
+				653FB96C1E5794F800216AA2 /* Sources */,
+				653FB96D1E5794F800216AA2 /* Frameworks */,
+				653FB96E1E5794F800216AA2 /* Resources */,
+				D5203397641EC87E7C372E23 /* [CP] Embed Pods Frameworks */,
+				F07B61DC17942D927AE6CFE2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653FB9731E5794F800216AA2 /* PBXTargetDependency */,
+			);
+			name = EndpointProcedureTests;
+			productName = EndpointProcedureTests;
+			productReference = 653FB9701E5794F800216AA2 /* EndpointProcedureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		653FBA231E58B3C100216AA2 /* AlamofireProcedureFactory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653FBA351E58B3C200216AA2 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactory" */;
+			buildPhases = (
+				EF6C0F6D17D456AAD7379A40 /* [CP] Check Pods Manifest.lock */,
+				653FBA1F1E58B3C100216AA2 /* Sources */,
+				653FBA201E58B3C100216AA2 /* Frameworks */,
+				653FBA211E58B3C100216AA2 /* Headers */,
+				653FBA221E58B3C100216AA2 /* Resources */,
+				F97D75CD3BE182CA8296897C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653FBA3C1E58B3E200216AA2 /* PBXTargetDependency */,
+			);
+			name = AlamofireProcedureFactory;
+			productName = AlamofireProcedureFactory;
+			productReference = 653FBA241E58B3C100216AA2 /* AlamofireProcedureFactory.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		653FBA2B1E58B3C200216AA2 /* AlamofireProcedureFactoryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653FBA381E58B3C200216AA2 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactoryTests" */;
+			buildPhases = (
+				DABBB1038178E02BA8326139 /* [CP] Check Pods Manifest.lock */,
+				653FBA281E58B3C200216AA2 /* Sources */,
+				653FBA291E58B3C200216AA2 /* Frameworks */,
+				653FBA2A1E58B3C200216AA2 /* Resources */,
+				81216343EFE88C9286B6AD44 /* [CP] Embed Pods Frameworks */,
+				E8E2CE616A188974F0231F29 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653FBA2F1E58B3C200216AA2 /* PBXTargetDependency */,
+			);
+			name = AlamofireProcedureFactoryTests;
+			productName = AlamofireProcedureFactoryTests;
+			productReference = 653FBA2C1E58B3C200216AA2 /* AlamofireProcedureFactoryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		653FBA411E58B43900216AA2 /* MagicalRecordMappingProcedureFactory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653FBA531E58B43900216AA2 /* Build configuration list for PBXNativeTarget "MagicalRecordMappingProcedureFactory" */;
+			buildPhases = (
+				3E1E9FB657E6C0BAD9DE6696 /* [CP] Check Pods Manifest.lock */,
+				653FBA3D1E58B43900216AA2 /* Sources */,
+				653FBA3E1E58B43900216AA2 /* Frameworks */,
+				653FBA3F1E58B43900216AA2 /* Headers */,
+				653FBA401E58B43900216AA2 /* Resources */,
+				B4A0A3789BD110E73E144476 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653FBA5A1E58B44A00216AA2 /* PBXTargetDependency */,
+			);
+			name = MagicalRecordMappingProcedureFactory;
+			productName = MagicalRecordMappingProcedureFactory;
+			productReference = 653FBA421E58B43900216AA2 /* MagicalRecordMappingProcedureFactory.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		653FBA491E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653FBA561E58B43900216AA2 /* Build configuration list for PBXNativeTarget "MagicalRecordMappingProcedureFactoryTests" */;
+			buildPhases = (
+				890BA448AEC25500D0FDEA97 /* [CP] Check Pods Manifest.lock */,
+				653FBA461E58B43900216AA2 /* Sources */,
+				653FBA471E58B43900216AA2 /* Frameworks */,
+				653FBA481E58B43900216AA2 /* Resources */,
+				50F83FB16AAC48CB83558F7F /* [CP] Embed Pods Frameworks */,
+				F502084C1B14F9C52EB238AC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653FBA4D1E58B43900216AA2 /* PBXTargetDependency */,
+			);
+			name = MagicalRecordMappingProcedureFactoryTests;
+			productName = MagicalRecordMappingProcedureFactoryTests;
+			productReference = 653FBA4A1E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		653FB95E1E5794F800216AA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Sviatoslav Yakymiv";
+				TargetAttributes = {
+					653FB9661E5794F800216AA2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					653FB96F1E5794F800216AA2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					653FBA231E58B3C100216AA2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						ProvisioningStyle = Automatic;
+					};
+					653FBA2B1E58B3C200216AA2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						ProvisioningStyle = Automatic;
+					};
+					653FBA411E58B43900216AA2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						ProvisioningStyle = Automatic;
+					};
+					653FBA491E58B43900216AA2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 653FB9611E5794F800216AA2 /* Build configuration list for PBXProject "EndpointProcedure" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 653FB95D1E5794F800216AA2;
+			productRefGroup = 653FB9681E5794F800216AA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				653FB9661E5794F800216AA2 /* EndpointProcedure */,
+				653FB96F1E5794F800216AA2 /* EndpointProcedureTests */,
+				653FBA231E58B3C100216AA2 /* AlamofireProcedureFactory */,
+				653FBA2B1E58B3C200216AA2 /* AlamofireProcedureFactoryTests */,
+				653FBA411E58B43900216AA2 /* MagicalRecordMappingProcedureFactory */,
+				653FBA491E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		653FB9651E5794F800216AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FB96E1E5794F800216AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBABC1E58B4E400216AA2 /* contents-of-url-test.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA221E58B3C100216AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA2A1E58B3C200216AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA401E58B43900216AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA481E58B43900216AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		190C48A98AF81414C208E8EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2B2D7B582EC3A27B6CE175DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3E1E9FB657E6C0BAD9DE6696 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		50F83FB16AAC48CB83558F7F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81216343EFE88C9286B6AD44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		890BA448AEC25500D0FDEA97 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B4A0A3789BD110E73E144476 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5203397641EC87E7C372E23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DABBB1038178E02BA8326139 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E8E2CE616A188974F0231F29 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF6C0F6D17D456AAD7379A40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F07B61DC17942D927AE6CFE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1EEFBD99A011777AE2906AB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndpointProcedure/Pods-EndpointProcedure-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F502084C1B14F9C52EB238AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F97D75CD3BE182CA8296897C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndpointProcedure-AlamofireProcedureFactory/Pods-EndpointProcedure-AlamofireProcedureFactory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		653FB9621E5794F800216AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBA911E58B48E00216AA2 /* AnyDataDeserializationProcedureFactory.swift in Sources */,
+				653FBA9B1E58B48E00216AA2 /* HTTPURLResponseProcedure.swift in Sources */,
+				653FBA941E58B48E00216AA2 /* DataDeserializationProcedureFactory.swift in Sources */,
+				653FBA931E58B48E00216AA2 /* ContentsOfURLLoadingProcedure.swift in Sources */,
+				653FBA991E58B48E00216AA2 /* HTTPRequestData.swift in Sources */,
+				653FBA961E58B48E00216AA2 /* EndpointProcedure.swift in Sources */,
+				653FBA9A1E58B48E00216AA2 /* HTTPResponseData.swift in Sources */,
+				653FBA9C1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift in Sources */,
+				653FBA981E58B48E00216AA2 /* HTTPDataLoadingProcedureFactory.swift in Sources */,
+				653FBA921E58B48E00216AA2 /* Configuration.swift in Sources */,
+				653FBA971E58B48E00216AA2 /* HTTPDataFlowProcedure.swift in Sources */,
+				653FBA951E58B48E00216AA2 /* DataFlowProcedure.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FB96C1E5794F800216AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBABF1E58B4E400216AA2 /* EndpointProcedureTests.swift in Sources */,
+				653FBABD1E58B4E400216AA2 /* ContentsOfURLLoadingProcedureTests.swift in Sources */,
+				653FBABE1E58B4E400216AA2 /* DataFlowProcedureTests.swift in Sources */,
+				653FBAB81E58B4DA00216AA2 /* Enqueueable.swift in Sources */,
+				653FBAC01E58B4E400216AA2 /* HTTPDataFlowProcedureTests.swift in Sources */,
+				653FBAC11E58B4E400216AA2 /* HTTPRequestDataTests.swift in Sources */,
+				653FBABB1E58B4E400216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA1F1E58B3C100216AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBACA1E58B50600216AA2 /* AlamofireProcedure.swift in Sources */,
+				653FBACB1E58B50600216AA2 /* AlamofireProcedureFactory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA281E58B3C200216AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBAB91E58B4DB00216AA2 /* Enqueueable.swift in Sources */,
+				653FBAB71E58B4D200216AA2 /* AlamofireProcedureTests.swift in Sources */,
+				653FBAB61E58B4D200216AA2 /* AlamofireProcedureFactoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA3D1E58B43900216AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65FC9CDB1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift in Sources */,
+				653FBACC1E58B50B00216AA2 /* MagicalRecordMappingProcedureFactory.swift in Sources */,
+				65FC9CDD1E58C254000FCF11 /* ElementsContainer.swift in Sources */,
+				65FC9CE11E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift in Sources */,
+				65FC9CD91E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift in Sources */,
+				65FC9CDF1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653FBA461E58B43900216AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653FBAC91E58B4FB00216AA2 /* TestModel.xcdatamodeld in Sources */,
+				653FBAC21E58B4F400216AA2 /* InvalidEntityNameObject.swift in Sources */,
+				653FBAC61E58B4F400216AA2 /* MagicalRecordObjectsArrayMappingProcedureTests.swift in Sources */,
+				653FBAC81E58B4F400216AA2 /* TestObject.swift in Sources */,
+				653FBAC71E58B4F400216AA2 /* MagicalRecordSingleObjectMappingProcedureTests.swift in Sources */,
+				653FBABA1E58B4DC00216AA2 /* Enqueueable.swift in Sources */,
+				653FBAC31E58B4F400216AA2 /* InvalidTestObject.swift in Sources */,
+				653FBAC41E58B4F400216AA2 /* MagicalRecordMappingProcedureFactoryTests.swift in Sources */,
+				653FBAC51E58B4F400216AA2 /* MagicalRecordMappingProcedureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		653FB9731E5794F800216AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653FB9661E5794F800216AA2 /* EndpointProcedure */;
+			targetProxy = 653FB9721E5794F800216AA2 /* PBXContainerItemProxy */;
+		};
+		653FBA2F1E58B3C200216AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653FBA231E58B3C100216AA2 /* AlamofireProcedureFactory */;
+			targetProxy = 653FBA2E1E58B3C200216AA2 /* PBXContainerItemProxy */;
+		};
+		653FBA3C1E58B3E200216AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653FB9661E5794F800216AA2 /* EndpointProcedure */;
+			targetProxy = 653FBA3B1E58B3E200216AA2 /* PBXContainerItemProxy */;
+		};
+		653FBA4D1E58B43900216AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653FBA411E58B43900216AA2 /* MagicalRecordMappingProcedureFactory */;
+			targetProxy = 653FBA4C1E58B43900216AA2 /* PBXContainerItemProxy */;
+		};
+		653FBA5A1E58B44A00216AA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653FB9661E5794F800216AA2 /* EndpointProcedure */;
+			targetProxy = 653FBA591E58B44A00216AA2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		653FB9791E5794F800216AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		653FB97A1E5794F800216AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		653FB97C1E5794F800216AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80F62542D68AECDE45C63F17 /* Pods-EndpointProcedure.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Core/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EndpointProcedure;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		653FB97D1E5794F800216AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2ED633DA9D89567D2EA5464 /* Pods-EndpointProcedure.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Core/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EndpointProcedure;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		653FB97F1E5794F800216AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF2C1EF4D1ED152A715D97B1 /* Pods-EndpointProcedureTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				INFOPLIST_FILE = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EndpointProcedureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		653FB9801E5794F800216AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75110213079BFAE46EBAE15D /* Pods-EndpointProcedureTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				INFOPLIST_FILE = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EndpointProcedureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		653FBA361E58B3C200216AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33201BABE2CB17103239B14A /* Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.AlamofireProcedureFactory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		653FBA371E58B3C200216AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12E4FFB1E94F34B58C3DD925 /* Pods-EndpointProcedure-AlamofireProcedureFactory.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.AlamofireProcedureFactory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		653FBA391E58B3C200216AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB3A2C29DADC4104EDF3F44D /* Pods-AlamofireProcedureFactoryTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				INFOPLIST_FILE = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.AlamofireProcedureFactoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		653FBA3A1E58B3C200216AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 062006E72143FFF29E148712 /* Pods-AlamofireProcedureFactoryTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				INFOPLIST_FILE = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.AlamofireProcedureFactoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		653FBA541E58B43900216AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FB324BA32E63C4D771E2CE3 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/MagicalRecord/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.MagicalRecordMappingProcedureFactory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		653FBA551E58B43900216AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80B0464598446B55E0806FE0 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/MagicalRecord/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.MagicalRecordMappingProcedureFactory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		653FBA571E58B43900216AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8A11E87BAD5CA07C070190C /* Pods-MagicalRecordMappingProcedureFactoryTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				INFOPLIST_FILE = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.MagicalRecordMappingProcedureFactoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		653FBA581E58B43900216AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0640B1C1FAE53B28C3ADC4C1 /* Pods-MagicalRecordMappingProcedureFactoryTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				INFOPLIST_FILE = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.MagicalRecordMappingProcedureFactoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		653FB9611E5794F800216AA2 /* Build configuration list for PBXProject "EndpointProcedure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653FB9791E5794F800216AA2 /* Debug */,
+				653FB97A1E5794F800216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653FB97B1E5794F800216AA2 /* Build configuration list for PBXNativeTarget "EndpointProcedure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653FB97C1E5794F800216AA2 /* Debug */,
+				653FB97D1E5794F800216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653FB97E1E5794F800216AA2 /* Build configuration list for PBXNativeTarget "EndpointProcedureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653FB97F1E5794F800216AA2 /* Debug */,
+				653FB9801E5794F800216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653FBA351E58B3C200216AA2 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653FBA361E58B3C200216AA2 /* Debug */,
+				653FBA371E58B3C200216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653FBA381E58B3C200216AA2 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactoryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653FBA391E58B3C200216AA2 /* Debug */,
+				653FBA3A1E58B3C200216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653FBA531E58B43900216AA2 /* Build configuration list for PBXNativeTarget "MagicalRecordMappingProcedureFactory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653FBA541E58B43900216AA2 /* Debug */,
+				653FBA551E58B43900216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653FBA561E58B43900216AA2 /* Build configuration list for PBXNativeTarget "MagicalRecordMappingProcedureFactoryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653FBA571E58B43900216AA2 /* Debug */,
+				653FBA581E58B43900216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		653FBA8C1E58B48E00216AA2 /* TestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				653FBA8D1E58B48E00216AA2 /* TestModel.xcdatamodel */,
+			);
+			currentVersion = 653FBA8D1E58B48E00216AA2 /* TestModel.xcdatamodel */;
+			path = TestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 653FB95E1E5794F800216AA2 /* Project object */;
+}

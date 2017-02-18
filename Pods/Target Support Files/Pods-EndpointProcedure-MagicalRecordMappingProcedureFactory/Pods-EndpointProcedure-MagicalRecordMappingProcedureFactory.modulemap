@@ -1,0 +1,6 @@
+framework module Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory {
+  umbrella header "Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory-umbrella.h"
+
+  export *
+  module * { export * }
+}
