@@ -57,12 +57,6 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
                       resultMappingProcedure: resultMappingProcedure)
     }
 
-
-    /// - returns: Interception procedure that does not change input value
-    static func createEmptyInterceptionProcedure() -> TransformProcedure<Any, Any> {
-        return TransformProcedure {$0}
-    }
-
     final public override func procedureDidFinish(withErrors: [Error]) {
         guard case .pending = self.output, let error = withErrors.first else {
             return
@@ -73,5 +67,12 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
         } else {
             self.output = .ready(.failure(error))
         }
+    }
+}
+
+extension DataFlowProcedure {
+    /// - returns: Interception procedure that does not change input value
+    static func createEmptyInterceptionProcedure() -> TransformProcedure<Any, Any> {
+        return TransformProcedure {$0}
     }
 }

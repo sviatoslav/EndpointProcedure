@@ -9,9 +9,28 @@
 import Foundation
 import ProcedureKit
 
+/// `HTTPDataFlowProcedure` manages flow of data from loading from HTTP endpoint to result mapping.
+///
+/// Data flow:
+/// ---------
+/// Loading -> Validation -> Deserialization -> Interception -> Mapping
+/// - Loading: load's `HTTPResponseData` from any source.
+/// - Validation: validates `HTTPResponseData`
+/// - Deserialization: converts loaded `Data` to `Any`
+/// - Interception: converst deserialized object to format expected by mapping
+/// - Mapping: Converst `Any` to `Result`
+///
+/// `HTTPDataFlowProcedure` finished after all inner procedure finished.
+///
+
 public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLResponseProcedure {
+    ///`HTTPURLResponse` fetched from `dataLoadingProcedure`
+    ///
+    /// `.pending` if `dataLoadingProcedure` does not contain `HTTPURLResponse`
     public private(set) var urlResponse: Pending<HTTPURLResponse>
 
+    /// Creates `HTTPDataFlowProcedure` with `dataLoadingProcedure`, `validationProcedure`,
+    /// `deserializationProcedure`, `interceptionProcedure`, `resultMappingProcedure`
     public init<L: Procedure, V: Procedure, D: Procedure, I: Procedure, M: Procedure>(dataLoadingProcedure: L,
          validationProcedure: V,deserializationProcedure: D, interceptionProcedure: I, resultMappingProcedure: M)
         where L: OutputProcedure, L.Output == HTTPResponseData,
@@ -31,6 +50,8 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
             }
     }
 
+    /// Creates `HTTPDataFlowProcedure` with `dataLoadingProcedure`, `deserializationProcedure`,
+    /// `interceptionProcedure`, `resultMappingProcedure`
     public convenience override init<L: Procedure, D: Procedure, I: Procedure, M: Procedure>(dataLoadingProcedure: L,
                      deserializationProcedure: D, interceptionProcedure: I, resultMappingProcedure: M)
         where L: OutputProcedure, L.Output == HTTPResponseData,
@@ -45,6 +66,10 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
                       resultMappingProcedure: resultMappingProcedure)
     }
 
+    /// Creates `HTTPDataFlowProcedure` with `dataLoadingProcedure`, `validationProcedure`,
+    /// `deserializationProcedure`, `resultMappingProcedure`.
+    ///
+    /// Result of `deserializationProcedure` is passed to `resultMappingProcedure`
     public convenience init<L: Procedure, V: Procedure, D: Procedure, M: Procedure>(dataLoadingProcedure: L,
                      validationProcedure: V,deserializationProcedure: D, resultMappingProcedure: M)
         where L: OutputProcedure, L.Output == HTTPResponseData,
@@ -59,6 +84,10 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
                       resultMappingProcedure: resultMappingProcedure)
     }
 
+    /// Creates `HTTPDataFlowProcedure` with `dataLoadingProcedure`,
+    /// `deserializationProcedure`, `resultMappingProcedure`.
+    ///
+    /// Result of `deserializationProcedure` is passed to `resultMappingProcedure`
     public convenience init<L: Procedure, D: Procedure, M: Procedure>(dataLoadingProcedure: L, deserializationProcedure: D,
                      resultMappingProcedure: M) where L: OutputProcedure, L.Output == HTTPResponseData,
         D: InputProcedure & OutputProcedure, D.Input == Data, D.Output == Any,
@@ -74,6 +103,7 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
 }
 
 extension HTTPDataFlowProcedure {
+    /// - returns: Validation procedure that always finishes without errors
     static func createEmptyValidationProcedure() -> TransformProcedure<HTTPResponseData, Void> {
         return TransformProcedure {_ in}
     }
