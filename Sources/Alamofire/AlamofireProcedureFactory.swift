@@ -10,15 +10,15 @@ import Alamofire
 import ProcedureKit
 import EndpointProcedure
 
-struct AlamofireProcedureFactory: HTTPDataLoadingProcedureFactory {
+public struct AlamofireProcedureFactory: HTTPDataLoadingProcedureFactory {
 
     private let sessionManager: SessionManager
 
-    init(sessionManager: SessionManager = .default) {
+    public init(sessionManager: SessionManager = .default) {
         self.sessionManager = sessionManager
     }
 
-    func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
+    public func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
         let method = AlamofireProcedureFactory.alamofireHTTPMethod(for: data.method)
         let encoding = AlamofireProcedureFactory.parameterEncoding(for: data.parameterEncoding)
         let procedure =  AlamofireProcedure(request: self.sessionManager.request(data.url, method: method,
