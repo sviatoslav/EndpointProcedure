@@ -8,9 +8,26 @@
 
 import ProcedureKit
 
+/// `DataFlowProcedure` manages flow of data from loading to result mapping.
+///
+/// Data flow:
+/// ---------
+/// Loading -> Deserialization -> Interception -> Mapping
+/// - Loading: load's `Data` from any source.
+/// - Deserialization: converts loaded `Data` to `Any`
+/// - Interception: converst deserialized object to format expected by mapping
+/// - Mapping: Converst `Any` to `Result`
+///
+/// `DataFlowProcedure` finished after all inner procedure finished.
+///
 open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
+    /// Result of `DataFlowProcedure`.
+    ///
+    /// Injected from `resultMappingProcedure`
     public var output: Pending<ProcedureResult<Result>>
 
+    /// Creates `DataFlowProcedure` with `dataLoadingProcedure`, `deserializationProcedure`,
+    /// `interceptionProcedure`, `resultMappingProcedure`
     public init<L: Procedure, D: Procedure, I: Procedure, M: Procedure>(dataLoadingProcedure: L, deserializationProcedure: D, interceptionProcedure: I, resultMappingProcedure: M) where L: OutputProcedure, L.Output == Data,
         D: InputProcedure & OutputProcedure, D.Input == Data, D.Output == Any,
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any,
@@ -28,6 +45,9 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
             }
     }
 
+    /// Creates `DataFlowProcedure` with `dataLoadingProcedure`, `deserializationProcedure`, `resultMappingProcedure`.
+    ///
+    /// Result of `deserializationProcedure` is passed to `resultMappingProcedure`
     public convenience init<L: Procedure, D: Procedure, M: Procedure>(dataLoadingProcedure: L, deserializationProcedure: D,
                      resultMappingProcedure: M) where L: OutputProcedure, L.Output == Data,
         D: InputProcedure & OutputProcedure, D.Input == Data, D.Output == Any,
@@ -37,6 +57,8 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
                       resultMappingProcedure: resultMappingProcedure)
     }
 
+
+    /// - returns: Interception procedure that does not change input value
     static func createEmptyInterceptionProcedure() -> TransformProcedure<Any, Any> {
         return TransformProcedure {$0}
     }
