@@ -19,7 +19,7 @@ public class ContentsOfURLLoadingProcedure: Procedure, OutputProcedure {
 
     private let url: URL
 
-    /// Creates `ContentsOfURLLoadingProcedure`
+    /// Creates `ContentsOfURLLoadingProcedure` with given URL
     /// - parameter url: URL that should be used in `Data(contensOf:)`
     public init(url: URL) {
         self.url = url
