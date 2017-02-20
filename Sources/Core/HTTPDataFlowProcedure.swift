@@ -88,8 +88,9 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
     /// `deserializationProcedure`, `resultMappingProcedure`.
     ///
     /// Result of `deserializationProcedure` is passed to `resultMappingProcedure`
-    public convenience init<L: Procedure, D: Procedure, M: Procedure>(dataLoadingProcedure: L, deserializationProcedure: D,
-                     resultMappingProcedure: M) where L: OutputProcedure, L.Output == HTTPResponseData,
+    public convenience init<L: Procedure, D: Procedure, M: Procedure>(dataLoadingProcedure: L,
+                            deserializationProcedure: D, resultMappingProcedure: M)
+        where L: OutputProcedure, L.Output == HTTPResponseData,
         D: InputProcedure & OutputProcedure, D.Input == Data, D.Output == Any,
         M: InputProcedure & OutputProcedure, M.Input == Any, M.Output == Result {
             let validationProcedure = HTTPDataFlowProcedure<Result>.createEmptyValidationProcedure()

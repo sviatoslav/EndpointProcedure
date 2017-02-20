@@ -155,8 +155,8 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any {
             do {
                 let dataFlowProcedure = try EndpointProcedure<Result>.dataFlowProcedure(with: configuration,
-                                                                                        dataLoadingProcedure: dataLoadingProcedure,
-                                                                                        interceptionProcedure: interceptionProcedure)
+                                                                        dataLoadingProcedure: dataLoadingProcedure,
+                                                                        interceptionProcedure: interceptionProcedure)
                 self.initialization = .dataFlowProcedure(dataFlowProcedure)
                 super.init(operations: [dataFlowProcedure])
             } catch let error {
@@ -187,7 +187,7 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
     }
 
     private static func dataFlowProcedure<L: Procedure, I: Procedure>(with configuration: ConfigurationProtocol!,
-                                          dataLoadingProcedure: L, interceptionProcedure: I) throws -> DataFlowProcedure<Result>
+                                  dataLoadingProcedure: L, interceptionProcedure: I) throws -> DataFlowProcedure<Result>
         where L: OutputProcedure, L.Output == Data,
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any {
             guard let configuration = configuration ?? Configuration.default else {
@@ -218,7 +218,8 @@ extension EndpointProcedure {
     /// If no value passed and `Configuration.default` is not initialize,
     /// `EndpointProcedure` will finish with `EndpointProcedureError.missingConfiguration
     ///
-    public convenience init<V: Procedure>(requestData: HTTPRequestData, validationProcedure: V, configuration: ConfigurationProtocol! = nil)
+    public convenience init<V: Procedure>(requestData: HTTPRequestData, validationProcedure: V,
+                            configuration: ConfigurationProtocol! = nil)
         where V: InputProcedure, V.Input == HTTPResponseData {
             let interceptionProcedure = HTTPDataFlowProcedure<Result>.createEmptyInterceptionProcedure()
             self.init(requestData: requestData, validationProcedure: validationProcedure,
@@ -238,7 +239,8 @@ extension EndpointProcedure {
     /// If no value passed and `Configuration.default` is not initialize,
     /// `EndpointProcedure` will finish with `EndpointProcedureError.missingConfiguration
     ///
-    public convenience init<I: Procedure>(requestData: HTTPRequestData, interceptionProcedure: I, configuration: ConfigurationProtocol! = nil)
+    public convenience init<I: Procedure>(requestData: HTTPRequestData, interceptionProcedure: I,
+                            configuration: ConfigurationProtocol! = nil)
         where I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any {
             let validationProcedure = HTTPDataFlowProcedure<Result>.createEmptyValidationProcedure()
             self.init(requestData: requestData, validationProcedure: validationProcedure,

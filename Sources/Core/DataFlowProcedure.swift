@@ -28,7 +28,9 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
 
     /// Creates `DataFlowProcedure` with `dataLoadingProcedure`, `deserializationProcedure`,
     /// `interceptionProcedure`, `resultMappingProcedure`
-    public init<L: Procedure, D: Procedure, I: Procedure, M: Procedure>(dataLoadingProcedure: L, deserializationProcedure: D, interceptionProcedure: I, resultMappingProcedure: M) where L: OutputProcedure, L.Output == Data,
+    public init<L: Procedure, D: Procedure, I: Procedure, M: Procedure>(dataLoadingProcedure: L,
+                deserializationProcedure: D, interceptionProcedure: I, resultMappingProcedure: M)
+        where L: OutputProcedure, L.Output == Data,
         D: InputProcedure & OutputProcedure, D.Input == Data, D.Output == Any,
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any,
         M: InputProcedure & OutputProcedure, M.Input == Any, M.Output == Result {
@@ -48,8 +50,9 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
     /// Creates `DataFlowProcedure` with `dataLoadingProcedure`, `deserializationProcedure`, `resultMappingProcedure`.
     ///
     /// Result of `deserializationProcedure` is passed to `resultMappingProcedure`
-    public convenience init<L: Procedure, D: Procedure, M: Procedure>(dataLoadingProcedure: L, deserializationProcedure: D,
-                     resultMappingProcedure: M) where L: OutputProcedure, L.Output == Data,
+    public convenience init<L: Procedure, D: Procedure, M: Procedure>(dataLoadingProcedure: L,
+                            deserializationProcedure: D, resultMappingProcedure: M)
+        where L: OutputProcedure, L.Output == Data,
         D: InputProcedure & OutputProcedure, D.Input == Data, D.Output == Any,
         M: InputProcedure & OutputProcedure, M.Input == Any, M.Output == Result {
             self.init(dataLoadingProcedure: dataLoadingProcedure, deserializationProcedure: deserializationProcedure,
