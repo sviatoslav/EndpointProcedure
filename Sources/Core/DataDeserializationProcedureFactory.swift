@@ -8,6 +8,8 @@
 
 import ProcedureKit
 
+/// A type that can create data deserialization procedure
 public protocol DataDeserializationProcedureFactory {
+    /// Creates data deserilization procedure
     func dataDeserializationProcedure() -> AnyProcedure<Data, Any>
 }

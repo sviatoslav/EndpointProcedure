@@ -8,6 +8,7 @@
 
 import ProcedureKit
 
+/// A procedure type that containts `HTTPURLResponse`
 public protocol HTTPURLResponseProcedure: ProcedureProtocol {
     var urlResponse: Pending<HTTPURLResponse> { get }
 }
