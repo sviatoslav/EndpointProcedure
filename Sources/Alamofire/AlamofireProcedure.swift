@@ -10,16 +10,21 @@ import ProcedureKit
 import Alamofire
 import EndpointProcedure
 
+/// Errors that `AlamofireProcedure` can return in `output` property.
 public enum AlamofireProcedureError: Swift.Error {
+    /// Request to server did not fail, but response data is `nil`
     case invalidDataRequest
 }
 
+/// Procedure that wrapps `Alamofire.DataRequest`
 class AlamofireProcedure: Procedure, OutputProcedure {
 
     var output: Pending<ProcedureResult<HTTPResponseData>> = .pending
 
     private let request: DataRequest
-    
+
+    /// Creates `AlamofireProcedure`.
+    /// - parameter request: `Alamofire.DataRequest` for data loading.
     init(request: DataRequest) {
         self.request = request
         super.init()

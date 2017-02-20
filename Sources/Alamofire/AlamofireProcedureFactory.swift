@@ -10,14 +10,21 @@ import Alamofire
 import ProcedureKit
 import EndpointProcedure
 
+/// `HTTPDataLoadingProcedureFactory` that creates `AlamofireProcedure`s
 public struct AlamofireProcedureFactory: HTTPDataLoadingProcedureFactory {
 
     private let sessionManager: SessionManager
 
+    /// Creates `AlamofireProcedureFactory` with `sessionManager`
+    /// - parameter sessionManager: `Alamifire.SessionManager` that is used in alamofire procedures creation.
+    /// Default value: `SessionManager.default`
     public init(sessionManager: SessionManager = .default) {
         self.sessionManager = sessionManager
     }
 
+    /// Creates `AlamofireProcedure` with `sessionManager` provided in initializer.
+    /// - throws: `AlamofireProcedureFactory` does not throw error from `dataLoadingProcedure(with:)`
+    /// - parameter data: `HTTPRequestData` used in procedure creation
     public func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
         let method = AlamofireProcedureFactory.alamofireHTTPMethod(for: data.method)
         let encoding = AlamofireProcedureFactory.parameterEncoding(for: data.parameterEncoding)
