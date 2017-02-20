@@ -9,12 +9,18 @@
 import Foundation
 import ProcedureKit
 
+/// Wrapps `Data(contensOf:)`. Sets result `Data` as `output`.
+///
+/// If `Data(contensOf:)` throws error sets it as `output`
 public class ContentsOfURLLoadingProcedure: Procedure, OutputProcedure {
 
+    /// Result of `Data(contensOf:)` initializer
     public var output: Pending<ProcedureResult<Data>> = .pending
 
     private let url: URL
 
+    /// Creates `ContentsOfURLLoadingProcedure`
+    /// - parameter url: URL that should be used in `Data(contensOf:)`
     public init(url: URL) {
         self.url = url
         super.init()
