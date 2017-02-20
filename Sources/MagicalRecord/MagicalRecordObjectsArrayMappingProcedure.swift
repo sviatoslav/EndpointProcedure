@@ -9,8 +9,10 @@
 import ProcedureKit
 import MagicalRecord
 
+/// Procedure used for objects array mapping. `T` should be `Array` of subclass of `NSManagedObject`
 class MagicalRecordObjectsArrayMappingProcedure<T>: MagicalRecordMappingProcedure<T> {
 
+    /// `T.Element.self` if `T == Array` and `T.Element: NSManagedObject`, `nil` otherwise
     override class var managedObjectType: NSManagedObject.Type? {
         guard let elementsContainerType = T.self as? ElementsContainer.Type else {
             return nil

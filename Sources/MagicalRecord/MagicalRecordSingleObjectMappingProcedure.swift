@@ -9,8 +9,10 @@
 import ProcedureKit
 import MagicalRecord
 
+/// Procedure used for single object mapping. `T` should be subclass of `NSManagedObject`
 class MagicalRecordSingleObjectMappingProcedure<T>: MagicalRecordMappingProcedure<T> {
 
+    /// `T.self` if `T: NSManagedObject`, `nil` otherwise
     override class var managedObjectType: NSManagedObject.Type? {
         guard T.self != NSManagedObject.self else {
             return nil

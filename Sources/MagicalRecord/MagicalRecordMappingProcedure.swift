@@ -13,17 +13,22 @@ enum MagicalRecordMappingProcedureInternalError: Error {
     case unoverridenPerformMappingMethod
 }
 
+/// Abstract class
 class MagicalRecordMappingProcedure<T>: Procedure, InputProcedure, OutputProcedure {
 
     var input: Pending<Any> = .pending
     var output: Pending<ProcedureResult<T>> = .pending
 
+    /// Context that is used for data manipulation inside `MagicalRecordMappingProcedure`.
+    /// If `nil` set, `MagicalRecordMappingProcedure` will create context and save changes to persisten store.
+    /// If not `nil`, `save` method will not be called.
     var managedObjectContext: NSManagedObjectContext?
 
     class var managedObjectType: NSManagedObject.Type? {
         return nil
     }
 
+    /// Determines if procedure is valid. Procedure is valid if `managedObjectType != nil`
     final class var isValid: Bool {
         return self.managedObjectType != nil
     }
@@ -42,6 +47,11 @@ class MagicalRecordMappingProcedure<T>: Procedure, InputProcedure, OutputProcedu
         }
     }
 
+    /// Performs object mapping
+    /// - parameter completion: closure that is called after mapping finished.
+    ///
+    /// Method should be overriden in subclasses
+    /// ------------------------------------
     func performMapping(with completion: (ProcedureResult<T>) -> Void) throws {
         throw MagicalRecordMappingProcedureInternalError.unoverridenPerformMappingMethod
     }
