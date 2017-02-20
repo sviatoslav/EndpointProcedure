@@ -11,18 +11,18 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - MagicalRecord
-  - ProcedureKit (from `https://github.com/sviatoslav/ProcedureKit.git`, branch `development`)
+  - ProcedureKit (from `https://github.com/ProcedureKit/ProcedureKit.git`, branch `development`)
   - SwiftyJSON
 
 EXTERNAL SOURCES:
   ProcedureKit:
     :branch: development
-    :git: https://github.com/sviatoslav/ProcedureKit.git
+    :git: https://github.com/ProcedureKit/ProcedureKit.git
 
 CHECKOUT OPTIONS:
   ProcedureKit:
-    :commit: 991e43bc90ebba1a77638b763b03d99f213946bc
-    :git: https://github.com/sviatoslav/ProcedureKit.git
+    :commit: 9479d066a04640703acda291672b66d26b3edbce
+    :git: https://github.com/ProcedureKit/ProcedureKit.git
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
@@ -30,6 +30,6 @@ SPEC CHECKSUMS:
   ProcedureKit: 2af9335a002b5f2a2db61d9cfba0ab4bcac640cf
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: d557bbcc20f23364a7270bbcdafac8e1289b0602
+PODFILE CHECKSUM: 37f616ece9cabc702d10cfaf63092463c84fc1df
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.0

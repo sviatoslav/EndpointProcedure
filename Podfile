@@ -3,7 +3,7 @@
 
 target 'EndpointProcedure' do
     use_frameworks!
-    pod 'ProcedureKit', :git => 'https://github.com/sviatoslav/ProcedureKit.git', :branch => 'development'
+    pod 'ProcedureKit', :git => 'https://github.com/ProcedureKit/ProcedureKit.git', :branch => 'development'
 
     target 'EndpointProcedureTests' do
         inherit! :search_paths

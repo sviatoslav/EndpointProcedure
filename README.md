@@ -11,7 +11,7 @@ Typesafe flexible bridge between API and application model. Based on [ProcedureK
 Under development. **Not ready** for production use.
 
 ##TODO
-* Create pod after ProcedureKit release.(Currently EndpointProcedure uses sources from ProcedureKit's fork)
+* Create pod after ProcedureKit release.(Currently EndpointProcedure uses sources from ProcedureKit's development branch)
 * Create documentation
 * Create examples
 
