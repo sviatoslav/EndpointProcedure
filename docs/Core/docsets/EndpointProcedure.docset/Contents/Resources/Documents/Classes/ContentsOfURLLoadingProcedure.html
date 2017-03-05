@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ContentsOfURLLoadingProcedure Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ContentsOfURLLoadingProcedure" class="dashAnchor"></a>
+    <a title="ContentsOfURLLoadingProcedure Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">EndpointProcedure Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/sviatoslav/EndpointProcedure"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">EndpointProcedure Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ContentsOfURLLoadingProcedure Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContentsOfURLLoadingProcedure.html">ContentsOfURLLoadingProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataFlowProcedure.html">DataFlowProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EndpointProcedure.html">EndpointProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/HTTPDataFlowProcedure.html">HTTPDataFlowProcedure</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/EndpointProcedureError.html">EndpointProcedureError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataDeserializationProcedureFactory.html">DataDeserializationProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HTTPDataLoadingProcedureFactory.html">HTTPDataLoadingProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HTTPURLResponseProcedure.html">HTTPURLResponseProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResponseMappingProcedureFactory.html">ResponseMappingProcedureFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyDataDeserializationProcedureFactory.html">AnyDataDeserializationProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyDataDeserializationProcedureFactory/Deserialization.html">– Deserialization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData.html">HTTPRequestData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Method.html">– Method</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/ParameterEncoding.html">– ParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/PlistEncodingOption.html">– PlistEncodingOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPResponseData.html">HTTPResponseData</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ContentsOfURLLoadingProcedure</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ContentsOfURLLoadingProcedure</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">OutputProcedure</span></code></pre>
+
+                </div>
+              </div>
+            <p>Wrapps <code>Data(contensOf:)</code>. Sets result <code>Data</code> as <code>output</code>.</p>
+
+<p>If <code>Data(contensOf:)</code> throws error sets it as <code>output</code></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC17EndpointProcedure29ContentsOfURLLoadingProcedure6outputGO12ProcedureKit7PendingGOS1_15ProcedureResultV10Foundation4Data__"></a>
+                    <a name="//apple_ref/swift/Property/output" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC17EndpointProcedure29ContentsOfURLLoadingProcedure6outputGO12ProcedureKit7PendingGOS1_15ProcedureResultV10Foundation4Data__">output</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Result of <code>Data(contensOf:)</code> initializer</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">output</span><span class="p">:</span> <span class="kt">Pending</span><span class="o">&lt;</span><span class="kt">ProcedureResult</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="o">.</span><span class="n">pending</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure29ContentsOfURLLoadingProcedurecFT3urlV10Foundation3URL_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(url:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure29ContentsOfURLLoadingProcedurecFT3urlV10Foundation3URL_S0_">init(url:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>ContentsOfURLLoadingProcedure</code> with given URL</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>URL that should be used in <code>Data(contensOf:)</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure29ContentsOfURLLoadingProcedure7executeFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/execute()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure29ContentsOfURLLoadingProcedure7executeFT_T_">execute()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Executes loading content from <code>url</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">execute</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/sviatoslav" target="_blank" rel="external">Sviatoslav Yakymiv</a>. All rights reserved. (Last updated: 2017-03-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

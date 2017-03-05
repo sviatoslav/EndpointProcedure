@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DataFlowProcedure Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/DataFlowProcedure" class="dashAnchor"></a>
+    <a title="DataFlowProcedure Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">EndpointProcedure Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/sviatoslav/EndpointProcedure"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">EndpointProcedure Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        DataFlowProcedure Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContentsOfURLLoadingProcedure.html">ContentsOfURLLoadingProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataFlowProcedure.html">DataFlowProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EndpointProcedure.html">EndpointProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/HTTPDataFlowProcedure.html">HTTPDataFlowProcedure</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/EndpointProcedureError.html">EndpointProcedureError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataDeserializationProcedureFactory.html">DataDeserializationProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HTTPDataLoadingProcedureFactory.html">HTTPDataLoadingProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HTTPURLResponseProcedure.html">HTTPURLResponseProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResponseMappingProcedureFactory.html">ResponseMappingProcedureFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyDataDeserializationProcedureFactory.html">AnyDataDeserializationProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyDataDeserializationProcedureFactory/Deserialization.html">– Deserialization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData.html">HTTPRequestData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Method.html">– Method</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/ParameterEncoding.html">– ParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/PlistEncodingOption.html">– PlistEncodingOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPResponseData.html">HTTPResponseData</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>DataFlowProcedure</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">DataFlowProcedure</span><span class="o">&lt;</span><span class="kt">Result</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">GroupProcedure</span><span class="p">,</span> <span class="kt">OutputProcedure</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>DataFlowProcedure</code> manages flow of data from loading to result mapping.</p>
+
+<p><a href='#data-flow' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='data-flow'>Data flow:</h2></p>
+
+<p>Loading -&gt; Deserialization -&gt; Interception -&gt; Mapping</p>
+
+<ul>
+<li>Loading: load&rsquo;s <code>Data</code> from any source.</li>
+<li>Deserialization: converts loaded <code>Data</code> to <code>Any</code></li>
+<li>Interception: converst deserialized object to format expected by mapping</li>
+<li>Mapping: Converst <code>Any</code> to <code>Result</code></li>
+</ul>
+
+<p><code>DataFlowProcedure</code> finished after all inner procedure finished.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC17EndpointProcedure17DataFlowProcedure6outputGO12ProcedureKit7PendingGOS1_15ProcedureResultx__"></a>
+                    <a name="//apple_ref/swift/Property/output" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC17EndpointProcedure17DataFlowProcedure6outputGO12ProcedureKit7PendingGOS1_15ProcedureResultx__">output</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Result of <code>DataFlowProcedure</code>.</p>
+
+<p>Injected from <code>resultMappingProcedure</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">output</span><span class="p">:</span> <span class="kt">Pending</span><span class="o">&lt;</span><span class="kt">ProcedureResult</span><span class="o">&lt;</span><span class="kt">Result</span><span class="o">&gt;&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17DataFlowProcedurecu2_Rd__C12ProcedureKit9Procedured__S1_15OutputProcedured_0_S2_d_0_S1_14InputProcedured_0_S3_d_1_S2_d_1_S4_d_1_S3_d_2_S2_d_2_S4_d_2_S3_xzwd_2_PS3_6Outputwd__S5_zV10Foundation4Datawd_0_PS4_5InputzS7_wd_0_S5_zP_wd_1_S8_zP_wd_1_S5_zP_wd_2_S8_zP_rFT20dataLoadingProcedureqd__24deserializationProcedureqd_0_21interceptionProcedureqd_1_22resultMappingProcedureqd_2__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(dataLoadingProcedure:deserializationProcedure:interceptionProcedure:resultMappingProcedure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17DataFlowProcedurecu2_Rd__C12ProcedureKit9Procedured__S1_15OutputProcedured_0_S2_d_0_S1_14InputProcedured_0_S3_d_1_S2_d_1_S4_d_1_S3_d_2_S2_d_2_S4_d_2_S3_xzwd_2_PS3_6Outputwd__S5_zV10Foundation4Datawd_0_PS4_5InputzS7_wd_0_S5_zP_wd_1_S8_zP_wd_1_S5_zP_wd_2_S8_zP_rFT20dataLoadingProcedureqd__24deserializationProcedureqd_0_21interceptionProcedureqd_1_22resultMappingProcedureqd_2__GS0_x_">init(dataLoadingProcedure:deserializationProcedure:interceptionProcedure:resultMappingProcedure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>DataFlowProcedure</code> with <code>dataLoadingProcedure</code>, <code>deserializationProcedure</code>,
+<code>interceptionProcedure</code>, <code>resultMappingProcedure</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">L</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">D</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">I</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">M</span><span class="p">:</span> <span class="kt">Procedure</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">dataLoadingProcedure</span><span class="p">:</span> <span class="kt">L</span><span class="p">,</span>
+                <span class="nv">deserializationProcedure</span><span class="p">:</span> <span class="kt">D</span><span class="p">,</span> <span class="nv">interceptionProcedure</span><span class="p">:</span> <span class="kt">I</span><span class="p">,</span> <span class="nv">resultMappingProcedure</span><span class="p">:</span> <span class="kt">M</span><span class="p">)</span>
+        <span class="k">where</span> <span class="kt">L</span><span class="p">:</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">L</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Data</span><span class="p">,</span>
+        <span class="kt">D</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">D</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Data</span><span class="p">,</span> <span class="kt">D</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span>
+        <span class="kt">I</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span>
+        <span class="kt">M</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">M</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">M</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Result</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17DataFlowProcedurecu1_Rd__C12ProcedureKit9Procedured__S1_15OutputProcedured_0_S2_d_0_S1_14InputProcedured_0_S3_d_1_S2_d_1_S4_d_1_S3_xzwd_1_PS3_6Outputwd__S5_zV10Foundation4Datawd_0_PS4_5InputzS7_wd_0_S5_zP_wd_1_S8_zP_rFT20dataLoadingProcedureqd__24deserializationProcedureqd_0_22resultMappingProcedureqd_1__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(dataLoadingProcedure:deserializationProcedure:resultMappingProcedure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17DataFlowProcedurecu1_Rd__C12ProcedureKit9Procedured__S1_15OutputProcedured_0_S2_d_0_S1_14InputProcedured_0_S3_d_1_S2_d_1_S4_d_1_S3_xzwd_1_PS3_6Outputwd__S5_zV10Foundation4Datawd_0_PS4_5InputzS7_wd_0_S5_zP_wd_1_S8_zP_rFT20dataLoadingProcedureqd__24deserializationProcedureqd_0_22resultMappingProcedureqd_1__GS0_x_">init(dataLoadingProcedure:deserializationProcedure:resultMappingProcedure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>DataFlowProcedure</code> with <code>dataLoadingProcedure</code>, <code>deserializationProcedure</code>, <code>resultMappingProcedure</code>.</p>
+
+<p>Result of <code>deserializationProcedure</code> is passed to <code>resultMappingProcedure</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">L</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">D</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">M</span><span class="p">:</span> <span class="kt">Procedure</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">dataLoadingProcedure</span><span class="p">:</span> <span class="kt">L</span><span class="p">,</span>
+                            <span class="nv">deserializationProcedure</span><span class="p">:</span> <span class="kt">D</span><span class="p">,</span> <span class="nv">resultMappingProcedure</span><span class="p">:</span> <span class="kt">M</span><span class="p">)</span>
+        <span class="k">where</span> <span class="kt">L</span><span class="p">:</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">L</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Data</span><span class="p">,</span>
+        <span class="kt">D</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">D</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Data</span><span class="p">,</span> <span class="kt">D</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span>
+        <span class="kt">M</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">M</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">M</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Result</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17DataFlowProcedure18procedureDidFinishFT10withErrorsGSaPs5Error___T_"></a>
+                    <a name="//apple_ref/swift/Method/procedureDidFinish(withErrors:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17DataFlowProcedure18procedureDidFinishFT10withErrorsGSaPs5Error___T_">procedureDidFinish(withErrors:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Processes errors sets correct error as <code><a href="../Classes/DataFlowProcedure.html#/s:vC17EndpointProcedure17DataFlowProcedure6outputGO12ProcedureKit7PendingGOS1_15ProcedureResultx__">output</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">final</span> <span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">procedureDidFinish</span><span class="p">(</span><span class="nv">withErrors</span><span class="p">:</span> <span class="p">[</span><span class="kt">Error</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/sviatoslav" target="_blank" rel="external">Sviatoslav Yakymiv</a>. All rights reserved. (Last updated: 2017-03-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

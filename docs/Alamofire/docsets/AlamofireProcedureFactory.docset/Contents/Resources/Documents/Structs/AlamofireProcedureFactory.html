@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AlamofireProcedureFactory Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/AlamofireProcedureFactory" class="dashAnchor"></a>
+    <a title="AlamofireProcedureFactory Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">AlamofireProcedureFactory Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/sviatoslav/EndpointProcedure"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">AlamofireProcedureFactory Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        AlamofireProcedureFactory Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AlamofireProcedureError.html">AlamofireProcedureError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AlamofireProcedureFactory.html">AlamofireProcedureFactory</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>AlamofireProcedureFactory</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">AlamofireProcedureFactory</span><span class="p">:</span> <span class="kt">HTTPDataLoadingProcedureFactory</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>HTTPDataLoadingProcedureFactory</code> that creates <code>AlamofireProcedure</code>s</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV25AlamofireProcedureFactory25AlamofireProcedureFactorycFT14sessionManagerC9Alamofire14SessionManager_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(sessionManager:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV25AlamofireProcedureFactory25AlamofireProcedureFactorycFT14sessionManagerC9Alamofire14SessionManager_S0_">init(sessionManager:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>AlamofireProcedureFactory</code> with <code>sessionManager</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">sessionManager</span><span class="p">:</span> <span class="kt">SessionManager</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sessionManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>Alamifire.SessionManager</code> that is used in alamofire procedures creation. Default value: <code>SessionManager.default</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV25AlamofireProcedureFactory25AlamofireProcedureFactory20dataLoadingProcedureFzT4withV17EndpointProcedure15HTTPRequestData_GC12ProcedureKit18AnyOutputProcedureVS1_16HTTPResponseData_"></a>
+                    <a name="//apple_ref/swift/Method/dataLoadingProcedure(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV25AlamofireProcedureFactory25AlamofireProcedureFactory20dataLoadingProcedureFzT4withV17EndpointProcedure15HTTPRequestData_GC12ProcedureKit18AnyOutputProcedureVS1_16HTTPResponseData_">dataLoadingProcedure(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>AlamofireProcedure</code> with <code>sessionManager</code> provided in initializer.</p>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code>AlamofireProcedureFactory</code> does not throw error from <code>dataLoadingProcedure(with:)</code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dataLoadingProcedure</span><span class="p">(</span><span class="n">with</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">HTTPRequestData</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">AnyOutputProcedure</span><span class="o">&lt;</span><span class="kt">HTTPResponseData</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>HTTPRequestData</code> used in procedure creation</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/sviatoslav" target="_blank" rel="external">Sviatoslav Yakymiv</a>. All rights reserved. (Last updated: 2017-03-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

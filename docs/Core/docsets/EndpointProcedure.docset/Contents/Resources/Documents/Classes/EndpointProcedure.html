@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>EndpointProcedure Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/EndpointProcedure" class="dashAnchor"></a>
+    <a title="EndpointProcedure Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">EndpointProcedure Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/sviatoslav/EndpointProcedure"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">EndpointProcedure Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        EndpointProcedure Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContentsOfURLLoadingProcedure.html">ContentsOfURLLoadingProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataFlowProcedure.html">DataFlowProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EndpointProcedure.html">EndpointProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/HTTPDataFlowProcedure.html">HTTPDataFlowProcedure</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/EndpointProcedureError.html">EndpointProcedureError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DataDeserializationProcedureFactory.html">DataDeserializationProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HTTPDataLoadingProcedureFactory.html">HTTPDataLoadingProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HTTPURLResponseProcedure.html">HTTPURLResponseProcedure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResponseMappingProcedureFactory.html">ResponseMappingProcedureFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyDataDeserializationProcedureFactory.html">AnyDataDeserializationProcedureFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyDataDeserializationProcedureFactory/Deserialization.html">– Deserialization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData.html">HTTPRequestData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Method.html">– Method</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/ParameterEncoding.html">– ParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPRequestData/PlistEncodingOption.html">– PlistEncodingOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HTTPResponseData.html">HTTPResponseData</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>EndpointProcedure</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">EndpointProcedure</span><span class="o">&lt;</span><span class="kt">Result</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">GroupProcedure</span><span class="p">,</span> <span class="kt">OutputProcedure</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>EndpointProcedure</code> wraps <code><a href="../Classes/DataFlowProcedure.html">DataFlowProcedure</a></code> and is aimed for easy creation connections with endpoints.
+It&rsquo;s highly recommended to set <code>Configuration.default</code> and <code><a href="../Structs/HTTPRequestData/Builder.html#/s:ZvVV17EndpointProcedure15HTTPRequestData7Builder7baseURLGSQV10Foundation3URL_">HTTPRequestData.Builder.baseURL</a></code>
+before creating any <code>EndpointProcedure</code></p>
+
+<p><a href='#examples' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='examples'>Examples</h2></p>
+
+<p>Creating simplest <code>EndpointProcedure</code>:</p>
+
+<pre class="highlight plaintext"><code>let requestData = HTTPRequestData.Builder.for(path: "users").build()
+let usersProcedure = EndpointProcedure&lt;[User]&gt;(requestData: requestData)
+</code></pre>
+
+<p>Using <code>validationProcedure</code>:</p>
+
+<pre class="highlight plaintext"><code>let validation = TransformProcedure&lt;HTTPResponseData, Void&gt; {
+    if $0.urlResponse?.statusCode &gt;= 400 {
+        throw Error.invalidStatusCode
+    }
+}
+let requestData = HTTPRequestData.Builder.for(path: "users").build()
+let usersProcedure = EndpointProcedure&lt;[User]&gt;(requestData: requestData, validationProcedure: validation)
+</code></pre>
+
+<p>Using <code>interceptionProcedure</code>:</p>
+
+<pre class="highlight plaintext"><code>let interception = TransformProcedure&lt;Any, Any&gt; {
+    guard let dataDictionary = $0 as? [AnyHashable: Any] else {
+        throw Error.invalidResponseFormat
+    }
+    guard let usersArray = dataDictionary["data"] as? [Any] else {
+        throw Error.invalidResponseFormat
+    }
+    return usersArray
+}
+let requestData = HTTPRequestData.Builder.for(path: "users").build()
+let usersProcedure = EndpointProcedure&lt;[User]&gt;(requestData: requestData, interceptionProcedure: interception)
+</code></pre>
+
+<p>Using custom <code>configuration</code>:</p>
+
+<pre class="highlight plaintext"><code>let configuration = //initialize with appropriate procedure factories
+let requestData = HTTPRequestData.Builder.for(path: "users").build()
+let usersProcedure = EndpointProcedure&lt;[User]&gt;(requestData: requestData, configuration: configuration)
+</code></pre>
+
+<p>Using custom <code>dataLoadingProcedure</code>:</p>
+
+<pre class="highlight plaintext"><code>let url = //Any URL
+let dataLoadingProcedure = ContentsOfURLLoadingProcedure(url: url)
+let usersProcedure = EndpointProcedure&lt;[User]&gt;(dataLoadingProcedure: dataLoadingProcedure)
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC17EndpointProcedure17EndpointProcedure6outputGO12ProcedureKit7PendingGOS1_15ProcedureResultx__"></a>
+                    <a name="//apple_ref/swift/Property/output" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC17EndpointProcedure17EndpointProcedure6outputGO12ProcedureKit7PendingGOS1_15ProcedureResultx__">output</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Result of <code>EndpointProcedure</code>.
+Do not set this value from code. Changes will not be applied.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">output</span><span class="p">:</span> <span class="kt">Pending</span><span class="o">&lt;</span><span class="kt">ProcedureResult</span><span class="o">&lt;</span><span class="kt">Result</span><span class="o">&gt;&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17EndpointProcedurecFT17dataFlowProcedureGCS_17DataFlowProcedurex__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(dataFlowProcedure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17EndpointProcedurecFT17dataFlowProcedureGCS_17DataFlowProcedurex__GS0_x_">init(dataFlowProcedure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>EndpointProcedure</code> with <code><a href="../Classes/DataFlowProcedure.html">DataFlowProcedure</a></code> inside regardless any <code><a href="../Structs/Configuration.html">Configuration</a></code> value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">dataFlowProcedure</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataFlowProcedure.html">DataFlowProcedure</a></span><span class="o">&lt;</span><span class="kt">Result</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataFlowProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>procedure that should be run inside <code>EnpointProcedure</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17EndpointProcedurecu0_Rd__C12ProcedureKit9Procedured__S1_14InputProcedured_0_S2_d_0_S3_d_0_S1_15OutputProcedurewd__5InputzVS_16HTTPResponseDatawd_0_S5_zP_wd_0_PS4_6OutputzP_rFT11requestDataVS_15HTTPRequestData19validationProcedureqd__21interceptionProcedureqd_0_13configurationGSQPS_21ConfigurationProtocol___GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(requestData:validationProcedure:interceptionProcedure:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17EndpointProcedurecu0_Rd__C12ProcedureKit9Procedured__S1_14InputProcedured_0_S2_d_0_S3_d_0_S1_15OutputProcedurewd__5InputzVS_16HTTPResponseDatawd_0_S5_zP_wd_0_PS4_6OutputzP_rFT11requestDataVS_15HTTPRequestData19validationProcedureqd__21interceptionProcedureqd_0_13configurationGSQPS_21ConfigurationProtocol___GS0_x_">init(requestData:validationProcedure:interceptionProcedure:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>EndpointProcedure</code> connecting with HTTP endpoint.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">V</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">I</span><span class="p">:</span> <span class="kt">Procedure</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">requestData</span><span class="p">:</span> <span class="kt"><a href="../Structs/HTTPRequestData.html">HTTPRequestData</a></span><span class="p">,</span>
+         <span class="nv">validationProcedure</span><span class="p">:</span> <span class="kt">V</span><span class="p">,</span> <span class="nv">interceptionProcedure</span><span class="p">:</span> <span class="kt">I</span><span class="p">,</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="k">where</span> <span class="kt">V</span><span class="p">:</span> <span class="kt">InputProcedure</span><span class="p">,</span> <span class="kt">V</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt"><a href="../Structs/HTTPResponseData.html">HTTPResponseData</a></span><span class="p">,</span>
+        <span class="kt">I</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>specifies attributes of HTTP request.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>validationProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>receives <code>HTTPResponseData</code> as an input. Stops <code>EndpointProcedure</code>, if finishes with errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interceptionProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>receives deserialized response data as an input. Should transform input to a format expected by <code>mappingProcedure</code>. Stops <code>EndpointProcedure</code>, if finishes with errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>determines what <code>dataLoadingProcedureFactory</code>, <code>dataDeserializationProcedureFactory</code> and <code>responseMappingProcedureFactory</code> should be used for coresponding procedures creation. <code>Configuration.default</code> used if no value passed. If no value passed and <code>Configuration.default</code> is not initialize, <code>EndpointProcedure</code> will finish with `EndpointProcedureError.missingConfiguration</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17EndpointProcedurecu0_Rd__C12ProcedureKit9Procedured__S1_15OutputProcedured_0_S2_d_0_S1_14InputProcedured_0_S3_wd__6OutputzV10Foundation4Datawd_0_PS4_5InputzP_wd_0_S5_zP_rFT20dataLoadingProcedureqd__21interceptionProcedureqd_0_13configurationGSQPS_21ConfigurationProtocol___GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(dataLoadingProcedure:interceptionProcedure:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17EndpointProcedurecu0_Rd__C12ProcedureKit9Procedured__S1_15OutputProcedured_0_S2_d_0_S1_14InputProcedured_0_S3_wd__6OutputzV10Foundation4Datawd_0_PS4_5InputzP_wd_0_S5_zP_rFT20dataLoadingProcedureqd__21interceptionProcedureqd_0_13configurationGSQPS_21ConfigurationProtocol___GS0_x_">init(dataLoadingProcedure:interceptionProcedure:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>EndpointProcedure</code> connecting with enpoint specified in <code>dataLoadingProcedure</code>.
+Can be used for connecting to local endpoits.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">L</span><span class="p">:</span> <span class="kt">Procedure</span><span class="p">,</span> <span class="kt">I</span><span class="p">:</span> <span class="kt">Procedure</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">dataLoadingProcedure</span><span class="p">:</span> <span class="kt">L</span><span class="p">,</span> <span class="nv">interceptionProcedure</span><span class="p">:</span> <span class="kt">I</span><span class="p">,</span>
+                     <span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">where</span> <span class="kt">L</span><span class="p">:</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">L</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Data</span><span class="p">,</span>
+        <span class="kt">I</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataLoadingProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>specifies connection to data endpoint.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interceptionProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>receives deserialized response data as an input. Should transform input to a format expected by <code>mappingProcedure</code>. Stops <code>EndpointProcedure</code>, if finishes with errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>determines what <code>dataDeserializationProcedureFactory</code> and <code>responseMappingProcedureFactory</code> should be used for coresponding procedures creation. <code>Configuration.default</code> used if no value passed. If no value passed and <code>Configuration.default</code> is not initialize, <code>EndpointProcedure</code> will finish with `EndpointProcedureError.missingConfiguration</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17EndpointProcedurecuRd__C12ProcedureKit9Procedured__S1_14InputProcedurewd__5InputzVS_16HTTPResponseDatarFT11requestDataVS_15HTTPRequestData19validationProcedureqd__13configurationGSQPS_21ConfigurationProtocol___GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(requestData:validationProcedure:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17EndpointProcedurecuRd__C12ProcedureKit9Procedured__S1_14InputProcedurewd__5InputzVS_16HTTPResponseDatarFT11requestDataVS_15HTTPRequestData19validationProcedureqd__13configurationGSQPS_21ConfigurationProtocol___GS0_x_">init(requestData:validationProcedure:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>EndpointProcedure</code> connecting with HTTP endpoint.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">V</span><span class="p">:</span> <span class="kt">Procedure</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">requestData</span><span class="p">:</span> <span class="kt"><a href="../Structs/HTTPRequestData.html">HTTPRequestData</a></span><span class="p">,</span> <span class="nv">validationProcedure</span><span class="p">:</span> <span class="kt">V</span><span class="p">,</span>
+                            <span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="k">where</span> <span class="kt">V</span><span class="p">:</span> <span class="kt">InputProcedure</span><span class="p">,</span> <span class="kt">V</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt"><a href="../Structs/HTTPResponseData.html">HTTPResponseData</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>specifies attributes of HTTP request.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>validationProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>receives <code>HTTPResponseData</code> as an input. Stops <code>EndpointProcedure</code>, if finishes with errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>determines what <code>dataLoadingProcedureFactory</code>, <code>dataDeserializationProcedureFactory</code> and <code>responseMappingProcedureFactory</code> should be used for coresponding procedures creation. <code>Configuration.default</code> used if no value passed. If no value passed and <code>Configuration.default</code> is not initialize, <code>EndpointProcedure</code> will finish with `EndpointProcedureError.missingConfiguration</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17EndpointProcedurecuRd__C12ProcedureKit9Procedured__S1_14InputProcedured__S1_15OutputProcedurewd__PS3_5InputzP_wd__PS4_6OutputzP_rFT11requestDataVS_15HTTPRequestData21interceptionProcedureqd__13configurationGSQPS_21ConfigurationProtocol___GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(requestData:interceptionProcedure:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17EndpointProcedurecuRd__C12ProcedureKit9Procedured__S1_14InputProcedured__S1_15OutputProcedurewd__PS3_5InputzP_wd__PS4_6OutputzP_rFT11requestDataVS_15HTTPRequestData21interceptionProcedureqd__13configurationGSQPS_21ConfigurationProtocol___GS0_x_">init(requestData:interceptionProcedure:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>EndpointProcedure</code> connecting with HTTP endpoint.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">I</span><span class="p">:</span> <span class="kt">Procedure</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">requestData</span><span class="p">:</span> <span class="kt"><a href="../Structs/HTTPRequestData.html">HTTPRequestData</a></span><span class="p">,</span> <span class="nv">interceptionProcedure</span><span class="p">:</span> <span class="kt">I</span><span class="p">,</span>
+                            <span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="k">where</span> <span class="kt">I</span><span class="p">:</span> <span class="kt">InputProcedure</span> <span class="o">&amp;</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">I</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>specifies attributes of HTTP request.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interceptionProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>receives deserialized response data as an input. Should transform input to a format expected by <code>mappingProcedure</code>. Stops <code>EndpointProcedure</code>, if finishes with errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>determines what <code>dataLoadingProcedureFactory</code>, <code>dataDeserializationProcedureFactory</code> and <code>responseMappingProcedureFactory</code> should be used for coresponding procedures creation. <code>Configuration.default</code> used if no value passed. If no value passed and <code>Configuration.default</code> is not initialize, <code>EndpointProcedure</code> will finish with `EndpointProcedureError.missingConfiguration</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17EndpointProcedurecFT11requestDataVS_15HTTPRequestData13configurationGSQPS_21ConfigurationProtocol___GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(requestData:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17EndpointProcedurecFT11requestDataVS_15HTTPRequestData13configurationGSQPS_21ConfigurationProtocol___GS0_x_">init(requestData:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>EndpointProcedure</code> connecting with HTTP endpoint.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">requestData</span><span class="p">:</span> <span class="kt"><a href="../Structs/HTTPRequestData.html">HTTPRequestData</a></span><span class="p">,</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>specifies attributes of HTTP request.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>determines what <code>dataLoadingProcedureFactory</code>, <code>dataDeserializationProcedureFactory</code> and <code>responseMappingProcedureFactory</code> should be used for coresponding procedures creation. <code>Configuration.default</code> used if no value passed. If no value passed and <code>Configuration.default</code> is not initialize, <code>EndpointProcedure</code> will finish with `EndpointProcedureError.missingConfiguration</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC17EndpointProcedure17EndpointProcedurecuRd__C12ProcedureKit9Procedured__S1_15OutputProcedurewd__6OutputzV10Foundation4DatarFT20dataLoadingProcedureqd__13configurationGSQPS_21ConfigurationProtocol___GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(dataLoadingProcedure:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC17EndpointProcedure17EndpointProcedurecuRd__C12ProcedureKit9Procedured__S1_15OutputProcedurewd__6OutputzV10Foundation4DatarFT20dataLoadingProcedureqd__13configurationGSQPS_21ConfigurationProtocol___GS0_x_">init(dataLoadingProcedure:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>EndpointProcedure</code> connecting with enpoint specified in <code>dataLoadingProcedure</code>.
+Can be used for connecting to local endpoits.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">L</span><span class="p">:</span> <span class="kt">Procedure</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">dataLoadingProcedure</span><span class="p">:</span> <span class="kt">L</span><span class="p">,</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigurationProtocol.html">ConfigurationProtocol</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span>
+                    <span class="k">where</span> <span class="kt">L</span><span class="p">:</span> <span class="kt">OutputProcedure</span><span class="p">,</span> <span class="kt">L</span><span class="o">.</span><span class="kt">Output</span> <span class="o">==</span> <span class="kt">Data</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dataLoadingProcedure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>specifies connection to data endpoint.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>determines what <code>dataDeserializationProcedureFactory</code> and <code>responseMappingProcedureFactory</code> should be used for coresponding procedures creation. <code>Configuration.default</code> used if no value passed. If no value passed and <code>Configuration.default</code> is not initialize, <code>EndpointProcedure</code> will finish with `EndpointProcedureError.missingConfiguration</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/sviatoslav" target="_blank" rel="external">Sviatoslav Yakymiv</a>. All rights reserved. (Last updated: 2017-03-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
