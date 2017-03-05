@@ -109,7 +109,8 @@ class HTTPRequestDataTests: XCTestCase {
         var fields = ["1": "1", "2": "2", "3": "3"]
         self.assertEqual(data: HTTPRequestData.Builder.for(self.url).appending(headerFields: fields)
             .appending(headerFields: fields).build(), url: self.url, headerFields: fields)
-        self.assertEqual(data: HTTPRequestData.Builder.for(self.url).appending(headerFields: fields).build(), url: self.url, headerFields: fields)
+        self.assertEqual(data: HTTPRequestData.Builder.for(self.url).appending(headerFields: fields).build(),
+                         url: self.url, headerFields: fields)
         let builder = HTTPRequestData.Builder.for(self.url).appending(headerFields: fields)
             .appending(headerFieldValue: "4", for: "4")
         fields["4"] = "4"

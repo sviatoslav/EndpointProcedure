@@ -126,7 +126,7 @@ class MagicalRecordMappingProcedureFactoryTests: XCTestCase {
             expectation.fulfill()
         }
         procedure.enqueue()
-                                                                        self.waitForExpectations (timeout: 5, handler: nil)
+        self.waitForExpectations (timeout: 5, handler: nil)
         return procedure.output
     }
 }

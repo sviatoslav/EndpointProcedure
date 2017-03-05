@@ -53,7 +53,9 @@ class AlamofireProcedureFactoryTests: XCTestCase {
         let configuration = URLSessionConfiguration.default
         let headers = ["H": "h"]
         configuration.httpAdditionalHeaders = headers
-        let factory = AlamofireProcedureFactory(sessionManager: SessionManager(configuration: configuration))
+        configuration.timeoutIntervalForRequest = 5
+        let sessionManager = SessionManager(configuration: configuration)
+        let factory = AlamofireProcedureFactory(sessionManager: sessionManager)
         do {
             let procedure = try factory.dataLoadingProcedure(with: data)
             let expectation = self.expectation(description: "")
@@ -227,7 +229,8 @@ fileprivate extension AlamofireProcedureFactoryTests {
     }
 
     fileprivate func isNoInteretConnection(error: Error?) -> Bool {
-        return (error as? NSError)?.code == -1009 || (error as? NSError)?.code == -1001
+        return (error as? NSError)?.code == -1009 || (error as? NSError)?.code == -1004
+            || (error as? NSError)?.code == -1001
     }
 
     fileprivate func isEqual<T: Equatable>(type: T.Type, a: Any, b: Any) -> Bool {

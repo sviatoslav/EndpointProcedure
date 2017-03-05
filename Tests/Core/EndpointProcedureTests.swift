@@ -90,8 +90,8 @@ class EndpointProcedureTests: XCTestCase {
     }
 
     func testFailureInDataLoadingProcedure() {
-        let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure: DataLoadingProcedureMock(dictionary:
-                                                            ["url": URL(string: "https://my.api")!]))
+        let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure:
+                                        DataLoadingProcedureMock(dictionary: ["url": URL(string: "https://my.api")!]))
         let result = self.procedureResult(for: procedure)
         XCTAssertEqual(result.error as? NSError, DataLoadingProcedureMock.jsonSerializationError)
     }
