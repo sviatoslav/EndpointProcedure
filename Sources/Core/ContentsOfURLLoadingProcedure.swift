@@ -20,12 +20,14 @@ public class ContentsOfURLLoadingProcedure: Procedure, OutputProcedure {
     private let url: URL
 
     /// Creates `ContentsOfURLLoadingProcedure` with given URL
+    ///
     /// - parameter url: URL that should be used in `Data(contensOf:)`
     public init(url: URL) {
         self.url = url
         super.init()
     }
 
+    /// Executes loading content from `url`
     override public func execute() {
         do {
             let data = try Data(contentsOf: self.url)

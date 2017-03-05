@@ -17,13 +17,16 @@ public struct AnyDataDeserializationProcedureFactory: DataDeserializationProcedu
     public enum Deserialization {
         public typealias Sync = TransformProcedure<Data, Any>.Transform
         public typealias Async = AsyncTransformProcedure<Data, Any>.Transform
+        /// Sync deserialization
         case sync(Sync)
+        /// Async deserialization
         case async(Async)
     }
 
     private let deserialization: Deserialization
 
     /// Creates `AnyDataDeserializationProcedureFactory` with given `deserialization`.
+    ///
     /// - parameter deserialization: deserializatin closure that should be used in deserialization procedures
     /// created by `AnyDataDeserializationProcedureFactory`
     private init(deserialization: Deserialization) {
@@ -31,6 +34,7 @@ public struct AnyDataDeserializationProcedureFactory: DataDeserializationProcedu
     }
 
     /// Creates `AnyDataDeserializationProcedureFactory` with given sync closure
+    ///
     /// - parameter syncDeserialization: closure that should be used in deserialization procedures
     /// created by `AnyDataDeserializationProcedureFactory`
     public init(syncDeserialization: @escaping Deserialization.Sync) {
@@ -38,6 +42,7 @@ public struct AnyDataDeserializationProcedureFactory: DataDeserializationProcedu
     }
 
     /// Creates `AnyDataDeserializationProcedureFactory` with given async closure
+    ///
     /// - parameter asyncDeserialization: closure that should be used in deserialization procedures
     /// created by `AnyDataDeserializationProcedureFactory`
     public init(asyncDeserialization: @escaping Deserialization.Async) {
@@ -45,6 +50,7 @@ public struct AnyDataDeserializationProcedureFactory: DataDeserializationProcedu
     }
 
     /// Creates deserialization procedure with closure provided in initializer
+    ///
     /// - returns: procedure that wraps closure provided in initializer
     public func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
         switch self.deserialization {

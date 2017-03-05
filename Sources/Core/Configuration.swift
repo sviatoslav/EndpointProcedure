@@ -14,8 +14,11 @@ import Foundation
 /// Provides factories for data loading, deserialization and repsonse mapping procedures
 ///
 public protocol ConfigurationProtocol {
+    /// Factory that creates loading procedure with `HTTPRequestData` for `EndpointProcedure`
     var dataLoadingProcedureFactory: HTTPDataLoadingProcedureFactory { get }
+    /// Factory that creates deserialization procdure for `EndpointProcedure`
     var dataDeserializationProcedureFactory: DataDeserializationProcedureFactory { get }
+    /// Factory that creates mapping procedure for type passed as parameter
     var responseMappingProcedureFactory: ResponseMappingProcedureFactory { get }
 }
 

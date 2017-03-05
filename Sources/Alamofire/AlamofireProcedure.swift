@@ -24,6 +24,7 @@ class AlamofireProcedure: Procedure, OutputProcedure {
     private let request: DataRequest
 
     /// Creates `AlamofireProcedure`.
+    ///
     /// - parameter request: `Alamofire.DataRequest` for data loading.
     init(request: DataRequest) {
         self.request = request

@@ -13,6 +13,7 @@ import ProcedureKit
 /// Data flow:
 /// ---------
 /// Loading -> Deserialization -> Interception -> Mapping
+///
 /// - Loading: load's `Data` from any source.
 /// - Deserialization: converts loaded `Data` to `Any`
 /// - Interception: converst deserialized object to format expected by mapping
@@ -60,6 +61,7 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
                       resultMappingProcedure: resultMappingProcedure)
     }
 
+    /// Processes errors sets correct error as `output`
     final public override func procedureDidFinish(withErrors: [Error]) {
         guard case .pending = self.output, let error = withErrors.first else {
             return

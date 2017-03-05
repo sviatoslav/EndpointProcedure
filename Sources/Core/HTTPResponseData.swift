@@ -10,9 +10,15 @@ import Foundation
 
 /// Typical result of HTTD data loading procedure
 public struct HTTPResponseData {
+    /// `HTTPURLResponse`
     public let urlResponse: HTTPURLResponse?
+    /// Response `Data`
     public let data: Data
 
+    /// Creates `HTTPResponseData`
+    /// - parameters:
+    ///     - urlResponse: `HTTPURLResponse`
+    ///     - data: `Data`
     public init(urlResponse: HTTPURLResponse?, data: Data) {
         self.urlResponse = urlResponse
         self.data = data

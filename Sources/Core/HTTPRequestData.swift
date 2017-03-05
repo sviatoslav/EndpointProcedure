@@ -14,10 +14,15 @@ public struct HTTPRequestData {
     public typealias HeaderFields = [String: String]
     public typealias Parameters = [String: Any]
 
+    /// Destination URL
     public let url: URL
+    /// HTTP method that should be used for request
     public let method: Method
+    /// HTTP header fields
     public let headerFields: HeaderFields?
+    /// Parameters that should be added to request
     public let parameters: Parameters?
+    /// Encoding that should be used for adding `parameters` to request
     public let parameterEncoding: ParameterEncoding
 
     fileprivate init(url: URL, method: Method, headerFields: HeaderFields?, parameters: Parameters?,
@@ -35,15 +40,24 @@ extension HTTPRequestData {
     ///
     /// See https://tools.ietf.org/html/rfc7231#section-4.3
     public enum Method: String {
-        case options = "OPTIONS"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.1
         case get     = "GET"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.2
         case head    = "HEAD"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.3
         case post    = "POST"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.4
         case put     = "PUT"
-        case patch   = "PATCH"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.5
         case delete  = "DELETE"
-        case trace   = "TRACE"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.6
         case connect = "CONNECT"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.7
+        case options = "OPTIONS"
+        /// See https://tools.ietf.org/html/rfc7231#section-4.3.8
+        case trace   = "TRACE"
+        /// See https://tools.ietf.org/html/rfc5789
+        case patch   = "PATCH"
     }
 }
 
@@ -65,6 +79,7 @@ extension HTTPRequestData {
         }
 
         /// Creates `Builder` for relative `path` to `Builder.baseURL`
+        ///
         /// - throws:
         /// `Error.undefinedBaseURL` if `Builder.baseURL` is `nil`
         /// `Error.unableToCreateURL` if unable to create URL with `path` relative to `Builder.baseURL`
@@ -80,6 +95,7 @@ extension HTTPRequestData {
         }
 
         /// Creates `Builder` for `url`
+        ///
         /// - returns `Builder` for `url`
         public static func `for`(_ url: URL) -> Builder {
             return Builder(url: url)
@@ -92,6 +108,7 @@ extension HTTPRequestData {
         }
 
         /// Assigns HTTP method to `Builder`
+        ///
         /// - throws: `Error.reassignProperty(name: "method")` if HTTP method was previously assigned.
         /// - returns: New `Builder` with same properties as receiver but with assigned HTTP method
         public func with(method: Method) throws -> Builder {
@@ -102,6 +119,7 @@ extension HTTPRequestData {
         }
 
         /// Appends header fields to `Builder`
+        ///
         /// - returns: New `Builder` with same properties as receiver but with appended header fields
         public func appending(headerFields newHeaderFields: HeaderFields) -> Builder {
             return self.changing {
@@ -114,12 +132,14 @@ extension HTTPRequestData {
         }
 
         /// Appends header field to `Builder`
+        ///
         /// - returns: New `Builder` with same properties as receiver but with appended header field
         public func appending(headerFieldValue value: HeaderFields.Value, for key: HeaderFields.Key) -> Builder {
             return self.appending(headerFields: [key: value])
         }
 
         /// Appends parameters to `Builder`
+        ///
         /// - returns: New `Builder` with same properties as receiver but with appended parameters
         public func appending(parameters: Parameters) -> Builder {
             return self.changing {
@@ -133,12 +153,14 @@ extension HTTPRequestData {
         }
 
         /// Appends parameter to `Builder`
+        ///
         /// - returns: New `Builder` with same properties as receiver but with appended parameter
         public func appending(parameterValue value: Parameters.Value, for key: Parameters.Key) -> Builder {
             return appending(parameters: [key: value])
         }
 
         /// Assigns parameter encoding to `Builder`
+        ///
         /// - throws: `Error.reassignProperty(name: "parameterEncoding")` if parameter encoding was previously assigned.
         /// - returns: New `Builder` with same properties as receiver but with assigned parameter encoding
         public func with(parameterEncoding: ParameterEncoding) throws -> Builder {
@@ -151,6 +173,7 @@ extension HTTPRequestData {
         }
 
         /// Builds `HTTPRequestData` from configured properties
+        ///
         /// - returns: Created `HTTPRequestData`
         public func build() -> HTTPRequestData {
             return HTTPRequestData(url: self.url, method: self.method ?? .get, headerFields: self.headerFields,
@@ -180,6 +203,21 @@ extension HTTPRequestData {
         case json
         /// Plist representation of `parameters` should be set as HTTP body
         case plist(option: PlistEncodingOption)
+
+        /// Checks if two instances of `HTTPRequestData.ParameterEncoding` are equal
+        ///
+        /// - parameters:
+        ///     - lhs: left operand
+        ///     - rhs: right operand
+        /// - returns: `true` if `lhs` and `rhs` are equal, `false` otherwise.
+        public static func ==(lhs: HTTPRequestData.ParameterEncoding, rhs: HTTPRequestData.ParameterEncoding) -> Bool {
+            switch (lhs, rhs) {
+            case (.url, .url): return true
+            case (.json, .json): return true
+            case let (.plist(option: lhsOption), .plist(option: rhsOption)) where lhsOption == rhsOption: return true
+            default: return false
+            }
+        }
     }
 }
 
@@ -190,14 +228,5 @@ extension HTTPRequestData.ParameterEncoding {
         case binary
         /// XML formatting for plist encoding
         case xml
-    }
-}
-
-public func ==(lhs: HTTPRequestData.ParameterEncoding, rhs: HTTPRequestData.ParameterEncoding) -> Bool {
-    switch (lhs, rhs) {
-    case (.url, .url): return true
-    case (.json, .json): return true
-    case let (.plist(option: lhsOption), .plist(option: rhsOption)) where lhsOption == rhsOption: return true
-    default: return false
     }
 }

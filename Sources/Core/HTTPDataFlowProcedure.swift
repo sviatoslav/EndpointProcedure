@@ -14,6 +14,7 @@ import ProcedureKit
 /// Data flow:
 /// ---------
 /// Loading -> Validation -> Deserialization -> Interception -> Mapping
+///
 /// - Loading: load's `HTTPResponseData` from any source.
 /// - Validation: validates `HTTPResponseData`
 /// - Deserialization: converts loaded `Data` to `Any`

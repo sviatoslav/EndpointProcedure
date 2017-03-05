@@ -48,6 +48,7 @@ class MagicalRecordMappingProcedure<T>: Procedure, InputProcedure, OutputProcedu
     }
 
     /// Performs object mapping
+    ///
     /// - parameter completion: closure that is called after mapping finished.
     ///
     /// Method should be overriden in subclasses

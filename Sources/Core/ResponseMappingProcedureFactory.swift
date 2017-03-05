@@ -11,6 +11,7 @@ import ProcedureKit
 /// A type that can create response mapping procedure
 public protocol ResponseMappingProcedureFactory {
     /// Creates response mapping procedure
+    ///
     /// - parameter type: type of result
     func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T>
 }
