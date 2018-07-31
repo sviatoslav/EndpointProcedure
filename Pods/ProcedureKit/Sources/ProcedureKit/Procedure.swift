@@ -63,6 +63,7 @@ internal struct ProcedureKit {
 
  - see: https://developer.apple.com/library/ios/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html#//apple_ref/doc/uid/TP40015243-CH39
  */
+@available(*, deprecated: 4.5.0, message: "Use underlying quality of service APIs instead.")
 @objc public enum UserIntent: Int {
     case none = 0, sideEffect, initiated
 
@@ -150,8 +151,13 @@ open class Procedure: Operation, ProcedureProtocol {
 
     fileprivate let isAutomaticFinishingDisabled: Bool
 
-    // A weak reference to the ProcedureQueue onto which this Procedure was added
-    private weak var _queue: ProcedureQueue?
+    // A strong reference to the ProcedureQueue onto which this Procedure was added
+    // This is cleared when the Procedure finishes
+    private var _queue: ProcedureQueue?
+
+    fileprivate var procedureQueue: ProcedureQueue? {
+        get { return stateLock.withCriticalScope { _queue } }
+    }
 
     // Stored pending finish information
     // (used if a Procedure is cancelled and finish() is called prior to the queue
@@ -180,11 +186,8 @@ open class Procedure: Operation, ProcedureProtocol {
      - requires: self must not have started yet. i.e. either hasn't been added
      to a queue, or is waiting on dependencies.
      */
-    public var userIntent: UserIntent = .none {
-        didSet {
-            setQualityOfService(fromUserIntent: userIntent)
-        }
-    }
+    @available(*, deprecated: 4.5.0, message: "Use underlying quality of service APIs instead.")
+    public var userIntent: UserIntent = .none
 
     @available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 2.0, *)
     open override var qualityOfService: QualityOfService {
@@ -196,6 +199,10 @@ open class Procedure: Operation, ProcedureProtocol {
     }
 
     internal let identifier = UUID()
+
+    internal var typeDescription: String {
+        return String(describing: type(of: self))
+    }
 
     internal class ProcedureQueueContext { }
     internal let queueAddContext = ProcedureQueueContext()
@@ -214,7 +221,7 @@ open class Procedure: Operation, ProcedureProtocol {
     // MARK: State
 
     // the state variable to be used *within* the stateLock
-    private var _state = ProcedureKit.State.initialized {
+    fileprivate var _state = ProcedureKit.State.initialized { // swiftlint:disable:this variable_name
         willSet(newState) {
             _log.verbose(message: "\(_state) -> \(newState)")
             assert(_state.canTransition(to: newState, whenCancelled: _isCancelled), "Attempting to perform illegal cyclic state transition, \(_state) -> \(newState) for operation: \(identity). Ensure that Procedure instances are added to a ProcedureQueue not an OperationQueue.")
@@ -224,7 +231,7 @@ open class Procedure: Operation, ProcedureProtocol {
     fileprivate let stateLock = PThreadMutex()
 
     // the state variable to be used *outside* the stateLock
-    fileprivate var state: ProcedureKit.State {
+    fileprivate private(set) var state: ProcedureKit.State {
         get {
             return stateLock.withCriticalScope { _state }
         }
@@ -260,7 +267,13 @@ open class Procedure: Operation, ProcedureProtocol {
         get { return stateLock.withCriticalScope { _mutuallyExclusiveCategories } }
         set { stateLock.withCriticalScope { _mutuallyExclusiveCategories = newValue } }
     }
+    private var _mutualExclusivityTicket: ProcedureQueue.ExclusivityLockTicket?
+    private var mutualExclusivityTicket: ProcedureQueue.ExclusivityLockTicket? {
+        get { return stateLock.withCriticalScope { _mutualExclusivityTicket } }
+        set { stateLock.withCriticalScope { _mutualExclusivityTicket = newValue } }
+    }
 
+    // Only called by the ConditionEvaluator
     fileprivate func request(mutuallyExclusiveCategories: Set<String>, completion: @escaping (Bool) -> Void) {
         // On the internal EventQueue
         dispatchEvent {
@@ -276,14 +289,22 @@ open class Procedure: Operation, ProcedureProtocol {
                 completion(false)
                 return
             }
+            guard let procedureQueue = self.procedureQueue else {
+                fatalError("procedureQueue is nil")
+            }
 
             // Store the mutually-exclusive categories for later release (when the Procedure is finished).
             assert(self.mutuallyExclusiveCategories == nil, "Mutually exclusive locks were requested more than once.")
             self.mutuallyExclusiveCategories = mutuallyExclusiveCategories
 
-            // Request a lock from the ExclusivityManager.
-            ExclusivityManager.sharedInstance.requestLock(for: mutuallyExclusiveCategories) {
-                // Once the lock is acquired, call the completion block
+            // Request a lock via the ProcedureQueue
+            procedureQueue.requestLock(for: mutuallyExclusiveCategories) { lockTicket in
+                // Once a lock ticket is acquired, store the lockTicket
+                // (which must be claimed once the Procedure starts)
+
+                self.mutualExclusivityTicket = lockTicket
+
+                // and call the completion block
                 completion(true)
             }
         }
@@ -434,28 +455,28 @@ open class Procedure: Operation, ProcedureProtocol {
     // MARK: - Disable Automatic Finishing
 
     /**
-     Ability to override Operation's built-in finishing behavior, if a
-     subclass requires full control over when finish() is called.
+     Ability to override Procedure's built-in finishing behavior, if a
+     subclass requires full control over when `finish()` is called.
 
-     Used for GroupOperation to implement proper .Finished state-handling
+     Used for GroupProcedure to implement proper .Finished state-handling
      (only finishing after all child operations have finished).
 
-     The default behavior of Operation is to automatically call finish()
+     The default behavior of Procedure is to automatically call `finish()`
      when:
-     (a) the Operation is cancelled prior to it starting
-         (in which case, the Operation will skip calling execute())
+     (a) the Procedure is cancelled prior to it starting
+         (in which case, the Procedure will skip calling `execute()`)
      (b) when willExecuteObservers log errors
 
-     To ensure that an Operation subclass does not finish until the
-     subclass calls finish():
+     To ensure that a Procedure subclass does not finish until the
+     subclass calls `finish()`:
      call `super.init(disableAutomaticFinishing: true)` in the init.
 
-     IMPORTANT: If disableAutomaticFinishing == TRUE, the subclass is
-     responsible for calling finish() in *ALL* cases, including when the
-     operation is cancelled.
+     - Important: If `disableAutomaticFinishing == TRUE`, the subclass is
+     responsible for calling `finish()` in **ALL** cases, including when the
+     Procedure is cancelled.
 
-     You can react to cancellation using WillCancelObserver/DidCancelObserver
-     and/or checking periodically during execute with something like:
+     You can react to cancellation using a `DidCancelObserver` and/or
+     checking periodically during `execute()` with something like:
 
      ```swift
      guard !cancelled else {
@@ -474,6 +495,11 @@ open class Procedure: Operation, ProcedureProtocol {
 
     // MARK: - Execution
 
+    /// Called by the framework before a Procedure is added to a ProcedureQueue.
+    ///
+    /// - warning: Do *NOT* call this function directly.
+    ///
+    /// - Parameter queue: the ProcedureQueue onto which the Procedure will be added
     public final func willEnqueue(on queue: ProcedureQueue) {
         stateLock.withCriticalScope {
             _state = .willEnqueue
@@ -481,6 +507,10 @@ open class Procedure: Operation, ProcedureProtocol {
         }
     }
 
+    /// Called by the framework before a Procedure is added to a ProcedureQueue, but *after*
+    /// the ProcedureQueue delegate's `procedureQueue(_:willAddProcedure:context:)` is called.
+    ///
+    /// - warning: Do *NOT* call this function directly.
     public final func pendingQueueStart() {
         let optionalConditionEvaluator: EvaluateConditions? = stateLock.withCriticalScope {
             _state = .pending
@@ -526,17 +556,39 @@ open class Procedure: Operation, ProcedureProtocol {
         // `directDependencies`, but *is* treated as a dependency by the underlying
         // Operation.
         super.addDependency(evaluator)
-
-        // Ensure that if there are no dependencies, or if the dependencies are already finished,
-        // the EvaluateConditions procedure immediately executes.
-        if evaluator.isReady {
-            evaluator.dispatchStartOnce()
-        }
     }
 
-    /// Starts the operation, correctly managing the cancelled state. Cannot be over-ridden
+    /// Called by the framework after a Procedure is added to a ProcedureQueue.
+    /// The Procedure may have already been scheduled for / started executing.
+    /// This is only used to manage when it's safe to begin evaluating conditions.
+    internal final func postQueueAdd() {
+        guard let evaluateConditionsProcedure = evaluateConditionsProcedure else { return }
+
+        // If this Procedure has a condition evaluator, the condition evaluator must not
+        // finish prior to the return of the internal OperationQueue.addOperation() call
+        // in ProcedureQueue that adds this Procedure to the ProcedureQueue's underlying
+        // OperationQueue.
+        //
+        // (If the EvaluateConditions operation finishes while the underlying OperationQueue
+        // implementation is in the process of adding the operation, a rare race condition may
+        // be triggered with NSOperationQueue's handling of the Operation isReady state for
+        // the Procedure. This can result in a situation in which a Procedure with, for
+        // example, failing conditions ends up cancelled + ready but never finishes.)
+        //
+        // To accomplish this, signal to the EvaluateConditions operation that it is now safe 
+        // (post-add) to begin evaluating conditions (assuming it is otherwise ready).
+
+        evaluateConditionsProcedure.parentProcedureHasBeenAddedToQueue()
+    }
+
+    /// Starts the Procedure, correctly managing the cancelled state. Cannot be over-ridden
+    ///
+    /// - warning: Do not call `start()` directly on a Procedure. Add the Procedure to a `ProcedureQueue`.
     public final override func start() {
         // Don't call super.start
+
+        assert(state >= .pending, "Calling start() manually on a Procedure is unsupported. Instead, add the Procedure to a ProcedureQueue.") // Do not check for < .started here; _start() does that.
+        assert(procedureQueue != nil, "The Procedure's associated procedureQueue is nil. If you are adding the Procedure to a ProcedureQueue, this should never happen.")
 
         // Dispatch the innards of start() on the EventQueue,
         // inheriting the current QoS level (i.e. the Qos that
@@ -579,7 +631,7 @@ open class Procedure: Operation, ProcedureProtocol {
         _main()
     }
 
-    /// Do not call main() directly on a Procedure. Add the Procedure to a ProcedureQueue or call start().
+    /// - warning: Do not call `main()` directly on a Procedure. Add the Procedure to a `ProcedureQueue`.
     public final override func main() {
         assertionFailure("Do not call main() directly on a Procedure. Add the Procedure to a ProcedureQueue.")
     }
@@ -590,6 +642,40 @@ open class Procedure: Operation, ProcedureProtocol {
         debugAssertIsOnEventQueue()
 
         assert(state >= .started, "Procedure.main() is being called when Procedure.start() has not been called. Do not call main() directly. Add the Procedure to a ProcedureQueue.")
+
+        if let mutualExclusivityTicket = mutualExclusivityTicket {
+            // Mutual Exclusivity has been requested for this Procedure
+            // Proceed only once the ticket has been claimed via the ProcedureQueue
+
+            guard let procedureQueue = procedureQueue else {
+                fatalError("Procedure has a nil procedureQueue") // ProcedureKit internal programmer error
+            }
+
+            // Store the current QoS level
+            let originalQoS = DispatchQoS(qosClass: DispatchQueue.currentQoSClass, relativePriority: 0)
+
+            // Now that the Procedure has started, claim the mutual exclusivity lock
+            procedureQueue.procedureClaimLock(withTicket: mutualExclusivityTicket) {
+                // Mutual Exclusivity lock has been claimed - can now proceed with executing
+
+                // Dispatch the innards of main() on the EventQueue,
+                // inheriting the original QoS level (i.e. the Qos that
+                // the ProcedureQueue decided to use to call start()).
+
+                self.eventQueue.dispatchEventBlockInternal(minimumQoS: originalQoS) {
+                    self._main_step1()
+                }
+            }
+        }
+        else {
+            // No Mutual Exclusivity required - proceed immediately with the next steps of executing
+            _main_step1()
+        }
+    }
+
+    private final func _main_step1() {
+
+        debugAssertIsOnEventQueue()
 
         log.verbose(message: "[observers]: WillExecute")
 
@@ -641,25 +727,25 @@ open class Procedure: Operation, ProcedureProtocol {
         }
 
         // Check the state again, as it could have changed in another queue via finish
-        func getNextStateAgain() -> ProcedureKit.State? {
+        func getNextStateAgain() -> (ProcedureKit.State?, ProcedureQueue?) {
             return stateLock.withCriticalScope {
-                guard _state <= .started else { return nil }
+                guard _state <= .started else { return (nil, nil) }
 
                 guard !_isHandlingFinish else {
                     // a finish is pending, simply exit from processing execute
-                    return nil
+                    return (nil, nil)
                 }
 
                 if _isCancelled && !isAutomaticFinishingDisabled && !_isHandlingFinish {
                     // Procedure was cancelled, and automatic finishing is enabled.
                     // Because execute() has not yet been called, handle finish here.
-                    return .finishing
+                    return (.finishing, nil)
                 }
 
                 _state = .executing
                 _isTransitioningToExecuting = false
 
-                return .executing
+                return (.executing, _queue)
             }
         }
 
@@ -680,7 +766,7 @@ open class Procedure: Operation, ProcedureProtocol {
         willChangeValue(forKey: .executing)
 
         // Set the state to executing (unless something, like cancellation, has happened concurrently)
-        let nextState2 = getNextStateAgain()
+        let (nextState2, queue) = getNextStateAgain()
 
         didChangeValue(forKey: .executing)
 
@@ -696,11 +782,43 @@ open class Procedure: Operation, ProcedureProtocol {
         log.notice(message: "Will Execute")
 
         // Call the execute() function (which should be overriden in Procedure subclasses)
+        if let underlyingQueue = queue?.underlyingQueue {
+            // The Procedure was enqueued on a ProcedureQueue that specifies an `underlyingQueue`.
+            //
+            // Explicitly call the `execute()` function on the underlyingQueue, while also
+            // pausing dispatch of any new blocks on the Procedure's EventQueue until the call
+            // to `execute()` returns, to ensure that `execute()` occurs on the underlyingQueue
+            // *and* non-concurrently with this Procedure's EventQueue.
+
+            eventQueue.dispatchSynchronizedBlock(onOtherQueue: underlyingQueue) {
+                // This block is now synchronized with *both* queues:
+                //  - the Procedure's EventQueue
+                //  - the underlyingQueue of the ProcedureQueue on which the Procedure is scheduled to execute
+                // and is *on* the underlyingQueue of said ProcedureQueue.
+
+                // Call the `execute()` function on the underlyingQueue
+                self.execute()
+
+                // Dispatch async back to the Procedure's EventQueue to
+                // process DidExecute observers.
+                self.dispatchEvent {
+                    self._handleDidExecute()
+                }
+            }
+            return
+        }
+
         execute()
+        _handleDidExecute()
+    }
+
+    private func _handleDidExecute() {
+
+        debugAssertIsOnEventQueue()
 
         // Dispatch DidExecute observers
         log.verbose(message: "[observers]: DidExecute")
-        let _ = dispatchObservers(pendingEvent: PendingEvent.postDidExecute) { observer, _ in
+        _ = dispatchObservers(pendingEvent: PendingEvent.postDidExecute) { observer, _ in
             observer.did(execute: self)
         }
 
@@ -709,11 +827,20 @@ open class Procedure: Operation, ProcedureProtocol {
     }
 
     /// Procedure subclasses must override `execute()`.
+    /// - important: Do not call `super.execute()` when subclassing `Procedure` directly.
     open func execute() {
         print("\(self) must override `execute()`.")
         finish()
     }
 
+    /// Adds an operation to the same queue as target.
+    ///
+    /// - Precondition: Target must already be added to a queue / `GroupProcedure`.
+    /// - Parameters:
+    ///   - operation: The operation to add to the same queue as target.
+    ///   - pendingEvent: (optional) A PendingEvent. The operation will be added prior to the PendingEvent.
+    /// - Returns: A `ProcedureFuture` that is completed once the operation has been added to the queue.
+    /// - Throws: `ProcedureKitError.noQueue` if the target has not yet been added to a queue / `GroupProcedure`.
     @discardableResult public final func produce(operation: Operation, before pendingEvent: PendingEvent? = nil) throws -> ProcedureFuture {
         precondition(state > .initialized, "Cannot add operation which is not being scheduled on a queue")
         guard let queue = stateLock.withCriticalScope(block: { return _queue }) else {
@@ -755,7 +882,7 @@ open class Procedure: Operation, ProcedureProtocol {
         log.verbose(message: ".produce() | [event]: AddOperation(\(operation.operationName)) to queue.")
 
         // Add the new produced operation to the ProcedureQueue on which this Procedure was added
-        queue.add(operation: operation, withContext: queueAddContext).then(on: self) { _ in
+        queue.add(operation: operation, withContext: queueAddContext).then(on: self) {
 
             // After adding to the queue completes, proceed to step 3 of handling produce()
             self._produce_step3(operation: operation, onQueue: queue, before: pendingEvent, promise: promise)
@@ -779,7 +906,7 @@ open class Procedure: Operation, ProcedureProtocol {
         promise.complete()
 
         // Dispatch DidAddOperation observers
-        let _ = self.dispatchObservers(pendingEvent: PendingEvent.postDidAdd) { observer, _ in
+        _ = self.dispatchObservers(pendingEvent: PendingEvent.postDidAdd) { observer, _ in
             observer.procedure(self, didAdd: operation)
         }
         // no follow-up events to wait on the didAdd observers
@@ -819,8 +946,8 @@ open class Procedure: Operation, ProcedureProtocol {
         _cancel(withAdditionalErrors: [])
     }
 
-    // used by GroupProcedure to bypass dispatching to the event queue for its cancellation handling
-    internal func _procedureDidCancel() {
+    // Micro-optimaization used by GroupProcedure to bypass dispatching to the event queue for its cancellation handling
+    internal func _procedureDidCancel(withAdditionalErrors additionalErrors: [Error]) {
         // no-op
     }
 
@@ -872,7 +999,7 @@ open class Procedure: Operation, ProcedureProtocol {
         super.cancel()
 
         // Micro-optimization for built-in Procedures that can safely handle cancellation off the EventQueue
-        _procedureDidCancel()
+        _procedureDidCancel(withAdditionalErrors: additionalErrors)
 
         // Cancel the EvaluateConditions operation (in case the Procedure is cancelled
         // before its dependencies have finished, and the EvaluateConditions operation
@@ -1023,6 +1150,16 @@ open class Procedure: Operation, ProcedureProtocol {
 
         assert(state <= .executing)
 
+        // Obtain a local strong reference to the Procedure queue
+        guard let strongProcedureQueue = procedureQueue else {
+            // NOTE: For the mutual exclusivity implementation to work properly,
+            // a strong reference to the ProcedureQueue must exist through finish.
+            //
+            // Procedure is supposed to hold onto its own strong reference
+            // to the ProcedureQueue onto which it was added.
+            fatalError("Procedure hasn't finished, but procedureQueue is nil") // ProcedureKit internal programmer error
+        }
+
         // NOTE:
         // - The stateLock should only be held when necessary, and should not
         //   be held when notifying observers (whether via KVO or Operation's
@@ -1074,7 +1211,15 @@ open class Procedure: Operation, ProcedureProtocol {
             // same _thread_ as the earlier call to willChangeValue.
             //
             self.willChangeValue(forKey: .finished)
-            self.stateLock.withCriticalScope { self._state = .finished }
+            self.stateLock.withCriticalScope {
+                // Set the state to .finished
+                self._state = .finished
+                // Clear the internal Procedure strong reference to its ProcedureQueue
+                //
+                // A separate strong reference (strongProcedureQueue) exists for use
+                // in cleanup (unlocking) tasks below
+                self._queue = nil
+            }
             self.didChangeValue(forKey: .finished)
 
             // Call the Procedure.procedureDidFinish(withErrors:) override
@@ -1082,7 +1227,7 @@ open class Procedure: Operation, ProcedureProtocol {
 
             // If mutually exclusive categories were locked, unlock
             if let mutuallyExclusiveCategories = self.mutuallyExclusiveCategories {
-                ExclusivityManager.sharedInstance.unlock(categories: mutuallyExclusiveCategories)
+                strongProcedureQueue.unlock(mutuallyExclusiveCategories: mutuallyExclusiveCategories)
             }
 
             // Dispatch the DidFinishObservers
@@ -1105,7 +1250,14 @@ open class Procedure: Operation, ProcedureProtocol {
 
      - parameter observer: type conforming to protocol `ProcedureObserver`.
      */
-    open func add<Observer: ProcedureObserver>(observer: Observer) where Observer.Procedure == Procedure {
+    open func add<Observer>(observer: Observer) where Observer: ProcedureObserver, Observer.Procedure: Procedure {
+        assert(self as? Observer.Procedure != nil, "add(observer:) passed an Observer with an invalid expected Procedure type. The Observer will not receive any events from this Procedure. (Observer expects a Procedure of type \"\(String(describing: Observer.Procedure.self))\", but `self` is a \"\(typeDescription)\" and cannot be converted.)")
+
+        add(anyObserver: AnyObserver(base: TransformObserver<Observer.Procedure, Procedure>(base: observer)))
+    }
+
+    // Internal function used to add AnyObserver<Procedure> to the Procedure's internal array of observers.
+    internal func add(anyObserver observer: AnyObserver<Procedure>) {
         assert(state < .pending, "Adding observers to a Procedure after it has been added to a queue is an inherent race condition, and risks missing events.")
 
         dispatchEvent {
@@ -1114,7 +1266,7 @@ open class Procedure: Operation, ProcedureProtocol {
 
             // Add the observer to the internal observers array
             self.stateLock.withCriticalScope {
-                self.protectedProperties.observers.append(AnyObserver(base: observer))
+                self.protectedProperties.observers.append(observer)
             }
 
             // Dispatch the DidAttach event to the observer
@@ -1142,13 +1294,13 @@ open class Procedure: Operation, ProcedureProtocol {
 
     /// Appropriately dispatch an observer call (using the provided block) for every observer.
     ///
-    /// NOTE: Only call this if already on the eventQueue.
+    /// - IMPORTANT: Only call this if already on the eventQueue.
     ///
     /// - Parameters:
     ///   - pendingEvent: the Procedure's PendingEvent that occurs after all the observers have completed their work
     ///   - block: a block that will be called for every observer, on the appropriate queue/thread
     /// - Returns: a DispatchGroup that will be signaled (ready) when the PendingEvent is ready (i.e. when
-    //             all of the observers have completed their work)
+    ///            all of the observers have completed their work)
     internal func dispatchObservers(pendingEvent: (Procedure) -> PendingEvent, block: @escaping (AnyObserver<Procedure>, PendingEvent) -> Void) -> DispatchGroup {
         debugAssertIsOnEventQueue() // This function should only be called if already on the EventQueue
 
@@ -1262,7 +1414,7 @@ extension Procedure {
                 return lhs.rawValue < rhs.rawValue
             }
 
-            case waitingOnProcedureDependencies
+            case waiting
             case dispatchedStart
             case started
             case executingMain
@@ -1280,10 +1432,18 @@ extension Procedure {
             super.init()
         }
 
+        func parentProcedureHasBeenAddedToQueue() {
+            // Only once the parent Procedure has been fully added to the ProcedureQueue
+            // (OperationQueue) is it safe to begin evaluating conditions (if otherwise isReady).
+
+            dispatchStartOnce(source: .parentProcedureHasBeenAddedToQueue)
+        }
+
         private var _isFinished: Bool = false
         private var _isExecuting: Bool = false
         private let stateLock = PThreadMutex()
-        private var _state: State = .waitingOnProcedureDependencies
+        private var _state: State = .waiting
+        private var _parentProcedureHasBeenAddedToQueue: Bool = false
 
         override var isFinished: Bool {
             get { return stateLock.withCriticalScope { return _isFinished } }
@@ -1306,22 +1466,52 @@ extension Procedure {
             let superIsReady = super.isReady
             if superIsReady {
                 // If super.isReady == true, dispatch start *once*
-                dispatchStartOnce()
+                dispatchStartOnce(source: .isReady)
             }
             return superIsReady
         }
 
-        final func dispatchStartOnce() {
+        private enum StartSource { // swiftlint:disable:this nesting
+
+            case isReady
+            case parentProcedureHasBeenAddedToQueue
+        }
+
+        final private func dispatchStartOnce(source: StartSource) {
             // dispatch start() once
             let shouldDispatchStart: Bool = stateLock.withCriticalScope {
-                guard _state < .dispatchedStart else { return false }
+                guard _state < .dispatchedStart else { return false } // already started evaluating
+                switch source {
+                case .isReady:
+                    // if isReady, can proceed to .dispatchedStart *if* _parentProcedureHasBeenAddedToQueue
+                    guard _parentProcedureHasBeenAddedToQueue else {
+                        // isReady, but the parent procedure hasn't yet been added
+                        // to the queue - do not proceed
+                        return false
+                    }
+                case .parentProcedureHasBeenAddedToQueue:
+                    assert(!_parentProcedureHasBeenAddedToQueue)
+                    _parentProcedureHasBeenAddedToQueue = true
+                    // can proceed to .dispatchedStart *if* otherwise isReady
+                    guard super.isReady else { return false }
+                }
                 _state = .dispatchedStart
                 return true
             }
             guard shouldDispatchStart else { return }
-            queue.async {
-                self.start()
+
+            guard let procedure = procedure else {
+                // the Procedure went away - finish immediately
+                finish()
+                return
             }
+            guard let procedureQueue = procedure.procedureQueue else {
+                fatalError("The Condition Evaluator's Procedure has a nil associated ProcedureQueue.")
+            }
+            procedureQueue.requestEvaluation(of: self)
+        }
+        final fileprivate func dispatchStartOnce() {
+            dispatchStartOnce(source: .isReady)
         }
 
         final override func cancel() {
@@ -1334,11 +1524,14 @@ extension Procedure {
             context.cancel()
         }
 
+        /// Should only be called by ProcedureQueue
+        /// (see: the call to `procedureQueue.requestEvaluation(of: self)` above)
         override func start() {
             isExecuting = true
             main()
         }
 
+        /// Should only be called by start()
         override func main() {
             // This should only be executed once
             let shouldContinue: Bool = stateLock.withCriticalScope {
@@ -1497,6 +1690,22 @@ extension Procedure {
         assert(state < .willEnqueue, "Cannot modify conditions after a Procedure has been added to a queue, current state: \(state).")
         stateLock.withCriticalScope { () -> Void in
             protectedProperties.conditions.insert(condition)
+        }
+    }
+}
+
+// MARK: - Internal Extensions
+
+internal extension Procedure {
+
+    // Used from GroupProcedure to aggregate errors
+    internal func append(errors: [Error]) {
+        stateLock.withCriticalScope {
+            guard _state <= .executing else {
+                assertionFailure("Cannot append errors to Procedure that is finishing or finished.")
+                return
+            }
+            protectedProperties.errors.append(contentsOf: errors)
         }
     }
 }

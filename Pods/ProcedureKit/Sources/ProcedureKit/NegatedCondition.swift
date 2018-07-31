@@ -4,6 +4,14 @@
 //  Copyright © 2016 ProcedureKit. All rights reserved.
 //
 
+/**
+ A Condition that negates the result from a composed Condition.
+
+ Thus:
+ - If the composed Condition returns `.success(true)`, the `NegatedCondition` returns `.failure(ProcedureKitError.conditionFailed())`
+ - Otherwise, the `NegatedCondition` returns `.success(true)`
+
+ */
 public final class NegatedCondition<C: Condition>: ComposedCondition<C> {
 
     /// Public override of initializer.
@@ -18,7 +26,7 @@ public final class NegatedCondition<C: Condition>: ComposedCondition<C> {
             switch composedResult {
             case .success(true):
                 completion(.failure(ProcedureKitError.conditionFailed()))
-            case .success(false), .failure(_):
+            case .success(false), .failure:
                 completion(.success(true))
             }
         }

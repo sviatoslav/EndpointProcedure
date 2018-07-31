@@ -1,6 +1,0 @@
-framework module Pods_EndpointProcedure_AlamofireProcedureFactory {
-  umbrella header "Pods-EndpointProcedure-AlamofireProcedureFactory-umbrella.h"
-
-  export *
-  module * { export * }
-}

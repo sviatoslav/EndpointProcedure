@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_EndpointProcedure_AlamofireProcedureFactoryVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_EndpointProcedure_AlamofireProcedureFactoryVersionString[];
+FOUNDATION_EXPORT double Pods_AlamofireProcedureFactoryVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_AlamofireProcedureFactoryVersionString[];
 

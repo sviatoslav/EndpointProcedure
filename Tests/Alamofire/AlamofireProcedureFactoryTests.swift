@@ -14,7 +14,7 @@ import EndpointProcedure
 
 class AlamofireProcedureFactoryTests: XCTestCase {
 
-    fileprivate let baseURL = URL(string: "https://httpbin.org")!
+    fileprivate let baseURL = URL(string: "http://httpbin.org")!
 
     fileprivate var params: HTTPRequestData.Parameters = ["sKey": "sValue", "iKey": 1]
     fileprivate var headers: HTTPRequestData.HeaderFields = ["hKey": "hValue"]
@@ -24,25 +24,11 @@ class AlamofireProcedureFactoryTests: XCTestCase {
         let data = HTTPRequestData.Builder.for(baseURL.appendingPathComponent("get")).build()
         let factory = AlamofireProcedureFactory()
         do {
-            let procedure = try factory.dataLoadingProcedure(with: data)
-            let expectation = self.expectation(description: "")
-            procedure.addDidFinishBlockObserver {_ in
-                expectation.fulfill()
+            let procedure = try factory.dataLoadingProcedure(with: data).children[0] as! AlamofireProcedure
+            let configurationHeaders = procedure.request.session.configuration.httpAdditionalHeaders ?? [:]
+            SessionManager.defaultHTTPHeaders.forEach {
+                XCTAssert((configurationHeaders[$0.key] as? String) == $0.value)
             }
-            procedure.enqueue()
-            self.waitForExpectations(timeout: 60, handler: nil)
-            if let error = procedure.output.error, self.isNoInteretConnection(error: error) {
-                return
-            }
-            let responseHeaders = JSON(data: procedure.output.success!.data)["headers"]
-                .dictionaryObject as! [String: String]
-            var requestHeaders = SessionManager.defaultHTTPHeaders
-            ["Host", "Accept", "Accept-Language", "UserAgent", "Accept-Encoding"].forEach {
-                if requestHeaders[$0] == nil {
-                    requestHeaders[$0] = responseHeaders[$0]
-                }
-            }
-            XCTAssertEqual(requestHeaders, responseHeaders)
         } catch {
             XCTFail()
         }
@@ -57,25 +43,11 @@ class AlamofireProcedureFactoryTests: XCTestCase {
         let sessionManager = SessionManager(configuration: configuration)
         let factory = AlamofireProcedureFactory(sessionManager: sessionManager)
         do {
-            let procedure = try factory.dataLoadingProcedure(with: data)
-            let expectation = self.expectation(description: "")
-            procedure.addDidFinishBlockObserver {_ in
-                expectation.fulfill()
+            let procedure = try factory.dataLoadingProcedure(with: data).children[0] as! AlamofireProcedure
+            let configurationHeaders = procedure.request.session.configuration.httpAdditionalHeaders ?? [:]
+            headers.forEach {
+                XCTAssert((configurationHeaders[$0.key] as? String) == $0.value)
             }
-            procedure.enqueue()
-            self.waitForExpectations(timeout: 60, handler: nil)
-            if let error = procedure.output.error, self.isNoInteretConnection(error: error) {
-                return
-            }
-            let responseHeaders = JSON(data: procedure.output.success!.data)["headers"]
-                .dictionaryObject as! [String: String]
-            var requestHeaders = headers
-            ["Host", "Accept", "Accept-Language", "User-Agent", "Accept-Encoding"].forEach {
-                if requestHeaders[$0] == nil {
-                    requestHeaders[$0] = responseHeaders[$0]
-                }
-            }
-            XCTAssertEqual(requestHeaders, responseHeaders)
         } catch {
             XCTFail()
         }
@@ -84,26 +56,30 @@ class AlamofireProcedureFactoryTests: XCTestCase {
     //MARK: - URL encoding tests
     func testGETWithURLEncoding() {
         self.testRequest(forPath: "get", encoding: .url, method: .get) {
-            let url = URL(string: $0["url"].stringValue)!
+            let url = $0.url!
             self.assert(urlEncodingParameters: self.queryParameters(from: url))
         }
     }
 
     func testPOSTWithURLEncoding() {
         self.testRequest(forPath: "post", encoding: .url, method: .post) {
-            self.assert(urlEncodingParameters: $0["form"].dictionaryValue)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-www-form-urlencoded"))
+            let body = $0.httpBody.flatMap({ String(data: $0, encoding: .utf8) }) ?? ""
+            self.assert(urlEncodingParameters: body)
         }
     }
 
     func testPUTWithURLEncoding() {
         self.testRequest(forPath: "put", encoding: .url, method: .put) {
-            self.assert(urlEncodingParameters: $0["form"].dictionaryValue)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-www-form-urlencoded"))
+            let body = $0.httpBody.flatMap({ String(data: $0, encoding: .utf8) }) ?? ""
+            self.assert(urlEncodingParameters: body)
         }
     }
 
     func testDELETEWithURLEncoding() {
         self.testRequest(forPath: "delete", encoding: .url, method: .delete) {
-            let url = URL(string: $0["url"].stringValue)!
+            let url = $0.url!
             self.assert(urlEncodingParameters: self.queryParameters(from: url))
         }
     }
@@ -111,26 +87,32 @@ class AlamofireProcedureFactoryTests: XCTestCase {
     //MARK: - JSON encoding tests
     func testGETWithJSONEncoding() {
         self.testRequest(forPath: "get", encoding: .json, method: .get) {
-            let url = URL(string: $0["url"].stringValue)!
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/json"))
+            let url = $0.url!
             XCTAssert(self.queryParameters(from: url).isEmpty)
         }
     }
 
     func testPOSTWithJSONEncoding() {
         self.testRequest(forPath: "post", encoding: .json, method: .post) {
-            self.assert(parametersJSON: $0["data"].stringValue)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/json"))
+            let json = try! JSON(data: $0.httpBody!)
+            self.assert(urlEncodingParameters: json.dictionaryValue)
         }
     }
 
     func testPUTWithJSONEncoding() {
         self.testRequest(forPath: "put", encoding: .json, method: .put) {
-            self.assert(parametersJSON: $0["data"].stringValue)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/json"))
+            let json = try! JSON(data: $0.httpBody!)
+            self.assert(urlEncodingParameters: json.dictionaryValue)
         }
     }
 
     func testDELETEWithJSONEncoding() {
         self.testRequest(forPath: "delete", encoding: .json, method: .delete) {
-            let url = URL(string: $0["url"].stringValue)!
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/json"))
+            let url = $0.url!
             XCTAssert(self.queryParameters(from: url).isEmpty)
         }
     }
@@ -138,32 +120,32 @@ class AlamofireProcedureFactoryTests: XCTestCase {
     //MARK: - XML plist encoding tests
     func testGETWithPlistXMLEncoding() {
         self.testRequest(forPath: "get", encoding: .plist(option: .xml), method: .get) {
-            let url = URL(string: $0["url"].stringValue)!
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let url = $0.url!
             XCTAssert(self.queryParameters(from: url).isEmpty)
         }
     }
 
     func testPOSTWithPlistXMLEncoding() {
         self.testRequest(forPath: "post", encoding: .plist(option: .xml), method: .post) {
-            let xml = $0["data"].stringValue
-            let xmlData = xml.data(using: .utf8)!
-            let plist = try! PropertyListSerialization.propertyList(from: xmlData, format: nil)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let plist = try! PropertyListSerialization.propertyList(from: $0.httpBody!, format: nil)
             self.assert(parameters: plist as! HTTPRequestData.Parameters)
         }
     }
 
     func testPUTWithPlistXMLEncoding() {
         self.testRequest(forPath: "put", encoding: .plist(option: .xml), method: .put) {
-            let xml = $0["data"].stringValue
-            let xmlData = xml.data(using: .utf8)!
-            let plist = try! PropertyListSerialization.propertyList(from: xmlData, format: nil)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let plist = try! PropertyListSerialization.propertyList(from: $0.httpBody!, format: nil)
             self.assert(parameters: plist as! HTTPRequestData.Parameters)
         }
     }
 
     func testDELETEWithPlistXMLEncoding() {
         self.testRequest(forPath: "delete", encoding: .plist(option: .xml), method: .delete) {
-            let url = URL(string: $0["url"].stringValue)!
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let url = $0.url!
             XCTAssert(self.queryParameters(from: url).isEmpty)
         }
     }
@@ -171,32 +153,32 @@ class AlamofireProcedureFactoryTests: XCTestCase {
     //MARK: - Binary plist encoding tests
     func testGETWithPlistBinaryEncoding() {
         self.testRequest(forPath: "get", encoding: .plist(option: .binary), method: .get) {
-            let url = URL(string: $0["url"].stringValue)!
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let url = $0.url!
             XCTAssert(self.queryParameters(from: url).isEmpty)
         }
     }
 
     func testPOSTWithPlistBinaryEncoding() {
         self.testRequest(forPath: "post", encoding: .plist(option: .binary), method: .post) {
-            let url = URL(string: $0["data"].stringValue)!
-            let data = try! Data(contentsOf: url)
-            let plist = try! PropertyListSerialization.propertyList(from: data, format: nil)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let plist = try! PropertyListSerialization.propertyList(from: $0.httpBody!, format: nil)
             self.assert(parameters: plist as! HTTPRequestData.Parameters)
         }
     }
 
     func testPUTWithPlistBinaryEncoding() {
         self.testRequest(forPath: "put", encoding: .plist(option: .binary), method: .put) {
-            let url = URL(string: $0["data"].stringValue)!
-            let data = try! Data(contentsOf: url)
-            let plist = try! PropertyListSerialization.propertyList(from: data, format: nil)
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let plist = try! PropertyListSerialization.propertyList(from: $0.httpBody!, format: nil)
             self.assert(parameters: plist as! HTTPRequestData.Parameters)
         }
     }
 
     func testDELETEWithPlistBinaryEncoding() {
         self.testRequest(forPath: "delete", encoding: .plist(option: .binary), method: .delete) {
-            let url = URL(string: $0["url"].stringValue)!
+            XCTAssert($0.allHTTPHeaderFields!["Content-Type"]!.hasPrefix("application/x-plist"))
+            let url = $0.url!
             XCTAssert(self.queryParameters(from: url).isEmpty)
         }
     }
@@ -209,39 +191,17 @@ fileprivate extension AlamofireProcedureFactoryTests {
         return builder.appending(parameters: params).appending(headerFields: headers)
     }
 
-    fileprivate func json(for path: String, withEncoding encoding: HTTPRequestData.ParameterEncoding,
-                      method: HTTPRequestData.Method) throws -> JSON {
+    fileprivate func request(for path: String, withEncoding encoding: HTTPRequestData.ParameterEncoding,
+                      method: HTTPRequestData.Method) throws -> URLRequest {
         let url = self.baseURL.appendingPathComponent(path)
         let builder = try HTTPRequestData.Builder.for(url).with(method: method).with(parameterEncoding: encoding)
         let data = self.configure(builder: builder).build()
-        let expectation = self.expectation(description: "Procedure expectation")
         let procedure = try AlamofireProcedureFactory().dataLoadingProcedure(with: data)
-        procedure.addCompletionBlock {
-            expectation.fulfill()
+            .children.first as! AlamofireProcedure
+        switch procedure.request.request {
+        case let request?: return request
+        case nil: throw NSError(domain: "", code: -1, userInfo: nil)
         }
-        procedure.enqueue()
-        waitForExpectations(timeout: 60, handler: nil)
-        let error = procedure.output.error
-        guard error == nil else {
-            throw error!
-        }
-        return JSON(data: procedure.output.success!.data)
-    }
-
-    fileprivate func isNoInteretConnection(error: Error?) -> Bool {
-        return (error as? NSError)?.code == -1009 || (error as? NSError)?.code == -1004
-            || (error as? NSError)?.code == -1001
-    }
-
-    fileprivate func isEqual<T: Equatable>(type: T.Type, a: Any, b: Any) -> Bool {
-        guard let a = a as? T, let b = b as? T else { return false }
-
-        return a == b
-    }
-
-    fileprivate func assert(parametersJSON: String) {
-        let args = JSON(data: parametersJSON.data(using: .utf8)!).dictionaryObject!
-        self.assert(parameters: args)
     }
 
     fileprivate func assert(parameters args: HTTPRequestData.Parameters) {
@@ -269,6 +229,16 @@ fileprivate extension AlamofireProcedureFactoryTests {
             } ?? [:]
     }
 
+    fileprivate func assert(urlEncodingParameters: String) {
+        let parameters: [String: String] = urlEncodingParameters.components(separatedBy: "&").reduce([:]) {
+            var result = $0
+            let keyValue = $1.components(separatedBy: "=")
+            result[keyValue[0]] = keyValue[1]
+            return result
+        }
+        self.assert(urlEncodingParameters: parameters)
+    }
+
     fileprivate func assert(urlEncodingParameters: [String: String]) {
         XCTAssertEqual(urlEncodingParameters.count, self.params.count)
         urlEncodingParameters.forEach {
@@ -286,10 +256,10 @@ fileprivate extension AlamofireProcedureFactoryTests {
         }
     }
 
-    fileprivate func assert(headers: [String: JSON]) {
+    fileprivate func assert(headers: [String: String]) {
         self.headers.forEach { (key, value) in
             let values = headers.flatMap {
-                return key.caseInsensitiveCompare($0.key) == .orderedSame ? $0.value.stringValue : nil
+                return key.caseInsensitiveCompare($0.key) == .orderedSame ? $0.value : nil
             }
             XCTAssertEqual(values.count, 1)
             XCTAssertEqual(value.caseInsensitiveCompare(values[0]), .orderedSame)
@@ -297,15 +267,14 @@ fileprivate extension AlamofireProcedureFactoryTests {
     }
 
     fileprivate func testRequest(forPath path: String, encoding: HTTPRequestData.ParameterEncoding,
-                             method: HTTPRequestData.Method, testingClosure: (JSON) -> Void) {
+                             method: HTTPRequestData.Method, testingClosure: (URLRequest) -> Void) {
         do {
-            let json = try self.json(for: path, withEncoding: encoding, method: method)
-            self.assert(headers: json["headers"].dictionaryValue)
-            testingClosure(json)
+            let request = try self.request(for: path, withEncoding: encoding, method: method)
+            XCTAssertEqual(request.httpMethod!, method.rawValue)
+            self.assert(headers: request.allHTTPHeaderFields ?? [:])
+            testingClosure(request)
         } catch let e {
-            if !self.isNoInteretConnection(error: e) {
-                XCTFail("\(e)")
-            }
+            XCTFail("\(e)")
         }
     }
 }

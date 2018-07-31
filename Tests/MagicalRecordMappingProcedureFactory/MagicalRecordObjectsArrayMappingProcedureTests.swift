@@ -10,7 +10,6 @@ import XCTest
 import CoreData
 import ProcedureKit
 import EndpointProcedure
-import EndpointProcedure
 @testable import MagicalRecordMappingProcedureFactory
 
 class MagicalRecordObjectsArrayMappingProcedureTests: MagicalRecordMappingProcedureTests {

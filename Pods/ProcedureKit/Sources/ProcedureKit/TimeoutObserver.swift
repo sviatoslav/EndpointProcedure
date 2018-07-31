@@ -8,15 +8,19 @@ import Foundation
 import Dispatch
 
 /**
- An observer which will automatically cancel (with an error)
- if it doesn't finish before a time interval is expired.
+ An observer which will automatically cancel (with an error) the `Procedure`
+ to which it is attached if the `Procedure` doesn't finish executing before a
+ time interval is expired.
 
- IMPORTANT:
- This will cancel a Procedure. It is the responsibility
- of the Procedure subclass to handle cancellation as
- appropriate for it to rapidly finish after it is cancelled.
+ The timer starts right before the Procedure's `execute()` function is called
+ (after the Procedure has been started).
 
- See the documentation for `Procedure.cancel()`.
+ - IMPORTANT:
+ This will cancel a `Procedure`. It is the responsibility of the `Procedure`
+ subclass to handle cancellation as appropriate for it to rapidly finish after
+ it is cancelled.
+
+ - See: the documentation for `Procedure.cancel()`
  */
 public struct TimeoutObserver: ProcedureObserver {
 
@@ -136,7 +140,11 @@ fileprivate class DispatchTimerWrapper {
         timer.setEventHandler(handler: handler)
     }
     func scheduleOneshot(deadline: DispatchTime, leeway: DispatchTimeInterval = .nanoseconds(0)) {
-        timer.scheduleOneshot(deadline: deadline, leeway: leeway)
+        #if swift(>=4.0)
+            timer.schedule(deadline: deadline, leeway: leeway)
+        #else
+            timer.scheduleOneshot(deadline: deadline, leeway: leeway)
+        #endif
     }
     func resume() {
         lock.withCriticalScope {

@@ -58,7 +58,7 @@ class EndpointProcedureTests: XCTestCase {
         config.dataLoadingProcedureFactory = FailableHTTPDataLoadingProcedureMockFactory()
         let procedure = EndpointProcedure<[String: String]>(requestData: self.requestData, configuration: config)
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, FailableHTTPDataLoadingProcedureMockFactory.error)
+        XCTAssertEqual(result.error as NSError?, FailableHTTPDataLoadingProcedureMockFactory.error)
     }
 
     func testInitWithDataLoadingProcedure() {
@@ -93,7 +93,7 @@ class EndpointProcedureTests: XCTestCase {
         let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure:
                                         DataLoadingProcedureMock(dictionary: ["url": URL(string: "https://my.api")!]))
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, DataLoadingProcedureMock.jsonSerializationError)
+        XCTAssertEqual(result.error as NSError?, DataLoadingProcedureMock.jsonSerializationError)
     }
 
     func testFailureInHTTPDataLoadingProcedure() {
@@ -101,7 +101,7 @@ class EndpointProcedureTests: XCTestCase {
             .appending(parameters: ["url": self.requestData.url]).build()
         let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: requestData)
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, HTTPDataLoadingProcedureMock.jsonSerializationError)
+        XCTAssertEqual(result.error as NSError?, HTTPDataLoadingProcedureMock.jsonSerializationError)
     }
 
     func testFailureInResponseValidationProcedure() {
@@ -112,7 +112,7 @@ class EndpointProcedureTests: XCTestCase {
         let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: self.requestData,
                                                               validationProcedure: validator)
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, error)
+        XCTAssertEqual(result.error as NSError?, error)
     }
 
     func testFailureInResponseInterceptorProcedure() {
@@ -123,13 +123,13 @@ class EndpointProcedureTests: XCTestCase {
         let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: self.requestData,
                                                               interceptionProcedure: interceptor)
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, error)
+        XCTAssertEqual(result.error as NSError?, error)
     }
 
     func testFailureInResponseMappingProcedure() {
         let procedure = EndpointProcedure<String>(requestData: self.requestData)
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, OptionalCastResponseMappingProcedure<Any>.castFailedError)
+        XCTAssertEqual(result.error as NSError?, OptionalCastResponseMappingProcedure<Any>.castFailedError)
     }
 
     func testDataLoadingProcedureFactoryFailure() {
@@ -137,7 +137,7 @@ class EndpointProcedureTests: XCTestCase {
         configuration?.dataLoadingProcedureFactory = FailableHTTPDataLoadingProcedureMockFactory()
         let procedure = EndpointProcedure<String>(requestData: self.requestData, configuration: configuration)
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, FailableHTTPDataLoadingProcedureMockFactory.error)
+        XCTAssertEqual(result.error as NSError?, FailableHTTPDataLoadingProcedureMockFactory.error)
     }
 
     func testResponseMappingProcedureFactory() {
@@ -145,7 +145,7 @@ class EndpointProcedureTests: XCTestCase {
         configuration?.responseMappingProcedureFactory = FailableResponseMappingProcedureFactory()
         let procedure = EndpointProcedure<String>(requestData: self.requestData, configuration: configuration)
         let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as? NSError, FailableResponseMappingProcedureFactory.error)
+        XCTAssertEqual(result.error as NSError?, FailableResponseMappingProcedureFactory.error)
     }
 
     func testCustomDataFlowProcedure() {
@@ -169,7 +169,7 @@ class EndpointProcedureTests: XCTestCase {
         let procedure = EndpointProcedure<String>(requestData: self.requestData)
         _ = self.procedureResult(for: procedure)
         procedure.output = .ready(.success(""))
-        XCTAssertEqual(procedure.output.error as? NSError, OptionalCastResponseMappingProcedure<Any>.castFailedError)
+        XCTAssertEqual(procedure.output.error as NSError?, OptionalCastResponseMappingProcedure<Any>.castFailedError)
     }
 }
 

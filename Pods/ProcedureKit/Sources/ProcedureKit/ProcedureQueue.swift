@@ -65,7 +65,7 @@ public protocol ProcedureQueueDelegate: class {
      - parameter queue: the `ProcedureQueue`.
      - parameter operation: the `Operation` instance about to be added.
      - parameter context: the context, if any, passed into the call to ProcedureQueue.add(operation:context:) that triggered the delegate callback
-     - returns: (optional) a ProcedureFuture (signaled when handling of the delegate callback is complete), or nil (if there is no need for the ProcedureQueue to wait to add the operation)
+     - returns: (optional) a `ProcedureFuture` (signaled when handling of the delegate callback is complete), or nil (if there is no need for the `ProcedureQueue` to wait to add the operation)
      */
     func procedureQueue(_ queue: ProcedureQueue, willAddOperation operation: Operation, context: Any?) -> ProcedureFuture?
 
@@ -96,7 +96,7 @@ public protocol ProcedureQueueDelegate: class {
      - parameter queue: the `ProcedureQueue`.
      - parameter procedure: the `Procedure` instance about to be added.
      - parameter context: the context, if any, passed into the call to ProcedureQueue.add(operation:context:) that triggered the delegate callback
-     - returns: (optional) a ProcedureFuture (signaled when handling of the delegate callback is complete), or nil (if there is no need for the ProcedureQueue to wait to add the operation)
+     - returns: (optional) a `ProcedureFuture` (signaled when handling of the delegate callback is complete), or nil (if there is no need for the `ProcedureQueue` to wait to add the operation)
      */
     func procedureQueue(_ queue: ProcedureQueue, willAddProcedure procedure: Procedure, context: Any?) -> ProcedureFuture?
 
@@ -115,7 +115,7 @@ public protocol ProcedureQueueDelegate: class {
      - parameter queue: the `ProcedureQueue`.
      - parameter procedure: the `Procedure` instance which finished.
      - parameter errors: an array of `Error`s.
-     - returns: (optional) a ProcedureFuture (signaled when handling of the delegate callback is complete), or nil (if there is no need for the ProcedureQueue to temporarily block the Procedure from finishing)
+     - returns: (optional) a `ProcedureFuture` (signaled when handling of the delegate callback is complete), or nil (if there is no need for the `ProcedureQueue` to temporarily block the Procedure from finishing)
      */
     func procedureQueue(_ queue: ProcedureQueue, willFinishProcedure procedure: Procedure, withErrors errors: [Error]) -> ProcedureFuture?
 
@@ -133,20 +133,27 @@ public extension ProcedureQueueDelegate {
 
     // Operations
 
+    /// Default - do nothing.
     func procedureQueue(_ queue: ProcedureQueue, willAddOperation operation: Operation, context: Any?) -> ProcedureFuture? { /* default no-op */ return nil }
 
+    /// Default - do nothing.
     func procedureQueue(_ queue: ProcedureQueue, didAddOperation operation: Operation, context: Any?) { /* default no-op */ }
 
+    /// Default - do nothing.
     func procedureQueue(_ queue: ProcedureQueue, didFinishOperation operation: Operation) { /* default no-op */ }
 
     // Procedures
 
+    /// Default - do nothing.
     func procedureQueue(_ queue: ProcedureQueue, willAddProcedure procedure: Procedure, context: Any?) -> ProcedureFuture? { /* default no-op */ return nil }
 
+    /// Default - do nothing.
     func procedureQueue(_ queue: ProcedureQueue, didAddProcedure procedure: Procedure, context: Any?) { /* default no-op */ }
 
+    /// Default - do nothing.
     func procedureQueue(_ queue: ProcedureQueue, willFinishProcedure procedure: Procedure, withErrors errors: [Error]) -> ProcedureFuture? { /* default no-op */ return nil }
 
+    /// Default - do nothing.
     func procedureQueue(_ queue: ProcedureQueue, didFinishProcedure procedure: Procedure, withErrors errors: [Error]) { /* default no-op */ }
 }
 
@@ -168,6 +175,12 @@ open class ProcedureQueue: OperationQueue {
 
     fileprivate let dispatchQueue = DispatchQueue(label: "run.kit.procedure.ProcedureKit.ProcedureQueue"/*, qos: DispatchQoS.userInteractive*/, attributes: [.concurrent])
 
+    // Events that are queued until the ProcedureQueue is un-suspended
+    fileprivate var queuedConditionEvaluators: [Procedure.EvaluateConditions] = [] // must be accessed within the suspendLock
+    fileprivate var queuedProcedureLockRequests: [ExclusivityLockRequest] = [] // must be accessed within the suspendLock
+    fileprivate var unclaimedExclusivityLockTickets = Set<ExclusivityLockTicket>() // must be accessed within the suspendLock
+    fileprivate let suspendLock = PThreadMutex()
+
     /**
      Override OperationQueue's main to return the main queue as an ProcedureQueue
 
@@ -184,15 +197,13 @@ open class ProcedureQueue: OperationQueue {
      */
     open weak var delegate: ProcedureQueueDelegate?
 
-    // swiftlint:disable function_body_length
-    // swiftlint:disable cyclomatic_complexity
     /**
      Adds the operation to the queue. Subclasses which override this method must call this
-     implementation as it is critical to how ProcedureKit function.
+     implementation as it is critical to how ProcedureKit functions.
 
      - parameter op: an `Operation` instance.
      - parameter context: an optional parameter that is passed-through to the Will/DidAdd delegate callbacks
-     - returns: a ProcedureFuture that is signaled once the operation has been added to the ProcedureQueue
+     - returns: a `ProcedureFuture` that is signaled once the operation has been added to the `ProcedureQueue`
      */
     @discardableResult open func add(operation: Operation, withContext context: Any? = nil) -> ProcedureFuture {
 
@@ -214,14 +225,16 @@ open class ProcedureQueue: OperationQueue {
 
         return promise.future
     }
-    // swiftlint:enable cyclomatic_complexity
-    // swiftlint:enable function_body_length
 
     /**
      Adds the operations to the queue.
 
      - parameter ops: an array of `NSOperation` instances.
      - parameter wait: a Bool flag which is ignored.
+
+     - IMPORTANT:
+       Unlike `Foundation.OperationQueue`, `ProcedureQueue` ignores the
+       `waitUntilFinished` parameter.
      */
     open override func addOperations(_ ops: [Operation], waitUntilFinished wait: Bool) {
         ops.forEach { addOperation($0) }
@@ -230,6 +243,43 @@ open class ProcedureQueue: OperationQueue {
     /// Overrides and wraps the Swift 3 interface
     open override func addOperation(_ operation: Operation) {
         add(operation: operation)
+    }
+
+    /**
+     Override of OperationQueue's `isSuspended`. Functions the same (with some additional support for
+     ProcedureKit internal functionality).
+     */
+    open override var isSuspended: Bool {
+        get { return super.isSuspended }
+        set (newIsSuspended) {
+            suspendLock.withCriticalScope {
+                guard newIsSuspended != super.isSuspended else { return } // nothing changed
+                super.isSuspended = newIsSuspended
+                if !newIsSuspended {
+                    // When resuming a ProcedureQueue:
+                    // 1.) Process all queuedProcedureLockRequests
+                    for lockRequest in queuedProcedureLockRequests {
+                        _requestLockAsync(for: lockRequest.mutuallyExclusiveCategories, completion: lockRequest.completion)
+                    }
+                    queuedProcedureLockRequests.removeAll()
+                    // 2.) Process all queued condition evaluators
+                    for conditionEvaluator in queuedConditionEvaluators {
+                        conditionEvaluator.queue.async {
+                            conditionEvaluator.start()
+                        }
+                    }
+                    queuedConditionEvaluators.removeAll()
+                }
+                else {
+                    // When suspending a ProcedureQueue:
+                    // 1.) Invalidate all unclaimedExclusivityLockTickets (releasing the locks)
+                    for ticket in unclaimedExclusivityLockTickets {
+                        ExclusivityManager.sharedInstance.unlock(categories: ticket.mutuallyExclusiveCategories)
+                    }
+                    unclaimedExclusivityLockTickets.removeAll()
+                }
+            }
+        }
     }
 
     // MARK: - Private Implementation
@@ -258,7 +308,7 @@ open class ProcedureQueue: OperationQueue {
             if let delegate = delegate {
 
                 // WillAddOperation delegate
-                (delegate.procedureQueue(self, willAddOperation: operation, context: context) ?? _SyncAlreadyAvailableFuture()).then(on: dispatchQueue) { _ in
+                (delegate.procedureQueue(self, willAddOperation: operation, context: context) ?? _SyncAlreadyAvailableFuture()).then(on: dispatchQueue) {
 
                     super.addOperation(operation)
 
@@ -304,7 +354,7 @@ open class ProcedureQueue: OperationQueue {
         if let delegate = delegate {
 
             // WillAddProcedure delegate
-            (delegate.procedureQueue(self, willAddProcedure: procedure, context: context) ?? _SyncAlreadyAvailableFuture()).then(on: dispatchQueue) { _ in
+            (delegate.procedureQueue(self, willAddProcedure: procedure, context: context) ?? _SyncAlreadyAvailableFuture()).then(on: dispatchQueue) {
 
                 // Step 2:
                 self._add_step2(procedure: procedure, context: context, promise: promise)
@@ -329,10 +379,173 @@ open class ProcedureQueue: OperationQueue {
 
         super.addOperation(procedure)
 
+        procedure.postQueueAdd()
+
         // DidAddProcedure delegate
         delegate?.procedureQueue(self, didAddProcedure: procedure, context: context)
 
         promise.complete()
+    }
+
+    // MARK: Mutual Exclusivity
+
+    fileprivate struct ExclusivityLockRequest {
+        let mutuallyExclusiveCategories: Set<String>
+        let completion: (ExclusivityLockTicket) -> Void
+    }
+
+    internal class ExclusivityLockTicket: Hashable {
+        let mutuallyExclusiveCategories: Set<String>
+        fileprivate init(mutuallyExclusiveCategories: Set<String>)
+        {
+            self.mutuallyExclusiveCategories = mutuallyExclusiveCategories
+        }
+        static func ==(lhs: ExclusivityLockTicket, rhs: ExclusivityLockTicket) -> Bool {
+            return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+        }
+        var hashValue: Int {
+            return ObjectIdentifier(self).hashValue
+        }
+    }
+
+    /// Requests a Mutual Exclusivity lock for a set of categories, taking into account
+    /// the ProcedureQueue's `isSuspended` status.
+    ///
+    /// If the ProcedureQueue is suspended, the request is queued until the ProcedureQueue is resumed.
+    /// If the ProcedureQueue is running, the lock request is processed (asynchronously).
+    ///
+    /// Once the lock request is granted (asynchronously), this function again checks whether the
+    /// ProcedureQueue is suspended. If it is, the lock is immediately released and a future attempt
+    /// is queued for when the ProcedureQueue is resumed.
+    ///
+    /// The completion block is provided an `ExclusivityLockTicket`. Once the Procedure has started,
+    /// it *must* internally call ProcedureQueue's `procedureClaimLock(withTicket:completion:)`
+    /// to officially "claim" the lock to ensure that Mutual Exclusivity is, in fact, enforced.
+    /// (This mechanic allows the ProcedureQueue to safely handle various tricky situations
+    /// caused by the asynchronous nature of suspending vs. when/how Foundation.Operation
+    /// internally decides to start Operations on the queue.)
+    ///
+    /// - Parameters:
+    ///   - mutuallyExclusiveCategories: a Set of mutually exclusive categories (Strings)
+    ///   - completion: a block called once a ExclusivityLockTicket has been granted by the ProcedureQueue
+    internal func requestLock(for mutuallyExclusiveCategories: Set<String>, completion: @escaping (ExclusivityLockTicket) -> Void) {
+
+        assert(!mutuallyExclusiveCategories.isEmpty, "requestLock called with an empty set of categories")
+
+        let proceed: Bool = suspendLock.withCriticalScope {
+            guard !super.isSuspended else {
+                // The ProcedureQueue is currently suspended
+                // Queue a future lock request attempt (once the queue is resumed)
+                queuedProcedureLockRequests.append(
+                    ExclusivityLockRequest(mutuallyExclusiveCategories: mutuallyExclusiveCategories, completion: completion)
+                )
+                return false
+            }
+            return true
+        }
+        guard proceed else { return }
+
+        _requestLockAsync(for: mutuallyExclusiveCategories, completion: completion)
+    }
+
+    fileprivate func _requestLockAsync(for mutuallyExclusiveCategories: Set<String>, completion: @escaping (ExclusivityLockTicket) -> Void) {
+
+        assert(!mutuallyExclusiveCategories.isEmpty, "requestLock called with an empty set of categories")
+
+        // Request a lock from the ExclusivityManager.
+        ExclusivityManager.sharedInstance.requestLock(for: mutuallyExclusiveCategories) {
+            // Once the lock is acquired
+            let optionalTicket: ExclusivityLockTicket? = self.suspendLock.withCriticalScope {
+                guard !super.isSuspended else {
+                    // If by the time the lock request is granted the Procedure is suspended,
+                    // immediately release the lock and queue a future lock request attempt
+                    // (once the ProcedureQueue is resumed)
+                    ExclusivityManager.sharedInstance.unlock(categories: mutuallyExclusiveCategories)
+                    self.queuedProcedureLockRequests.append(
+                        ExclusivityLockRequest(mutuallyExclusiveCategories: mutuallyExclusiveCategories, completion: completion)
+                    )
+                    return nil
+                }
+                // If by the time the lock request succeeds the ProcedureQueue is not suspended,
+                // return an ExclusivityLockTicket (which is recorded within the ProcedureQueue)
+                let ticket = ExclusivityLockTicket(mutuallyExclusiveCategories: mutuallyExclusiveCategories)
+                self.unclaimedExclusivityLockTickets.insert(ticket)
+                return ticket
+            }
+
+            guard let ticket = optionalTicket else { return }
+            completion(ticket)
+        }
+    }
+
+    /// Called by a Procedure, *once the ProcedureQueue has started the Procedure*,
+    /// to claim an outstanding Exclusivity Lock
+    ///
+    /// If the ProcedureQueue has released the lock in the interim (for example, if
+    /// it was suspended), this function issues a new lock request on behalf of
+    /// the Procedure.
+    internal func procedureClaimLock(withTicket ticket: ExclusivityLockTicket, completion: @escaping () -> Void) {
+        let claimedLock: Bool = suspendLock.withCriticalScope {
+            guard unclaimedExclusivityLockTickets.remove(ticket) != nil else {
+                //
+                // The ticket is no longer valid (likely because the ProcedureQueue was suspended
+                // and released the exclusivity lock in the interim)
+                //
+                // Initiate a new async lock request on behalf of the Procedure
+                //
+                // NOTE: Since the Procedure has *already been started* by the ProcedureQueue,
+                // there is no point in trying to delay its execution further if the
+                // ProcedureQueue is now suspended.
+                //
+                // Foundation.OperationQueue already only guarantees that:
+                //   "Setting [isSuspended] to true prevents the queue from starting any queued
+                //    operations, but already executing operations continue to execute."
+                // https://developer.apple.com/documentation/foundation/operationqueue/1415909-issuspended
+                //
+                // Therefore, instead of calling the *ProcedureQueue's* `requestLock` function,
+                // (which *would* delay requesting a lock if the ProcedureQueue is suspended),
+                // we use the ExclusivityManager directly here.
+                //
+
+                ExclusivityManager.sharedInstance.requestLock(for: ticket.mutuallyExclusiveCategories, completion: completion)
+                return false
+            }
+            return true
+        }
+        guard claimedLock else { return }
+
+        // Lock was successfully claimed - call the completion block
+        completion()
+    }
+
+    internal func unlock(mutuallyExclusiveCategories categories: Set<String>) {
+        ExclusivityManager.sharedInstance.unlock(categories: categories)
+    }
+
+    // MARK: Condition Evaluation
+
+    // When a Procedure's EvaluateConditions Operation is ready to begin (i.e. when all dependencies
+    // have finished), it calls requestEvaluation(of: self) to ask the ProcedureQueue associated
+    // with its Procedure to begin its evaluation.
+    //
+    // If the ProcedureQueue is suspended, it queues the request until it the queue is un-suspended.
+    // If the ProcedureQueue is running, the condition evaluation is started (asynchronously).
+    internal func requestEvaluation(of conditionEvaluator: Procedure.EvaluateConditions) {
+        let dispatchEvaluator: Bool = suspendLock.withCriticalScope {
+            guard !super.isSuspended else {
+                // The ProcedureQueue is currently suspended
+                // Queue a future dispatch of the condition evaluator (once the queue is resumed)
+                queuedConditionEvaluators.append(conditionEvaluator)
+                return false
+            }
+            return true
+        }
+        guard dispatchEvaluator else { return }
+
+        // Since the ProcedureQueue wasn't suspended, dispatch condition evaluation
+        conditionEvaluator.queue.async {
+            conditionEvaluator.start()
+        }
     }
 }
 
@@ -340,9 +553,9 @@ public extension ProcedureQueue {
     /**
      Add operations to the queue as an array
      
-     - parameters operations: a sequence of `NSOperation` instances.
+     - parameter operations: a sequence of `Operation` instances.
      - parameter context: an optional parameter that is passed-through to the Will/DidAdd delegate callbacks
-     - returns: a ProcedureFuture that is signaled once the operations have been added to the ProcedureQueue
+     - returns: a `ProcedureFuture` that is signaled once the operations have been added to the `ProcedureQueue`
      */
     @discardableResult
     final func add<S: Sequence>(operations: S, withContext context: Any? = nil) -> ProcedureFuture where S.Iterator.Element: Operation {
@@ -357,9 +570,9 @@ public extension ProcedureQueue {
     /**
      Add operations to the queue as a variadic parameter
 
-     - parameters operations: a variadic array of `NSOperation` instances.
+     - parameter operations: a variadic array of `Operation` instances.
      - parameter context: an optional parameter that is passed-through to the Will/DidAdd delegate callbacks
-     - returns: a ProcedureFuture that is signaled once the operations have been added to the ProcedureQueue
+     - returns: a `ProcedureFuture` that is signaled once the operations have been added to the `ProcedureQueue`
      */
     final func add(operations: Operation..., withContext context: Any? = nil) -> ProcedureFuture {
         return add(operations: operations, withContext: context)
@@ -371,7 +584,7 @@ public extension OperationQueue {
 
     /**
      Add operations to the queue as an array
-     - parameters operations: a array of `NSOperation` instances.
+     - parameter operations: a array of `Operation` instances.
      */
     final func add<S>(operations: S) where S: Sequence, S.Iterator.Element: Operation {
         addOperations(Array(operations), waitUntilFinished: false)
@@ -379,7 +592,7 @@ public extension OperationQueue {
 
     /**
      Add operations to the queue as a variadic parameter
-     - parameters operations: a variadic array of `NSOperation` instances.
+     - parameter operations: a variadic array of `Operation` instances.
      */
     final func add(operations: Operation...) {
         add(operations: operations)
@@ -394,7 +607,7 @@ fileprivate class _SyncAlreadyAvailableFuture: ProcedureFuture {
         group.leave()
     }
 
-    @discardableResult public override func then(on eventQueueProvider: QueueProvider, block: @escaping (Void) -> Void) {
+    public override func then(on eventQueueProvider: QueueProvider, block: @escaping () -> Void) {
         block()
     }
 }

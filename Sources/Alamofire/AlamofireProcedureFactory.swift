@@ -28,13 +28,19 @@ public struct AlamofireProcedureFactory: HTTPDataLoadingProcedureFactory {
     /// - throws: `AlamofireProcedureFactory` does not throw error from `dataLoadingProcedure(with:)`
     /// - parameter data: `HTTPRequestData` used in procedure creation
     public func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
+        return try AnyOutputProcedure(self.alamofireProcedure(with: data))
+    }
+
+    /// Creates `AlamofireProcedure` with `sessionManager` provided in initializer.
+    ///
+    /// - throws: `AlamofireProcedureFactory` does not throw error from `dataLoadingProcedure(with:)`
+    /// - parameter data: `HTTPRequestData` used in procedure creation
+    private func alamofireProcedure(with data: HTTPRequestData) throws -> AlamofireProcedure {
         let method = AlamofireProcedureFactory.alamofireHTTPMethod(for: data.method)
         let encoding = AlamofireProcedureFactory.parameterEncoding(for: data.parameterEncoding)
-        let procedure =  AlamofireProcedure(request: self.sessionManager.request(data.url, method: method,
-                                                                                 parameters: data.parameters,
-                                                                                 encoding: encoding,
-                                                                                 headers: data.headerFields))
-        return AnyOutputProcedure(procedure)
+        return AlamofireProcedure(request: self.sessionManager.request(data.url, method: method,
+                                                                       parameters: data.parameters,
+                                                                       encoding: encoding, headers: data.headerFields))
     }
 
     private static func parameterEncoding(for endcoding: HTTPRequestData.ParameterEncoding) -> ParameterEncoding {

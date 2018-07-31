@@ -21,7 +21,7 @@ class AlamofireProcedure: Procedure, OutputProcedure {
 
     var output: Pending<ProcedureResult<HTTPResponseData>> = .pending
 
-    private let request: DataRequest
+    let request: DataRequest
 
     /// Creates `AlamofireProcedure`.
     ///
