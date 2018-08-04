@@ -7,7 +7,11 @@
 //
 
 import XCTest
+#if ALL
+@testable import All
+#else
 @testable import EndpointProcedure
+#endif
 
 class AnyDataDeserializationProcedureFactoryTests: XCTestCase {
     private let json = ["key": "value"]
@@ -38,7 +42,7 @@ class AnyDataDeserializationProcedureFactoryTests: XCTestCase {
         let procedure = factory.dataDeserializationProcedure()
         procedure.input = .ready(self.data)
         let expectation = self.expectation(description: "")
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()

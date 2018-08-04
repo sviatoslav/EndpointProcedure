@@ -9,8 +9,12 @@
 import XCTest
 import ProcedureKit
 import Alamofire
+#if ALL
+@testable import All
+#else
 import EndpointProcedure
 @testable import AlamofireProcedureFactory
+#endif
 
 class AlamofireProcedureTests: XCTestCase {
 
@@ -44,7 +48,7 @@ class AlamofireProcedureTests: XCTestCase {
     func testFailure() {
         let expectation = self.expectation(description: "")
         let procedure = AlamofireProcedure(request: Alamofire.request(""))
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_, _ in
             expectation.fulfill()
         }
         procedure.enqueue()

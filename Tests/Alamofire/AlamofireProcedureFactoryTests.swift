@@ -9,8 +9,13 @@
 import XCTest
 import SwiftyJSON
 import Alamofire
+#if ALL
+@testable import All
+#else
 import EndpointProcedure
 @testable import AlamofireProcedureFactory
+#endif
+
 
 class AlamofireProcedureFactoryTests: XCTestCase {
 

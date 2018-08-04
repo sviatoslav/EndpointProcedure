@@ -7,7 +7,11 @@
 //
 
 import XCTest
+#if ALL
+@testable import All
+#else
 @testable import EndpointProcedure
+#endif
 
 class HTTPRequestDataTests: XCTestCase {
 

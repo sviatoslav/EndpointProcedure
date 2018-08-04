@@ -9,8 +9,12 @@
 import XCTest
 import MagicalRecord
 import ProcedureKit
+#if ALL
+@testable import All
+#else
 import EndpointProcedure
 @testable import MagicalRecordMappingProcedureFactory
+#endif
 
 class MagicalRecordMappingProcedureFactoryTests: XCTestCase {
 
@@ -122,7 +126,7 @@ class MagicalRecordMappingProcedureFactoryTests: XCTestCase {
     private func output<T: OutputProcedure>(for procedure: T) -> Pending<ProcedureResult<T.Output>>
                                                                     where T: Procedure, T: InputProcedure {
         let expectation = self.expectation(description: "")
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()

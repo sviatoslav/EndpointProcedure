@@ -8,7 +8,11 @@
 
 import XCTest
 import ProcedureKit
+#if ALL
+@testable import All
+#else
 @testable import EndpointProcedure
+#endif
 
 class EndpointProcedureTests: XCTestCase {
 
@@ -157,8 +161,8 @@ class EndpointProcedureTests: XCTestCase {
 
     func testPendingAfterCompletion() {
         let dataFlowProcedure = DataFlowProcedureMock()
-        dataFlowProcedure.addWillFinishBlockObserver {
-            $0.0.output = .pending
+        dataFlowProcedure.addWillFinishBlockObserver { (procedure, _, _) in
+            procedure.output = .pending
         }
         let procedure = EndpointProcedure<Int>(dataFlowProcedure: dataFlowProcedure)
         let result = self.procedureResult(for: procedure)
@@ -176,7 +180,7 @@ class EndpointProcedureTests: XCTestCase {
 extension EndpointProcedureTests {
     fileprivate func procedureResult<T>(for procedure: EndpointProcedure<T>) -> Pending<ProcedureResult<T>> {
         let expectation = self.expectation(description: "")
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()

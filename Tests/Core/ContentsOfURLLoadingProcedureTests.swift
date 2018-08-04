@@ -8,7 +8,11 @@
 
 import XCTest
 import ProcedureKit
+#if ALL
+@testable import All
+#else
 @testable import EndpointProcedure
+#endif
 
 class ContentsOfURLLoadingProcedureTests: XCTestCase {
 
@@ -30,7 +34,7 @@ class ContentsOfURLLoadingProcedureTests: XCTestCase {
     private func loadData(from url: URL) {
         let procedure = ContentsOfURLLoadingProcedure(url: url)
         let expectation = self.expectation(description: "Waiting for operations")
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()
@@ -42,8 +46,8 @@ class ContentsOfURLLoadingProcedureTests: XCTestCase {
         let url = ContentsOfURLLoadingProcedureTests.bundle.bundleURL
         let procedure = ContentsOfURLLoadingProcedure(url: url)
         let expectation = self.expectation(description: "Waiting for operations")
-        procedure.addDidFinishBlockObserver {
-            XCTAssertNotNil($0.0.output.error)
+        procedure.addDidFinishBlockObserver { (procedure, _) in
+            XCTAssertNotNil(procedure.output.error)
             expectation.fulfill()
         }
         procedure.enqueue()

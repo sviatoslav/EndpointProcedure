@@ -9,8 +9,12 @@
 import XCTest
 import MagicalRecord
 import ProcedureKit
+#if ALL
+@testable import All
+#else
 import EndpointProcedure
 @testable import MagicalRecordMappingProcedureFactory
+#endif
 
 class MagicalRecordMappingProcedureTests: XCTestCase {
     override func setUp() {
@@ -64,7 +68,7 @@ class MagicalRecordMappingProcedureTests: XCTestCase {
         let procedure = MagicalRecordMappingProcedureMock<TestObject>()
         let expectation = self.expectation(description: "Procedure expectation")
         procedure.input = .ready([:])
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()
@@ -83,7 +87,7 @@ extension MagicalRecordMappingProcedureTests {
         }
         let expectation = self.expectation(description: "Procedure expectation")
         procedure.input = input
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()

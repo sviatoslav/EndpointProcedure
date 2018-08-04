@@ -8,7 +8,10 @@
 
 import CoreData
 import ProcedureKit
+#if ALL
+#else
 import EndpointProcedure
+#endif
 
 /// `ResponseMappingProcedureFactory` that creates `MagicalRecordMappingProcedure`s
 public class MagicalRecordMappingProcedureFactory: ResponseMappingProcedureFactory {

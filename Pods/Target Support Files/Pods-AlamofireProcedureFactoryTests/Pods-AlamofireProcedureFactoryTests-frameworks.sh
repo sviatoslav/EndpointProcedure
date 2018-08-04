@@ -143,14 +143,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProcedureKit/ProcedureKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS9.0/SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS9.0/ProcedureKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS9.0/Alamofire.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ProcedureKit/ProcedureKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS9.0/SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS9.0/ProcedureKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS9.0/Alamofire.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

@@ -8,7 +8,10 @@
 
 import Alamofire
 import ProcedureKit
+#if ALL
+#else
 import EndpointProcedure
+#endif
 
 /// `HTTPDataLoadingProcedureFactory` that creates `AlamofireProcedure`s
 public struct AlamofireProcedureFactory: HTTPDataLoadingProcedureFactory {

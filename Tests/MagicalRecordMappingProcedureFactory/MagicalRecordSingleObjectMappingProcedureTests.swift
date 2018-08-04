@@ -9,8 +9,12 @@
 import XCTest
 import CoreData
 import ProcedureKit
+#if ALL
+@testable import All
+#else
 import EndpointProcedure
 @testable import MagicalRecordMappingProcedureFactory
+#endif
 
 class MagicalRecordSingleObjectMappingProcedureTests: MagicalRecordMappingProcedureTests {
 
@@ -106,7 +110,7 @@ extension MagicalRecordSingleObjectMappingProcedureTests {
         }
         let expectation = self.expectation(description: "Procedure expectation")
         procedure.input = input
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()

@@ -27,3 +27,14 @@ target 'AlamofireProcedureFactory' do
         pod 'SwiftyJSON'
     end
 end
+
+target 'All' do
+    use_frameworks!
+    pod 'ProcedureKit'
+    pod 'Alamofire'
+    pod 'MagicalRecord'
+    target 'AllTests' do
+        inherit! :search_paths
+        pod 'SwiftyJSON'
+    end
+end

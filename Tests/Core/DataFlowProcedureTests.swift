@@ -9,7 +9,11 @@
 import XCTest
 import Foundation
 import ProcedureKit
+#if ALL
+@testable import All
+#else
 @testable import EndpointProcedure
+#endif
 
 class DataFlowProcedureTests: XCTestCase {
 
@@ -69,7 +73,7 @@ class DataFlowProcedureTests: XCTestCase {
 
     private func result(for procedure: DataFlowProcedure<Int>) -> Pending<ProcedureResult<Int>> {
         let expectation = self.expectation(description: "")
-        procedure.addDidFinishBlockObserver {_ in
+        procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
         procedure.enqueue()

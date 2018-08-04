@@ -8,7 +8,10 @@
 
 import ProcedureKit
 import Alamofire
+#if ALL
+#else
 import EndpointProcedure
+#endif
 
 /// Errors that `AlamofireProcedure` can return in `output` property.
 public enum AlamofireProcedureError: Swift.Error {

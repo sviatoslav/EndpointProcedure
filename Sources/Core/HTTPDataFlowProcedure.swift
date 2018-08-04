@@ -19,7 +19,7 @@ import ProcedureKit
 /// - Validation: validates `HTTPResponseData`
 /// - Deserialization: converts loaded `Data` to `Any`
 /// - Interception: converst deserialized object to format expected by mapping
-/// - Mapping: Converst `Any` to `Result`
+/// - Mapping: Converts `Any` to `Result`
 ///
 /// `HTTPDataFlowProcedure` finished after all inner procedure finished.
 ///
@@ -46,8 +46,8 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
                        deserializationProcedure: deserializationProcedure,
                        interceptionProcedure: interceptionProcedure,
                        resultMappingProcedure: resultMappingProcedure)
-            validDataLoadingProcedure.addDidFinishBlockObserver {
-                self.urlResponse = $0.0.urlResponse
+            validDataLoadingProcedure.addDidFinishBlockObserver { (procedure, _) in
+                self.urlResponse = procedure.urlResponse
             }
     }
 
@@ -126,11 +126,11 @@ fileprivate class ValidHTTPDataLoadingProcedure: GroupProcedure, OutputProcedure
             dataExtractingProcedure.add(dependency: validationProcedure)
             dataExtractingProcedure.add(condition: NoFailedDependenciesCondition())
             super.init(operations: [dataLoadingProcedure, validationProcedure, dataExtractingProcedure])
-            dataExtractingProcedure.addDidFinishBlockObserver { [weak self] in
-                self?.output = $0.0.output
+            dataExtractingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
+                self?.output = procedure.output
             }
-            dataLoadingProcedure.addDidFinishBlockObserver { [weak self] in
-                self?.urlResponse = $0.0.output.success?.urlResponse.map(Pending.ready) ?? .pending
+            dataLoadingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
+                self?.urlResponse = procedure.output.success?.urlResponse.map(Pending.ready) ?? .pending
             }
     }
 }
