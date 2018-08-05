@@ -2,13 +2,20 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-os: osx
-osx_image: xcode9.4
-cache: cocoapods
-podfile: Podfile
+language: objective-c  #1
+osx_image: xcode9.4 #2
+xcode_workspace: EndpointProcedure.xcworkspace
+xcode_project: EndpointProcedure.xcodeproj #3
+xcode_scheme: All #4
+xcode_sdk: iphonesimulator11.4 #5
+
+# os: osx
+# osx_image: xcode9.4
+# cache: cocoapods
+# podfile: Podfile
 # before_install:
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod install
-script:
-- set -o pipefail && xcodebuild test -workspace EndpointProcedure.xcworkspace -scheme All -sdk iphonesimulator11.4 -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.4' ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+# script:
+# - set -o pipefail && xcodebuild test -workspace EndpointProcedure.xcworkspace -scheme All -sdk iphonesimulator11.4 -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.4' ONLY_ACTIVE_ARCH=NO | xcpretty
+# - pod lib lint
