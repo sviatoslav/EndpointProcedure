@@ -90,6 +90,9 @@
 		653FBACA1E58B50600216AA2 /* AlamofireProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA5D1E58B48E00216AA2 /* AlamofireProcedure.swift */; };
 		653FBACB1E58B50600216AA2 /* AlamofireProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA5E1E58B48E00216AA2 /* AlamofireProcedureFactory.swift */; };
 		653FBACC1E58B50B00216AA2 /* MagicalRecordMappingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA6D1E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory.swift */; };
+		65BB0F5E212FE29C0086DCEE /* EncoderProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BB0F55212FE29C0086DCEE /* EncoderProcedureFactory.framework */; };
+		65BB0F63212FE29C0086DCEE /* EncoderProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB0F62212FE29C0086DCEE /* EncoderProcedureFactoryTests.swift */; };
+		65BB0F65212FE29C0086DCEE /* EncoderProcedureFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 65BB0F57212FE29C0086DCEE /* EncoderProcedureFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65FC9CD91E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CD81E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift */; };
 		65FC9CDB1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CDA1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift */; };
 		65FC9CDD1E58C254000FCF11 /* ElementsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CDC1E58C254000FCF11 /* ElementsContainer.swift */; };
@@ -143,6 +146,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 653FB9661E5794F800216AA2;
 			remoteInfo = EndpointProcedure;
+		};
+		65BB0F5F212FE29C0086DCEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65BB0F54212FE29C0086DCEE;
+			remoteInfo = EncoderProcedureFactory;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -212,6 +222,12 @@
 		653FBA8D1E58B48E00216AA2 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		653FBA8E1E58B48E00216AA2 /* TestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
 		659D4C7120E7A3380092892E /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_EndpointProcedure_AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BB0F55212FE29C0086DCEE /* EncoderProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EncoderProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BB0F57212FE29C0086DCEE /* EncoderProcedureFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncoderProcedureFactory.h; sourceTree = "<group>"; };
+		65BB0F58212FE29C0086DCEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65BB0F5D212FE29C0086DCEE /* EncoderProcedureFactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EncoderProcedureFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BB0F62212FE29C0086DCEE /* EncoderProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		65BB0F64212FE29C0086DCEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FC9CD81E58C202000FCF11 /* MagicalRecordMappingProcedureError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordMappingProcedureError.swift; sourceTree = "<group>"; };
 		65FC9CDA1E58C226000FCF11 /* MagicalRecordMappingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordMappingProcedure.swift; sourceTree = "<group>"; };
 		65FC9CDC1E58C254000FCF11 /* ElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementsContainer.swift; sourceTree = "<group>"; };
@@ -305,6 +321,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65BB0F51212FE29C0086DCEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BB0F5A212FE29C0086DCEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BB0F5E212FE29C0086DCEE /* EncoderProcedureFactory.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -379,6 +410,8 @@
 				653FBA6E1E58B48E00216AA2 /* Supporting Files */,
 				6537E8562114E29A00685B80 /* All */,
 				6537E8612114E29A00685B80 /* AllTests */,
+				65BB0F56212FE29C0086DCEE /* EncoderProcedureFactory */,
+				65BB0F61212FE29C0086DCEE /* EncoderProcedureFactoryTests */,
 				653FB9681E5794F800216AA2 /* Products */,
 				3A76354F00F9806AFFE9A50D /* Pods */,
 				2403DFC82CA254B2F8FA5392 /* Frameworks */,
@@ -396,6 +429,8 @@
 				653FBA4A1E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests.xctest */,
 				6537E8552114E29900685B80 /* All.framework */,
 				6537E85D2114E29A00685B80 /* AllTests.xctest */,
+				65BB0F55212FE29C0086DCEE /* EncoderProcedureFactory.framework */,
+				65BB0F5D212FE29C0086DCEE /* EncoderProcedureFactoryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -537,6 +572,24 @@
 			path = MagicalRecordMappingProcedureFactory;
 			sourceTree = "<group>";
 		};
+		65BB0F56212FE29C0086DCEE /* EncoderProcedureFactory */ = {
+			isa = PBXGroup;
+			children = (
+				65BB0F57212FE29C0086DCEE /* EncoderProcedureFactory.h */,
+				65BB0F58212FE29C0086DCEE /* Info.plist */,
+			);
+			path = EncoderProcedureFactory;
+			sourceTree = "<group>";
+		};
+		65BB0F61212FE29C0086DCEE /* EncoderProcedureFactoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				65BB0F62212FE29C0086DCEE /* EncoderProcedureFactoryTests.swift */,
+				65BB0F64212FE29C0086DCEE /* Info.plist */,
+			);
+			path = EncoderProcedureFactoryTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -566,6 +619,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BB0F52212FE29C0086DCEE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BB0F65212FE29C0086DCEE /* EncoderProcedureFactory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +791,42 @@
 			productReference = 653FBA4A1E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		65BB0F54212FE29C0086DCEE /* EncoderProcedureFactory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65BB0F6A212FE29C0086DCEE /* Build configuration list for PBXNativeTarget "EncoderProcedureFactory" */;
+			buildPhases = (
+				65BB0F50212FE29C0086DCEE /* Sources */,
+				65BB0F51212FE29C0086DCEE /* Frameworks */,
+				65BB0F52212FE29C0086DCEE /* Headers */,
+				65BB0F53212FE29C0086DCEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EncoderProcedureFactory;
+			productName = EncoderProcedureFactory;
+			productReference = 65BB0F55212FE29C0086DCEE /* EncoderProcedureFactory.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		65BB0F5C212FE29C0086DCEE /* EncoderProcedureFactoryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65BB0F6B212FE29C0086DCEE /* Build configuration list for PBXNativeTarget "EncoderProcedureFactoryTests" */;
+			buildPhases = (
+				65BB0F59212FE29C0086DCEE /* Sources */,
+				65BB0F5A212FE29C0086DCEE /* Frameworks */,
+				65BB0F5B212FE29C0086DCEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65BB0F60212FE29C0086DCEE /* PBXTargetDependency */,
+			);
+			name = EncoderProcedureFactoryTests;
+			productName = EncoderProcedureFactoryTests;
+			productReference = 65BB0F5D212FE29C0086DCEE /* EncoderProcedureFactoryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -782,6 +879,16 @@
 						DevelopmentTeam = 7F4TL68AQE;
 						ProvisioningStyle = Automatic;
 					};
+					65BB0F54212FE29C0086DCEE = {
+						CreatedOnToolsVersion = 9.4.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						ProvisioningStyle = Automatic;
+					};
+					65BB0F5C212FE29C0086DCEE = {
+						CreatedOnToolsVersion = 9.4.1;
+						DevelopmentTeam = 7F4TL68AQE;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 653FB9611E5794F800216AA2 /* Build configuration list for PBXProject "EndpointProcedure" */;
@@ -802,6 +909,8 @@
 				653FBA2B1E58B3C200216AA2 /* AlamofireProcedureFactoryTests */,
 				653FBA411E58B43900216AA2 /* MagicalRecordMappingProcedureFactory */,
 				653FBA491E58B43900216AA2 /* MagicalRecordMappingProcedureFactoryTests */,
+				65BB0F54212FE29C0086DCEE /* EncoderProcedureFactory */,
+				65BB0F5C212FE29C0086DCEE /* EncoderProcedureFactoryTests */,
 				6537E8542114E29900685B80 /* All */,
 				6537E85C2114E29A00685B80 /* AllTests */,
 			);
@@ -861,6 +970,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		653FBA481E58B43900216AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BB0F53212FE29C0086DCEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BB0F5B212FE29C0086DCEE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1234,6 +1357,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65BB0F50212FE29C0086DCEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BB0F59212FE29C0086DCEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BB0F63212FE29C0086DCEE /* EncoderProcedureFactoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1266,6 +1404,11 @@
 			isa = PBXTargetDependency;
 			target = 653FB9661E5794F800216AA2 /* EndpointProcedure */;
 			targetProxy = 653FBA591E58B44A00216AA2 /* PBXContainerItemProxy */;
+		};
+		65BB0F60212FE29C0086DCEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65BB0F54212FE29C0086DCEE /* EncoderProcedureFactory */;
+			targetProxy = 65BB0F5F212FE29C0086DCEE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1739,6 +1882,110 @@
 			};
 			name = Release;
 		};
+		65BB0F66212FE29C0086DCEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EncoderProcedureFactory/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EncoderProcedureFactory;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		65BB0F67212FE29C0086DCEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EncoderProcedureFactory/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EncoderProcedureFactory;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		65BB0F68212FE29C0086DCEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EncoderProcedureFactoryTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EncoderProcedureFactoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		65BB0F69212FE29C0086DCEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EncoderProcedureFactoryTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.github.sviatoslav.EncoderProcedureFactoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1819,6 +2066,24 @@
 			buildConfigurations = (
 				653FBA571E58B43900216AA2 /* Debug */,
 				653FBA581E58B43900216AA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65BB0F6A212FE29C0086DCEE /* Build configuration list for PBXNativeTarget "EncoderProcedureFactory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65BB0F66212FE29C0086DCEE /* Debug */,
+				65BB0F67212FE29C0086DCEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65BB0F6B212FE29C0086DCEE /* Build configuration list for PBXNativeTarget "EncoderProcedureFactoryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65BB0F68212FE29C0086DCEE /* Debug */,
+				65BB0F69212FE29C0086DCEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,6 +9,8 @@ xcode_project: EndpointProcedure.xcodeproj #3
 xcode_scheme: All #4
 xcode_sdk: iphonesimulator11.4 #5
 
+script: xcodebuild test
+
 # os: osx
 # osx_image: xcode9.4
 # cache: cocoapods
