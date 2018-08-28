@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 
 target 'EndpointProcedure' do
     use_frameworks!
@@ -15,7 +15,12 @@ target 'EndpointProcedure' do
             inherit! :search_paths
         end
     end
-
+    
+    target 'DecodingProcedureFactory' do
+        target 'DecodingProcedureFactoryTests' do
+            inherit! :search_paths
+        end
+    end
 end
 
 target 'AlamofireProcedureFactory' do
