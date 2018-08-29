@@ -10,13 +10,16 @@ import Foundation
 import EndpointProcedure
 import ProcedureKit
 
-class DecodingProcedureFactory: ResponseMappingProcedureFactory {
-    func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
-        guard let decodableType = T.self as? Decodable.Type else { fatalError() }
-        return self.decodingProcedure(for: decodableType)
-    }
+public typealias NestedData = (codingPath: [CodingKey], data: Data)
+
+public struct DecodingProcedureFactory: ResponseMappingProcedureFactory {
     
-    private func decodingProcedure<T: Decodable>(for type: T.Type) -> AnyProcedure<Any, T> {
-        
+    public let decoder: DataDecoder
+    
+    public func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
+        guard DecodingProcedure<T>.decodableType != nil else {
+            throw DecodingProcedureError.outputDoesNotConformToDecodable
+        }
+        return AnyProcedure<Any, T>(DecodingProcedure<T>(decoder: self.decoder))
     }
 }

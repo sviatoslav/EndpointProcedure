@@ -10,7 +10,9 @@ import XCTest
 #if ALL
 @testable import All
 #else
-@testable import EncoderProcedureFactory
+import EndpointProcedure
+import ProcedureKit
+@testable import DecodingProcedureFactory
 #endif
 
 class EncoderProcedureFactoryTests: XCTestCase {
@@ -25,16 +27,21 @@ class EncoderProcedureFactoryTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testSuccess() {
+        let expectation = self.expectation(description: "")
+        let factory = DecodingProcedureFactory(decoder: MockDecoder {_,_,_ in expectation.fulfill()})
+        do {
+            let procedure = try factory.responseMappingProcedure(for: TestObject.self)
+            procedure.input = .ready(Data())
+            ProcedureQueue.main.add(operation: procedure)
+        } catch {
+            XCTFail()
         }
+        self.wait(for: [expectation], timeout: 1)
     }
     
+    func testFailure() {
+        let factory = DecodingProcedureFactory(decoder: MockDecoder {_,_,_ in })
+        XCTAssertThrowsError(try factory.responseMappingProcedure(for: NSObject.self))
+    }
 }
