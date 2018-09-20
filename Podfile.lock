@@ -14,12 +14,19 @@ DEPENDENCIES:
   - ProcedureKit
   - SwiftyJSON
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - MagicalRecord
+    - ProcedureKit
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   ProcedureKit: 023e4600e921fe0b8d94f2d19ed680df83aa28ba
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 2c3a0db534e8bc59afa9b61da2d7e1a2f9b06b0f
+PODFILE CHECKSUM: 1df20671401b6777ff49de118208553615200aeb
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

@@ -263,7 +263,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
 
     fileprivate func assert(headers: [String: String]) {
         self.headers.forEach { (key, value) in
-            let values = headers.flatMap {
+            let values = headers.compactMap {
                 return key.caseInsensitiveCompare($0.key) == .orderedSame ? $0.value : nil
             }
             XCTAssertEqual(values.count, 1)

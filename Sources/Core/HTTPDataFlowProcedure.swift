@@ -126,11 +126,11 @@ fileprivate class ValidHTTPDataLoadingProcedure: GroupProcedure, OutputProcedure
             dataExtractingProcedure.add(dependency: validationProcedure)
             dataExtractingProcedure.add(condition: NoFailedDependenciesCondition())
             super.init(operations: [dataLoadingProcedure, validationProcedure, dataExtractingProcedure])
-            dataExtractingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
-                self?.output = procedure.output
+            dataExtractingProcedure.addDidFinishBlockObserver { [unowned self] (procedure, _) in
+                self.output = procedure.output
             }
-            dataLoadingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
-                self?.urlResponse = procedure.output.success?.urlResponse.map(Pending.ready) ?? .pending
+            dataLoadingProcedure.addDidFinishBlockObserver { [unowned self] (procedure, _) in
+                self.urlResponse = procedure.output.success?.urlResponse.map(Pending.ready) ?? .pending
             }
     }
 }

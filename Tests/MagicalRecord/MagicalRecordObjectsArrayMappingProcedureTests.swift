@@ -20,7 +20,7 @@ class MagicalRecordObjectsArrayMappingProcedureTests: MagicalRecordMappingProced
     override func testWithoutContext() {
         let input: Pending<Any> = .ready([["stringValue": "1"], ["stringValue": "2"]])
         let result: Pending<ProcedureResult<[TestObject]>> = self.procedureResult(for: input)
-        let strings = result.success?.flatMap { $0.mr_inThreadContext()?.stringValue }.sorted()
+        let strings = result.success?.compactMap { $0.mr_inThreadContext()?.stringValue }.sorted()
         XCTAssertEqual("1", strings?.first)
         XCTAssertEqual("2", strings?.last)
     }
@@ -31,7 +31,7 @@ class MagicalRecordObjectsArrayMappingProcedureTests: MagicalRecordMappingProced
         let result: Pending<ProcedureResult<[TestObject]>> = self.procedureResult(for: input, context: context)
         XCTAssertEqual(TestObject.mr_countOfEntities(), 0)
         XCTAssertEqual(TestObject.mr_countOfEntities(with: context), 2)
-        let strings = result.success?.flatMap { $0.stringValue }.sorted()
+        let strings = result.success?.compactMap { $0.stringValue }.sorted()
         XCTAssertEqual("1", strings?.first)
         XCTAssertEqual("2", strings?.last)
         context.reset()

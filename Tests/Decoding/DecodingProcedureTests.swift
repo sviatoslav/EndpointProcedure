@@ -8,19 +8,23 @@
 
 import XCTest
 import ProcedureKit
+#if ALL
+@testable import All
+#else
 @testable import DecodingProcedureFactory
+#endif
 
 class DecodingProcedureTests: XCTestCase {
     func testNestedDataInput() {
         let expectation = self.expectation(description: "Correct nested data")
         let inputData = Data()
         let decoder = MockDecoder {type, data, codingPath in
-            XCTAssert(type == TestObject.self)
+            XCTAssert(type == TestDecodable.self)
             XCTAssert(data == inputData)
             XCTAssert(codingPath.map({ $0.stringValue }) == TestData.nestedKeys.map({ $0.stringValue }))
             expectation.fulfill()
         }
-        let procedure = DecodingProcedure<TestObject>(decoder: decoder)
+        let procedure = DecodingProcedure<TestDecodable>(decoder: decoder)
         procedure.input = .ready(NestedData(codingPath: TestData.nestedKeys, data: inputData))
         ProcedureQueue.main.add(operation: procedure)
         self.wait(for: [expectation], timeout: 1)
@@ -30,12 +34,12 @@ class DecodingProcedureTests: XCTestCase {
         let expectation = self.expectation(description: "Correct data")
         let inputData = Data()
         let decoder = MockDecoder {type, data, codingPath in
-            XCTAssert(type == TestObject.self)
+            XCTAssert(type == TestDecodable.self)
             XCTAssert(data == inputData)
             XCTAssert(codingPath.isEmpty)
             expectation.fulfill()
         }
-        let procedure = DecodingProcedure<TestObject>(decoder: decoder)
+        let procedure = DecodingProcedure<TestDecodable>(decoder: decoder)
         procedure.input = .ready(inputData)
         ProcedureQueue.main.add(operation: procedure)
         self.wait(for: [expectation], timeout: 1)
@@ -44,7 +48,7 @@ class DecodingProcedureTests: XCTestCase {
     func testInvalidInput() {
         let expectation = self.expectation(description: "Error")
         let decoder = MockDecoder {_,_,_ in XCTFail() }
-        let procedure = DecodingProcedure<TestObject>(decoder: decoder)
+        let procedure = DecodingProcedure<TestDecodable>(decoder: decoder)
         procedure.input = .ready(String())
         procedure.addDidFinishBlockObserver { (procedure, _) in
             XCTAssertEqual(ProcedureKitError.requirementNotSatisfied(), procedure.output.error as? ProcedureKitError)

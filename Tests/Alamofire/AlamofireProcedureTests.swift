@@ -19,7 +19,7 @@ import EndpointProcedure
 class AlamofireProcedureTests: XCTestCase {
 
     private func isNoInteretConnection(error: Error?) -> Bool {
-        return (error as? NSError)?.code == -1009
+        return (error as NSError?)?.code == -1009
     }
 
     func testInit() {

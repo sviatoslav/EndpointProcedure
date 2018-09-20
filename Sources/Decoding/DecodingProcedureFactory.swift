@@ -7,7 +7,10 @@
 //
 
 import Foundation
+#if ALL
+#else
 import EndpointProcedure
+#endif
 import ProcedureKit
 
 public typealias NestedData = (codingPath: [CodingKey], data: Data)

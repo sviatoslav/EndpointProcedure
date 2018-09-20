@@ -36,6 +36,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
 
     private var dataLoadingProcedureSuccess: TransformProcedure<Void, HTTPResponseData>!
     private var dataLoadingProcedureFailure: TransformProcedure<Void, HTTPResponseData>!
+    private var dataLoadingNilURLResponseProcedure: TransformProcedure<Void, HTTPResponseData>!
     private var validationProcedureSuccess: TransformProcedure<HTTPResponseData, Void>!
     private var validationProcedureFailure: TransformProcedure<HTTPResponseData, Void>!
     private var deserializationProcedureSuccess: TransformProcedure<Data, Any>!
@@ -53,6 +54,10 @@ class HTTPDataFlowProcedureTests: XCTestCase {
         dataLoadingProcedureFailure = TransformProcedure {
             throw Error.dataLoading
         }
+        dataLoadingNilURLResponseProcedure = TransformProcedure {
+            return HTTPResponseData(urlResponse: nil, data: self.responseData.data)
+        }
+        dataLoadingNilURLResponseProcedure.input = pendingVoid
         dataLoadingProcedureFailure.input = pendingVoid
         validationProcedureSuccess = TransformProcedure {_ in}
         validationProcedureFailure = TransformProcedure {_ in throw Error.validation}
@@ -108,7 +113,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
         XCTAssertEqual(3, self.result(for: procedure).success)
     }
 
-    func testWithoutinterceptionProcedure() {
+    func testWithoutInterceptionProcedure() {
         let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
@@ -121,7 +126,14 @@ class HTTPDataFlowProcedureTests: XCTestCase {
         let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               resultMappingProcedure: mappingProcedureSuccess)
-        XCTAssertEqual(1, self.result(for: procedure).success)
+        let expectation = self.expectation(description: "")
+        procedure.addDidFinishBlockObserver {_,_ in
+            expectation.fulfill()
+        }
+        procedure.enqueue()
+        self.waitForExpectations(timeout: 1, handler: nil)
+        XCTAssertEqual(1, procedure.output.success)
+        XCTAssertFalse(procedure.urlResponse.isPending)
     }
 
     func testFailureInDataLoadingProcedure() {
@@ -131,6 +143,21 @@ class HTTPDataFlowProcedureTests: XCTestCase {
                                               interceptionProcedure: interceptionProcedureSuccess,
                                               resultMappingProcedure: mappingProcedureSuccess)
         XCTAssertEqual(Error.dataLoading, self.result(for: procedure).error as? Error)
+    }
+
+    func testNilURLResponseInDataLoadingProcedure() {
+        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingNilURLResponseProcedure,
+                                              validationProcedure: validationProcedureSuccess,
+                                              deserializationProcedure: deserializationProcedureSuccess,
+                                              resultMappingProcedure: mappingProcedureSuccess)
+        let expectation = self.expectation(description: "")
+        procedure.addDidFinishBlockObserver {_,_ in
+            expectation.fulfill()
+        }
+        procedure.enqueue()
+        self.waitForExpectations(timeout: 1, handler: nil)
+        XCTAssertEqual(1, procedure.output.success)
+        XCTAssert(procedure.urlResponse.isPending)
     }
 
     func testFailureInValidationProcedure() {

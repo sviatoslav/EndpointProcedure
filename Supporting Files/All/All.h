@@ -2,11 +2,11 @@
 //  All.h
 //  All
 //
-//  Created by Sviatoslav Yakymiv on 8/3/18.
+//  Created by Sviatoslav Yakymiv on 9/20/18.
 //  Copyright © 2018 Sviatoslav Yakymiv. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 
 //! Project version number for All.
 FOUNDATION_EXPORT double AllVersionNumber;
@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double AllVersionNumber;
 FOUNDATION_EXPORT const unsigned char AllVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <All/PublicHeader.h>
-
-

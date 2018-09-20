@@ -37,7 +37,7 @@ enum TestData {
     }
 }
 
-struct TestObject: Decodable {
+struct TestDecodable: Decodable {
     let b: String
     
     enum CodingKeys: String, CodingKey {

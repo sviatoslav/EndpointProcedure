@@ -7,11 +7,11 @@
 //
 
 import XCTest
+import ProcedureKit
 #if ALL
 @testable import All
 #else
 import EndpointProcedure
-import ProcedureKit
 @testable import DecodingProcedureFactory
 #endif
 
@@ -31,7 +31,7 @@ class EncoderProcedureFactoryTests: XCTestCase {
         let expectation = self.expectation(description: "")
         let factory = DecodingProcedureFactory(decoder: MockDecoder {_,_,_ in expectation.fulfill()})
         do {
-            let procedure = try factory.responseMappingProcedure(for: TestObject.self)
+            let procedure = try factory.responseMappingProcedure(for: TestDecodable.self)
             procedure.input = .ready(Data())
             ProcedureQueue.main.add(operation: procedure)
         } catch {

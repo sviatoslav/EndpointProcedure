@@ -7,14 +7,18 @@
 //
 
 import XCTest
+#if ALL
+@testable import All
+#else
 @testable import DecodingProcedureFactory
+#endif
 
 class PropertyListEncoderTests: XCTestCase {
     
     func testNestedObject() {
         do {
             let encoder = PropertyListDecoder()
-            let object = try encoder.decode(TestObject.self,
+            let object = try encoder.decode(TestDecodable.self,
                                             from: TestData.data(for: TestData.validNestedObject,
                                                                 using: TestData.plistSerialization(withFormat: .xml)),
                                             codingPath: TestData.nestedKeys)
@@ -27,7 +31,7 @@ class PropertyListEncoderTests: XCTestCase {
     func testNotNestedObject() {
         do {
             let encoder = PropertyListDecoder()
-            let object = try encoder.decode(TestObject.self,
+            let object = try encoder.decode(TestDecodable.self,
                                             from: TestData.data(for: TestData.notNestedObject,
                                                                 using: TestData.plistSerialization(withFormat: .xml)),
                                             codingPath: [])
@@ -40,7 +44,7 @@ class PropertyListEncoderTests: XCTestCase {
     func testInvalidNestedObject() {
         do {
             let encoder = PropertyListDecoder()
-            _ = try encoder.decode(TestObject.self,
+            _ = try encoder.decode(TestDecodable.self,
                                    from: TestData.data(for: TestData.invalidNestedObject,
                                                        using: TestData.plistSerialization(withFormat: .xml)),
                                    codingPath: TestData.nestedKeys)
@@ -56,7 +60,7 @@ class PropertyListEncoderTests: XCTestCase {
     func testNotValidPlist() {
         do {
             let encoder = PropertyListDecoder()
-            _ = try encoder.decode(TestObject.self,
+            _ = try encoder.decode(TestDecodable.self,
                                    from: TestData.data(for: TestData.invalidNestedObject,
                                                        using: TestData.jsonSerialization),
                                    codingPath: TestData.nestedKeys)
