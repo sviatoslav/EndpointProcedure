@@ -1,8 +1,13 @@
 # EndpointProcedure
 
-<!--[![CI Status](http://img.shields.io/travis/git/EndpointProcedure.svg?style=flat)](https://travis-ci.org/git/EndpointProcedure)
+
+[![CI Status](https://img.shields.io/travis/sviatoslav/EndpointProcedure.svg?style=for-the-badge)](https://travis-ci.org/sviatoslav/EndpointProcedure)
+[![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg?style=for-the-badge)](https://swift.org)
+[![License](https://img.shields.io/github/license/sviatoslav/EndpointProcedure.svg?style=for-the-badge)](https://github.com/sviatoslav/EndpointProcedure/blob/master/LICENSE)
+
+<!--
 [![Version](https://img.shields.io/cocoapods/v/EndpointProcedure.svg?style=flat)](http://cocoapods.org/pods/EndpointProcedure)
-[![License](https://img.shields.io/cocoapods/l/EndpointProcedure.svg?style=flat)](http://cocoapods.org/pods/EndpointProcedure)
+[
 [![Platform](https://img.shields.io/cocoapods/p/EndpointProcedure.svg?style=flat)](http://cocoapods.org/pods/EndpointProcedure)-->
 
 Typesafe flexible bridge between API and application model. Based on [ProcedureKit](https://github.com/ProcedureKit/ProcedureKit) framework.
