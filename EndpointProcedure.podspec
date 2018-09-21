@@ -33,7 +33,7 @@ EndpointProcedure connects your API with application model.
   s.source_files = 'Sources/Core/**/*'
 
   # Ensure the correct version of Swift is used
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
 
   # Defaul spec is 'Core'
   s.default_subspec   = 'Core'

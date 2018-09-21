@@ -1,9 +1,10 @@
 # Uncomment the next line to define a global platform for your project
 #platform :ios, '9.0'
 inhibit_all_warnings!
+use_frameworks!
 
 target 'EndpointProcedure' do
-    use_frameworks!
+    platform :ios, '9.0'
     pod 'ProcedureKit'
     
     target 'EndpointProcedureTests' do
@@ -25,7 +26,7 @@ target 'EndpointProcedure' do
 end
 
 target 'AlamofireProcedureFactory' do
-    use_frameworks!
+    platform :ios, '9.0'
     pod 'ProcedureKit'
     pod 'Alamofire'
     target 'AlamofireProcedureFactoryTests' do
@@ -35,7 +36,7 @@ target 'AlamofireProcedureFactory' do
 end
 
 target 'All' do
-    use_frameworks!
+    platform :osx, '10.13'
     pod 'ProcedureKit'
     pod 'Alamofire'
     pod 'MagicalRecord'
