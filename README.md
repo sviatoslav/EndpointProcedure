@@ -4,6 +4,7 @@
 [![CI Status](https://img.shields.io/travis/sviatoslav/EndpointProcedure.svg?style=for-the-badge)](https://travis-ci.org/sviatoslav/EndpointProcedure)
 [![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg?style=for-the-badge)](https://swift.org)
 [![License](https://img.shields.io/github/license/sviatoslav/EndpointProcedure.svg?style=for-the-badge)](https://github.com/sviatoslav/EndpointProcedure/blob/master/LICENSE)
+[![Coverage](https://img.shields.io/codecov/c/github/sviatoslav/EndpointProcedure.svg?style=for-the-badge)](https://codecov.io/gh/sviatoslav/EndpointProcedure)
 
 <!--
 [![Version](https://img.shields.io/cocoapods/v/EndpointProcedure.svg?style=flat)](http://cocoapods.org/pods/EndpointProcedure)
