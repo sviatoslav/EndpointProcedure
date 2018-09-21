@@ -11,6 +11,8 @@
 		17C2E3047C6B905AFFD66048 /* Pods_All.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC9F6D57FAB6AB10D191603 /* Pods_All.framework */; };
 		252FA662DA16E047F3322A7B /* Pods_AlamofireProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1958354517C72269E91BE03B /* Pods_AlamofireProcedureFactory.framework */; };
 		487701BD525737E713E72906 /* Pods_AlamofireProcedureFactoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB08D1EFF61A901E4FD7EBC /* Pods_AlamofireProcedureFactoryTests.framework */; };
+		5060116BD052A84254DF3452 /* Pods_MagicalRecordMappingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57F91648308F6DE64CFEEF3 /* Pods_MagicalRecordMappingProcedureFactory.framework */; };
+		58424E9F707EA77FF7D44288 /* Pods_DecodingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3619D8EBB04CEBF3E1F53EB /* Pods_DecodingProcedureFactory.framework */; };
 		6504156921369BC1007286D8 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504156821369BC1007286D8 /* DataDecoder.swift */; };
 		6504156F2136BCEB007286D8 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504156B2136BA26007286D8 /* TestData.swift */; };
 		650415722136DE32007286D8 /* AnyCodingKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650415712136DE32007286D8 /* AnyCodingKeyTests.swift */; };
@@ -187,9 +189,11 @@
 		154CC3C1ECD9771C0F9D3EF4 /* Pods-AlamofireProcedureFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireProcedureFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireProcedureFactory/Pods-AlamofireProcedureFactory.release.xcconfig"; sourceTree = "<group>"; };
 		1958354517C72269E91BE03B /* Pods_AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2404313FC3E0BB3E4B35DECA /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27ECFD6AAE33AAD8C52DA992 /* Pods-DecodingProcedureFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecodingProcedureFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DecodingProcedureFactory/Pods-DecodingProcedureFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		2AB51F5A401FC338692A055E /* Pods-AllProcedures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllProcedures.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllProcedures/Pods-AllProcedures.release.xcconfig"; sourceTree = "<group>"; };
 		2FB324BA32E63C4D771E2CE3 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		33201BABE2CB17103239B14A /* Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-AlamofireProcedureFactory/Pods-EndpointProcedure-AlamofireProcedureFactory.debug.xcconfig"; sourceTree = "<group>"; };
+		37A0A4AE37F27666386F179D /* Pods-MagicalRecordMappingProcedureFactory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicalRecordMappingProcedureFactory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactory/Pods-MagicalRecordMappingProcedureFactory.debug.xcconfig"; sourceTree = "<group>"; };
 		4BC9F6D57FAB6AB10D191603 /* Pods_All.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D5CB65B7EA7D8331D397AB /* Pods_AllProcedures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllProcedures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		636D61AA6FF768DDDAAFFE10 /* Pods-DecodingProcedureFactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecodingProcedureFactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DecodingProcedureFactoryTests/Pods-DecodingProcedureFactoryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		65FC9CDC1E58C254000FCF11 /* ElementsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementsContainer.swift; sourceTree = "<group>"; };
 		65FC9CDE1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordSingleObjectMappingProcedure.swift; sourceTree = "<group>"; };
 		65FC9CE01E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicalRecordObjectsArrayMappingProcedure.swift; sourceTree = "<group>"; };
+		67799B463110041571FBFA77 /* Pods-MagicalRecordMappingProcedureFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicalRecordMappingProcedureFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactory/Pods-MagicalRecordMappingProcedureFactory.release.xcconfig"; sourceTree = "<group>"; };
 		680B019605D61FF5B7DAC0ED /* Pods-AllProcedures.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllProcedures.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllProcedures/Pods-AllProcedures.debug.xcconfig"; sourceTree = "<group>"; };
 		6C4D5CCAC44F6FD255475EAE /* Pods_EndpointProcedure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719EEB5E5525632E0FDD8B42 /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedure_AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,12 +275,15 @@
 		80B0464598446B55E0806FE0 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig"; sourceTree = "<group>"; };
 		80F62542D68AECDE45C63F17 /* Pods-EndpointProcedure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure/Pods-EndpointProcedure.debug.xcconfig"; sourceTree = "<group>"; };
 		847B479F881E0E5983637038 /* Pods_EndpointProcedureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EndpointProcedureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88796F399C12EDB62AD34239 /* Pods-DecodingProcedureFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecodingProcedureFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-DecodingProcedureFactory/Pods-DecodingProcedureFactory.release.xcconfig"; sourceTree = "<group>"; };
 		8C471B65FE6454545CA1F527 /* Pods_MagicalRecordMappingProcedureFactoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagicalRecordMappingProcedureFactoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9992CD42E3EF5AE63B0368E1 /* Pods_AllTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2ED633DA9D89567D2EA5464 /* Pods-EndpointProcedure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure/Pods-EndpointProcedure.release.xcconfig"; sourceTree = "<group>"; };
 		A4E6387428C5F9FDAA0EAB1A /* Pods-All.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All/Pods-All.debug.xcconfig"; sourceTree = "<group>"; };
 		BA57973A4EC298F14BB0C991 /* Pods-EndpointProcedure-DecodingProcedureFactory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EndpointProcedure-DecodingProcedureFactory.release.xcconfig"; path = "Pods/Target Support Files/Pods-EndpointProcedure-DecodingProcedureFactory/Pods-EndpointProcedure-DecodingProcedureFactory.release.xcconfig"; sourceTree = "<group>"; };
 		BEAB63007E342017272D87DB /* Pods-All.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All.release.xcconfig"; path = "Pods/Target Support Files/Pods-All/Pods-All.release.xcconfig"; sourceTree = "<group>"; };
+		C57F91648308F6DE64CFEEF3 /* Pods_MagicalRecordMappingProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagicalRecordMappingProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3619D8EBB04CEBF3E1F53EB /* Pods_DecodingProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecodingProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82AE6BC0B9A2082E37DC268 /* Pods-AllTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllTests/Pods-AllTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB3A2C29DADC4104EDF3F44D /* Pods-AlamofireProcedureFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireProcedureFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DCB08D1EFF61A901E4FD7EBC /* Pods_AlamofireProcedureFactoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireProcedureFactoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B18DBC66FA0A2C10E5455C /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework in Frameworks */,
+				5060116BD052A84254DF3452 /* Pods_MagicalRecordMappingProcedureFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2F8240BDB897CE6690C34CC /* Pods_EndpointProcedure_DecodingProcedureFactory.framework in Frameworks */,
+				58424E9F707EA77FF7D44288 /* Pods_DecodingProcedureFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +401,8 @@
 				9992CD42E3EF5AE63B0368E1 /* Pods_AllTests.framework */,
 				0060F9AE8FF95BA22F904642 /* Pods_DecodingProcedureFactoryTests.framework */,
 				DF6DD54063856B4A1659CE42 /* Pods_EndpointProcedure_DecodingProcedureFactory.framework */,
+				D3619D8EBB04CEBF3E1F53EB /* Pods_DecodingProcedureFactory.framework */,
+				C57F91648308F6DE64CFEEF3 /* Pods_MagicalRecordMappingProcedureFactory.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,6 +434,10 @@
 				BEAB63007E342017272D87DB /* Pods-All.release.xcconfig */,
 				FFC4D8430A6CCB89CC50AFE8 /* Pods-AllTests.debug.xcconfig */,
 				D82AE6BC0B9A2082E37DC268 /* Pods-AllTests.release.xcconfig */,
+				27ECFD6AAE33AAD8C52DA992 /* Pods-DecodingProcedureFactory.debug.xcconfig */,
+				88796F399C12EDB62AD34239 /* Pods-DecodingProcedureFactory.release.xcconfig */,
+				37A0A4AE37F27666386F179D /* Pods-MagicalRecordMappingProcedureFactory.debug.xcconfig */,
+				67799B463110041571FBFA77 /* Pods-MagicalRecordMappingProcedureFactory.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -749,7 +765,7 @@
 				653FB96C1E5794F800216AA2 /* Sources */,
 				653FB96D1E5794F800216AA2 /* Frameworks */,
 				653FB96E1E5794F800216AA2 /* Resources */,
-				D5203397641EC87E7C372E23 /* [CP] Embed Pods Frameworks */,
+				A32217A09700C6923031358E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -829,7 +845,7 @@
 				653FBA461E58B43900216AA2 /* Sources */,
 				653FBA471E58B43900216AA2 /* Frameworks */,
 				653FBA481E58B43900216AA2 /* Resources */,
-				50F83FB16AAC48CB83558F7F /* [CP] Embed Pods Frameworks */,
+				E3CACB5E0D55B0865BB3C554 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -868,7 +884,7 @@
 				65BB0F59212FE29C0086DCEE /* Sources */,
 				65BB0F5A212FE29C0086DCEE /* Frameworks */,
 				65BB0F5B212FE29C0086DCEE /* Resources */,
-				FA9CE1B67B66A603338E1BD5 /* [CP] Embed Pods Frameworks */,
+				1C859AFEF66B083BDDE36B8B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1078,7 +1094,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EndpointProcedure-DecodingProcedureFactory-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DecodingProcedureFactory-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1121,6 +1137,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1C859AFEF66B083BDDE36B8B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DecodingProcedureFactoryTests/Pods-DecodingProcedureFactoryTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS/ProcedureKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DecodingProcedureFactoryTests/Pods-DecodingProcedureFactoryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2B2D7B582EC3A27B6CE175DF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1150,31 +1188,11 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MagicalRecordMappingProcedureFactory-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		50F83FB16AAC48CB83558F7F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS/ProcedureKit.framework",
-				"${BUILT_PRODUCTS_DIR}/MagicalRecord-iOS/MagicalRecord.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6670E076FFE2F22C43E8F403 /* [CP] Check Pods Manifest.lock */ = {
@@ -1201,20 +1219,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS/ProcedureKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AlamofireProcedureFactoryTests/Pods-AlamofireProcedureFactoryTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		890BA448AEC25500D0FDEA97 /* [CP] Check Pods Manifest.lock */ = {
@@ -1235,46 +1253,50 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A32217A09700C6923031358E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS/ProcedureKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ADDD6DE7401684D0596B2565 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AllTests/Pods-AllTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-macOS/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-AllTests/Pods-AllTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ProcedureKit-macOS/ProcedureKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord-macOS/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-macOS/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AllTests/Pods-AllTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5203397641EC87E7C372E23 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS/ProcedureKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EndpointProcedureTests/Pods-EndpointProcedureTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AllTests/Pods-AllTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DABBB1038178E02BA8326139 /* [CP] Check Pods Manifest.lock */ = {
@@ -1295,6 +1317,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E3CACB5E0D55B0865BB3C554 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS/ProcedureKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MagicalRecord-iOS/MagicalRecord.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MagicalRecordMappingProcedureFactoryTests/Pods-MagicalRecordMappingProcedureFactoryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EF6C0F6D17D456AAD7379A40 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1311,24 +1357,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA9CE1B67B66A603338E1BD5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DecodingProcedureFactoryTests/Pods-DecodingProcedureFactoryTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ProcedureKit-iOS/ProcedureKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProcedureKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DecodingProcedureFactoryTests/Pods-DecodingProcedureFactoryTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1952,7 +1980,7 @@
 		};
 		653FBA541E58B43900216AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FB324BA32E63C4D771E2CE3 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.debug.xcconfig */;
+			baseConfigurationReference = 37A0A4AE37F27666386F179D /* Pods-MagicalRecordMappingProcedureFactory.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -1972,7 +2000,7 @@
 		};
 		653FBA551E58B43900216AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80B0464598446B55E0806FE0 /* Pods-EndpointProcedure-MagicalRecordMappingProcedureFactory.release.xcconfig */;
+			baseConfigurationReference = 67799B463110041571FBFA77 /* Pods-MagicalRecordMappingProcedureFactory.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -2020,7 +2048,7 @@
 		};
 		65BB0F66212FE29C0086DCEE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF2868FD2516B05448003E0E /* Pods-EndpointProcedure-DecodingProcedureFactory.debug.xcconfig */;
+			baseConfigurationReference = 27ECFD6AAE33AAD8C52DA992 /* Pods-DecodingProcedureFactory.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2052,7 +2080,7 @@
 		};
 		65BB0F67212FE29C0086DCEE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA57973A4EC298F14BB0C991 /* Pods-EndpointProcedure-DecodingProcedureFactory.release.xcconfig */;
+			baseConfigurationReference = 88796F399C12EDB62AD34239 /* Pods-DecodingProcedureFactory.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

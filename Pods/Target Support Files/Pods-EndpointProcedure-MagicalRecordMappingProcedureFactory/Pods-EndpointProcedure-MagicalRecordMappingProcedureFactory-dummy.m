@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory : NSObject
-@end
-@implementation PodsDummy_Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory
-@end

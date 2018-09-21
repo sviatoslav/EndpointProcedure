@@ -1,6 +1,0 @@
-framework module Pods_EndpointProcedure_DecodingProcedureFactory {
-  umbrella header "Pods-EndpointProcedure-DecodingProcedureFactory-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -6,33 +6,46 @@ use_frameworks!
 target 'EndpointProcedure' do
     platform :ios, '9.0'
     pod 'ProcedureKit'
-    
-    target 'EndpointProcedureTests' do
-        inherit! :search_paths
-    end
+end
 
-    target 'MagicalRecordMappingProcedureFactory' do
-        pod 'MagicalRecord'
-        target 'MagicalRecordMappingProcedureFactoryTests' do
-            inherit! :search_paths
-        end
-    end
-    
-    target 'DecodingProcedureFactory' do
-        target 'DecodingProcedureFactoryTests' do
-            inherit! :search_paths
-        end
-    end
+target 'EndpointProcedureTests' do
+    platform :ios, '9.0'
+    pod 'ProcedureKit'
+end
+
+target 'MagicalRecordMappingProcedureFactory' do
+    platform :ios, '9.0'
+    pod 'ProcedureKit'
+    pod 'MagicalRecord'
+end
+
+target 'MagicalRecordMappingProcedureFactoryTests' do
+    platform :ios, '9.0'
+    pod 'ProcedureKit'
+    pod 'MagicalRecord'
+end
+
+target 'DecodingProcedureFactory' do
+    platform :ios, '9.0'
+    pod 'ProcedureKit'
+end
+
+target 'DecodingProcedureFactoryTests' do
+    platform :ios, '9.0'
+    pod 'ProcedureKit'
 end
 
 target 'AlamofireProcedureFactory' do
     platform :ios, '9.0'
     pod 'ProcedureKit'
     pod 'Alamofire'
-    target 'AlamofireProcedureFactoryTests' do
-        inherit! :search_paths
-        pod 'SwiftyJSON'
-    end
+end
+
+target 'AlamofireProcedureFactoryTests' do
+    platform :ios, '9.0'
+    pod 'ProcedureKit'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
 end
 
 target 'All' do
@@ -40,8 +53,12 @@ target 'All' do
     pod 'ProcedureKit'
     pod 'Alamofire'
     pod 'MagicalRecord'
-    target 'AllTests' do
-        inherit! :search_paths
-        pod 'SwiftyJSON'
-    end
+end
+
+target 'AllTests' do
+    platform :osx, '10.13'
+    pod 'ProcedureKit'
+    pod 'Alamofire'
+    pod 'MagicalRecord'
+    pod 'SwiftyJSON'
 end

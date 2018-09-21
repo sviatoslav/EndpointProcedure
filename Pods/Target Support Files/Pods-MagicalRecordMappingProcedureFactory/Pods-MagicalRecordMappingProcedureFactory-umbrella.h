@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_EndpointProcedure_DecodingProcedureFactoryVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_EndpointProcedure_DecodingProcedureFactoryVersionString[];
+FOUNDATION_EXPORT double Pods_MagicalRecordMappingProcedureFactoryVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MagicalRecordMappingProcedureFactoryVersionString[];
 
