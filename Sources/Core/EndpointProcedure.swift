@@ -76,7 +76,7 @@ private enum EndpointProcedureInitialization<Result> {
 ///     let dataLoadingProcedure = ContentsOfURLLoadingProcedure(url: url)
 ///     let usersProcedure = EndpointProcedure<[User]>(dataLoadingProcedure: dataLoadingProcedure)
 ///
-open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
+public class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
     /// Result of `EndpointProcedure`.
     /// Do not set this value from code. Changes will not be applied.
     public var output: Pending<ProcedureResult<Result>> {

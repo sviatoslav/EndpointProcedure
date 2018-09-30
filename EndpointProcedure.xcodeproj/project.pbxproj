@@ -98,6 +98,20 @@
 		653FBACA1E58B50600216AA2 /* AlamofireProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA5D1E58B48E00216AA2 /* AlamofireProcedure.swift */; };
 		653FBACB1E58B50600216AA2 /* AlamofireProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA5E1E58B48E00216AA2 /* AlamofireProcedureFactory.swift */; };
 		653FBACC1E58B50B00216AA2 /* MagicalRecordMappingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA6D1E58B48E00216AA2 /* MagicalRecordMappingProcedureFactory.swift */; };
+		654668B32160AD17004B7C67 /* EndpointProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668B22160AD16004B7C67 /* EndpointProcedureFactory.swift */; };
+		654668B42160AD17004B7C67 /* EndpointProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668B22160AD16004B7C67 /* EndpointProcedureFactory.swift */; };
+		654668BF2160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668BE2160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift */; };
+		654668C02160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668BE2160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift */; };
+		654668C22160AFA9004B7C67 /* DefaultConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668C12160AFA9004B7C67 /* DefaultConfigurationProvider.swift */; };
+		654668C32160AFA9004B7C67 /* DefaultConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668C12160AFA9004B7C67 /* DefaultConfigurationProvider.swift */; };
+		654668C52160E81B004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668C42160E81B004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift */; };
+		654668C72160E821004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668C42160E81B004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift */; };
+		654668C92160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668C82160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift */; };
+		654668CA2160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668C82160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift */; };
+		654668CC2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668CB2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift */; };
+		654668CD2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668CB2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift */; };
+		654668CF2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668CE2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift */; };
+		654668D02160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668CE2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift */; };
 		65BB0F5E212FE29C0086DCEE /* DecodingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BB0F55212FE29C0086DCEE /* DecodingProcedureFactory.framework */; };
 		65D0D81F21358290004A4F7F /* AnyCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0D81E21358290004A4F7F /* AnyCodingKey.swift */; };
 		65F6C76B2135642F00C94E5B /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65F6C7622135642F00C94E5B /* TestModel.xcdatamodeld */; };
@@ -242,6 +256,13 @@
 		653FBA821E58B48E00216AA2 /* HTTPDataFlowProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedureTests.swift; sourceTree = "<group>"; };
 		653FBA831E58B48E00216AA2 /* HTTPRequestDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataTests.swift; sourceTree = "<group>"; };
 		653FBA841E58B48E00216AA2 /* Enqueueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enqueueable.swift; sourceTree = "<group>"; };
+		654668B22160AD16004B7C67 /* EndpointProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedureFactory.swift; sourceTree = "<group>"; };
+		654668BE2160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataBuidlerProvider.swift; sourceTree = "<group>"; };
+		654668C12160AFA9004B7C67 /* DefaultConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfigurationProvider.swift; sourceTree = "<group>"; };
+		654668C42160E81B004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataBuidlerProviderTests.swift; sourceTree = "<group>"; };
+		654668C82160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfigurationProviderTests.swift; sourceTree = "<group>"; };
+		654668CB2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndpointProcedureFactory.swift; sourceTree = "<group>"; };
+		654668CE2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedureFactoryTests.swift; sourceTree = "<group>"; };
 		659D4C7120E7A3380092892E /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_EndpointProcedure_AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB0F55212FE29C0086DCEE /* DecodingProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DecodingProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB0F5D212FE29C0086DCEE /* DecodingProcedureFactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecodingProcedureFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -506,6 +527,9 @@
 				653FBA691E58B48E00216AA2 /* HTTPResponseData.swift */,
 				653FBA6A1E58B48E00216AA2 /* HTTPURLResponseProcedure.swift */,
 				653FBA6B1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift */,
+				654668B22160AD16004B7C67 /* EndpointProcedureFactory.swift */,
+				654668BE2160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift */,
+				654668C12160AFA9004B7C67 /* DefaultConfigurationProvider.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -593,6 +617,10 @@
 				653FBA811E58B48E00216AA2 /* EndpointProcedureTests.swift */,
 				653FBA821E58B48E00216AA2 /* HTTPDataFlowProcedureTests.swift */,
 				653FBA831E58B48E00216AA2 /* HTTPRequestDataTests.swift */,
+				654668C42160E81B004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift */,
+				654668C82160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift */,
+				654668CE2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift */,
+				654668CB2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1374,12 +1402,14 @@
 				6522CED52154262C00FBD023 /* MagicalRecordSingleObjectMappingProcedure.swift in Sources */,
 				6522CEC32154262C00FBD023 /* ContentsOfURLLoadingProcedure.swift in Sources */,
 				6522CEC92154262C00FBD023 /* HTTPRequestData.swift in Sources */,
+				654668C02160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift in Sources */,
 				6522CEC62154262C00FBD023 /* EndpointProcedure.swift in Sources */,
 				6522CED22154262C00FBD023 /* MagicalRecordMappingProcedureError.swift in Sources */,
 				6522CECA2154262C00FBD023 /* HTTPResponseData.swift in Sources */,
 				6522CECE2154262C00FBD023 /* DecodingProcedure.swift in Sources */,
 				6522CECC2154262C00FBD023 /* ResponseMappingProcedureFactory.swift in Sources */,
 				6522CEC82154262C00FBD023 /* HTTPDataLoadingProcedureFactory.swift in Sources */,
+				654668C32160AFA9004B7C67 /* DefaultConfigurationProvider.swift in Sources */,
 				6522CED32154262C00FBD023 /* MagicalRecordMappingProcedure.swift in Sources */,
 				6522CEC22154262C00FBD023 /* Configuration.swift in Sources */,
 				6522CED02154262C00FBD023 /* DataDecoder.swift in Sources */,
@@ -1387,6 +1417,7 @@
 				6522CEC02154262C00FBD023 /* AlamofireProcedureFactory.swift in Sources */,
 				6522CECF2154262C00FBD023 /* AnyCodingKey.swift in Sources */,
 				6522CECD2154262C00FBD023 /* DecodingProcedureFactory.swift in Sources */,
+				654668B42160AD17004B7C67 /* EndpointProcedureFactory.swift in Sources */,
 				6522CED62154262C00FBD023 /* MagicalRecordObjectsArrayMappingProcedure.swift in Sources */,
 				6522CED12154262C00FBD023 /* MagicalRecordMappingProcedureFactory.swift in Sources */,
 				6522CEC52154262C00FBD023 /* DataFlowProcedure.swift in Sources */,
@@ -1402,6 +1433,7 @@
 				6522CF002154268B00FBD023 /* MagicalRecordMappingProcedureTests.swift in Sources */,
 				6522CEF02154268B00FBD023 /* AlamofireProcedureTests.swift in Sources */,
 				6522CF042154268B00FBD023 /* MagicalRecordMappingProcedureFactoryTests.swift in Sources */,
+				654668CD2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift in Sources */,
 				6522CEF82154268B00FBD023 /* DecodingProcedureFactoryTests.swift in Sources */,
 				6522CEFE2154268B00FBD023 /* Enqueueable.swift in Sources */,
 				6522CEFD2154268B00FBD023 /* TestData.swift in Sources */,
@@ -1415,8 +1447,11 @@
 				6522CEFB2154268B00FBD023 /* PropertyListEncoderTests.swift in Sources */,
 				6522CEF52154268B00FBD023 /* EndpointProcedureTests.swift in Sources */,
 				6522CF032154268B00FBD023 /* TestObject.swift in Sources */,
+				654668CA2160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift in Sources */,
 				6522CEEE2154266C00FBD023 /* TestModel.xcdatamodeld in Sources */,
 				6522CEF12154268B00FBD023 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */,
+				654668D02160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift in Sources */,
+				654668C72160E821004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */,
 				6522CEF42154268B00FBD023 /* DataFlowProcedureTests.swift in Sources */,
 				6522CEF92154268B00FBD023 /* AnyCodingKeyTests.swift in Sources */,
 				6522CEF72154268B00FBD023 /* HTTPRequestDataTests.swift in Sources */,
@@ -1432,8 +1467,11 @@
 				653FBA941E58B48E00216AA2 /* DataDeserializationProcedureFactory.swift in Sources */,
 				653FBA931E58B48E00216AA2 /* ContentsOfURLLoadingProcedure.swift in Sources */,
 				653FBA991E58B48E00216AA2 /* HTTPRequestData.swift in Sources */,
+				654668B32160AD17004B7C67 /* EndpointProcedureFactory.swift in Sources */,
+				654668C22160AFA9004B7C67 /* DefaultConfigurationProvider.swift in Sources */,
 				653FBA961E58B48E00216AA2 /* EndpointProcedure.swift in Sources */,
 				653FBA9A1E58B48E00216AA2 /* HTTPResponseData.swift in Sources */,
+				654668BF2160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift in Sources */,
 				653FBA9C1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift in Sources */,
 				653FBA981E58B48E00216AA2 /* HTTPDataLoadingProcedureFactory.swift in Sources */,
 				653FBA921E58B48E00216AA2 /* Configuration.swift in Sources */,
@@ -1447,11 +1485,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				653FBABF1E58B4E400216AA2 /* EndpointProcedureTests.swift in Sources */,
+				654668CC2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift in Sources */,
 				653FBABD1E58B4E400216AA2 /* ContentsOfURLLoadingProcedureTests.swift in Sources */,
 				653FBABE1E58B4E400216AA2 /* DataFlowProcedureTests.swift in Sources */,
+				654668C92160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift in Sources */,
 				653FBAB81E58B4DA00216AA2 /* Enqueueable.swift in Sources */,
+				654668C52160E81B004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */,
 				653FBAC01E58B4E400216AA2 /* HTTPDataFlowProcedureTests.swift in Sources */,
 				653FBAC11E58B4E400216AA2 /* HTTPRequestDataTests.swift in Sources */,
+				654668CF2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift in Sources */,
 				653FBABB1E58B4E400216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
