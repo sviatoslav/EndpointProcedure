@@ -13,14 +13,6 @@ import EndpointProcedure
 #endif
 import ProcedureKit
 
-public struct DecodableArray<T: Decodable>: Decodable {
-    public let values: [T]
-
-    public init(from decoder: Decoder) throws {
-        self.values = try [T].init(from: decoder)
-    }
-}
-
 public typealias NestedData = (codingPath: [CodingKey], data: Data)
 
 public struct DecodingProcedureFactory: ResponseMappingProcedureFactory {

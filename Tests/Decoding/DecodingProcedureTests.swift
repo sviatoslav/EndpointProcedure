@@ -74,5 +74,46 @@ class DecodingProcedureTests: XCTestCase {
         ProcedureQueue.main.add(operation: procedure)
         self.wait(for: [expectation], timeout: 1)
     }
+
+    func testJSONObjectDecoding() {
+        let expectation = self.expectation(description: "Execution")
+        let data = TestData.data(for: TestData.notNestedObject, using: TestData.jsonSerialization)
+        let procedure = DecodingProcedure<TestDecodable>(decoder: JSONDecoder())
+        procedure.input = .ready(data)
+        procedure.addDidFinishBlockObserver { (procedure, _) in
+            expectation.fulfill()
+        }
+        ProcedureQueue.main.add(operation: procedure)
+        self.wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(procedure.output.success?.b, "a")
+    }
+
+    func testJSONArrayDecoding() {
+        let expectation = self.expectation(description: "Execution")
+        let data = TestData.data(for: TestData.notNestedArray, using: TestData.jsonSerialization)
+        let procedure = DecodingProcedure<[TestDecodable]>(decoder: JSONDecoder())
+        procedure.input = .ready(data)
+        procedure.addDidFinishBlockObserver { (procedure, _) in
+            expectation.fulfill()
+        }
+        ProcedureQueue.main.add(operation: procedure)
+        self.wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(procedure.output.success?.count, 2)
+        XCTAssertEqual(procedure.output.success?.first?.b, "a")
+        XCTAssertEqual(procedure.output.success?.last?.b, "a")
+    }
+
+    func testInvalidFormatJSONObjectDecoding() {
+        let expectation = self.expectation(description: "Execution")
+        let data = TestData.data(for: TestData.validNestedObject, using: TestData.jsonSerialization)
+        let procedure = DecodingProcedure<TestDecodable>(decoder: JSONDecoder())
+        procedure.input = .ready(data)
+        procedure.addDidFinishBlockObserver { (procedure, _) in
+            expectation.fulfill()
+        }
+        ProcedureQueue.main.add(operation: procedure)
+        self.wait(for: [expectation], timeout: 1)
+        XCTAssertNotNil(procedure.output.error)
+    }
 }
 

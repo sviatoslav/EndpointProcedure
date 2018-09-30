@@ -13,20 +13,20 @@ public struct AnyCodingKey: CodingKey, ExpressibleByStringLiteral, ExpressibleBy
     public var intValue: Int?
     
     public init?(stringValue: String) {
-        self.stringValue = stringValue
-        self.intValue = nil
+        self.init(stringLiteral: stringValue)
     }
     
     public init?(intValue: Int) {
-        self.stringValue = String(intValue)
-        self.intValue = intValue
+        self.init(integerLiteral: intValue)
     }
 
     public init(stringLiteral value: String) {
-        self.init(stringValue: value)!
+        self.stringValue = value
+        self.intValue = nil
     }
 
     public init(integerLiteral value: Int) {
-        self.init(intValue: value)!
+        self.stringValue = String(value)
+        self.intValue = value
     }
 }

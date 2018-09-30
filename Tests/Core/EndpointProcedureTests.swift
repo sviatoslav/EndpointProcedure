@@ -32,6 +32,12 @@ class EndpointProcedureTests: XCTestCase {
         Configuration.default = config
     }
 
+    func testInitializationWithError() {
+        let error = NSError(domain: "MockError", code: -123, userInfo: nil)
+        let result = self.procedureResult(for: EndpointProcedure<Void>(error: error))
+        XCTAssertEqual(result.error as NSError?, error)
+    }
+
     func testDataLoadingProcedureInitializationWithoutConfiguration() {
         Configuration.default = nil
         let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure: DataLoadingProcedureMock())

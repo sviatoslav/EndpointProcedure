@@ -38,4 +38,16 @@ class AnyCodingKeyTests: XCTestCase {
         XCTAssertEqual(key?.stringValue, "1")
         XCTAssertEqual(key?.intValue, 1)
     }
+
+    func testStringLiteral() {
+        let key: AnyCodingKey = "1"
+        XCTAssertEqual(key.stringValue, "1")
+        XCTAssertNil(key.intValue)
+    }
+
+    func testIntLiteral() {
+        let key: AnyCodingKey = 1
+        XCTAssertEqual(key.stringValue, "1")
+        XCTAssertEqual(key.intValue, 1)
+    }
 }
