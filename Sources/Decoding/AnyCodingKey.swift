@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct AnyCodingKey: CodingKey {
+public struct AnyCodingKey: CodingKey, ExpressibleByStringLiteral, ExpressibleByIntegerLiteral {
     public var stringValue: String
     public var intValue: Int?
     
@@ -20,5 +20,13 @@ public struct AnyCodingKey: CodingKey {
     public init?(intValue: Int) {
         self.stringValue = String(intValue)
         self.intValue = intValue
+    }
+
+    public init(stringLiteral value: String) {
+        self.init(stringValue: value)!
+    }
+
+    public init(integerLiteral value: Int) {
+        self.init(intValue: value)!
     }
 }

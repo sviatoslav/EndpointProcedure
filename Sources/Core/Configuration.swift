@@ -31,4 +31,12 @@ public struct Configuration: ConfigurationProtocol {
     public var dataLoadingProcedureFactory: HTTPDataLoadingProcedureFactory
     public var dataDeserializationProcedureFactory: DataDeserializationProcedureFactory
     public var responseMappingProcedureFactory: ResponseMappingProcedureFactory
+
+    public init(dataLoadingProcedureFactory: HTTPDataLoadingProcedureFactory,
+                dataDeserializationProcedureFactory: DataDeserializationProcedureFactory,
+                responseMappingProcedureFactory: ResponseMappingProcedureFactory) {
+        self.dataLoadingProcedureFactory = dataLoadingProcedureFactory
+        self.dataDeserializationProcedureFactory = dataDeserializationProcedureFactory
+        self.responseMappingProcedureFactory = responseMappingProcedureFactory
+    }
 }

@@ -96,6 +96,11 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
 
     private let initialization: EndpointProcedureInitialization<Result>
 
+    public init(error: Error) {
+        self.initialization = .error(error)
+        super.init(operations: [])
+    }
+
     /// Creates `EndpointProcedure` with `DataFlowProcedure` inside regardless any `Configuration` value.
     ///
     /// - Parameter dataFlowProcedure: procedure that should be run inside `EnpointProcedure`
@@ -124,7 +129,7 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
         where V: InputProcedure, V.Input == HTTPResponseData,
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any {
             do {
-                let dataFlowProcedure = try EndpointProcedure<Result>
+                let dataFlowProcedure = try type(of: self)
                     .dataFlowProcedure(with: configuration, requestData: requestData,
                                        validationProcedure: validationProcedure,
                                        interceptionProcedure: interceptionProcedure)
@@ -154,7 +159,7 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
                      configuration: ConfigurationProtocol! = nil) where L: OutputProcedure, L.Output == Data,
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any {
             do {
-                let dataFlowProcedure = try EndpointProcedure<Result>.dataFlowProcedure(with: configuration,
+                let dataFlowProcedure = try type(of: self).dataFlowProcedure(with: configuration,
                                                                         dataLoadingProcedure: dataLoadingProcedure,
                                                                         interceptionProcedure: interceptionProcedure)
                 self.initialization = .dataFlowProcedure(dataFlowProcedure)
@@ -170,7 +175,7 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
                                           interceptionProcedure: I) throws -> DataFlowProcedure<Result>
         where V: InputProcedure, V.Input == HTTPResponseData,
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any {
-            guard let configuration = configuration ?? Configuration.default else {
+            guard let configuration = configuration ?? self.defaultConfiguration else {
                 throw EndpointProcedureError.missingConfiguration
             }
             let dataLoadingProcedure = try configuration.dataLoadingProcedureFactory
@@ -190,7 +195,7 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
                                   dataLoadingProcedure: L, interceptionProcedure: I) throws -> DataFlowProcedure<Result>
         where L: OutputProcedure, L.Output == Data,
         I: InputProcedure & OutputProcedure, I.Input == Any, I.Output == Any {
-            guard let configuration = configuration ?? Configuration.default else {
+            guard let configuration = configuration ?? self.defaultConfiguration else {
                 throw EndpointProcedureError.missingConfiguration
             }
             let deserializationProcedure = configuration.dataDeserializationProcedureFactory
@@ -201,6 +206,10 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
                                      deserializationProcedure: deserializationProcedure,
                                      interceptionProcedure: interceptionProcedure,
                                      resultMappingProcedure: mappingProcedure)
+    }
+
+    open class var defaultConfiguration: ConfigurationProtocol? {
+        return Configuration.default
     }
 }
 
