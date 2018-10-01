@@ -13,5 +13,15 @@
  - Deserialization: converts loaded `Data` to `Any`
  - Interception: converst deserialized object to format expected by mapping
  - Mapping: Converts `Any` to `Result`
- */
 
+ The easiest way to create instance of `EndpointProcedure` is to creates type that conforms to `EndpointProcedureFactory` protocol.
+ This example will show how to use `EndpointProcedure` for loading data form [Star Wars API](https://swapi.co).
+ */
+import Foundation
+
+struct Film: Decodable {
+    let title: String
+    let director: String
+    let producer: String
+    let characters: [URL]
+}
