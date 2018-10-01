@@ -7,8 +7,12 @@
 //
 
 import XCTest
+#if canImport(MagicalRecord)
 import MagicalRecord
+#endif
+#if canImport(ProcedureKit)
 import ProcedureKit
+#endif
 #if ALL
 @testable import All
 #else

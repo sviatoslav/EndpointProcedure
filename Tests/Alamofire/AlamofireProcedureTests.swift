@@ -7,8 +7,12 @@
 //
 
 import XCTest
+#if canImport(ProcedureKit)
 import ProcedureKit
+#endif
+#if canImport(Alamofire)
 import Alamofire
+#endif
 #if ALL
 @testable import All
 #else

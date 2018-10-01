@@ -6,7 +6,9 @@
 //  Copyright © 2016 Sviatoslav Yakymiv. All rights reserved.
 //
 
+#if canImport(ProcedureKit)
 import ProcedureKit
+#endif
 
 extension Procedure {
     func enqueue() {

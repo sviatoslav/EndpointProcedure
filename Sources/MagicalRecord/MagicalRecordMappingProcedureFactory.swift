@@ -7,9 +7,10 @@
 //
 
 import CoreData
+#if canImport(ProcedureKit)
 import ProcedureKit
-#if ALL
-#else
+#endif
+#if canImport(EndpointProcedure)
 import EndpointProcedure
 #endif
 

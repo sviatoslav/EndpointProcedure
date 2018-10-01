@@ -135,9 +135,7 @@
 		65FC9CDF1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CDE1E58C27C000FCF11 /* MagicalRecordSingleObjectMappingProcedure.swift */; };
 		65FC9CE11E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC9CE01E58C297000FCF11 /* MagicalRecordObjectsArrayMappingProcedure.swift */; };
 		7380D3BDAE22BCBE157E9128 /* Pods_EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4D5CCAC44F6FD255475EAE /* Pods_EndpointProcedure.framework */; };
-		83B18DBC66FA0A2C10E5455C /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2404313FC3E0BB3E4B35DECA /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework */; };
 		8BC735E83F14C25729D57E54 /* Pods_EndpointProcedureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847B479F881E0E5983637038 /* Pods_EndpointProcedureTests.framework */; };
-		A2F8240BDB897CE6690C34CC /* Pods_EndpointProcedure_DecodingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6DD54063856B4A1659CE42 /* Pods_EndpointProcedure_DecodingProcedureFactory.framework */; };
 		E0DCD562943A991055A1C319 /* Pods_DecodingProcedureFactoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0060F9AE8FF95BA22F904642 /* Pods_DecodingProcedureFactoryTests.framework */; };
 		F26FE6906C29BD40D78B8F63 /* Pods_AllTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9992CD42E3EF5AE63B0368E1 /* Pods_AllTests.framework */; };
 /* End PBXBuildFile section */
@@ -179,6 +177,13 @@
 			remoteInfo = MagicalRecordMappingProcedureFactory;
 		};
 		653FBA591E58B44A00216AA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653FB9661E5794F800216AA2;
+			remoteInfo = EndpointProcedure;
+		};
+		654668F02162770A004B7C67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 653FB95E1E5794F800216AA2 /* Project object */;
 			proxyType = 1;
@@ -371,7 +376,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83B18DBC66FA0A2C10E5455C /* Pods_EndpointProcedure_MagicalRecordMappingProcedureFactory.framework in Frameworks */,
 				5060116BD052A84254DF3452 /* Pods_MagicalRecordMappingProcedureFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,7 +393,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2F8240BDB897CE6690C34CC /* Pods_EndpointProcedure_DecodingProcedureFactory.framework in Frameworks */,
 				58424E9F707EA77FF7D44288 /* Pods_DecodingProcedureFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,6 +739,7 @@
 				6522CEA4215425B100FBD023 /* Frameworks */,
 				6522CEA5215425B100FBD023 /* Headers */,
 				6522CEA6215425B100FBD023 /* Resources */,
+				65EA4BC521628760002247D7 /* Copy source code to Example.playground */,
 			);
 			buildRules = (
 			);
@@ -898,6 +902,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				654668F12162770A004B7C67 /* PBXTargetDependency */,
 			);
 			name = DecodingProcedureFactory;
 			productName = EncoderProcedureFactory;
@@ -1222,6 +1227,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		65EA4BC521628760002247D7 /* Copy source code to Example.playground */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy source code to Example.playground";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -rf Example.playground/Sources\nmkdir Example.playground/Sources\ncp -a Sources/Core/. Example.playground/Sources\ncp -a Sources/Alamofire/. Example.playground/Sources\ncp -a Sources/Decoding/. Example.playground/Sources\ncp -a Pods/Alamofire/Source/. Example.playground/Sources\ncp -a Pods/ProcedureKit/Sources/ProcedureKit/. Example.playground/Sources\nrm -rf Example.playground/Sources/DispatchQueue+Alamofire.swift\ncp -a Example.playground/Supporting\\ Files/ Example.playground/Sources\n";
 		};
 		6670E076FFE2F22C43E8F403 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1602,6 +1625,11 @@
 			isa = PBXTargetDependency;
 			target = 653FB9661E5794F800216AA2 /* EndpointProcedure */;
 			targetProxy = 653FBA591E58B44A00216AA2 /* PBXContainerItemProxy */;
+		};
+		654668F12162770A004B7C67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653FB9661E5794F800216AA2 /* EndpointProcedure */;
+			targetProxy = 654668F02162770A004B7C67 /* PBXContainerItemProxy */;
 		};
 		65BB0F60212FE29C0086DCEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

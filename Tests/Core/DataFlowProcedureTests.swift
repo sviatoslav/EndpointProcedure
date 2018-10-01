@@ -8,7 +8,9 @@
 
 import XCTest
 import Foundation
+#if canImport(ProcedureKit)
 import ProcedureKit
+#endif
 #if ALL
 @testable import All
 #else

@@ -6,8 +6,12 @@
 //  Copyright © 2017 Sviatoslav Yakymiv. All rights reserved.
 //
 
+#if canImport(ProcedureKit)
 import ProcedureKit
+#endif
+#if canImport(MagicalRecord)
 import MagicalRecord
+#endif
 
 enum MagicalRecordMappingProcedureInternalError: Error {
     case unoverridenPerformMappingMethod

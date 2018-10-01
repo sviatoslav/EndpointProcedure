@@ -8,7 +8,9 @@
 
 import XCTest
 import SwiftyJSON
+#if canImport(Alamofire)
 import Alamofire
+#endif
 #if ALL
 @testable import All
 #else
