@@ -11,15 +11,19 @@
 [
 [![Platform](https://img.shields.io/cocoapods/p/EndpointProcedure.svg?style=flat)](http://cocoapods.org/pods/EndpointProcedure)-->
 
-Typesafe flexible bridge between API and application model. Based on [ProcedureKit](https://github.com/ProcedureKit/ProcedureKit) framework.
+`EndpointProcedure` is flexible typesafe bridge between network and application model.
+ It's based on [`ProcedureKit`](https://github.com/procedurekit/procedurekit) framework.
 
-##Status
-Under development. **Not ready** for production use.
+ `EndpointProcedure` itself does not perform any requests and does not parse the response, it chains procedures and transfers output of one procedure to the next one and uses output of last procedure as own output.
 
-##TODO
-* Create pod after ProcedureKit release.(Currently EndpointProcedure uses sources from ProcedureKit's development branch)
-* Create examples
-* Setup CI
+ Data flow looks as follows:
+
+ Loading -> Validation -> Deserialization -> Interception -> Mapping
+ - Loading: loads `HTTPResponseData` from any source.
+ - Validation: validates `HTTPResponseData`
+ - Deserialization: converts loaded `Data` to `Any`
+ - Interception: converts deserialized object to format expected by mapping
+ - Mapping: Converts `Any` to `Result`
 
 <!--## Requirements-->
 

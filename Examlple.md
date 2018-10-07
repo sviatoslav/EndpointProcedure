@@ -1,9 +1,9 @@
-/*:
- The easiest way to create instance of `EndpointProcedure` is to creates type that conforms to `EndpointProcedureFactory` protocol.
+The easiest way to create instance of `EndpointProcedure` is to creates type that conforms to `EndpointProcedureFactory` protocol.
  This example will show how to use `EndpointProcedure` for loading list of Star Wars films from [Star Wars API](https://swapi.co).
 
  Let's start from defining `struct Film`.
- */
+
+```swift
 import PlaygroundSupport
 import Foundation
 struct Film {
@@ -12,32 +12,40 @@ struct Film {
     let producer: String
     let characters: [URL]
 }
-/*:
- For `EndpointProcedure` creation we should create new type that conforms to `EndpointProcedureFactory` protocol and implement `createOrThrow(with:)` method.
+```
+
+For `EndpointProcedure` creation we should create new type that conforms to `EndpointProcedureFactory` protocol and implement `createOrThrow(with:)` method.
  
  `cereateOrThrow(with:)` method requires one input parameter of type `ConfigurationProtocol`. `EndpointProcedure.framework` contains struct `Configuration` which conforms to `ConfigurationProtocol`. Initializer of `Configuration` type has 3 input parameters: `HTTPDataLoadingProcedureFactory`, `DataDeserializationProcedureFactory` and `ResponseMappingProcedureFactory`.
 
  We'll use `AlamofireProcedureFactory` for data loading.
- */
+
+```swift
 let loadingFactory = AlamofireProcedureFactory()
-/*:
- For response mapping we'll use `DecodingProcedureFactory` with `JSONDecoder`.
+```
+
+For response mapping we'll use `DecodingProcedureFactory` with `JSONDecoder`.
  `DecodingProcedureFactory` requires output type to conform `Decodable` protocol.
- */
+
+```swift
 extension Film: Decodable {}
 let decodingFactory = DecodingProcedureFactory(decoder: JSONDecoder())
-/*:
- The aim of data deserialization procedure is converting data loaded by loading procedure into format expected by response mapping procedure.
+```
+
+The aim of data deserialization procedure is converting data loaded by loading procedure into format expected by response mapping procedure.
  `DecodingProcedure` works with plain data, so deserialization should simply return output of data loading procedure.
- */
+
+```swift
 let deseriazationFactory = AnyDataDeserializationProcedureFactory(syncDeserialization: {$0})
-/*:
- If structure of input expected by mapping procedure is not the same as structure of deserialization procedure's output, we should implement interception procedure.
+```
+
+If structure of input expected by mapping procedure is not the same as structure of deserialization procedure's output, we should implement interception procedure.
  In our case, array of films is not root of the response json. It's under "results" key.
  For such cases `DecodingProcedure` accepts input of type `NestedData`.
  
  `NestedData` contains two values `codingPath: [CodingKey]` and `data: Data`
- */
+
+```swift
 let interceptionProcedure = TransformProcedure<Any, Any> {
     guard let data = $0 as? Data else { throw ProcedureKitError.requirementNotSatisfied() }
     let codingPath: [AnyCodingKey] = ["results"]
@@ -68,8 +76,9 @@ procedure.addDidFinishBlockObserver { procedure, _ in
 }
 ProcedureQueue.main.add(operation: procedure)
 PlaygroundPage.current.needsIndefiniteExecution = true
-/*:
- The output is:
+```
+
+The output is:
 
  ~~~
  Star Wars Films:
@@ -81,4 +90,3 @@ PlaygroundPage.current.needsIndefiniteExecution = true
  The Empire Strikes Back
  The Force Awakens
  ~~~
- */
