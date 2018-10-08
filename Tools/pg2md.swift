@@ -70,12 +70,16 @@ struct Main {
 
     init() throws {
         var arguments = CommandLine.arguments
-        if arguments.count == 1 && arguments.first == "" {
+        let isDebug = arguments.count == 1 && arguments.first == ""
+        if isDebug {
             arguments = ["/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/Example.swift",
                          "-i", "Example.playground"]
         }
         guard arguments.count > 2 else { throw Error.invalidArgumentsCount }
-        let curentFolderURL = URL(fileURLWithPath: arguments.removeFirst()).deletingLastPathComponent()
+        arguments.removeFirst()
+        let path = isDebug ? "/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure"
+            : FileManager.default.currentDirectoryPath
+        let curentFolderURL = URL(fileURLWithPath: path).deletingLastPathComponent()
         var input: URL? = nil
         var output: URL? = nil
 
