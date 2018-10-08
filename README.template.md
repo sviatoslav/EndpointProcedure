@@ -25,9 +25,9 @@
  - Interception: converts deserialized object to format expected by mapping
  - Mapping: Converts `Any` to `Result`
 
- <details><summary>Basic usage</summary>
- <span class='playground'>[Example.playground](./Example.playground)</span>
- </details>
+## Examples
+
+<span class='playground'>[Basic usage](./Example.playground)</span>
 
 <!--## Requirements-->
 
