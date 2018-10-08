@@ -26,7 +26,7 @@
  - Mapping: Converts `Any` to `Result`
 
  <details><summary>Basic usage</summary>
- <span class='playground'>[`Example.playground`](Example.playground)</span>
+ <span class='playground'>[Example.playground](./Example.playground)</span>
  </details>
 
 <!--## Requirements-->
