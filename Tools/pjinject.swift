@@ -95,7 +95,7 @@ while let range = content.range(of: "\(openningSpan)\(title)\(link)\(closingSpan
     let markdownURL = URL(fileURLWithPath: markdownPath)
     let markdownString = try String(contentsOf: markdownURL)
     try FileManager.default.removeItem(at: markdownURL)
-    let dropDownString = "<details><summary>\(playgroundTitle)</summary>\n\(markdownString)\n</details>"
+    let dropDownString = "<details><summary>\(playgroundTitle)</summary>\n\n\(markdownString)\n</details>"
     content = content.replacingOccurrences(of: matchingString, with: dropDownString, options: [], range: nil)
 }
 

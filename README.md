@@ -28,6 +28,7 @@
 ## Examples
 
 <details><summary>Basic usage</summary>
+
 The easiest way to create instance of `EndpointProcedure` is to creates type that conforms to `EndpointProcedureFactory` protocol.
  This example will show how to use `EndpointProcedure` for loading list of Star Wars films from [Star Wars API](https://swapi.co).
 
