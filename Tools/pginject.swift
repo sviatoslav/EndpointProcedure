@@ -1,7 +1,6 @@
 import Foundation
 
 enum Error: Swift.Error {
-    case invalidPath
     case invalidOption
 }
 
@@ -19,33 +18,14 @@ let currentDirectoryURL = URL(fileURLWithPath: currentDirectoryPath)
 var input: URL? = nil
 var output: URL? = nil
 
-func fileURL(forPath path: String, relativeTo baseURL: URL) throws -> URL {
-    guard let url = URL(string: path, relativeTo: baseURL) else { throw Error.invalidPath }
-    return url
-}
-
 while !arguments.isEmpty {
     switch arguments.removeFirst() {
     case "-i" where input == nil: fallthrough
     case "--input" where input == nil:
-        do {
-            input = try fileURL(forPath: arguments.removeFirst(), relativeTo: currentDirectoryURL)
-        } catch Error.invalidPath {
-            print("Invalid input path")
-            exit(-1)
-        } catch {
-            exit(-1)
-        }
+        input = URL(fileURLWithPath: arguments.removeFirst(), relativeTo: currentDirectoryURL)
     case "-o" where output == nil: fallthrough
     case "--output" where output == nil:
-        do {
-            output = try fileURL(forPath: arguments.removeFirst(), relativeTo: currentDirectoryURL)
-        } catch Error.invalidPath {
-            print("Invalid output path")
-            exit(-1)
-        } catch {
-            exit(-1)
-        }
+        output = URL(fileURLWithPath: arguments.removeFirst(), relativeTo: currentDirectoryURL)
     case let option: print("Invalid option \(option)"); exit(-1)
     }
 }
@@ -54,7 +34,7 @@ guard let inputURL = input else {
     print("Input not defined")
     exit(-1)
 }
-let outputURL = try output ?? fileURL(forPath: "output.md", relativeTo: currentDirectoryURL)
+let outputURL = output ?? URL(fileURLWithPath: "output.md", relativeTo: currentDirectoryURL)
 var content: String = ""
 do {
     content = try String(contentsOf: inputURL)
@@ -89,7 +69,7 @@ while let range = content.range(of: "\(openningSpan)\(title)\(link)\(closingSpan
         .replacingOccurrences(of: "\(closingSpan)", with: "", options: .regularExpression)
         .dropFirst()
         .dropLast()
-    let playgroundPath = try fileURL(forPath: String(playgroundLink), relativeTo: inputURL).path
+    let playgroundPath = URL(fileURLWithPath: String(playgroundLink), relativeTo: inputURL).path
     let markdownPath = playgroundPath + ".md"
     shell(pg2mdPath, "-i", playgroundPath, "-o", markdownPath)
     let markdownURL = URL(fileURLWithPath: markdownPath)

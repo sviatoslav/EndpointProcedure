@@ -11,5 +11,5 @@ func shell(_ args: String...) -> Int32 {
 }
 
 let pjinjectPath = URL(fileURLWithPath: CommandLine.arguments[0]).deletingLastPathComponent()
-    .appendingPathComponent("pjinject.swift")
+    .appendingPathComponent("pginject.swift")
 shell(pjinjectPath.path, "-i", "README.template.md", "-o", "README.md")

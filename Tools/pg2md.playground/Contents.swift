@@ -22,50 +22,13 @@ struct MarkdownStringGenerator: StringGenerating {
     }
 }
 
-protocol ComandLineOption {
-
-}
-
 struct Main {
 
     enum Error: Swift.Error {
         case invalidArgumentsCount
-        case invalidPath(String)
-        case invalidPathExtention
         case invalidArgument(String)
         case inputNotSpecified
 
-    }
-
-    static func url(for path: String, relativeTo baseURL: URL) throws -> URL {
-        guard let url = URL(string: path, relativeTo: baseURL), url.isFileURL else {
-            throw Error.invalidPath(path)
-        }
-        return url
-    }
-
-    static func url(for path: String, relativeTo baseURL: URL, validFileExtensions: [String]) throws -> URL {
-        let url = try self.url(for: path, relativeTo: baseURL)
-        guard validFileExtensions.contains(url.pathExtension) == true else {
-            throw Error.invalidPathExtention
-        }
-        return url
-    }
-
-    static func outputURL(forPath path: String, relativeTo baseURL: URL) throws -> URL {
-        return try self.url(for: path, relativeTo: baseURL, validFileExtensions: ["md"])
-    }
-
-    static func defaultOutputURL(forBaseURL url: URL) throws -> URL {
-        return try self.outputURL(forPath: "output.md", relativeTo: url)
-    }
-
-    static func inputURL(forPath path: String, relativeTo baseURL: URL) throws -> URL {
-        var path = path
-        if path.hasSuffix(".playground") {
-            path = path + "/Contents.swift"
-        }
-        return try self.url(for: path, relativeTo: baseURL, validFileExtensions: ["swift"])
     }
 
     init() throws {
@@ -73,13 +36,13 @@ struct Main {
         let isDebug = arguments.count == 1 && arguments.first == ""
         if isDebug {
             arguments = ["/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/Example.swift",
-                         "-i", "Example.playground"]
+                         "-i", "Examples/Basic usage.playground"]
         }
         guard arguments.count > 2 else { throw Error.invalidArgumentsCount }
         arguments.removeFirst()
         let path = isDebug ? "/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure"
             : FileManager.default.currentDirectoryPath
-        let curentFolderURL = URL(fileURLWithPath: path).deletingLastPathComponent()
+        let curentFolderURL = URL(fileURLWithPath: path)
         var input: URL? = nil
         var output: URL? = nil
 
@@ -87,10 +50,14 @@ struct Main {
             switch arguments.removeFirst() {
             case "--input" where input == nil: fallthrough
             case "-i" where input == nil:
-                input = try Main.inputURL(forPath: arguments.removeFirst(), relativeTo: curentFolderURL)
+                var file = arguments.removeFirst()
+                if file.hasSuffix(".playground") {
+                    file += "/Contents.swift"
+                }
+                input = URL(fileURLWithPath: file, relativeTo: curentFolderURL)
             case "--output" where output == nil: fallthrough
             case "-o" where output == nil:
-                output = try Main.outputURL(forPath: arguments.removeFirst(), relativeTo: curentFolderURL)
+                output = URL(fileURLWithPath: arguments.removeFirst(), relativeTo: curentFolderURL)
             case let argument:
                 throw Error.invalidArgument(argument)
             }
@@ -99,7 +66,7 @@ struct Main {
         guard let inputURL = input else {
             throw Error.inputNotSpecified
         }
-        let outputURL = try output ?? Main.defaultOutputURL(forBaseURL: curentFolderURL)
+        let outputURL = output ?? URL(fileURLWithPath: "output.md", relativeTo: curentFolderURL)
 
         let data = try Data(contentsOf: inputURL)
         var content = String(data: data, encoding: .utf8)!.trimmingCharacters(in: .whitespacesAndNewlines)

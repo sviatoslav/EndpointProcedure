@@ -27,7 +27,7 @@
 
 ## Examples
 
-<span class='playground'>[Basic usage](./Example.playground)</span>
+<span class='playground'>[Basic usage](./Examples/Basic usage.playground)</span>
 
 <!--## Requirements-->
 
