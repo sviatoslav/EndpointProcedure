@@ -1244,7 +1244,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf Example.playground/Sources\nmkdir Example.playground/Sources\ncp -a Sources/Core/. Example.playground/Sources\ncp -a Sources/Alamofire/. Example.playground/Sources\ncp -a Sources/Decoding/. Example.playground/Sources\ncp -a Pods/Alamofire/Source/. Example.playground/Sources\ncp -a Pods/ProcedureKit/Sources/ProcedureKit/. Example.playground/Sources\nrm -rf Example.playground/Sources/DispatchQueue+Alamofire.swift\ncp -a Example.playground/Supporting\\ Files/ Example.playground/Sources\n";
+			shellScript = "Tools/copy-sources\n";
 		};
 		6670E076FFE2F22C43E8F403 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
