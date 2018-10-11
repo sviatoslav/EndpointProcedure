@@ -29,6 +29,8 @@
 
 <span class='playground'>[Basic usage](./Examples/Basic usage.playground)</span>
 
+<span class='playground'>[Using `DefaultConfigurationProvider` and `HTTPRequestDataBuidlerProvider`](./Examples/Using `DefaultConfigurationProvider` and `HTTPRequestDataBuidlerProvider`.playground)</span>
+
 <!--## Requirements-->
 
 <!--## Installation

@@ -13,7 +13,8 @@ let examplesPath = FileManager.default.currentDirectoryPath + "/Examples"
 let playgrounds = (try? FileManager.default.contentsOfDirectory(atPath: examplesPath)
     .filter({ $0.hasSuffix(".playground") })) ?? []
 playgrounds.forEach {
-    let playgroundSources = "Examples/\($0.replacingOccurrences(of: " ", with: "\\ "))/Sources"
+    let escapedPlaygroundName = [" ", "`"].reduce($0, { return $0.replacingOccurrences(of: $1, with: "\\\($1)") })
+    let playgroundSources = "Examples/\(escapedPlaygroundName)/Sources"
     let sourcesSubdirs = ["Core", "Alamofire", "Decoding"]
     let podsSubdirs = ["Alamofire/Source", "ProcedureKit/Sources/ProcedureKit"]
     shell("rm -rf \(playgroundSources)")
