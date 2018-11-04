@@ -2,7 +2,7 @@
  Usually our connections to backend endpoints have common base URL, requests creation behaviour, response format and response parsing.
 
  This examle will show how to avoid a boilerplate during implementation of multiple endpoint procedures.
- We'll create procerures for: *<#name>*
+ We'll create procerures for character and vehicle loading.
 
  Let's start from inheriting `EndpointProcedureFactory` protocol.
  */
@@ -12,6 +12,7 @@ protocol SWProcedureFactory: EndpointProcedureFactory, DefaultConfigurationProvi
  All our procedures will use `Alamofire` for data loading and `JSONDecoder` for response mapping.
  */
 import PlaygroundSupport
+PlaygroundPage.current.needsIndefiniteExecution = true
 import Foundation
 private enum SWProcedureFactoryStorage {
     static let configuration = Configuration(dataLoadingProcedureFactory: AlamofireProcedureFactory(),
@@ -62,13 +63,43 @@ skywalkerProcedure.addDidFinishBlockObserver { procedure, _ in
         print("Character name: \(character.name)")
     case .ready(.failure(let error)): print("Error: \(error)")
     }
-    PlaygroundPage.current.finishExecution()
 }
 ProcedureQueue.main.add(operation: skywalkerProcedure)
-PlaygroundPage.current.needsIndefiniteExecution = true
 /*:
  Output of code above:
  ~~~
  Character name: Luke Skywalker
+ ~~~
+
+ Let's load Sand Crawler vehicle record
+ */
+struct Vehicle {
+    let name: String
+    let model: String
+}
+extension Vehicle: Decodable {}
+
+struct VehicleProcedureFactory: SWProcedureFactory {
+    let id: Int
+    func createOrThrow(with configuration: ConfigurationProtocol) throws -> EndpointProcedure<Vehicle> {
+        return try EndpointProcedure(requestData: self.builder(for: "vehicles/\(self.id)").build(),
+                                     configuration: configuration)
+    }
+}
+
+let vehicleProcedure = VehicleProcedureFactory(id: 4).create()
+vehicleProcedure.addDidFinishBlockObserver { procedure, _ in
+    switch procedure.output {
+    case .pending: print("No result after finishing")
+    case .ready(.success(let vehicle)):
+        print("Vehicle name: \(vehicle.name), model: \(vehicle.model)")
+    case .ready(.failure(let error)): print("Error: \(error)")
+    }
+}
+ProcedureQueue.main.add(operation: vehicleProcedure)
+/*:
+ Output:
+ ~~~
+ Vehicle name: Sand Crawler, model: Digger Crawler
  ~~~
  */
