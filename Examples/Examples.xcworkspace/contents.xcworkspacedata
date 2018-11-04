@@ -5,6 +5,6 @@
       location = "group:Basic usage.playground">
    </FileRef>
    <FileRef
-      location = "group:/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/Examples/Using `DefaultConfigurationProvider` and `HTTPRequestDataBuidlerProvider`.playground">
+      location = "group:/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/Examples/Using DefaultConfigurationProvider and HTTPRequestDataBuidlerProvider.playground">
    </FileRef>
 </Workspace>

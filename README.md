@@ -123,7 +123,7 @@ The output is:
  ~~~
 </details>
 
-<details><summary>Using `DefaultConfigurationProvider` and `HTTPRequestDataBuidlerProvider`</summary>
+<details><summary>Using DefaultConfigurationProvider and HTTPRequestDataBuidlerProvider</summary>
 
 Usually our connections to backend endpoints have common base URL, requests creation behaviour, response format and response parsing.
 
