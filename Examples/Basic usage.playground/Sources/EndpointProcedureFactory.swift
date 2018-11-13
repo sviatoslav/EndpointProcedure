@@ -15,10 +15,12 @@ public protocol EndpointProcedureFactory {
 
 public extension EndpointProcedureFactory {
     func create(with configuration: ConfigurationProtocol) -> EndpointProcedure<Result> {
+        let procedure: EndpointProcedure<Result>
         do {
-            return try self.createOrThrow(with: configuration)
+            procedure = try self.createOrThrow(with: configuration)
         } catch let error {
-            return EndpointProcedure(error: error)
+            procedure = EndpointProcedure(error: error)
         }
+        return procedure
     }
 }

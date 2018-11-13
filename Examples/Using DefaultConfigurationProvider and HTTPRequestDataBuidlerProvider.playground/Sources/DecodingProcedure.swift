@@ -37,7 +37,8 @@ class DecodingProcedure<T>: Procedure, InputProcedure, OutputProcedure {
                 throw DecodingProcedureError.outputDoesNotConformToDecodable
             }
             let nestedData = try self.nestedDataInput()
-            guard let result = try decodableType.value(from: nestedData, using: self.decoder) as? T else {
+            let decodableValue = try decodableType.value(from: nestedData, using: self.decoder)
+            guard let result = decodableValue as? T else {
                 throw DecodingProcedureError.outputDoesNotConformToDecodable
             }
             self.finish(withResult: .success(result))

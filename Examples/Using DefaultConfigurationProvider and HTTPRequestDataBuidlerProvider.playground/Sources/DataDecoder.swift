@@ -36,16 +36,18 @@ extension DataDecoder {
         guard !codingPath.isEmpty else {
             return try self.decode(type, from: data)
         }
+        let result: T
         do {
             let object = try deserialization(data)
             let innerObject = try self.object(at: codingPath, of: object)
             let innerData = try serialization(innerObject)
-            return try self.decode(type, from: innerData)
+            result = try self.decode(type, from: innerData)
         } catch let error where !(error is DecodingError) {
             let description = "The given data was not valid \(formatName)."
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: description,
                                                                     underlyingError: error))
         }
+        return result
     }
 }
 

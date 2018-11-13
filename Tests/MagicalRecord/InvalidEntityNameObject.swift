@@ -9,7 +9,7 @@
 import CoreData
 
 class InvalidEntityNameObject: NSManagedObject {
-    class func entityName() -> String {
+    @objc class func entityName() -> String {
         return "TestObject"
     }
 }

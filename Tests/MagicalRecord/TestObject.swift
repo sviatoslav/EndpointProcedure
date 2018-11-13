@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import MagicalRecord
 
 class TestObject: NSManagedObject {
 }
