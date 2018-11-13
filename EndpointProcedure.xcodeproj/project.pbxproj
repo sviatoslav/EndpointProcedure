@@ -112,6 +112,8 @@
 		654668CD2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668CB2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift */; };
 		654668CF2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668CE2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift */; };
 		654668D02160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654668CE2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift */; };
+		659CC739219B62FB00CA003E /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 659CC738219B62FB00CA003E /* mock.json */; };
+		659CC73A219B62FB00CA003E /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 659CC738219B62FB00CA003E /* mock.json */; };
 		65BB0F5E212FE29C0086DCEE /* DecodingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BB0F55212FE29C0086DCEE /* DecodingProcedureFactory.framework */; };
 		65D0D81F21358290004A4F7F /* AnyCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0D81E21358290004A4F7F /* AnyCodingKey.swift */; };
 		65F6C76B2135642F00C94E5B /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65F6C7622135642F00C94E5B /* TestModel.xcdatamodeld */; };
@@ -268,6 +270,7 @@
 		654668C82160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfigurationProviderTests.swift; sourceTree = "<group>"; };
 		654668CB2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndpointProcedureFactory.swift; sourceTree = "<group>"; };
 		654668CE2160FB9A004B7C67 /* EndpointProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		659CC738219B62FB00CA003E /* mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
 		659D4C7120E7A3380092892E /* Pods_EndpointProcedure_AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_EndpointProcedure_AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB0F55212FE29C0086DCEE /* DecodingProcedureFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DecodingProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB0F5D212FE29C0086DCEE /* DecodingProcedureFactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecodingProcedureFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -606,6 +609,7 @@
 			children = (
 				653FBA7A1E58B48E00216AA2 /* AlamofireProcedureFactoryTests.swift */,
 				653FBA7B1E58B48E00216AA2 /* AlamofireProcedureTests.swift */,
+				659CC738219B62FB00CA003E /* mock.json */,
 			);
 			path = Alamofire;
 			sourceTree = "<group>";
@@ -1035,6 +1039,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6522CEF22154268B00FBD023 /* contents-of-url-test.json in Resources */,
+				659CC73A219B62FB00CA003E /* mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1064,6 +1069,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659CC739219B62FB00CA003E /* mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

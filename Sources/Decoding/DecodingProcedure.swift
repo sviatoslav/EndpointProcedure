@@ -19,6 +19,7 @@ class DecodingProcedure<T>: Procedure, InputProcedure, OutputProcedure {
     
     var input: Pending<Any> = .pending
     var output: Pending<ProcedureResult<T>> = .pending
+    /// `DataDecoder` used in `DecodingProcedure`
     let decoder: DataDecoder
     
     init(decoder: DataDecoder) {
