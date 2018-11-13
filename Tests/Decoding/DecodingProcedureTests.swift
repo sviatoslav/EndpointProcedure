@@ -117,5 +117,24 @@ class DecodingProcedureTests: XCTestCase {
         self.wait(for: [expectation], timeout: 1)
         XCTAssertNotNil(procedure.output.error)
     }
+
+    func testIncorrectDecodableType() {
+        let expectation = self.expectation(description: "Execution")
+        let data = TestData.data(for: TestData.notNestedObject, using: TestData.jsonSerialization)
+        let procedure = InvalidDecodingProcedure<NSObject>(decoder: JSONDecoder())
+        procedure.input = .ready(data)
+        procedure.addDidFinishBlockObserver { (procedure, _) in
+            expectation.fulfill()
+        }
+        ProcedureQueue.main.add(operation: procedure)
+        self.wait(for: [expectation], timeout: 1)
+        XCTAssert((procedure.output.error as? DecodingProcedureError) == .outputDoesNotConformToDecodable)
+    }
+}
+
+class InvalidDecodingProcedure<T>: DecodingProcedure<T> {
+    override class var decodableType: Decodable.Type? {
+        return TestDecodable.self
+    }
 }
 

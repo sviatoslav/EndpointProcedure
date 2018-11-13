@@ -27,7 +27,7 @@ class DecodingProcedure<T>: Procedure, InputProcedure, OutputProcedure {
         super.init()
     }
     
-    static var decodableType: Decodable.Type? {
+    class var decodableType: Decodable.Type? {
         return T.self as? Decodable.Type
     }
     
