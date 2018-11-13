@@ -29,39 +29,43 @@ class AlamofireProcedureTests: XCTestCase {
     func testInit() {
         let url = "https://httpbin.org/get"
         let procedure = AlamofireProcedure(request: Alamofire.request(url))
+        XCTAssertEqual(procedure.request.request?.url?.absoluteString, url)
+    }
+
+    func testCreationFailure() {
+        let procedure = AlamofireProcedure(request: Alamofire.request(""))
+        XCTAssertNil(procedure.request.request)
+    }
+
+    func testValidDataRequest() {
+        let url = Bundle(for: type(of: self)).url(forResource: "mock", withExtension: "json")!.absoluteString
+        let procedure = AlamofireProcedure(request: Alamofire.request(url))
         let expectation = self.expectation(description: "Request")
         let queue = ProcedureQueue.main
         procedure.addCompletionBlock {
             expectation.fulfill()
         }
         queue.add(operation: procedure)
-        self.waitForExpectations(timeout: 60, handler: nil)
-
-        guard !isNoInteretConnection(error: procedure.output.error) else {
-            return
-        }
+        self.waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertNil(procedure.output.error)
-        XCTAssertNotNil(procedure.output.success?.data)
-        XCTAssertNotNil(procedure.output.success?.urlResponse)
-
-        let json = try! JSONSerialization.jsonObject(with: procedure.output.success!.data, options: [])
-        XCTAssertEqual((json as! [String: Any])["url"] as! String, url)
     }
 
-    func testFailure() {
-        let expectation = self.expectation(description: "")
-        let procedure = AlamofireProcedure(request: Alamofire.request(""))
-        procedure.addDidFinishBlockObserver {_, _ in
+    func testLoadingFailureRequest() {
+        let procedure = AlamofireProcedure(request: Alamofire.request("file://directory"))
+        let expectation = self.expectation(description: "Request")
+        let queue = ProcedureQueue.main
+        procedure.addCompletionBlock {
             expectation.fulfill()
         }
-        procedure.enqueue()
-        self.waitForExpectations(timeout: 60, handler: nil)
+        queue.add(operation: procedure)
+        self.waitForExpectations(timeout: 1, handler: nil)
+
         XCTAssertNotNil(procedure.output.error)
     }
 
     func testInvalidaDataRequest() {
-        let url = "https://httpbin.org/get"
+        let url = Bundle(for: type(of: self)).url(forResource: "mock", withExtension: "json")!.absoluteString
         let procedure = AlamofireProcedure(request: Alamofire.request(url).stream {_ in})
         let expectation = self.expectation(description: "Request")
         let queue = ProcedureQueue.main
@@ -69,11 +73,7 @@ class AlamofireProcedureTests: XCTestCase {
             expectation.fulfill()
         }
         queue.add(operation: procedure)
-        self.waitForExpectations(timeout: 60, handler: nil)
-
-        guard !isNoInteretConnection(error: procedure.output.error) else {
-            return
-        }
+        self.waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertEqual(procedure.output.error.map {"\($0)"}, "\(AlamofireProcedureError.invalidDataRequest)")
     }
