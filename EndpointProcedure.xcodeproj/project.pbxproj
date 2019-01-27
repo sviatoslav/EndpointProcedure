@@ -60,7 +60,6 @@
 		6522CEFB2154268B00FBD023 /* PropertyListEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650415772136EDFC007286D8 /* PropertyListEncoderTests.swift */; };
 		6522CEFC2154268B00FBD023 /* DecodingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504157A2136F8DC007286D8 /* DecodingProcedureTests.swift */; };
 		6522CEFD2154268B00FBD023 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504156B2136BA26007286D8 /* TestData.swift */; };
-		6522CEFE2154268B00FBD023 /* Enqueueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA841E58B48E00216AA2 /* Enqueueable.swift */; };
 		6522CEFF2154268B00FBD023 /* MagicalRecordObjectsArrayMappingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6C7642135642F00C94E5B /* MagicalRecordObjectsArrayMappingProcedureTests.swift */; };
 		6522CF002154268B00FBD023 /* MagicalRecordMappingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6C7652135642F00C94E5B /* MagicalRecordMappingProcedureTests.swift */; };
 		6522CF012154268B00FBD023 /* InvalidTestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6C7662135642F00C94E5B /* InvalidTestObject.swift */; };
@@ -85,9 +84,6 @@
 		653FBA9C1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA6B1E58B48E00216AA2 /* ResponseMappingProcedureFactory.swift */; };
 		653FBAB61E58B4D200216AA2 /* AlamofireProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7A1E58B48E00216AA2 /* AlamofireProcedureFactoryTests.swift */; };
 		653FBAB71E58B4D200216AA2 /* AlamofireProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7B1E58B48E00216AA2 /* AlamofireProcedureTests.swift */; };
-		653FBAB81E58B4DA00216AA2 /* Enqueueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA841E58B48E00216AA2 /* Enqueueable.swift */; };
-		653FBAB91E58B4DB00216AA2 /* Enqueueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA841E58B48E00216AA2 /* Enqueueable.swift */; };
-		653FBABA1E58B4DC00216AA2 /* Enqueueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA841E58B48E00216AA2 /* Enqueueable.swift */; };
 		653FBABB1E58B4E400216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7D1E58B48E00216AA2 /* AnyDataDeserializationProcedureFactoryTests.swift */; };
 		653FBABC1E58B4E400216AA2 /* contents-of-url-test.json in Resources */ = {isa = PBXBuildFile; fileRef = 653FBA7E1E58B48E00216AA2 /* contents-of-url-test.json */; };
 		653FBABD1E58B4E400216AA2 /* ContentsOfURLLoadingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FBA7F1E58B48E00216AA2 /* ContentsOfURLLoadingProcedureTests.swift */; };
@@ -262,7 +258,6 @@
 		653FBA811E58B48E00216AA2 /* EndpointProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointProcedureTests.swift; sourceTree = "<group>"; };
 		653FBA821E58B48E00216AA2 /* HTTPDataFlowProcedureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedureTests.swift; sourceTree = "<group>"; };
 		653FBA831E58B48E00216AA2 /* HTTPRequestDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataTests.swift; sourceTree = "<group>"; };
-		653FBA841E58B48E00216AA2 /* Enqueueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enqueueable.swift; sourceTree = "<group>"; };
 		654668B22160AD16004B7C67 /* EndpointProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedureFactory.swift; sourceTree = "<group>"; };
 		654668BE2160AF5A004B7C67 /* HTTPRequestDataBuidlerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataBuidlerProvider.swift; sourceTree = "<group>"; };
 		654668C12160AFA9004B7C67 /* DefaultConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfigurationProvider.swift; sourceTree = "<group>"; };
@@ -598,7 +593,6 @@
 				653FBA791E58B48E00216AA2 /* Alamofire */,
 				653FBA7C1E58B48E00216AA2 /* Core */,
 				65F6C77C213567FA00C94E5B /* Decoding */,
-				653FBA841E58B48E00216AA2 /* Enqueueable.swift */,
 				65F6C7612135642F00C94E5B /* MagicalRecord */,
 			);
 			path = Tests;
@@ -945,7 +939,6 @@
 				TargetAttributes = {
 					6522CEA7215425B100FBD023 = {
 						CreatedOnToolsVersion = 9.4.1;
-						DevelopmentTeam = 7F4TL68AQE;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 					};
@@ -1464,7 +1457,6 @@
 				6522CF042154268B00FBD023 /* MagicalRecordMappingProcedureFactoryTests.swift in Sources */,
 				654668CD2160FB3C004B7C67 /* MockEndpointProcedureFactory.swift in Sources */,
 				6522CEF82154268B00FBD023 /* DecodingProcedureFactoryTests.swift in Sources */,
-				6522CEFE2154268B00FBD023 /* Enqueueable.swift in Sources */,
 				6522CEFD2154268B00FBD023 /* TestData.swift in Sources */,
 				6522CEF62154268B00FBD023 /* HTTPDataFlowProcedureTests.swift in Sources */,
 				6522CF012154268B00FBD023 /* InvalidTestObject.swift in Sources */,
@@ -1518,7 +1510,6 @@
 				653FBABD1E58B4E400216AA2 /* ContentsOfURLLoadingProcedureTests.swift in Sources */,
 				653FBABE1E58B4E400216AA2 /* DataFlowProcedureTests.swift in Sources */,
 				654668C92160F3F3004B7C67 /* DefaultConfigurationProviderTests.swift in Sources */,
-				653FBAB81E58B4DA00216AA2 /* Enqueueable.swift in Sources */,
 				654668C52160E81B004B7C67 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */,
 				653FBAC01E58B4E400216AA2 /* HTTPDataFlowProcedureTests.swift in Sources */,
 				653FBAC11E58B4E400216AA2 /* HTTPRequestDataTests.swift in Sources */,
@@ -1540,7 +1531,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				653FBAB91E58B4DB00216AA2 /* Enqueueable.swift in Sources */,
 				653FBAB71E58B4D200216AA2 /* AlamofireProcedureTests.swift in Sources */,
 				653FBAB61E58B4D200216AA2 /* AlamofireProcedureFactoryTests.swift in Sources */,
 			);
@@ -1564,7 +1554,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65F6C76F2135642F00C94E5B /* MagicalRecordMappingProcedureTests.swift in Sources */,
-				653FBABA1E58B4DC00216AA2 /* Enqueueable.swift in Sources */,
 				65F6C76D2135642F00C94E5B /* MagicalRecordObjectsArrayMappingProcedureTests.swift in Sources */,
 				65F6C7712135642F00C94E5B /* InvalidTestObject.swift in Sources */,
 				65F6C7732135642F00C94E5B /* InvalidEntityNameObject.swift in Sources */,
@@ -1659,7 +1648,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1692,7 +1681,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7F4TL68AQE;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
