@@ -18,9 +18,7 @@ import ProcedureKit
 
 class ContentsOfURLLoadingProcedureTests: XCTestCase {
 
-    private static let bundle = Bundle(for: ContentsOfURLLoadingProcedureTests.self)
-    private static let url = ContentsOfURLLoadingProcedureTests.bundle.url(forResource: "contents-of-url-test",
-                                                                      withExtension: "json")!
+    private static let url = URL(string: "data:;base64,\("{key: value}".data(using: .utf8)!.base64EncodedString())")!
     private static let expectedData = try! Data(contentsOf: ContentsOfURLLoadingProcedureTests.url)
 
     func testLoadingFromFile() {
@@ -39,20 +37,20 @@ class ContentsOfURLLoadingProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        procedure.enqueue()
+        ProcedureQueue().add(operation: procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         XCTAssertEqual(procedure.output.success, ContentsOfURLLoadingProcedureTests.expectedData)
     }
 
     func testFailure() {
-        let url = ContentsOfURLLoadingProcedureTests.bundle.bundleURL
+        let url = Bundle(for: type(of: self)).bundleURL
         let procedure = ContentsOfURLLoadingProcedure(url: url)
         let expectation = self.expectation(description: "Waiting for operations")
         procedure.addDidFinishBlockObserver { (procedure, _) in
             XCTAssertNotNil(procedure.output.error)
             expectation.fulfill()
         }
-        procedure.enqueue()
+        ProcedureQueue().add(operation: procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
     }
 }

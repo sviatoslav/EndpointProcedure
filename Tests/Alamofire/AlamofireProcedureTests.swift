@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Foundation
 #if canImport(ProcedureKit)
 import ProcedureKit
 #endif
@@ -38,7 +39,8 @@ class AlamofireProcedureTests: XCTestCase {
     }
 
     func testValidDataRequest() {
-        let url = Bundle(for: type(of: self)).url(forResource: "mock", withExtension: "json")!.absoluteString
+//        let url = Bundle(for: type(of: self)).url(forResource: "mock", withExtension: "json")!.absoluteString
+        let url = URL(string: "data:;base64,\("{}".data(using: .utf8)!.base64EncodedString())")!
         let procedure = AlamofireProcedure(request: Alamofire.request(url))
         let expectation = self.expectation(description: "Request")
         let queue = ProcedureQueue.main
@@ -65,7 +67,7 @@ class AlamofireProcedureTests: XCTestCase {
     }
 
     func testInvalidaDataRequest() {
-        let url = Bundle(for: type(of: self)).url(forResource: "mock", withExtension: "json")!.absoluteString
+        let url = URL(string: "data:;base64,\("{}".data(using: .utf8)!.base64EncodedString())")!
         let procedure = AlamofireProcedure(request: Alamofire.request(url).stream {_ in})
         let expectation = self.expectation(description: "Request")
         let queue = ProcedureQueue.main

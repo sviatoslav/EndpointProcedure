@@ -6,6 +6,7 @@
 //  Copyright © 2018 Sviatoslav Yakymiv. All rights reserved.
 //
 
+import Foundation
 #if canImport(ProcedureKit)
 import ProcedureKit
 #endif

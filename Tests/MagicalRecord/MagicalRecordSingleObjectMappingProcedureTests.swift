@@ -115,7 +115,7 @@ extension MagicalRecordSingleObjectMappingProcedureTests {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        procedure.enqueue()
+        ProcedureQueue().add(operation: procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         return procedure.output
     }

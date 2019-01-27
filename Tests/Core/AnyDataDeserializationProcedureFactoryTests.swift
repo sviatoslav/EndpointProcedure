@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ProcedureKit
 #if ALL
 @testable import All
 #else
@@ -45,7 +46,7 @@ class AnyDataDeserializationProcedureFactoryTests: XCTestCase {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        procedure.enqueue()
+        ProcedureQueue().add(operation: procedure)
         self.waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(self.json, (procedure.output.success.flatMap { $0 as? [String: String]} ?? [:]))
     }
