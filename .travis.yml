@@ -6,8 +6,7 @@ language: objective-c
 osx_image: xcode10
 
 before_install:
-  swift build
-  swift package generate-xcodeproj
+  swift build && swift package generate-xcodeproj
 
 script:
   xcodebuild clean test -scheme EndpointProcedure-Package -destination "platform=OS X" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet -enableCodeCoverage YES
