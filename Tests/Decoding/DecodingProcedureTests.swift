@@ -10,11 +10,7 @@ import XCTest
 #if canImport(ProcedureKit)
 import ProcedureKit
 #endif
-#if ALL
-@testable import All
-#else
 @testable import DecodingProcedureFactory
-#endif
 
 class DecodingProcedureTests: XCTestCase {
     func testNestedDataInput() {

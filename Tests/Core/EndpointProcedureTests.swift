@@ -10,178 +10,139 @@ import XCTest
 #if canImport(ProcedureKit)
 import ProcedureKit
 #endif
-#if ALL
-@testable import All
-#else
 @testable import EndpointProcedure
-#endif
 
 class EndpointProcedureTests: XCTestCase {
 
-    private let requestData = HTTPRequestData.Builder.for(URL(string: "https://my.api")!)
-                                                    .appending(parameterValue: "pV", for: "pK")
-                                                    .appending(headerFieldValue: "hV", for: "hK").build()
+    enum Error: Swift.Error {
+        case value
+    }
 
-    override func setUp() {
-        super.setUp()
-        let jsonDeserializationProcedureFactory = AnyDataDeserializationProcedureFactory {
-            try JSONSerialization.jsonObject(with: $0, options: [])
+    func testWithoutOverloads() {
+        class Procedure: EndpointProcedure<Void> {}
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(EndpointProcedureError.missingDataLoadingProcedure, result.error as? EndpointProcedureError)
+    }
+
+    func testDataLoadingProcedureInitializationFailure() {
+        class Procedure: EndpointProcedure<Void> {
+            override func dataLoadingProcedure() throws -> AnyOutputProcedure<Data> { throw Error.value }
         }
-        HTTPRequestData.Builder.baseURL = URL(string: "https://my.api")!
-        let config = Configuration(dataLoadingProcedureFactory: HTTPDataLoadingProcedureMockFactory(),
-                                   dataDeserializationProcedureFactory: jsonDeserializationProcedureFactory,
-                                   responseMappingProcedureFactory: OptionalCastResponseMappingProcedureFactory())
-        Configuration.default = config
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(Error.value, result.error as? Error)
     }
-
-    func testInitializationWithError() {
-        let error = NSError(domain: "MockError", code: -123, userInfo: nil)
-        let result = self.procedureResult(for: EndpointProcedure<Void>(error: error))
-        XCTAssertEqual(result.error as NSError?, error)
-    }
-
-    func testDataLoadingProcedureInitializationWithoutConfiguration() {
-        Configuration.default = nil
-        let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure: DataLoadingProcedureMock())
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error.map { "\($0)" }, "\(EndpointProcedureError.missingConfiguration)")
-    }
-
-    func testRequestDataInitializationWithoutConfiguration() {
-        Configuration.default = nil
-        let procedure = EndpointProcedure<[String: String]>(requestData: self.requestData)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error.map { "\($0)" }, "\(EndpointProcedureError.missingConfiguration)")
-    }
-
-    func testCustomConfiguration() {
-        let config = Configuration.default
-        Configuration.default = nil
-        let dictionary = ["Key": "Value"]
-        let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure:
-            DataLoadingProcedureMock(dictionary: dictionary), configuration: config)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.success ?? ["":""], dictionary)
-    }
-
-    func testConfigurationsPriority() {
-        XCTAssertNil(Configuration.self as? AnyClass, "Need to rewrite test")
-        var config = Configuration.default!
-        config.dataLoadingProcedureFactory = FailableHTTPDataLoadingProcedureMockFactory()
-        let procedure = EndpointProcedure<[String: String]>(requestData: self.requestData, configuration: config)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, FailableHTTPDataLoadingProcedureMockFactory.error)
-    }
-
-    func testInitWithDataLoadingProcedure() {
-        let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure: DataLoadingProcedureMock())
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.success ?? [:], DataLoadingProcedureMock.defaultDictionary)
-    }
-
-    func testInitWithHTTPData() {
-        let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: self.requestData)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(NSDictionary(dictionary: result.success ?? [:]),
-                       NSDictionary(dictionary: HTTPDataLoadingProcedureMock.dictinary(for: self.requestData)))
-    }
-
-    func testAllProceduresNotEmpty() {
-        let interceptor = TransformProcedure<Any, Any> {
-            var dict = $0 as! [String: Any]
-            dict["newKey"] = "newValue"
-            return dict
+    func testHTTPDataLoadingProcedureInitializationFailure() {
+        class Procedure: EndpointProcedure<Void> {
+            override func httpDataLoadingProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+                throw Error.value
+            }
         }
-        let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: self.requestData,
-                                                              interceptionProcedure: interceptor)
-        let result = self.procedureResult(for: procedure)
-        var expectedResultDict = HTTPDataLoadingProcedureMock.dictinary(for: self.requestData)
-        expectedResultDict["newKey"] = "newValue"
-        XCTAssertEqual(NSDictionary(dictionary: result.success ?? [:]),
-                       NSDictionary(dictionary: expectedResultDict))
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(Error.value, result.error as? Error)
     }
-
-    func testFailureInDataLoadingProcedure() {
-        let procedure = EndpointProcedure<[String: String]>(dataLoadingProcedure:
-                                        DataLoadingProcedureMock(dictionary: ["url": URL(string: "https://my.api")!]))
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, DataLoadingProcedureMock.jsonSerializationError)
-    }
-
-    func testFailureInHTTPDataLoadingProcedure() {
-        let requestData = HTTPRequestData.Builder.for(self.requestData.url)
-            .appending(parameters: ["url": self.requestData.url]).build()
-        let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: requestData)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, HTTPDataLoadingProcedureMock.jsonSerializationError)
-    }
-
-    func testFailureInResponseValidationProcedure() {
-        let error = NSError(domain: "ResponseValidatorProcedureDomain", code: 1, userInfo: nil)
-        let validator = TransformProcedure<HTTPResponseData, Void> {_ in
-            throw error
+    func testMissingMappingProcedure() {
+        class Procedure: EndpointProcedure<Void> {
+            override func dataLoadingProcedure() throws -> AnyOutputProcedure<Data> {
+                let procedure = TransformProcedure<Void, Data> { return Data() }
+                procedure.input = pendingVoid
+                return AnyOutputProcedure(procedure)
+            }
         }
-        let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: self.requestData,
-                                                              validationProcedure: validator)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, error)
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(EndpointProcedureError.missingMappingProcedure, result.error as? EndpointProcedureError)
     }
-
-    func testFailureInResponseInterceptorProcedure() {
-        let error = NSError(domain: "ResponseInterceptorProcedureDomain", code: 1, userInfo: nil)
-        let interceptor = TransformProcedure<Any, Any> {_ in
-            throw error
+    func testMappingProcedureInitializationFailure() {
+        class Procedure: EndpointProcedure<Void> {
+            override func dataLoadingProcedure() throws -> AnyOutputProcedure<Data> {
+                let procedure = TransformProcedure<Void, Data> { return Data() }
+                procedure.input = pendingVoid
+                return AnyOutputProcedure(procedure)
+            }
+            override func mappingProcedure() throws -> AnyProcedure<Any, Void> {
+                throw Error.value
+            }
         }
-        let procedure = EndpointProcedure<[AnyHashable: Any]>(requestData: self.requestData,
-                                                              interceptionProcedure: interceptor)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, error)
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(Error.value, result.error as? Error)
     }
-
-    func testFailureInResponseMappingProcedure() {
-        let procedure = EndpointProcedure<String>(requestData: self.requestData)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, OptionalCastResponseMappingProcedure<Any>.castFailedError)
-    }
-
-    func testDataLoadingProcedureFactoryFailure() {
-        var configuration = Configuration.default
-        configuration?.dataLoadingProcedureFactory = FailableHTTPDataLoadingProcedureMockFactory()
-        let procedure = EndpointProcedure<String>(requestData: self.requestData, configuration: configuration)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, FailableHTTPDataLoadingProcedureMockFactory.error)
-    }
-
-    func testResponseMappingProcedureFactory() {
-        var configuration = Configuration.default
-        configuration?.responseMappingProcedureFactory = FailableResponseMappingProcedureFactory()
-        let procedure = EndpointProcedure<String>(requestData: self.requestData, configuration: configuration)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error as NSError?, FailableResponseMappingProcedureFactory.error)
-    }
-
-    func testCustomDataFlowProcedure() {
-        let dataFlowProcedure = DataFlowProcedureMock()
-        let procedure = EndpointProcedure<Int>(dataFlowProcedure: dataFlowProcedure)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.success, 1)
-    }
-
-    func testPendingAfterCompletion() {
-        let dataFlowProcedure = DataFlowProcedureMock()
-        dataFlowProcedure.addWillFinishBlockObserver { (procedure, _, _) in
-            procedure.output = .pending
+    func testDataFlowProcedureInitializationFailure() {
+        class Procedure: EndpointProcedure<Void> {
+            override func dataFlowProcedure() throws -> DataFlowProcedure<Void> { throw Error.value }
         }
-        let procedure = EndpointProcedure<Int>(dataFlowProcedure: dataFlowProcedure)
-        let result = self.procedureResult(for: procedure)
-        XCTAssertEqual(result.error.map { "\($0)" }, "\(EndpointProcedureError.pendingOutputAfterCompletion)")
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(Error.value, result.error as? Error)
     }
-
-    func testOutputIsReadOnly() {
-        let procedure = EndpointProcedure<String>(requestData: self.requestData)
-        _ = self.procedureResult(for: procedure)
-        procedure.output = .ready(.success(""))
-        XCTAssertEqual(procedure.output.error as NSError?, OptionalCastResponseMappingProcedure<Any>.castFailedError)
+    func testValidationProcedureFailure() {
+        class Procedure: EndpointProcedure<Void> {
+            override func httpDataLoadingProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+                let procedure = TransformProcedure<Void, HTTPResponseData> {
+                    return HTTPResponseData(urlResponse: nil, data: Data())
+                }
+                procedure.input = pendingVoid
+                return AnyOutputProcedure(procedure)
+            }
+            override func validationProcedure() -> AnyInputProcedure<HTTPResponseData> {
+                return AnyInputProcedure(TransformProcedure<HTTPResponseData, Void> {_ in throw Error.value })
+            }
+            override func mappingProcedure() throws -> AnyProcedure<Any, Void> {
+                return AnyProcedure(TransformProcedure<Any, Void>{_ in})
+            }
+        }
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(Error.value, result.error as? Error)
+    }
+    func testInterceptionProcedureFailure() {
+        class Procedure: EndpointProcedure<Void> {
+            override func httpDataLoadingProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+                let procedure = TransformProcedure<Void, HTTPResponseData> {
+                    return HTTPResponseData(urlResponse: nil, data: Data())
+                }
+                procedure.input = pendingVoid
+                return AnyOutputProcedure(procedure)
+            }
+            override func interceptionProcedure() -> AnyProcedure<Any, Any> {
+                return AnyProcedure(TransformProcedure<Any, Any> {_ in throw Error.value })
+            }
+            override func mappingProcedure() throws -> AnyProcedure<Any, Void> {
+                return AnyProcedure(TransformProcedure<Any, Void>{_ in})
+            }
+        }
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(Error.value, result.error as? Error)
+    }
+    func testConfigurationProvider() {
+        struct LoadingFactory: HTTPDataLoadingProcedureFactory {
+            func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
+                let transform = TransformProcedure<Void, HTTPResponseData> {
+                    let data = try! JSONSerialization.data(withJSONObject: [1, 2, 3, 4], options: [])
+                    return HTTPResponseData(urlResponse: nil, data: data)
+                }
+                transform.input = pendingVoid
+                return AnyOutputProcedure(transform)
+            }
+        }
+        struct DeserializationFactory: DataDeserializationProcedureFactory {
+            func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
+                return AnyProcedure(TransformProcedure<Data, Any> {
+                    return try JSONSerialization.jsonObject(with: $0, options: [])
+                })
+            }
+        }
+        struct MappingFactory: ResponseMappingProcedureFactory {
+            func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
+                return AnyProcedure(TransformProcedure<Any, T> { return ($0 as! [Int]).reduce(0, +) as! T })
+            }
+        }
+        class Procedure: EndpointProcedure<Int>, ConfigurationProviding, HTTPRequestDataProviding {
+            let configuration: ConfigurationProtocol = Configuration(dataLoadingProcedureFactory: LoadingFactory(),
+                                                                     dataDeserializationProcedureFactory: DeserializationFactory(),
+                                                                     responseMappingProcedureFactory: MappingFactory())
+            func requestData() throws -> HTTPRequestData {
+                return HTTPRequestData.Builder.for(URL(string: "http://g")!).build()
+            }
+        }
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(10, result.success)
     }
 }
 
@@ -196,141 +157,3 @@ extension EndpointProcedureTests {
         return procedure.output
     }
 }
-
-fileprivate class DataFlowProcedureMock: DataFlowProcedure<Int> {
-    init() {
-        let dataLoadingProcedure = TransformProcedure<Void, Data> { return Data() }
-        dataLoadingProcedure.input = pendingVoid
-        let deserializationProcedure = TransformProcedure<Data, Any> { return $0 }
-        let mappingProcedure = TransformProcedure<Any, Int> {_ in return 1 }
-        super.init(dataLoadingProcedure: dataLoadingProcedure, deserializationProcedure: deserializationProcedure,
-                   interceptionProcedure: DataFlowProcedure<Int>.createEmptyInterceptionProcedure(),
-                   resultMappingProcedure: mappingProcedure)
-    }
-}
-
-fileprivate class OptionalCastResponseMappingProcedure<T>: Procedure, OutputProcedure, InputProcedure {
-
-    var output: Pending<ProcedureResult<T>> = .pending
-    var input: Pending<Any> = .pending
-
-    class var castFailedError: NSError {
-        return NSError(domain: "OptionalCastResponseMappingProcedureDomain", code: 1, userInfo: nil)
-    }
-
-    fileprivate override func execute() {
-        guard let result = self.input.value as? T else {
-            self.finish(withResult: .failure(OptionalCastResponseMappingProcedure.castFailedError))
-            return
-        }
-        self.finish(withResult: .success(result))
-    }
-}
-
-fileprivate class OptionalCastResponseMappingProcedureFactory: ResponseMappingProcedureFactory {
-    fileprivate func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
-        return AnyProcedure(OptionalCastResponseMappingProcedure<T>())
-    }
-}
-
-fileprivate class FailableResponseMappingProcedureFactory: ResponseMappingProcedureFactory {
-    class var error: NSError {
-        return NSError(domain: "FailableResponseMappingProcedureFactoryDomail", code: 1, userInfo: nil)
-    }
-    fileprivate func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
-        throw FailableResponseMappingProcedureFactory.error
-    }
-}
-
-fileprivate class HTTPDataLoadingProcedureMock: Procedure, OutputProcedure {
-
-    var output: Pending<ProcedureResult<HTTPResponseData>> = .pending
-
-    class var jsonSerializationError: NSError {
-        return NSError(domain: "HTTPDataLoadingProcedureMockDomail", code: 1, userInfo: nil)
-    }
-
-    static func dictinary(for data: HTTPRequestData) -> [AnyHashable: Any] {
-        var dict: [AnyHashable: Any] = [
-            "url": data.url.absoluteString,
-            "method": data.method.rawValue
-        ]
-        _ = data.parameters.map {
-            dict["parameters"] = $0
-        }
-        _ = data.headerFields.map {
-            dict["headers"] = $0
-        }
-        return dict
-    }
-
-    private let httpRequestData: HTTPRequestData
-
-    init(httpRequestData: HTTPRequestData) {
-        self.httpRequestData = httpRequestData
-        super.init()
-    }
-
-    fileprivate override func execute() {
-        let dict = HTTPDataLoadingProcedureMock.dictinary(for: self.httpRequestData)
-        let response = HTTPURLResponse(url: httpRequestData.url, statusCode: 200, httpVersion: "",
-                                       headerFields: httpRequestData.headerFields)
-        do {
-            guard JSONSerialization.isValidJSONObject(dict) else {
-                throw HTTPDataLoadingProcedureMock.jsonSerializationError
-            }
-            let data = try JSONSerialization.data(withJSONObject: dict, options: [])
-            self.finish(withResult: .success(HTTPResponseData(urlResponse: response, data: data)))
-        } catch let error {
-            self.finish(withResult: .failure(error))
-        }
-    }
-}
-
-fileprivate class HTTPDataLoadingProcedureMockFactory: HTTPDataLoadingProcedureFactory {
-    fileprivate func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
-        return AnyOutputProcedure(HTTPDataLoadingProcedureMock(httpRequestData: data))
-    }
-}
-
-fileprivate class FailableHTTPDataLoadingProcedureMockFactory: HTTPDataLoadingProcedureFactory {
-
-    class var error: NSError {
-        return NSError(domain: "FailableHTTPDataLoadingProcedureMockFactoryDomail", code: 1, userInfo: nil)
-    }
-
-    fileprivate func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
-        throw FailableHTTPDataLoadingProcedureMockFactory.error
-    }
-}
-
-fileprivate class DataLoadingProcedureMock: Procedure, OutputProcedure {
-
-    var output: Pending<ProcedureResult<Data>> = .pending
-
-    class var jsonSerializationError: NSError {
-        return NSError(domain: "DataLoadingProcedureMockDomail", code: 1, userInfo: nil)
-    }
-
-    static let defaultDictionary = ["DataLoadingProcedureMockKey": "DataLoadingProcedureMockValue"]
-    private let dict: [AnyHashable: Any]?
-
-    init(dictionary: [AnyHashable: Any]? = nil) {
-        self.dict = dictionary
-        super.init()
-    }
-
-    fileprivate override func execute() {
-        do {
-            let object: Any = self.dict ?? type(of: self).defaultDictionary
-            guard JSONSerialization.isValidJSONObject(object) else {
-                throw DataLoadingProcedureMock.jsonSerializationError
-            }
-            let data = try JSONSerialization.data(withJSONObject: object)
-            self.finish(withResult: .success(data))
-        } catch let error {
-            self.finish(withResult: .failure(error))
-        }
-    }
-}
-

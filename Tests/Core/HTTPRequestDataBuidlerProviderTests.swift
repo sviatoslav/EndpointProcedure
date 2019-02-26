@@ -7,11 +7,7 @@
 //
 
 import XCTest
-#if ALL
-@testable import All
-#else
 @testable import EndpointProcedure
-#endif
 
 struct MockHTTPRequestDataBuidlerProvider: HTTPRequestDataBuidlerProvider, BaseURLProvider {
     let baseURL: URL

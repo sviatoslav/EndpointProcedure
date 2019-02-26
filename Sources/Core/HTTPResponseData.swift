@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Typical result of HTTD data loading procedure
+/// Typical result of HTTP data loading procedure
 public struct HTTPResponseData {
     /// `HTTPURLResponse`
     public let urlResponse: HTTPURLResponse?

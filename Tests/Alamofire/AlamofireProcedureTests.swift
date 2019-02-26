@@ -14,12 +14,8 @@ import ProcedureKit
 #if canImport(Alamofire)
 import Alamofire
 #endif
-#if ALL
-@testable import All
-#else
 import EndpointProcedure
 @testable import AlamofireProcedureFactory
-#endif
 
 class AlamofireProcedureTests: XCTestCase {
 

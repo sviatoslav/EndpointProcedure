@@ -10,12 +10,8 @@ import XCTest
 #if canImport(ProcedureKit)
 import ProcedureKit
 #endif
-#if ALL
-@testable import All
-#else
 import EndpointProcedure
 @testable import DecodingProcedureFactory
-#endif
 
 class EncoderProcedureFactoryTests: XCTestCase {
     

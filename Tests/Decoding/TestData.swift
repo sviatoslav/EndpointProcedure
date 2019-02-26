@@ -7,11 +7,7 @@
 //
 
 import Foundation
-#if ALL
-@testable import All
-#else
 @testable import DecodingProcedureFactory
-#endif
 
 enum TestData {
     

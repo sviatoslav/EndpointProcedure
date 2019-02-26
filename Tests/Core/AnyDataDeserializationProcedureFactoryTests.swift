@@ -8,11 +8,8 @@
 
 import XCTest
 import ProcedureKit
-#if ALL
-@testable import All
-#else
 @testable import EndpointProcedure
-#endif
+
 
 class AnyDataDeserializationProcedureFactoryTests: XCTestCase {
     private let json = ["key": "value"]

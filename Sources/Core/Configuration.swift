@@ -25,9 +25,6 @@ public protocol ConfigurationProtocol {
 /// Default implementation of `ConfigurationProtocol`
 public struct Configuration: ConfigurationProtocol {
 
-    /// Configuration that is used in `EndpointProcedure` instances by default.
-    static var `default`: Configuration!
-
     public var dataLoadingProcedureFactory: HTTPDataLoadingProcedureFactory
     public var dataDeserializationProcedureFactory: DataDeserializationProcedureFactory
     public var responseMappingProcedureFactory: ResponseMappingProcedureFactory

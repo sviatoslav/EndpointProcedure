@@ -7,11 +7,7 @@
 //
 
 import XCTest
-#if ALL
-@testable import All
-#else
 @testable import DecodingProcedureFactory
-#endif
 
 class PropertyListEncoderTests: XCTestCase {
     
