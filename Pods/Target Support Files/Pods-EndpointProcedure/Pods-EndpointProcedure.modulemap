@@ -1,6 +1,0 @@
-framework module Pods_EndpointProcedure {
-  umbrella header "Pods-EndpointProcedure-umbrella.h"
-
-  export *
-  module * { export * }
-}

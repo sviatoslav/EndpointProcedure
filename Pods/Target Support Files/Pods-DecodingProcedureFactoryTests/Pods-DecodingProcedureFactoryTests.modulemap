@@ -1,6 +1,0 @@
-framework module Pods_DecodingProcedureFactoryTests {
-  umbrella header "Pods-DecodingProcedureFactoryTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

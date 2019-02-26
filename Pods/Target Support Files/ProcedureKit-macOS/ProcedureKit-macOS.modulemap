@@ -1,6 +1,0 @@
-framework module ProcedureKit {
-  umbrella header "ProcedureKit-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
