@@ -57,19 +57,3 @@ public struct AnyTransformProcedureFactory {
         }
     }
 }
-
-public protocol TransformBasedProcedureFactory {
-    var transformProcedureFactory: AnyTransformProcedureFactory { get set }
-}
-
-extension TransformBasedProcedureFactory {
-    init(_ sync: @escaping AnyTransformProcedureFactory.Transformation.Sync) {
-        self.transformProcedureFactory = AnyTransformProcedureFactory(sync: sync)
-    }
-
-    init(_ async: @escaping AnyTransformProcedureFactory.Transformation.Async) {
-        self.transformProcedureFactory = AnyTransformProcedureFactory(async: async)
-    }
-}
-
-
