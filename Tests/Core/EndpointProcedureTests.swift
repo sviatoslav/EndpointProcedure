@@ -33,7 +33,7 @@ class EndpointProcedureTests: XCTestCase {
     }
     func testHTTPDataLoadingProcedureInitializationFailure() {
         class Procedure: EndpointProcedure<Void> {
-            override func httpDataLoadingProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+            override func requestProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
                 throw Error.value
             }
         }
@@ -58,7 +58,7 @@ class EndpointProcedureTests: XCTestCase {
                 procedure.input = pendingVoid
                 return AnyOutputProcedure(procedure)
             }
-            override func mappingProcedure() throws -> AnyProcedure<Any, Void> {
+            override func responseMappingProcedure() throws -> AnyProcedure<Any, Void> {
                 throw Error.value
             }
         }
@@ -74,7 +74,7 @@ class EndpointProcedureTests: XCTestCase {
     }
     func testValidationProcedureFailure() {
         class Procedure: EndpointProcedure<Void> {
-            override func httpDataLoadingProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+            override func requestProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
                 let procedure = TransformProcedure<Void, HTTPResponseData> {
                     return HTTPResponseData(urlResponse: nil, data: Data())
                 }
@@ -84,7 +84,7 @@ class EndpointProcedureTests: XCTestCase {
             override func validationProcedure() -> AnyInputProcedure<HTTPResponseData> {
                 return AnyInputProcedure(TransformProcedure<HTTPResponseData, Void> {_ in throw Error.value })
             }
-            override func mappingProcedure() throws -> AnyProcedure<Any, Void> {
+            override func responseMappingProcedure() throws -> AnyProcedure<Any, Void> {
                 return AnyProcedure(TransformProcedure<Any, Void>{_ in})
             }
         }
@@ -93,7 +93,7 @@ class EndpointProcedureTests: XCTestCase {
     }
     func testInterceptionProcedureFailure() {
         class Procedure: EndpointProcedure<Void> {
-            override func httpDataLoadingProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+            override func requestProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
                 let procedure = TransformProcedure<Void, HTTPResponseData> {
                     return HTTPResponseData(urlResponse: nil, data: Data())
                 }
@@ -103,7 +103,7 @@ class EndpointProcedureTests: XCTestCase {
             override func interceptionProcedure() -> AnyProcedure<Any, Any> {
                 return AnyProcedure(TransformProcedure<Any, Any> {_ in throw Error.value })
             }
-            override func mappingProcedure() throws -> AnyProcedure<Any, Void> {
+            override func responseMappingProcedure() throws -> AnyProcedure<Any, Void> {
                 return AnyProcedure(TransformProcedure<Any, Void>{_ in})
             }
         }
@@ -111,38 +111,39 @@ class EndpointProcedureTests: XCTestCase {
         XCTAssertEqual(Error.value, result.error as? Error)
     }
     func testConfigurationProvider() {
-        struct LoadingFactory: HTTPDataLoadingProcedureFactory {
-            func dataLoadingProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
-                let transform = TransformProcedure<Void, HTTPResponseData> {
-                    let data = try! JSONSerialization.data(withJSONObject: [1, 2, 3, 4], options: [])
-                    return HTTPResponseData(urlResponse: nil, data: data)
-                }
-                transform.input = pendingVoid
-                return AnyOutputProcedure(transform)
-            }
-        }
-        struct DeserializationFactory: DataDeserializationProcedureFactory {
-            func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
-                return AnyProcedure(TransformProcedure<Data, Any> {
-                    return try JSONSerialization.jsonObject(with: $0, options: [])
-                })
-            }
-        }
-        struct MappingFactory: ResponseMappingProcedureFactory {
-            func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
-                return AnyProcedure(TransformProcedure<Any, T> { return ($0 as! [Int]).reduce(0, +) as! T })
-            }
-        }
-        class Procedure: EndpointProcedure<Int>, ConfigurationProviding, HTTPRequestDataProviding {
-            let configuration: ConfigurationProtocol = Configuration(dataLoadingProcedureFactory: LoadingFactory(),
-                                                                     dataDeserializationProcedureFactory: DeserializationFactory(),
-                                                                     responseMappingProcedureFactory: MappingFactory())
-            func requestData() throws -> HTTPRequestData {
-                return HTTPRequestData.Builder.for(URL(string: "http://g")!).build()
-            }
-        }
-        let result = self.procedureResult(for: Procedure())
-        XCTAssertEqual(10, result.success)
+//        struct LoadingFactory: HTTPRequestProcedureFactory {
+//            func requestProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
+//                let transform = TransformProcedure<Void, HTTPResponseData> {
+//                    let data = try! JSONSerialization.data(withJSONObject: [1, 2, 3, 4], options: [])
+//                    return HTTPResponseData(urlResponse: nil, data: data)
+//                }
+//                transform.input = pendingVoid
+//                return AnyOutputProcedure(transform)
+//            }
+//        }
+//        struct DeserializationFactory: DataDeserializationProcedureFactory {
+//            func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
+//                return AnyProcedure(TransformProcedure<Data, Any> {
+//                    return try JSONSerialization.jsonObject(with: $0, options: [])
+//                })
+//            }
+//        }
+//        struct MappingFactory: ResponseMappingProcedureFactory {
+//            func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
+//                return AnyProcedure(TransformProcedure<Any, T> { return ($0 as! [Int]).reduce(0, +) as! T })
+//            }
+//        }
+//        class Procedure: EndpointProcedure<Int>, ConfigurationContaining, HTTPRequestDataContaining {
+//            let configuration: ConfigurationProtocol = Configuration(dataLoadingProcedureFactory: LoadingFactory(),
+//                                                                     dataDeserializationProcedureFactory: DeserializationFactory(),
+//                                                                     responseMappingProcedureFactory: MappingFactory())
+//            func requestData() throws -> HTTPRequestData {
+//                return HTTPRequestData.Builder.for(URL(string: "http://g")!).build()
+//            }
+//        }
+//        let result = self.procedureResult(for: Procedure())
+//        XCTAssertEqual(10, result.success)
+        XCTFail()
     }
 }
 
@@ -152,7 +153,7 @@ extension EndpointProcedureTests {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         return procedure.output
     }

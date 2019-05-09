@@ -125,8 +125,8 @@ fileprivate class ValidHTTPDataLoadingProcedure: GroupProcedure, OutputProcedure
             let dataExtractingProcedure = TransformProcedure<HTTPResponseData, Data> { return $0.data }
             dataExtractingProcedure.injectResult(from: dataLoadingProcedure)
             validationProcedure.injectResult(from: dataLoadingProcedure)
-            dataExtractingProcedure.add(dependency: validationProcedure)
-            dataExtractingProcedure.add(condition: NoFailedDependenciesCondition())
+            dataExtractingProcedure.addDependency(validationProcedure)
+            dataExtractingProcedure.addCondition(NoFailedDependenciesCondition())
             super.init(operations: [dataLoadingProcedure, validationProcedure, dataExtractingProcedure])
             dataExtractingProcedure.addDidFinishBlockObserver { [unowned self] (procedure, _) in
                 self.output = procedure.output

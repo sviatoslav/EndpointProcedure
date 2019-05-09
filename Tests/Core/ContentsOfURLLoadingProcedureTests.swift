@@ -33,7 +33,7 @@ class ContentsOfURLLoadingProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         XCTAssertEqual(procedure.output.success, ContentsOfURLLoadingProcedureTests.expectedData)
     }
@@ -46,7 +46,7 @@ class ContentsOfURLLoadingProcedureTests: XCTestCase {
             XCTAssertNotNil(procedure.output.error)
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
     }
 }

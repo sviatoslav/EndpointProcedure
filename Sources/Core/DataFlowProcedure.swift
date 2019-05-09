@@ -44,7 +44,7 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
             resultMappingProcedure.injectResult(from: interceptionProcedure)
             let children: [Procedure] = [dataLoadingProcedure, deserializationProcedure, interceptionProcedure,
                                          resultMappingProcedure]
-            children.forEach { $0.add(condition: NoFailedDependenciesCondition()) }
+            children.forEach { $0.addCondition(NoFailedDependenciesCondition()) }
             super.init(operations: children)
             resultMappingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
                 self?.output = procedure.output
@@ -65,13 +65,13 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
     }
 
     /// Processes errors sets correct error as `output`
-    final public override func procedureDidFinish(withErrors: [Error]) {
-        guard case .pending = self.output, let error = withErrors.first else {
+    final public override func procedureDidFinish(with error: Error?) {
+        guard case .pending = self.output, let error = error else {
             return
         }
-        let contexts: [ProcedureKitError.Context] = [.parentCancelledWithErrors, .dependencyFinishedWithErrors]
+        let contexts: [ProcedureKitError.Context] = [.parentCancelledWithError, .dependencyFinishedWithError]
         if let procedureKitError = error as? ProcedureKitError, contexts.contains(procedureKitError.context) {
-            self.procedureDidFinish(withErrors: procedureKitError.errors)
+            self.procedureDidFinish(with: procedureKitError.error)
         } else {
             self.output = .ready(.failure(error))
         }

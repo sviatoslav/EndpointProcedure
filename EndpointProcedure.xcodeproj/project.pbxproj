@@ -9,13 +9,13 @@
 /* Begin PBXAggregateTarget section */
 		"EndpointProcedure::EndpointProcedurePackageTests::ProductTarget" /* EndpointProcedurePackageTests */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = OBJ_262 /* Build configuration list for PBXAggregateTarget "EndpointProcedurePackageTests" */;
+			buildConfigurationList = OBJ_269 /* Build configuration list for PBXAggregateTarget "EndpointProcedurePackageTests" */;
 			buildPhases = (
 			);
 			dependencies = (
-				OBJ_265 /* PBXTargetDependency */,
-				OBJ_267 /* PBXTargetDependency */,
-				OBJ_268 /* PBXTargetDependency */,
+				OBJ_272 /* PBXTargetDependency */,
+				OBJ_273 /* PBXTargetDependency */,
+				OBJ_275 /* PBXTargetDependency */,
 			);
 			name = EndpointProcedurePackageTests;
 			productName = EndpointProcedurePackageTests;
@@ -23,260 +23,264 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		653A639D2225D48500F2607A /* DataFlowProcedureBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A639C2225D48500F2607A /* DataFlowProcedureBuilderTests.swift */; };
-		65C488852221372F00252415 /* DataFlowProcedureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C488842221372F00252415 /* DataFlowProcedureBuilder.swift */; };
-		OBJ_142 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* AFError.swift */; };
-		OBJ_143 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* Alamofire.swift */; };
-		OBJ_144 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* DispatchQueue+Alamofire.swift */; };
-		OBJ_145 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* MultipartFormData.swift */; };
-		OBJ_146 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* NetworkReachabilityManager.swift */; };
-		OBJ_147 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* Notifications.swift */; };
-		OBJ_148 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* ParameterEncoding.swift */; };
-		OBJ_149 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* Request.swift */; };
-		OBJ_150 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* Response.swift */; };
-		OBJ_151 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* ResponseSerialization.swift */; };
-		OBJ_152 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* Result.swift */; };
-		OBJ_153 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* ServerTrustPolicy.swift */; };
-		OBJ_154 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* SessionDelegate.swift */; };
-		OBJ_155 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* SessionManager.swift */; };
-		OBJ_156 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* TaskDelegate.swift */; };
-		OBJ_157 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* Timeline.swift */; };
-		OBJ_158 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* Validation.swift */; };
-		OBJ_165 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* Package.swift */; };
-		OBJ_171 /* AlamofireProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* AlamofireProcedure.swift */; };
-		OBJ_172 /* AlamofireProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* AlamofireProcedureFactory.swift */; };
-		OBJ_174 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Alamofire::Alamofire::Product" /* Alamofire.framework */; };
-		OBJ_175 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
-		OBJ_176 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
-		OBJ_187 /* AlamofireProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* AlamofireProcedureFactoryTests.swift */; };
-		OBJ_188 /* AlamofireProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* AlamofireProcedureTests.swift */; };
-		OBJ_190 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
-		OBJ_191 /* AlamofireProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::AlamofireProcedureFactory::Product" /* AlamofireProcedureFactory.framework */; };
-		OBJ_192 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Alamofire::Alamofire::Product" /* Alamofire.framework */; };
-		OBJ_193 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
-		OBJ_194 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
-		OBJ_206 /* AnyCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AnyCodingKey.swift */; };
-		OBJ_207 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* DataDecoder.swift */; };
-		OBJ_208 /* DecodingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DecodingProcedure.swift */; };
-		OBJ_209 /* DecodingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DecodingProcedureFactory.swift */; };
-		OBJ_211 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
-		OBJ_212 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
-		OBJ_220 /* AnyCodingKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* AnyCodingKeyTests.swift */; };
-		OBJ_221 /* DecodingProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* DecodingProcedureFactoryTests.swift */; };
-		OBJ_222 /* DecodingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* DecodingProcedureTests.swift */; };
-		OBJ_223 /* JSONDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* JSONDecoderTests.swift */; };
-		OBJ_224 /* PropertyListEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* PropertyListEncoderTests.swift */; };
-		OBJ_225 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* TestData.swift */; };
-		OBJ_227 /* DecodingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::DecodingProcedureFactory::Product" /* DecodingProcedureFactory.framework */; };
-		OBJ_228 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
-		OBJ_229 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
-		OBJ_237 /* AnyDataDeserializationProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* AnyDataDeserializationProcedureFactory.swift */; };
-		OBJ_238 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Configuration.swift */; };
-		OBJ_239 /* ContentsOfURLLoadingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* ContentsOfURLLoadingProcedure.swift */; };
-		OBJ_240 /* DataDeserializationProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* DataDeserializationProcedureFactory.swift */; };
-		OBJ_241 /* DataFlowProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* DataFlowProcedure.swift */; };
-		OBJ_243 /* EndpointProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* EndpointProcedure.swift */; };
-		OBJ_245 /* HTTPDataFlowProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* HTTPDataFlowProcedure.swift */; };
-		OBJ_246 /* HTTPDataLoadingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* HTTPDataLoadingProcedureFactory.swift */; };
-		OBJ_247 /* HTTPRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* HTTPRequestData.swift */; };
-		OBJ_248 /* HTTPRequestDataBuidlerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* HTTPRequestDataBuidlerProvider.swift */; };
-		OBJ_249 /* HTTPResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* HTTPResponseData.swift */; };
-		OBJ_250 /* HTTPURLResponseProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* HTTPURLResponseProcedure.swift */; };
-		OBJ_251 /* ResponseMappingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* ResponseMappingProcedureFactory.swift */; };
-		OBJ_253 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
-		OBJ_260 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_273 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* AnyDataDeserializationProcedureFactoryTests.swift */; };
-		OBJ_274 /* ContentsOfURLLoadingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* ContentsOfURLLoadingProcedureTests.swift */; };
-		OBJ_275 /* DataFlowProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* DataFlowProcedureTests.swift */; };
-		OBJ_278 /* EndpointProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* EndpointProcedureTests.swift */; };
-		OBJ_279 /* HTTPDataFlowProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* HTTPDataFlowProcedureTests.swift */; };
-		OBJ_280 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* HTTPRequestDataBuidlerProviderTests.swift */; };
-		OBJ_281 /* HTTPRequestDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* HTTPRequestDataTests.swift */; };
-		OBJ_284 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
-		OBJ_285 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
-		OBJ_292 /* Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* Any.swift */; };
-		OBJ_293 /* AnyObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* AnyObserver.swift */; };
-		OBJ_294 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* Block.swift */; };
-		OBJ_295 /* BlockCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* BlockCondition.swift */; };
-		OBJ_296 /* BlockObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* BlockObservers.swift */; };
-		OBJ_297 /* Capability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* Capability.swift */; };
-		OBJ_298 /* Collection+ProcedureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* Collection+ProcedureKit.swift */; };
-		OBJ_299 /* Composed.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* Composed.swift */; };
-		OBJ_300 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* Condition.swift */; };
-		OBJ_301 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* Delay.swift */; };
-		OBJ_302 /* DispatchQueue+ProcedureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* DispatchQueue+ProcedureKit.swift */; };
-		OBJ_303 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* Errors.swift */; };
-		OBJ_304 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* Filter.swift */; };
-		OBJ_305 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* Group.swift */; };
-		OBJ_306 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* Identity.swift */; };
-		OBJ_307 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* Logging.swift */; };
-		OBJ_308 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* Map.swift */; };
-		OBJ_309 /* MutualExclusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* MutualExclusion.swift */; };
-		OBJ_310 /* NegatedCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* NegatedCondition.swift */; };
-		OBJ_311 /* NetworkObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* NetworkObserver.swift */; };
-		OBJ_312 /* NoFailedDependenciesCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* NoFailedDependenciesCondition.swift */; };
-		OBJ_313 /* Operation+ProcedureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* Operation+ProcedureKit.swift */; };
-		OBJ_314 /* PendingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* PendingEvent.swift */; };
-		OBJ_315 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* Procedure.swift */; };
-		OBJ_316 /* ProcedureEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* ProcedureEventQueue.swift */; };
-		OBJ_317 /* ProcedureFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* ProcedureFuture.swift */; };
-		OBJ_318 /* ProcedureObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* ProcedureObserver.swift */; };
-		OBJ_319 /* ProcedureProcotol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* ProcedureProcotol.swift */; };
-		OBJ_320 /* ProcedureQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* ProcedureQueue.swift */; };
-		OBJ_321 /* ProcedureResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* ProcedureResult.swift */; };
-		OBJ_322 /* Profiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* Profiler.swift */; };
-		OBJ_323 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* Reachability.swift */; };
-		OBJ_324 /* Reduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* Reduce.swift */; };
-		OBJ_325 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* Repeat.swift */; };
-		OBJ_326 /* Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* Retry.swift */; };
-		OBJ_327 /* SilentCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* SilentCondition.swift */; };
-		OBJ_328 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* Support.swift */; };
-		OBJ_329 /* TimeoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* TimeoutObserver.swift */; };
-		OBJ_330 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* Transform.swift */; };
-		OBJ_337 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* Package.swift */; };
-		OBJ_342 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* SwiftyJSON.swift */; };
-		OBJ_349 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* Package.swift */; };
+		65931D87227D696B00C54763 /* TransformProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65931D86227D696B00C54763 /* TransformProcedureFactory.swift */; };
+		OBJ_152 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* AFError.swift */; };
+		OBJ_153 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* Alamofire.swift */; };
+		OBJ_154 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* DispatchQueue+Alamofire.swift */; };
+		OBJ_155 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* MultipartFormData.swift */; };
+		OBJ_156 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* NetworkReachabilityManager.swift */; };
+		OBJ_157 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* Notifications.swift */; };
+		OBJ_158 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* ParameterEncoding.swift */; };
+		OBJ_159 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* Request.swift */; };
+		OBJ_160 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Response.swift */; };
+		OBJ_161 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* ResponseSerialization.swift */; };
+		OBJ_162 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* Result.swift */; };
+		OBJ_163 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* ServerTrustPolicy.swift */; };
+		OBJ_164 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* SessionDelegate.swift */; };
+		OBJ_165 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* SessionManager.swift */; };
+		OBJ_166 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* TaskDelegate.swift */; };
+		OBJ_167 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* Timeline.swift */; };
+		OBJ_168 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* Validation.swift */; };
+		OBJ_175 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Package.swift */; };
+		OBJ_181 /* AlamofireProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AlamofireProcedure.swift */; };
+		OBJ_182 /* AlamofireProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AlamofireProcedureFactory.swift */; };
+		OBJ_184 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Alamofire::Alamofire::Product" /* Alamofire.framework */; };
+		OBJ_185 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
+		OBJ_186 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
+		OBJ_197 /* AlamofireProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* AlamofireProcedureFactoryTests.swift */; };
+		OBJ_198 /* AlamofireProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* AlamofireProcedureTests.swift */; };
+		OBJ_200 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
+		OBJ_201 /* AlamofireProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::AlamofireProcedureFactory::Product" /* AlamofireProcedureFactory.framework */; };
+		OBJ_202 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Alamofire::Alamofire::Product" /* Alamofire.framework */; };
+		OBJ_203 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
+		OBJ_204 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
+		OBJ_216 /* AnyCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* AnyCodingKey.swift */; };
+		OBJ_217 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DataDecoder.swift */; };
+		OBJ_218 /* DecodingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* DecodingProcedure.swift */; };
+		OBJ_219 /* DecodingProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* DecodingProcedureFactory.swift */; };
+		OBJ_221 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
+		OBJ_222 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
+		OBJ_230 /* AnyCodingKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* AnyCodingKeyTests.swift */; };
+		OBJ_231 /* DecodingProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* DecodingProcedureFactoryTests.swift */; };
+		OBJ_232 /* DecodingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* DecodingProcedureTests.swift */; };
+		OBJ_233 /* JSONDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* JSONDecoderTests.swift */; };
+		OBJ_234 /* PropertyListEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* PropertyListEncoderTests.swift */; };
+		OBJ_235 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* TestData.swift */; };
+		OBJ_237 /* DecodingProcedureFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::DecodingProcedureFactory::Product" /* DecodingProcedureFactory.framework */; };
+		OBJ_238 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
+		OBJ_239 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
+		OBJ_247 /* AnyDataDeserializationProcedureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* AnyDataDeserializationProcedureFactory.swift */; };
+		OBJ_248 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Configuration.swift */; };
+		OBJ_249 /* ContentsOfURLLoadingProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* ContentsOfURLLoadingProcedure.swift */; };
+		OBJ_250 /* DataFlowProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* DataFlowProcedure.swift */; };
+		OBJ_251 /* DataFlowProcedureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* DataFlowProcedureBuilder.swift */; };
+		OBJ_252 /* EndpointProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* EndpointProcedure.swift */; };
+		OBJ_253 /* HTTPDataFlowProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* HTTPDataFlowProcedure.swift */; };
+		OBJ_254 /* HTTPRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* HTTPRequestData.swift */; };
+		OBJ_255 /* HTTPRequestDataBuidlerProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* HTTPRequestDataBuidlerProviding.swift */; };
+		OBJ_256 /* HTTPResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* HTTPResponseData.swift */; };
+		OBJ_257 /* HTTPURLResponseProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* HTTPURLResponseProcedure.swift */; };
+		OBJ_258 /* ProcedureFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* ProcedureFactories.swift */; };
+		OBJ_260 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
+		OBJ_267 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_280 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* AnyDataDeserializationProcedureFactoryTests.swift */; };
+		OBJ_281 /* ContentsOfURLLoadingProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* ContentsOfURLLoadingProcedureTests.swift */; };
+		OBJ_282 /* DataFlowProcedureBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* DataFlowProcedureBuilderTests.swift */; };
+		OBJ_283 /* DataFlowProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* DataFlowProcedureTests.swift */; };
+		OBJ_284 /* EndpointProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* EndpointProcedureTests.swift */; };
+		OBJ_285 /* HTTPDataFlowProcedureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* HTTPDataFlowProcedureTests.swift */; };
+		OBJ_286 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* HTTPRequestDataBuidlerProviderTests.swift */; };
+		OBJ_287 /* HTTPRequestDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* HTTPRequestDataTests.swift */; };
+		OBJ_289 /* EndpointProcedure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */; };
+		OBJ_290 /* ProcedureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */; };
+		OBJ_297 /* Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* Any.swift */; };
+		OBJ_298 /* AnyObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* AnyObserver.swift */; };
+		OBJ_299 /* Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* Batch.swift */; };
+		OBJ_300 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* Block.swift */; };
+		OBJ_301 /* BlockCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* BlockCondition.swift */; };
+		OBJ_302 /* BlockObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* BlockObservers.swift */; };
+		OBJ_303 /* Capability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* Capability.swift */; };
+		OBJ_304 /* Collection+ProcedureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* Collection+ProcedureKit.swift */; };
+		OBJ_305 /* Composed.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* Composed.swift */; };
+		OBJ_306 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* Condition.swift */; };
+		OBJ_307 /* Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* Decode.swift */; };
+		OBJ_308 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* Delay.swift */; };
+		OBJ_309 /* DispatchQueue+ProcedureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* DispatchQueue+ProcedureKit.swift */; };
+		OBJ_310 /* Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* Encode.swift */; };
+		OBJ_311 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* Errors.swift */; };
+		OBJ_312 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* Filter.swift */; };
+		OBJ_313 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* Group.swift */; };
+		OBJ_314 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* Identity.swift */; };
+		OBJ_315 /* IgnoreErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* IgnoreErrors.swift */; };
+		OBJ_316 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* Logging.swift */; };
+		OBJ_317 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* Map.swift */; };
+		OBJ_318 /* MutualExclusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* MutualExclusion.swift */; };
+		OBJ_319 /* NegatedCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* NegatedCondition.swift */; };
+		OBJ_320 /* NetworkObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* NetworkObserver.swift */; };
+		OBJ_321 /* NoFailedDependenciesCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* NoFailedDependenciesCondition.swift */; };
+		OBJ_322 /* Operation+ProcedureKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* Operation+ProcedureKit.swift */; };
+		OBJ_323 /* PendingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* PendingEvent.swift */; };
+		OBJ_324 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* Procedure.swift */; };
+		OBJ_325 /* ProcedureEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* ProcedureEventQueue.swift */; };
+		OBJ_326 /* ProcedureFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* ProcedureFuture.swift */; };
+		OBJ_327 /* ProcedureObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* ProcedureObserver.swift */; };
+		OBJ_328 /* ProcedureProcotol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* ProcedureProcotol.swift */; };
+		OBJ_329 /* ProcedureQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* ProcedureQueue.swift */; };
+		OBJ_330 /* ProcedureResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* ProcedureResult.swift */; };
+		OBJ_331 /* Profiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* Profiler.swift */; };
+		OBJ_332 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* Reachability.swift */; };
+		OBJ_333 /* Reduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* Reduce.swift */; };
+		OBJ_334 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* Repeat.swift */; };
+		OBJ_335 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* Result.swift */; };
+		OBJ_336 /* Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* Retry.swift */; };
+		OBJ_337 /* SignpostObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* SignpostObserver.swift */; };
+		OBJ_338 /* SilentCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* SilentCondition.swift */; };
+		OBJ_339 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* Support.swift */; };
+		OBJ_340 /* TimeoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* TimeoutObserver.swift */; };
+		OBJ_341 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* Transform.swift */; };
+		OBJ_348 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* Package.swift */; };
+		OBJ_353 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* SwiftyJSON.swift */; };
+		OBJ_360 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		65C488712221267F00252415 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "EndpointProcedure::EndpointProcedure";
-			remoteInfo = EndpointProcedure;
-		};
-		65C488722221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D73227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "ProcedureKit::ProcedureKit";
 			remoteInfo = ProcedureKit;
 		};
-		65C488732221267F00252415 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "ProcedureKit::ProcedureKit";
-			remoteInfo = ProcedureKit;
-		};
-		65C488742221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D74227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Alamofire::Alamofire";
 			remoteInfo = Alamofire;
 		};
-		65C488752221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D75227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "EndpointProcedure::EndpointProcedure";
 			remoteInfo = EndpointProcedure;
 		};
-		65C488762221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D76227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "ProcedureKit::ProcedureKit";
 			remoteInfo = ProcedureKit;
 		};
-		65C488772221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D77227D678B00C54763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "EndpointProcedure::EndpointProcedure";
+			remoteInfo = EndpointProcedure;
+		};
+		65931D78227D678B00C54763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "ProcedureKit::ProcedureKit";
+			remoteInfo = ProcedureKit;
+		};
+		65931D79227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "SwiftyJSON::SwiftyJSON";
 			remoteInfo = SwiftyJSON;
 		};
-		65C488782221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D7A227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "EndpointProcedure::AlamofireProcedureFactory";
 			remoteInfo = AlamofireProcedureFactory;
 		};
-		65C488792221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D7B227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Alamofire::Alamofire";
 			remoteInfo = Alamofire;
 		};
-		65C4887A2221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D7C227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "EndpointProcedure::EndpointProcedure";
 			remoteInfo = EndpointProcedure;
 		};
-		65C4887B2221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D7D227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "ProcedureKit::ProcedureKit";
 			remoteInfo = ProcedureKit;
 		};
-		65C4887C2221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D7E227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "EndpointProcedure::DecodingProcedureFactory";
 			remoteInfo = DecodingProcedureFactory;
 		};
-		65C4887D2221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D7F227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "EndpointProcedure::EndpointProcedure";
 			remoteInfo = EndpointProcedure;
 		};
-		65C4887E2221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D80227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "ProcedureKit::ProcedureKit";
 			remoteInfo = ProcedureKit;
 		};
-		65C4887F2221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D81227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "EndpointProcedure::EndpointProcedure";
 			remoteInfo = EndpointProcedure;
 		};
-		65C488802221267F00252415 /* PBXContainerItemProxy */ = {
+		65931D82227D678B00C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "ProcedureKit::ProcedureKit";
 			remoteInfo = ProcedureKit;
 		};
-		65C488812221268000252415 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "EndpointProcedure::EndpointProcedureTests";
-			remoteInfo = EndpointProcedureTests;
-		};
-		65C488822221268000252415 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "EndpointProcedure::AlamofireProcedureFactoryTests";
-			remoteInfo = AlamofireProcedureFactoryTests;
-		};
-		65C488832221268000252415 /* PBXContainerItemProxy */ = {
+		65931D83227D679300C54763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "EndpointProcedure::DecodingProcedureFactoryTests";
 			remoteInfo = DecodingProcedureFactoryTests;
 		};
+		65931D84227D679300C54763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "EndpointProcedure::EndpointProcedureTests";
+			remoteInfo = EndpointProcedureTests;
+		};
+		65931D85227D679300C54763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "EndpointProcedure::AlamofireProcedureFactoryTests";
+			remoteInfo = AlamofireProcedureFactoryTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		653A639C2225D48500F2607A /* DataFlowProcedureBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedureBuilderTests.swift; sourceTree = "<group>"; };
-		65C488842221372F00252415 /* DataFlowProcedureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedureBuilder.swift; sourceTree = "<group>"; };
+		65931D86227D696B00C54763 /* TransformProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformProcedureFactory.swift; sourceTree = "<group>"; };
 		"Alamofire::Alamofire::Product" /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"EndpointProcedure::AlamofireProcedureFactory::Product" /* AlamofireProcedureFactory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireProcedureFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"EndpointProcedure::AlamofireProcedureFactoryTests::Product" /* AlamofireProcedureFactoryTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlamofireProcedureFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,182 +288,195 @@
 		"EndpointProcedure::DecodingProcedureFactoryTests::Product" /* DecodingProcedureFactoryTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = DecodingProcedureFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EndpointProcedure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"EndpointProcedure::EndpointProcedureTests::Product" /* EndpointProcedureTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = EndpointProcedureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_10 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
-		OBJ_100 /* Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
-		OBJ_101 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		OBJ_102 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
-		OBJ_103 /* MutualExclusion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutualExclusion.swift; sourceTree = "<group>"; };
-		OBJ_104 /* NegatedCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegatedCondition.swift; sourceTree = "<group>"; };
-		OBJ_105 /* NetworkObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkObserver.swift; sourceTree = "<group>"; };
-		OBJ_106 /* NoFailedDependenciesCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFailedDependenciesCondition.swift; sourceTree = "<group>"; };
-		OBJ_107 /* Operation+ProcedureKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+ProcedureKit.swift"; sourceTree = "<group>"; };
-		OBJ_108 /* PendingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingEvent.swift; sourceTree = "<group>"; };
-		OBJ_109 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
-		OBJ_11 /* DecodingProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedure.swift; sourceTree = "<group>"; };
-		OBJ_110 /* ProcedureEventQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureEventQueue.swift; sourceTree = "<group>"; };
-		OBJ_111 /* ProcedureFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureFuture.swift; sourceTree = "<group>"; };
-		OBJ_112 /* ProcedureObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureObserver.swift; sourceTree = "<group>"; };
-		OBJ_113 /* ProcedureProcotol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureProcotol.swift; sourceTree = "<group>"; };
-		OBJ_114 /* ProcedureQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureQueue.swift; sourceTree = "<group>"; };
-		OBJ_115 /* ProcedureResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureResult.swift; sourceTree = "<group>"; };
-		OBJ_116 /* Profiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiler.swift; sourceTree = "<group>"; };
-		OBJ_117 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		OBJ_118 /* Reduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reduce.swift; sourceTree = "<group>"; };
-		OBJ_119 /* Repeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
-		OBJ_12 /* DecodingProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedureFactory.swift; sourceTree = "<group>"; };
-		OBJ_120 /* Retry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Retry.swift; sourceTree = "<group>"; };
-		OBJ_121 /* SilentCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SilentCondition.swift; sourceTree = "<group>"; };
-		OBJ_122 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
-		OBJ_123 /* TimeoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutObserver.swift; sourceTree = "<group>"; };
-		OBJ_124 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
-		OBJ_126 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/.build/checkouts/ProcedureKit.git--6820910211672618764/Package.swift"; sourceTree = "<group>"; };
-		OBJ_14 /* AlamofireProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedure.swift; sourceTree = "<group>"; };
-		OBJ_15 /* AlamofireProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureFactory.swift; sourceTree = "<group>"; };
+		OBJ_10 /* AlamofireProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureFactory.swift; sourceTree = "<group>"; };
+		OBJ_100 /* NetworkObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkObserver.swift; sourceTree = "<group>"; };
+		OBJ_101 /* NoFailedDependenciesCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFailedDependenciesCondition.swift; sourceTree = "<group>"; };
+		OBJ_102 /* Operation+ProcedureKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+ProcedureKit.swift"; sourceTree = "<group>"; };
+		OBJ_103 /* PendingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingEvent.swift; sourceTree = "<group>"; };
+		OBJ_104 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
+		OBJ_105 /* ProcedureEventQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureEventQueue.swift; sourceTree = "<group>"; };
+		OBJ_106 /* ProcedureFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureFuture.swift; sourceTree = "<group>"; };
+		OBJ_107 /* ProcedureObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureObserver.swift; sourceTree = "<group>"; };
+		OBJ_108 /* ProcedureProcotol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureProcotol.swift; sourceTree = "<group>"; };
+		OBJ_109 /* ProcedureQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureQueue.swift; sourceTree = "<group>"; };
+		OBJ_110 /* ProcedureResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureResult.swift; sourceTree = "<group>"; };
+		OBJ_111 /* Profiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiler.swift; sourceTree = "<group>"; };
+		OBJ_112 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		OBJ_113 /* Reduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reduce.swift; sourceTree = "<group>"; };
+		OBJ_114 /* Repeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
+		OBJ_115 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		OBJ_116 /* Retry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Retry.swift; sourceTree = "<group>"; };
+		OBJ_117 /* SignpostObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignpostObserver.swift; sourceTree = "<group>"; };
+		OBJ_118 /* SilentCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SilentCondition.swift; sourceTree = "<group>"; };
+		OBJ_119 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
+		OBJ_12 /* AnyCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodingKey.swift; sourceTree = "<group>"; };
+		OBJ_120 /* TimeoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutObserver.swift; sourceTree = "<group>"; };
+		OBJ_121 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
+		OBJ_128 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/.build/checkouts/ProcedureKit/Package.swift; sourceTree = "<group>"; };
+		OBJ_13 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
+		OBJ_139 /* Tools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tools; sourceTree = SOURCE_ROOT; };
+		OBJ_14 /* DecodingProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedure.swift; sourceTree = "<group>"; };
+		OBJ_140 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = SOURCE_ROOT; };
+		OBJ_141 /* Examples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Examples; sourceTree = SOURCE_ROOT; };
+		OBJ_142 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = codecov.yml; sourceTree = "<group>"; };
+		OBJ_143 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_144 /* README.template.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.template.md; sourceTree = "<group>"; };
+		OBJ_145 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_146 /* EndpointProcedure.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = EndpointProcedure.podspec; sourceTree = "<group>"; };
+		OBJ_15 /* DecodingProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedureFactory.swift; sourceTree = "<group>"; };
 		OBJ_17 /* AnyDataDeserializationProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataDeserializationProcedureFactory.swift; sourceTree = "<group>"; };
 		OBJ_18 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		OBJ_19 /* ContentsOfURLLoadingProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsOfURLLoadingProcedure.swift; sourceTree = "<group>"; };
-		OBJ_20 /* DataDeserializationProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeserializationProcedureFactory.swift; sourceTree = "<group>"; };
-		OBJ_21 /* DataFlowProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedure.swift; sourceTree = "<group>"; };
-		OBJ_23 /* EndpointProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedure.swift; sourceTree = "<group>"; };
-		OBJ_25 /* HTTPDataFlowProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedure.swift; sourceTree = "<group>"; };
-		OBJ_26 /* HTTPDataLoadingProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataLoadingProcedureFactory.swift; sourceTree = "<group>"; };
-		OBJ_27 /* HTTPRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestData.swift; sourceTree = "<group>"; };
-		OBJ_28 /* HTTPRequestDataBuidlerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataBuidlerProvider.swift; sourceTree = "<group>"; };
-		OBJ_29 /* HTTPResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponseData.swift; sourceTree = "<group>"; };
-		OBJ_30 /* HTTPURLResponseProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPURLResponseProcedure.swift; sourceTree = "<group>"; };
-		OBJ_31 /* ResponseMappingProcedureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMappingProcedureFactory.swift; sourceTree = "<group>"; };
-		OBJ_34 /* AlamofireProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureFactoryTests.swift; sourceTree = "<group>"; };
-		OBJ_35 /* AlamofireProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureTests.swift; sourceTree = "<group>"; };
-		OBJ_37 /* AnyDataDeserializationProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataDeserializationProcedureFactoryTests.swift; sourceTree = "<group>"; };
-		OBJ_38 /* ContentsOfURLLoadingProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsOfURLLoadingProcedureTests.swift; sourceTree = "<group>"; };
-		OBJ_39 /* DataFlowProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedureTests.swift; sourceTree = "<group>"; };
-		OBJ_42 /* EndpointProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedureTests.swift; sourceTree = "<group>"; };
-		OBJ_43 /* HTTPDataFlowProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedureTests.swift; sourceTree = "<group>"; };
-		OBJ_44 /* HTTPRequestDataBuidlerProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataBuidlerProviderTests.swift; sourceTree = "<group>"; };
-		OBJ_45 /* HTTPRequestDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataTests.swift; sourceTree = "<group>"; };
-		OBJ_48 /* AnyCodingKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodingKeyTests.swift; sourceTree = "<group>"; };
-		OBJ_49 /* DecodingProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedureFactoryTests.swift; sourceTree = "<group>"; };
-		OBJ_50 /* DecodingProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedureTests.swift; sourceTree = "<group>"; };
-		OBJ_51 /* JSONDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderTests.swift; sourceTree = "<group>"; };
-		OBJ_52 /* PropertyListEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListEncoderTests.swift; sourceTree = "<group>"; };
-		OBJ_53 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		OBJ_54 /* Tools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tools; sourceTree = SOURCE_ROOT; };
-		OBJ_55 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = SOURCE_ROOT; };
-		OBJ_56 /* Examples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Examples; sourceTree = SOURCE_ROOT; };
-		OBJ_59 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/.build/checkouts/SwiftyJSON.git--9152776279929558749/Package.swift"; sourceTree = "<group>"; };
+		OBJ_20 /* DataFlowProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedure.swift; sourceTree = "<group>"; };
+		OBJ_21 /* DataFlowProcedureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedureBuilder.swift; sourceTree = "<group>"; };
+		OBJ_22 /* EndpointProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedure.swift; sourceTree = "<group>"; };
+		OBJ_23 /* HTTPDataFlowProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedure.swift; sourceTree = "<group>"; };
+		OBJ_24 /* HTTPRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestData.swift; sourceTree = "<group>"; };
+		OBJ_25 /* HTTPRequestDataBuidlerProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataBuidlerProviding.swift; sourceTree = "<group>"; };
+		OBJ_26 /* HTTPResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponseData.swift; sourceTree = "<group>"; };
+		OBJ_27 /* HTTPURLResponseProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPURLResponseProcedure.swift; sourceTree = "<group>"; };
+		OBJ_28 /* ProcedureFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureFactories.swift; sourceTree = "<group>"; };
+		OBJ_31 /* mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
+		OBJ_32 /* AlamofireProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		OBJ_33 /* AlamofireProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedureTests.swift; sourceTree = "<group>"; };
+		OBJ_35 /* AnyCodingKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodingKeyTests.swift; sourceTree = "<group>"; };
+		OBJ_36 /* DecodingProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		OBJ_37 /* DecodingProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingProcedureTests.swift; sourceTree = "<group>"; };
+		OBJ_38 /* JSONDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderTests.swift; sourceTree = "<group>"; };
+		OBJ_39 /* PropertyListEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListEncoderTests.swift; sourceTree = "<group>"; };
+		OBJ_40 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		OBJ_42 /* contents-of-url-test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "contents-of-url-test.json"; sourceTree = "<group>"; };
+		OBJ_43 /* AnyDataDeserializationProcedureFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataDeserializationProcedureFactoryTests.swift; sourceTree = "<group>"; };
+		OBJ_44 /* ContentsOfURLLoadingProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsOfURLLoadingProcedureTests.swift; sourceTree = "<group>"; };
+		OBJ_45 /* DataFlowProcedureBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedureBuilderTests.swift; sourceTree = "<group>"; };
+		OBJ_46 /* DataFlowProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowProcedureTests.swift; sourceTree = "<group>"; };
+		OBJ_47 /* EndpointProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProcedureTests.swift; sourceTree = "<group>"; };
+		OBJ_48 /* HTTPDataFlowProcedureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataFlowProcedureTests.swift; sourceTree = "<group>"; };
+		OBJ_49 /* HTTPRequestDataBuidlerProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataBuidlerProviderTests.swift; sourceTree = "<group>"; };
+		OBJ_50 /* HTTPRequestDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestDataTests.swift; sourceTree = "<group>"; };
+		OBJ_54 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		OBJ_55 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/.build/checkouts/SwiftyJSON/Package.swift; sourceTree = "<group>"; };
+		OBJ_57 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/.build/checkouts/Alamofire/Package.swift; sourceTree = "<group>"; };
+		OBJ_58 /* AFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFError.swift; sourceTree = "<group>"; };
+		OBJ_59 /* Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_60 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		OBJ_62 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/sviatoslavyakymiv/Development/iOSProjects/OpenSource/EndpointProcedure/.build/checkouts/Alamofire.git-2887413460358002867/Package.swift"; sourceTree = "<group>"; };
-		OBJ_63 /* AFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFError.swift; sourceTree = "<group>"; };
-		OBJ_64 /* Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
-		OBJ_65 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		OBJ_66 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
-		OBJ_67 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		OBJ_68 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		OBJ_69 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
-		OBJ_70 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		OBJ_71 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		OBJ_72 /* ResponseSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSerialization.swift; sourceTree = "<group>"; };
-		OBJ_73 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		OBJ_74 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		OBJ_75 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
-		OBJ_76 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		OBJ_77 /* TaskDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDelegate.swift; sourceTree = "<group>"; };
-		OBJ_78 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
-		OBJ_79 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
-		OBJ_86 /* Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Any.swift; sourceTree = "<group>"; };
-		OBJ_87 /* AnyObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObserver.swift; sourceTree = "<group>"; };
-		OBJ_88 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
-		OBJ_89 /* BlockCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockCondition.swift; sourceTree = "<group>"; };
-		OBJ_9 /* AnyCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodingKey.swift; sourceTree = "<group>"; };
-		OBJ_90 /* BlockObservers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockObservers.swift; sourceTree = "<group>"; };
-		OBJ_91 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
-		OBJ_92 /* Collection+ProcedureKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+ProcedureKit.swift"; sourceTree = "<group>"; };
-		OBJ_93 /* Composed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composed.swift; sourceTree = "<group>"; };
-		OBJ_94 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
-		OBJ_95 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
-		OBJ_96 /* DispatchQueue+ProcedureKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+ProcedureKit.swift"; sourceTree = "<group>"; };
-		OBJ_97 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		OBJ_98 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		OBJ_99 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		OBJ_60 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		OBJ_61 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		OBJ_62 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		OBJ_63 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		OBJ_64 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		OBJ_65 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		OBJ_66 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		OBJ_67 /* ResponseSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSerialization.swift; sourceTree = "<group>"; };
+		OBJ_68 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		OBJ_69 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		OBJ_70 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
+		OBJ_71 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		OBJ_72 /* TaskDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDelegate.swift; sourceTree = "<group>"; };
+		OBJ_73 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		OBJ_74 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		OBJ_77 /* Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Any.swift; sourceTree = "<group>"; };
+		OBJ_78 /* AnyObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObserver.swift; sourceTree = "<group>"; };
+		OBJ_79 /* Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch.swift; sourceTree = "<group>"; };
+		OBJ_80 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		OBJ_81 /* BlockCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockCondition.swift; sourceTree = "<group>"; };
+		OBJ_82 /* BlockObservers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockObservers.swift; sourceTree = "<group>"; };
+		OBJ_83 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
+		OBJ_84 /* Collection+ProcedureKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+ProcedureKit.swift"; sourceTree = "<group>"; };
+		OBJ_85 /* Composed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composed.swift; sourceTree = "<group>"; };
+		OBJ_86 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		OBJ_87 /* Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decode.swift; sourceTree = "<group>"; };
+		OBJ_88 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		OBJ_89 /* DispatchQueue+ProcedureKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+ProcedureKit.swift"; sourceTree = "<group>"; };
+		OBJ_9 /* AlamofireProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcedure.swift; sourceTree = "<group>"; };
+		OBJ_90 /* Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encode.swift; sourceTree = "<group>"; };
+		OBJ_91 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		OBJ_92 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		OBJ_93 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		OBJ_94 /* Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
+		OBJ_95 /* IgnoreErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoreErrors.swift; sourceTree = "<group>"; };
+		OBJ_96 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		OBJ_97 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		OBJ_98 /* MutualExclusion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutualExclusion.swift; sourceTree = "<group>"; };
+		OBJ_99 /* NegatedCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegatedCondition.swift; sourceTree = "<group>"; };
 		"ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ProcedureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_159 /* Frameworks */ = {
+		OBJ_169 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_173 /* Frameworks */ = {
+		OBJ_183 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_174 /* Alamofire.framework in Frameworks */,
-				OBJ_175 /* EndpointProcedure.framework in Frameworks */,
-				OBJ_176 /* ProcedureKit.framework in Frameworks */,
+				OBJ_184 /* Alamofire.framework in Frameworks */,
+				OBJ_185 /* EndpointProcedure.framework in Frameworks */,
+				OBJ_186 /* ProcedureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_189 /* Frameworks */ = {
+		OBJ_199 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_190 /* SwiftyJSON.framework in Frameworks */,
-				OBJ_191 /* AlamofireProcedureFactory.framework in Frameworks */,
-				OBJ_192 /* Alamofire.framework in Frameworks */,
-				OBJ_193 /* EndpointProcedure.framework in Frameworks */,
-				OBJ_194 /* ProcedureKit.framework in Frameworks */,
+				OBJ_200 /* SwiftyJSON.framework in Frameworks */,
+				OBJ_201 /* AlamofireProcedureFactory.framework in Frameworks */,
+				OBJ_202 /* Alamofire.framework in Frameworks */,
+				OBJ_203 /* EndpointProcedure.framework in Frameworks */,
+				OBJ_204 /* ProcedureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_210 /* Frameworks */ = {
+		OBJ_220 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_211 /* EndpointProcedure.framework in Frameworks */,
-				OBJ_212 /* ProcedureKit.framework in Frameworks */,
+				OBJ_221 /* EndpointProcedure.framework in Frameworks */,
+				OBJ_222 /* ProcedureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_226 /* Frameworks */ = {
+		OBJ_236 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_227 /* DecodingProcedureFactory.framework in Frameworks */,
-				OBJ_228 /* EndpointProcedure.framework in Frameworks */,
-				OBJ_229 /* ProcedureKit.framework in Frameworks */,
+				OBJ_237 /* DecodingProcedureFactory.framework in Frameworks */,
+				OBJ_238 /* EndpointProcedure.framework in Frameworks */,
+				OBJ_239 /* ProcedureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_252 /* Frameworks */ = {
+		OBJ_259 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_253 /* ProcedureKit.framework in Frameworks */,
+				OBJ_260 /* ProcedureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_283 /* Frameworks */ = {
+		OBJ_288 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_284 /* EndpointProcedure.framework in Frameworks */,
-				OBJ_285 /* ProcedureKit.framework in Frameworks */,
+				OBJ_289 /* EndpointProcedure.framework in Frameworks */,
+				OBJ_290 /* ProcedureKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_331 /* Frameworks */ = {
+		OBJ_342 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_343 /* Frameworks */ = {
+		OBJ_354 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
@@ -469,285 +486,315 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_125 /* ProcedureKitMac */ = {
+		OBJ_11 /* DecodingProcedureFactory */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = ProcedureKitMac;
-			path = ".build/checkouts/ProcedureKit.git--6820910211672618764/Sources/ProcedureKitMac";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_127 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				"EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */,
-				"ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */,
-				"EndpointProcedure::AlamofireProcedureFactoryTests::Product" /* AlamofireProcedureFactoryTests.xctest */,
-				"EndpointProcedure::DecodingProcedureFactoryTests::Product" /* DecodingProcedureFactoryTests.xctest */,
-				"EndpointProcedure::EndpointProcedureTests::Product" /* EndpointProcedureTests.xctest */,
-				"SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */,
-				"EndpointProcedure::AlamofireProcedureFactory::Product" /* AlamofireProcedureFactory.framework */,
-				"Alamofire::Alamofire::Product" /* Alamofire.framework */,
-				"EndpointProcedure::DecodingProcedureFactory::Product" /* DecodingProcedureFactory.framework */,
-			);
-			name = Products;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		OBJ_13 /* AlamofireProcedureFactory */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_14 /* AlamofireProcedure.swift */,
-				OBJ_15 /* AlamofireProcedureFactory.swift */,
-			);
-			name = AlamofireProcedureFactory;
-			path = Sources/Alamofire;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_16 /* EndpointProcedure */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_17 /* AnyDataDeserializationProcedureFactory.swift */,
-				OBJ_18 /* Configuration.swift */,
-				OBJ_19 /* ContentsOfURLLoadingProcedure.swift */,
-				OBJ_20 /* DataDeserializationProcedureFactory.swift */,
-				OBJ_21 /* DataFlowProcedure.swift */,
-				OBJ_23 /* EndpointProcedure.swift */,
-				65C488842221372F00252415 /* DataFlowProcedureBuilder.swift */,
-				OBJ_25 /* HTTPDataFlowProcedure.swift */,
-				OBJ_26 /* HTTPDataLoadingProcedureFactory.swift */,
-				OBJ_27 /* HTTPRequestData.swift */,
-				OBJ_28 /* HTTPRequestDataBuidlerProvider.swift */,
-				OBJ_29 /* HTTPResponseData.swift */,
-				OBJ_30 /* HTTPURLResponseProcedure.swift */,
-				OBJ_31 /* ResponseMappingProcedureFactory.swift */,
-			);
-			name = EndpointProcedure;
-			path = Sources/Core;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_32 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_33 /* AlamofireProcedureFactoryTests */,
-				OBJ_36 /* EndpointProcedureTests */,
-				OBJ_47 /* DecodingProcedureFactoryTests */,
-			);
-			name = Tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_33 /* AlamofireProcedureFactoryTests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_34 /* AlamofireProcedureFactoryTests.swift */,
-				OBJ_35 /* AlamofireProcedureTests.swift */,
-			);
-			name = AlamofireProcedureFactoryTests;
-			path = Tests/Alamofire;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_36 /* EndpointProcedureTests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_37 /* AnyDataDeserializationProcedureFactoryTests.swift */,
-				OBJ_38 /* ContentsOfURLLoadingProcedureTests.swift */,
-				OBJ_39 /* DataFlowProcedureTests.swift */,
-				OBJ_42 /* EndpointProcedureTests.swift */,
-				653A639C2225D48500F2607A /* DataFlowProcedureBuilderTests.swift */,
-				OBJ_43 /* HTTPDataFlowProcedureTests.swift */,
-				OBJ_44 /* HTTPRequestDataBuidlerProviderTests.swift */,
-				OBJ_45 /* HTTPRequestDataTests.swift */,
-			);
-			name = EndpointProcedureTests;
-			path = Tests/Core;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_47 /* DecodingProcedureFactoryTests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_48 /* AnyCodingKeyTests.swift */,
-				OBJ_49 /* DecodingProcedureFactoryTests.swift */,
-				OBJ_50 /* DecodingProcedureTests.swift */,
-				OBJ_51 /* JSONDecoderTests.swift */,
-				OBJ_52 /* PropertyListEncoderTests.swift */,
-				OBJ_53 /* TestData.swift */,
-			);
-			name = DecodingProcedureFactoryTests;
-			path = Tests/Decoding;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_5 = {
-			isa = PBXGroup;
-			children = (
-				OBJ_6 /* Package.swift */,
-				OBJ_7 /* Sources */,
-				OBJ_32 /* Tests */,
-				OBJ_54 /* Tools */,
-				OBJ_55 /* docs */,
-				OBJ_56 /* Examples */,
-				OBJ_57 /* Dependencies */,
-				OBJ_127 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		OBJ_57 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_58 /* SwiftyJSON 4.2.0 */,
-				OBJ_61 /* Alamofire 4.8.1 */,
-				OBJ_80 /* ProcedureKit 4.5.1 */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		OBJ_58 /* SwiftyJSON 4.2.0 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_59 /* Package.swift */,
-				OBJ_60 /* SwiftyJSON.swift */,
-			);
-			name = "SwiftyJSON 4.2.0";
-			path = ".build/checkouts/SwiftyJSON.git--9152776279929558749/Source";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_61 /* Alamofire 4.8.1 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_62 /* Package.swift */,
-				OBJ_63 /* AFError.swift */,
-				OBJ_64 /* Alamofire.swift */,
-				OBJ_65 /* DispatchQueue+Alamofire.swift */,
-				OBJ_66 /* MultipartFormData.swift */,
-				OBJ_67 /* NetworkReachabilityManager.swift */,
-				OBJ_68 /* Notifications.swift */,
-				OBJ_69 /* ParameterEncoding.swift */,
-				OBJ_70 /* Request.swift */,
-				OBJ_71 /* Response.swift */,
-				OBJ_72 /* ResponseSerialization.swift */,
-				OBJ_73 /* Result.swift */,
-				OBJ_74 /* ServerTrustPolicy.swift */,
-				OBJ_75 /* SessionDelegate.swift */,
-				OBJ_76 /* SessionManager.swift */,
-				OBJ_77 /* TaskDelegate.swift */,
-				OBJ_78 /* Timeline.swift */,
-				OBJ_79 /* Validation.swift */,
-			);
-			name = "Alamofire 4.8.1";
-			path = ".build/checkouts/Alamofire.git-2887413460358002867/Source";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_7 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_8 /* DecodingProcedureFactory */,
-				OBJ_13 /* AlamofireProcedureFactory */,
-				OBJ_16 /* EndpointProcedure */,
-			);
-			name = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_8 /* DecodingProcedureFactory */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_9 /* AnyCodingKey.swift */,
-				OBJ_10 /* DataDecoder.swift */,
-				OBJ_11 /* DecodingProcedure.swift */,
-				OBJ_12 /* DecodingProcedureFactory.swift */,
+				OBJ_12 /* AnyCodingKey.swift */,
+				OBJ_13 /* DataDecoder.swift */,
+				OBJ_14 /* DecodingProcedure.swift */,
+				OBJ_15 /* DecodingProcedureFactory.swift */,
 			);
 			name = DecodingProcedureFactory;
 			path = Sources/Decoding;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_80 /* ProcedureKit 4.5.1 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_81 /* TestingProcedureKit */,
-				OBJ_82 /* ProcedureKitNetwork */,
-				OBJ_83 /* ProcedureKitCloud */,
-				OBJ_84 /* ProcedureKitLocation */,
-				OBJ_85 /* ProcedureKit */,
-				OBJ_125 /* ProcedureKitMac */,
-				OBJ_126 /* Package.swift */,
-			);
-			name = "ProcedureKit 4.5.1";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_81 /* TestingProcedureKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TestingProcedureKit;
-			path = ".build/checkouts/ProcedureKit.git--6820910211672618764/Sources/TestingProcedureKit";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_82 /* ProcedureKitNetwork */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ProcedureKitNetwork;
-			path = ".build/checkouts/ProcedureKit.git--6820910211672618764/Sources/ProcedureKitNetwork";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_83 /* ProcedureKitCloud */ = {
+		OBJ_122 /* ProcedureKitCloud */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = ProcedureKitCloud;
-			path = ".build/checkouts/ProcedureKit.git--6820910211672618764/Sources/ProcedureKitCloud";
+			path = .build/checkouts/ProcedureKit/Sources/ProcedureKitCloud;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_84 /* ProcedureKitLocation */ = {
+		OBJ_123 /* ProcedureKitCoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ProcedureKitCoreData;
+			path = .build/checkouts/ProcedureKit/Sources/ProcedureKitCoreData;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_124 /* ProcedureKitLocation */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = ProcedureKitLocation;
-			path = ".build/checkouts/ProcedureKit.git--6820910211672618764/Sources/ProcedureKitLocation";
+			path = .build/checkouts/ProcedureKit/Sources/ProcedureKitLocation;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_85 /* ProcedureKit */ = {
+		OBJ_125 /* ProcedureKitMac */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_86 /* Any.swift */,
-				OBJ_87 /* AnyObserver.swift */,
-				OBJ_88 /* Block.swift */,
-				OBJ_89 /* BlockCondition.swift */,
-				OBJ_90 /* BlockObservers.swift */,
-				OBJ_91 /* Capability.swift */,
-				OBJ_92 /* Collection+ProcedureKit.swift */,
-				OBJ_93 /* Composed.swift */,
-				OBJ_94 /* Condition.swift */,
-				OBJ_95 /* Delay.swift */,
-				OBJ_96 /* DispatchQueue+ProcedureKit.swift */,
-				OBJ_97 /* Errors.swift */,
-				OBJ_98 /* Filter.swift */,
-				OBJ_99 /* Group.swift */,
-				OBJ_100 /* Identity.swift */,
-				OBJ_101 /* Logging.swift */,
-				OBJ_102 /* Map.swift */,
-				OBJ_103 /* MutualExclusion.swift */,
-				OBJ_104 /* NegatedCondition.swift */,
-				OBJ_105 /* NetworkObserver.swift */,
-				OBJ_106 /* NoFailedDependenciesCondition.swift */,
-				OBJ_107 /* Operation+ProcedureKit.swift */,
-				OBJ_108 /* PendingEvent.swift */,
-				OBJ_109 /* Procedure.swift */,
-				OBJ_110 /* ProcedureEventQueue.swift */,
-				OBJ_111 /* ProcedureFuture.swift */,
-				OBJ_112 /* ProcedureObserver.swift */,
-				OBJ_113 /* ProcedureProcotol.swift */,
-				OBJ_114 /* ProcedureQueue.swift */,
-				OBJ_115 /* ProcedureResult.swift */,
-				OBJ_116 /* Profiler.swift */,
-				OBJ_117 /* Reachability.swift */,
-				OBJ_118 /* Reduce.swift */,
-				OBJ_119 /* Repeat.swift */,
-				OBJ_120 /* Retry.swift */,
-				OBJ_121 /* SilentCondition.swift */,
-				OBJ_122 /* Support.swift */,
-				OBJ_123 /* TimeoutObserver.swift */,
-				OBJ_124 /* Transform.swift */,
+			);
+			name = ProcedureKitMac;
+			path = .build/checkouts/ProcedureKit/Sources/ProcedureKitMac;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_126 /* ProcedureKitNetwork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ProcedureKitNetwork;
+			path = .build/checkouts/ProcedureKit/Sources/ProcedureKitNetwork;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_127 /* TestingProcedureKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TestingProcedureKit;
+			path = .build/checkouts/ProcedureKit/Sources/TestingProcedureKit;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_129 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"ProcedureKit::ProcedureKit::Product" /* ProcedureKit.framework */,
+				"Alamofire::Alamofire::Product" /* Alamofire.framework */,
+				"EndpointProcedure::EndpointProcedureTests::Product" /* EndpointProcedureTests.xctest */,
+				"EndpointProcedure::DecodingProcedureFactory::Product" /* DecodingProcedureFactory.framework */,
+				"EndpointProcedure::DecodingProcedureFactoryTests::Product" /* DecodingProcedureFactoryTests.xctest */,
+				"EndpointProcedure::EndpointProcedure::Product" /* EndpointProcedure.framework */,
+				"SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */,
+				"EndpointProcedure::AlamofireProcedureFactoryTests::Product" /* AlamofireProcedureFactoryTests.xctest */,
+				"EndpointProcedure::AlamofireProcedureFactory::Product" /* AlamofireProcedureFactory.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_16 /* EndpointProcedure */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_17 /* AnyDataDeserializationProcedureFactory.swift */,
+				65931D86227D696B00C54763 /* TransformProcedureFactory.swift */,
+				OBJ_18 /* Configuration.swift */,
+				OBJ_19 /* ContentsOfURLLoadingProcedure.swift */,
+				OBJ_20 /* DataFlowProcedure.swift */,
+				OBJ_21 /* DataFlowProcedureBuilder.swift */,
+				OBJ_22 /* EndpointProcedure.swift */,
+				OBJ_23 /* HTTPDataFlowProcedure.swift */,
+				OBJ_24 /* HTTPRequestData.swift */,
+				OBJ_25 /* HTTPRequestDataBuidlerProviding.swift */,
+				OBJ_26 /* HTTPResponseData.swift */,
+				OBJ_27 /* HTTPURLResponseProcedure.swift */,
+				OBJ_28 /* ProcedureFactories.swift */,
+			);
+			name = EndpointProcedure;
+			path = Sources/Core;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_29 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_30 /* AlamofireProcedureFactoryTests */,
+				OBJ_34 /* DecodingProcedureFactoryTests */,
+				OBJ_41 /* EndpointProcedureTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_30 /* AlamofireProcedureFactoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_31 /* mock.json */,
+				OBJ_32 /* AlamofireProcedureFactoryTests.swift */,
+				OBJ_33 /* AlamofireProcedureTests.swift */,
+			);
+			name = AlamofireProcedureFactoryTests;
+			path = Tests/Alamofire;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_34 /* DecodingProcedureFactoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_35 /* AnyCodingKeyTests.swift */,
+				OBJ_36 /* DecodingProcedureFactoryTests.swift */,
+				OBJ_37 /* DecodingProcedureTests.swift */,
+				OBJ_38 /* JSONDecoderTests.swift */,
+				OBJ_39 /* PropertyListEncoderTests.swift */,
+				OBJ_40 /* TestData.swift */,
+			);
+			name = DecodingProcedureFactoryTests;
+			path = Tests/Decoding;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_41 /* EndpointProcedureTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_42 /* contents-of-url-test.json */,
+				OBJ_43 /* AnyDataDeserializationProcedureFactoryTests.swift */,
+				OBJ_44 /* ContentsOfURLLoadingProcedureTests.swift */,
+				OBJ_45 /* DataFlowProcedureBuilderTests.swift */,
+				OBJ_46 /* DataFlowProcedureTests.swift */,
+				OBJ_47 /* EndpointProcedureTests.swift */,
+				OBJ_48 /* HTTPDataFlowProcedureTests.swift */,
+				OBJ_49 /* HTTPRequestDataBuidlerProviderTests.swift */,
+				OBJ_50 /* HTTPRequestDataTests.swift */,
+			);
+			name = EndpointProcedureTests;
+			path = Tests/Core;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_29 /* Tests */,
+				OBJ_51 /* Dependencies */,
+				OBJ_129 /* Products */,
+				OBJ_139 /* Tools */,
+				OBJ_140 /* docs */,
+				OBJ_141 /* Examples */,
+				OBJ_142 /* codecov.yml */,
+				OBJ_143 /* LICENSE */,
+				OBJ_144 /* README.template.md */,
+				OBJ_145 /* README.md */,
+				OBJ_146 /* EndpointProcedure.podspec */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_51 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_52 /* SwiftyJSON 4.3.0 */,
+				OBJ_56 /* Alamofire 4.8.2 */,
+				OBJ_75 /* ProcedureKit 5.2.0 */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_52 /* SwiftyJSON 4.3.0 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_53 /* SwiftyJSON */,
+				OBJ_55 /* Package.swift */,
+			);
+			name = "SwiftyJSON 4.3.0";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_53 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_54 /* SwiftyJSON.swift */,
+			);
+			name = SwiftyJSON;
+			path = .build/checkouts/SwiftyJSON/Source/SwiftyJSON;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_56 /* Alamofire 4.8.2 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_57 /* Package.swift */,
+				OBJ_58 /* AFError.swift */,
+				OBJ_59 /* Alamofire.swift */,
+				OBJ_60 /* DispatchQueue+Alamofire.swift */,
+				OBJ_61 /* MultipartFormData.swift */,
+				OBJ_62 /* NetworkReachabilityManager.swift */,
+				OBJ_63 /* Notifications.swift */,
+				OBJ_64 /* ParameterEncoding.swift */,
+				OBJ_65 /* Request.swift */,
+				OBJ_66 /* Response.swift */,
+				OBJ_67 /* ResponseSerialization.swift */,
+				OBJ_68 /* Result.swift */,
+				OBJ_69 /* ServerTrustPolicy.swift */,
+				OBJ_70 /* SessionDelegate.swift */,
+				OBJ_71 /* SessionManager.swift */,
+				OBJ_72 /* TaskDelegate.swift */,
+				OBJ_73 /* Timeline.swift */,
+				OBJ_74 /* Validation.swift */,
+			);
+			name = "Alamofire 4.8.2";
+			path = .build/checkouts/Alamofire/Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* AlamofireProcedureFactory */,
+				OBJ_11 /* DecodingProcedureFactory */,
+				OBJ_16 /* EndpointProcedure */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_75 /* ProcedureKit 5.2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_76 /* ProcedureKit */,
+				OBJ_122 /* ProcedureKitCloud */,
+				OBJ_123 /* ProcedureKitCoreData */,
+				OBJ_124 /* ProcedureKitLocation */,
+				OBJ_125 /* ProcedureKitMac */,
+				OBJ_126 /* ProcedureKitNetwork */,
+				OBJ_127 /* TestingProcedureKit */,
+				OBJ_128 /* Package.swift */,
+			);
+			name = "ProcedureKit 5.2.0";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_76 /* ProcedureKit */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_77 /* Any.swift */,
+				OBJ_78 /* AnyObserver.swift */,
+				OBJ_79 /* Batch.swift */,
+				OBJ_80 /* Block.swift */,
+				OBJ_81 /* BlockCondition.swift */,
+				OBJ_82 /* BlockObservers.swift */,
+				OBJ_83 /* Capability.swift */,
+				OBJ_84 /* Collection+ProcedureKit.swift */,
+				OBJ_85 /* Composed.swift */,
+				OBJ_86 /* Condition.swift */,
+				OBJ_87 /* Decode.swift */,
+				OBJ_88 /* Delay.swift */,
+				OBJ_89 /* DispatchQueue+ProcedureKit.swift */,
+				OBJ_90 /* Encode.swift */,
+				OBJ_91 /* Errors.swift */,
+				OBJ_92 /* Filter.swift */,
+				OBJ_93 /* Group.swift */,
+				OBJ_94 /* Identity.swift */,
+				OBJ_95 /* IgnoreErrors.swift */,
+				OBJ_96 /* Logging.swift */,
+				OBJ_97 /* Map.swift */,
+				OBJ_98 /* MutualExclusion.swift */,
+				OBJ_99 /* NegatedCondition.swift */,
+				OBJ_100 /* NetworkObserver.swift */,
+				OBJ_101 /* NoFailedDependenciesCondition.swift */,
+				OBJ_102 /* Operation+ProcedureKit.swift */,
+				OBJ_103 /* PendingEvent.swift */,
+				OBJ_104 /* Procedure.swift */,
+				OBJ_105 /* ProcedureEventQueue.swift */,
+				OBJ_106 /* ProcedureFuture.swift */,
+				OBJ_107 /* ProcedureObserver.swift */,
+				OBJ_108 /* ProcedureProcotol.swift */,
+				OBJ_109 /* ProcedureQueue.swift */,
+				OBJ_110 /* ProcedureResult.swift */,
+				OBJ_111 /* Profiler.swift */,
+				OBJ_112 /* Reachability.swift */,
+				OBJ_113 /* Reduce.swift */,
+				OBJ_114 /* Repeat.swift */,
+				OBJ_115 /* Result.swift */,
+				OBJ_116 /* Retry.swift */,
+				OBJ_117 /* SignpostObserver.swift */,
+				OBJ_118 /* SilentCondition.swift */,
+				OBJ_119 /* Support.swift */,
+				OBJ_120 /* TimeoutObserver.swift */,
+				OBJ_121 /* Transform.swift */,
 			);
 			name = ProcedureKit;
-			path = ".build/checkouts/ProcedureKit.git--6820910211672618764/Sources/ProcedureKit";
+			path = .build/checkouts/ProcedureKit/Sources/ProcedureKit;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* AlamofireProcedureFactory */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* AlamofireProcedure.swift */,
+				OBJ_10 /* AlamofireProcedureFactory.swift */,
+			);
+			name = AlamofireProcedureFactory;
+			path = Sources/Alamofire;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -755,10 +802,10 @@
 /* Begin PBXNativeTarget section */
 		"Alamofire::Alamofire" /* Alamofire */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_138 /* Build configuration list for PBXNativeTarget "Alamofire" */;
+			buildConfigurationList = OBJ_148 /* Build configuration list for PBXNativeTarget "Alamofire" */;
 			buildPhases = (
-				OBJ_141 /* Sources */,
-				OBJ_159 /* Frameworks */,
+				OBJ_151 /* Sources */,
+				OBJ_169 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -771,9 +818,9 @@
 		};
 		"Alamofire::SwiftPMPackageDescription" /* AlamofirePackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_161 /* Build configuration list for PBXNativeTarget "AlamofirePackageDescription" */;
+			buildConfigurationList = OBJ_171 /* Build configuration list for PBXNativeTarget "AlamofirePackageDescription" */;
 			buildPhases = (
-				OBJ_164 /* Sources */,
+				OBJ_174 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -785,17 +832,17 @@
 		};
 		"EndpointProcedure::AlamofireProcedureFactory" /* AlamofireProcedureFactory */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_167 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactory" */;
+			buildConfigurationList = OBJ_177 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactory" */;
 			buildPhases = (
-				OBJ_170 /* Sources */,
-				OBJ_173 /* Frameworks */,
+				OBJ_180 /* Sources */,
+				OBJ_183 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_177 /* PBXTargetDependency */,
-				OBJ_178 /* PBXTargetDependency */,
-				OBJ_180 /* PBXTargetDependency */,
+				OBJ_187 /* PBXTargetDependency */,
+				OBJ_188 /* PBXTargetDependency */,
+				OBJ_190 /* PBXTargetDependency */,
 			);
 			name = AlamofireProcedureFactory;
 			productName = AlamofireProcedureFactory;
@@ -804,19 +851,19 @@
 		};
 		"EndpointProcedure::AlamofireProcedureFactoryTests" /* AlamofireProcedureFactoryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_183 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactoryTests" */;
+			buildConfigurationList = OBJ_193 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactoryTests" */;
 			buildPhases = (
-				OBJ_186 /* Sources */,
-				OBJ_189 /* Frameworks */,
+				OBJ_196 /* Sources */,
+				OBJ_199 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_195 /* PBXTargetDependency */,
-				OBJ_197 /* PBXTargetDependency */,
-				OBJ_198 /* PBXTargetDependency */,
-				OBJ_199 /* PBXTargetDependency */,
-				OBJ_200 /* PBXTargetDependency */,
+				OBJ_205 /* PBXTargetDependency */,
+				OBJ_207 /* PBXTargetDependency */,
+				OBJ_208 /* PBXTargetDependency */,
+				OBJ_209 /* PBXTargetDependency */,
+				OBJ_210 /* PBXTargetDependency */,
 			);
 			name = AlamofireProcedureFactoryTests;
 			productName = AlamofireProcedureFactoryTests;
@@ -825,16 +872,16 @@
 		};
 		"EndpointProcedure::DecodingProcedureFactory" /* DecodingProcedureFactory */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_202 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactory" */;
+			buildConfigurationList = OBJ_212 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactory" */;
 			buildPhases = (
-				OBJ_205 /* Sources */,
-				OBJ_210 /* Frameworks */,
+				OBJ_215 /* Sources */,
+				OBJ_220 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_213 /* PBXTargetDependency */,
-				OBJ_214 /* PBXTargetDependency */,
+				OBJ_223 /* PBXTargetDependency */,
+				OBJ_224 /* PBXTargetDependency */,
 			);
 			name = DecodingProcedureFactory;
 			productName = DecodingProcedureFactory;
@@ -843,17 +890,17 @@
 		};
 		"EndpointProcedure::DecodingProcedureFactoryTests" /* DecodingProcedureFactoryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_216 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactoryTests" */;
+			buildConfigurationList = OBJ_226 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactoryTests" */;
 			buildPhases = (
-				OBJ_219 /* Sources */,
-				OBJ_226 /* Frameworks */,
+				OBJ_229 /* Sources */,
+				OBJ_236 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_230 /* PBXTargetDependency */,
-				OBJ_231 /* PBXTargetDependency */,
-				OBJ_232 /* PBXTargetDependency */,
+				OBJ_240 /* PBXTargetDependency */,
+				OBJ_241 /* PBXTargetDependency */,
+				OBJ_242 /* PBXTargetDependency */,
 			);
 			name = DecodingProcedureFactoryTests;
 			productName = DecodingProcedureFactoryTests;
@@ -862,15 +909,15 @@
 		};
 		"EndpointProcedure::EndpointProcedure" /* EndpointProcedure */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_233 /* Build configuration list for PBXNativeTarget "EndpointProcedure" */;
+			buildConfigurationList = OBJ_243 /* Build configuration list for PBXNativeTarget "EndpointProcedure" */;
 			buildPhases = (
-				OBJ_236 /* Sources */,
-				OBJ_252 /* Frameworks */,
+				OBJ_246 /* Sources */,
+				OBJ_259 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_254 /* PBXTargetDependency */,
+				OBJ_261 /* PBXTargetDependency */,
 			);
 			name = EndpointProcedure;
 			productName = EndpointProcedure;
@@ -879,16 +926,16 @@
 		};
 		"EndpointProcedure::EndpointProcedureTests" /* EndpointProcedureTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_269 /* Build configuration list for PBXNativeTarget "EndpointProcedureTests" */;
+			buildConfigurationList = OBJ_276 /* Build configuration list for PBXNativeTarget "EndpointProcedureTests" */;
 			buildPhases = (
-				OBJ_272 /* Sources */,
-				OBJ_283 /* Frameworks */,
+				OBJ_279 /* Sources */,
+				OBJ_288 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_286 /* PBXTargetDependency */,
-				OBJ_287 /* PBXTargetDependency */,
+				OBJ_291 /* PBXTargetDependency */,
+				OBJ_292 /* PBXTargetDependency */,
 			);
 			name = EndpointProcedureTests;
 			productName = EndpointProcedureTests;
@@ -897,9 +944,9 @@
 		};
 		"EndpointProcedure::SwiftPMPackageDescription" /* EndpointProcedurePackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_256 /* Build configuration list for PBXNativeTarget "EndpointProcedurePackageDescription" */;
+			buildConfigurationList = OBJ_263 /* Build configuration list for PBXNativeTarget "EndpointProcedurePackageDescription" */;
 			buildPhases = (
-				OBJ_259 /* Sources */,
+				OBJ_266 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -911,10 +958,10 @@
 		};
 		"ProcedureKit::ProcedureKit" /* ProcedureKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_288 /* Build configuration list for PBXNativeTarget "ProcedureKit" */;
+			buildConfigurationList = OBJ_293 /* Build configuration list for PBXNativeTarget "ProcedureKit" */;
 			buildPhases = (
-				OBJ_291 /* Sources */,
-				OBJ_331 /* Frameworks */,
+				OBJ_296 /* Sources */,
+				OBJ_342 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -927,9 +974,9 @@
 		};
 		"ProcedureKit::SwiftPMPackageDescription" /* ProcedureKitPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_333 /* Build configuration list for PBXNativeTarget "ProcedureKitPackageDescription" */;
+			buildConfigurationList = OBJ_344 /* Build configuration list for PBXNativeTarget "ProcedureKitPackageDescription" */;
 			buildPhases = (
-				OBJ_336 /* Sources */,
+				OBJ_347 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -941,9 +988,9 @@
 		};
 		"SwiftyJSON::SwiftPMPackageDescription" /* SwiftyJSONPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_345 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */;
+			buildConfigurationList = OBJ_356 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */;
 			buildPhases = (
-				OBJ_348 /* Sources */,
+				OBJ_359 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -955,10 +1002,10 @@
 		};
 		"SwiftyJSON::SwiftyJSON" /* SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_338 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildConfigurationList = OBJ_349 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				OBJ_341 /* Sources */,
-				OBJ_343 /* Frameworks */,
+				OBJ_352 /* Sources */,
+				OBJ_354 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -975,6 +1022,7 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 9999;
 				LastUpgradeCheck = 9999;
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "EndpointProcedure" */;
@@ -982,10 +1030,11 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
-			mainGroup = OBJ_5;
-			productRefGroup = OBJ_127 /* Products */;
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_129 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1008,296 +1057,301 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_141 /* Sources */ = {
+		OBJ_151 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_142 /* AFError.swift in Sources */,
-				OBJ_143 /* Alamofire.swift in Sources */,
-				OBJ_144 /* DispatchQueue+Alamofire.swift in Sources */,
-				OBJ_145 /* MultipartFormData.swift in Sources */,
-				OBJ_146 /* NetworkReachabilityManager.swift in Sources */,
-				OBJ_147 /* Notifications.swift in Sources */,
-				OBJ_148 /* ParameterEncoding.swift in Sources */,
-				OBJ_149 /* Request.swift in Sources */,
-				OBJ_150 /* Response.swift in Sources */,
-				OBJ_151 /* ResponseSerialization.swift in Sources */,
-				OBJ_152 /* Result.swift in Sources */,
-				OBJ_153 /* ServerTrustPolicy.swift in Sources */,
-				OBJ_154 /* SessionDelegate.swift in Sources */,
-				OBJ_155 /* SessionManager.swift in Sources */,
-				OBJ_156 /* TaskDelegate.swift in Sources */,
-				OBJ_157 /* Timeline.swift in Sources */,
-				OBJ_158 /* Validation.swift in Sources */,
+				OBJ_152 /* AFError.swift in Sources */,
+				OBJ_153 /* Alamofire.swift in Sources */,
+				OBJ_154 /* DispatchQueue+Alamofire.swift in Sources */,
+				OBJ_155 /* MultipartFormData.swift in Sources */,
+				OBJ_156 /* NetworkReachabilityManager.swift in Sources */,
+				OBJ_157 /* Notifications.swift in Sources */,
+				OBJ_158 /* ParameterEncoding.swift in Sources */,
+				OBJ_159 /* Request.swift in Sources */,
+				OBJ_160 /* Response.swift in Sources */,
+				OBJ_161 /* ResponseSerialization.swift in Sources */,
+				OBJ_162 /* Result.swift in Sources */,
+				OBJ_163 /* ServerTrustPolicy.swift in Sources */,
+				OBJ_164 /* SessionDelegate.swift in Sources */,
+				OBJ_165 /* SessionManager.swift in Sources */,
+				OBJ_166 /* TaskDelegate.swift in Sources */,
+				OBJ_167 /* Timeline.swift in Sources */,
+				OBJ_168 /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_164 /* Sources */ = {
+		OBJ_174 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_165 /* Package.swift in Sources */,
+				OBJ_175 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_170 /* Sources */ = {
+		OBJ_180 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_171 /* AlamofireProcedure.swift in Sources */,
-				OBJ_172 /* AlamofireProcedureFactory.swift in Sources */,
+				OBJ_181 /* AlamofireProcedure.swift in Sources */,
+				OBJ_182 /* AlamofireProcedureFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_186 /* Sources */ = {
+		OBJ_196 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_187 /* AlamofireProcedureFactoryTests.swift in Sources */,
-				OBJ_188 /* AlamofireProcedureTests.swift in Sources */,
+				OBJ_197 /* AlamofireProcedureFactoryTests.swift in Sources */,
+				OBJ_198 /* AlamofireProcedureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_205 /* Sources */ = {
+		OBJ_215 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_206 /* AnyCodingKey.swift in Sources */,
-				OBJ_207 /* DataDecoder.swift in Sources */,
-				OBJ_208 /* DecodingProcedure.swift in Sources */,
-				OBJ_209 /* DecodingProcedureFactory.swift in Sources */,
+				OBJ_216 /* AnyCodingKey.swift in Sources */,
+				OBJ_217 /* DataDecoder.swift in Sources */,
+				OBJ_218 /* DecodingProcedure.swift in Sources */,
+				OBJ_219 /* DecodingProcedureFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_219 /* Sources */ = {
+		OBJ_229 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_220 /* AnyCodingKeyTests.swift in Sources */,
-				OBJ_221 /* DecodingProcedureFactoryTests.swift in Sources */,
-				OBJ_222 /* DecodingProcedureTests.swift in Sources */,
-				OBJ_223 /* JSONDecoderTests.swift in Sources */,
-				OBJ_224 /* PropertyListEncoderTests.swift in Sources */,
-				OBJ_225 /* TestData.swift in Sources */,
+				OBJ_230 /* AnyCodingKeyTests.swift in Sources */,
+				OBJ_231 /* DecodingProcedureFactoryTests.swift in Sources */,
+				OBJ_232 /* DecodingProcedureTests.swift in Sources */,
+				OBJ_233 /* JSONDecoderTests.swift in Sources */,
+				OBJ_234 /* PropertyListEncoderTests.swift in Sources */,
+				OBJ_235 /* TestData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_236 /* Sources */ = {
+		OBJ_246 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_237 /* AnyDataDeserializationProcedureFactory.swift in Sources */,
-				OBJ_238 /* Configuration.swift in Sources */,
-				OBJ_239 /* ContentsOfURLLoadingProcedure.swift in Sources */,
-				OBJ_240 /* DataDeserializationProcedureFactory.swift in Sources */,
-				OBJ_241 /* DataFlowProcedure.swift in Sources */,
-				OBJ_243 /* EndpointProcedure.swift in Sources */,
-				OBJ_245 /* HTTPDataFlowProcedure.swift in Sources */,
-				OBJ_246 /* HTTPDataLoadingProcedureFactory.swift in Sources */,
-				OBJ_247 /* HTTPRequestData.swift in Sources */,
-				65C488852221372F00252415 /* DataFlowProcedureBuilder.swift in Sources */,
-				OBJ_248 /* HTTPRequestDataBuidlerProvider.swift in Sources */,
-				OBJ_249 /* HTTPResponseData.swift in Sources */,
-				OBJ_250 /* HTTPURLResponseProcedure.swift in Sources */,
-				OBJ_251 /* ResponseMappingProcedureFactory.swift in Sources */,
+				OBJ_247 /* AnyDataDeserializationProcedureFactory.swift in Sources */,
+				65931D87227D696B00C54763 /* TransformProcedureFactory.swift in Sources */,
+				OBJ_248 /* Configuration.swift in Sources */,
+				OBJ_249 /* ContentsOfURLLoadingProcedure.swift in Sources */,
+				OBJ_250 /* DataFlowProcedure.swift in Sources */,
+				OBJ_251 /* DataFlowProcedureBuilder.swift in Sources */,
+				OBJ_252 /* EndpointProcedure.swift in Sources */,
+				OBJ_253 /* HTTPDataFlowProcedure.swift in Sources */,
+				OBJ_254 /* HTTPRequestData.swift in Sources */,
+				OBJ_255 /* HTTPRequestDataBuidlerProviding.swift in Sources */,
+				OBJ_256 /* HTTPResponseData.swift in Sources */,
+				OBJ_257 /* HTTPURLResponseProcedure.swift in Sources */,
+				OBJ_258 /* ProcedureFactories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_259 /* Sources */ = {
+		OBJ_266 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_260 /* Package.swift in Sources */,
+				OBJ_267 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_272 /* Sources */ = {
+		OBJ_279 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_273 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */,
-				OBJ_274 /* ContentsOfURLLoadingProcedureTests.swift in Sources */,
-				OBJ_275 /* DataFlowProcedureTests.swift in Sources */,
-				653A639D2225D48500F2607A /* DataFlowProcedureBuilderTests.swift in Sources */,
-				OBJ_278 /* EndpointProcedureTests.swift in Sources */,
-				OBJ_279 /* HTTPDataFlowProcedureTests.swift in Sources */,
-				OBJ_280 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */,
-				OBJ_281 /* HTTPRequestDataTests.swift in Sources */,
+				OBJ_280 /* AnyDataDeserializationProcedureFactoryTests.swift in Sources */,
+				OBJ_281 /* ContentsOfURLLoadingProcedureTests.swift in Sources */,
+				OBJ_282 /* DataFlowProcedureBuilderTests.swift in Sources */,
+				OBJ_283 /* DataFlowProcedureTests.swift in Sources */,
+				OBJ_284 /* EndpointProcedureTests.swift in Sources */,
+				OBJ_285 /* HTTPDataFlowProcedureTests.swift in Sources */,
+				OBJ_286 /* HTTPRequestDataBuidlerProviderTests.swift in Sources */,
+				OBJ_287 /* HTTPRequestDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_291 /* Sources */ = {
+		OBJ_296 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_292 /* Any.swift in Sources */,
-				OBJ_293 /* AnyObserver.swift in Sources */,
-				OBJ_294 /* Block.swift in Sources */,
-				OBJ_295 /* BlockCondition.swift in Sources */,
-				OBJ_296 /* BlockObservers.swift in Sources */,
-				OBJ_297 /* Capability.swift in Sources */,
-				OBJ_298 /* Collection+ProcedureKit.swift in Sources */,
-				OBJ_299 /* Composed.swift in Sources */,
-				OBJ_300 /* Condition.swift in Sources */,
-				OBJ_301 /* Delay.swift in Sources */,
-				OBJ_302 /* DispatchQueue+ProcedureKit.swift in Sources */,
-				OBJ_303 /* Errors.swift in Sources */,
-				OBJ_304 /* Filter.swift in Sources */,
-				OBJ_305 /* Group.swift in Sources */,
-				OBJ_306 /* Identity.swift in Sources */,
-				OBJ_307 /* Logging.swift in Sources */,
-				OBJ_308 /* Map.swift in Sources */,
-				OBJ_309 /* MutualExclusion.swift in Sources */,
-				OBJ_310 /* NegatedCondition.swift in Sources */,
-				OBJ_311 /* NetworkObserver.swift in Sources */,
-				OBJ_312 /* NoFailedDependenciesCondition.swift in Sources */,
-				OBJ_313 /* Operation+ProcedureKit.swift in Sources */,
-				OBJ_314 /* PendingEvent.swift in Sources */,
-				OBJ_315 /* Procedure.swift in Sources */,
-				OBJ_316 /* ProcedureEventQueue.swift in Sources */,
-				OBJ_317 /* ProcedureFuture.swift in Sources */,
-				OBJ_318 /* ProcedureObserver.swift in Sources */,
-				OBJ_319 /* ProcedureProcotol.swift in Sources */,
-				OBJ_320 /* ProcedureQueue.swift in Sources */,
-				OBJ_321 /* ProcedureResult.swift in Sources */,
-				OBJ_322 /* Profiler.swift in Sources */,
-				OBJ_323 /* Reachability.swift in Sources */,
-				OBJ_324 /* Reduce.swift in Sources */,
-				OBJ_325 /* Repeat.swift in Sources */,
-				OBJ_326 /* Retry.swift in Sources */,
-				OBJ_327 /* SilentCondition.swift in Sources */,
-				OBJ_328 /* Support.swift in Sources */,
-				OBJ_329 /* TimeoutObserver.swift in Sources */,
-				OBJ_330 /* Transform.swift in Sources */,
+				OBJ_297 /* Any.swift in Sources */,
+				OBJ_298 /* AnyObserver.swift in Sources */,
+				OBJ_299 /* Batch.swift in Sources */,
+				OBJ_300 /* Block.swift in Sources */,
+				OBJ_301 /* BlockCondition.swift in Sources */,
+				OBJ_302 /* BlockObservers.swift in Sources */,
+				OBJ_303 /* Capability.swift in Sources */,
+				OBJ_304 /* Collection+ProcedureKit.swift in Sources */,
+				OBJ_305 /* Composed.swift in Sources */,
+				OBJ_306 /* Condition.swift in Sources */,
+				OBJ_307 /* Decode.swift in Sources */,
+				OBJ_308 /* Delay.swift in Sources */,
+				OBJ_309 /* DispatchQueue+ProcedureKit.swift in Sources */,
+				OBJ_310 /* Encode.swift in Sources */,
+				OBJ_311 /* Errors.swift in Sources */,
+				OBJ_312 /* Filter.swift in Sources */,
+				OBJ_313 /* Group.swift in Sources */,
+				OBJ_314 /* Identity.swift in Sources */,
+				OBJ_315 /* IgnoreErrors.swift in Sources */,
+				OBJ_316 /* Logging.swift in Sources */,
+				OBJ_317 /* Map.swift in Sources */,
+				OBJ_318 /* MutualExclusion.swift in Sources */,
+				OBJ_319 /* NegatedCondition.swift in Sources */,
+				OBJ_320 /* NetworkObserver.swift in Sources */,
+				OBJ_321 /* NoFailedDependenciesCondition.swift in Sources */,
+				OBJ_322 /* Operation+ProcedureKit.swift in Sources */,
+				OBJ_323 /* PendingEvent.swift in Sources */,
+				OBJ_324 /* Procedure.swift in Sources */,
+				OBJ_325 /* ProcedureEventQueue.swift in Sources */,
+				OBJ_326 /* ProcedureFuture.swift in Sources */,
+				OBJ_327 /* ProcedureObserver.swift in Sources */,
+				OBJ_328 /* ProcedureProcotol.swift in Sources */,
+				OBJ_329 /* ProcedureQueue.swift in Sources */,
+				OBJ_330 /* ProcedureResult.swift in Sources */,
+				OBJ_331 /* Profiler.swift in Sources */,
+				OBJ_332 /* Reachability.swift in Sources */,
+				OBJ_333 /* Reduce.swift in Sources */,
+				OBJ_334 /* Repeat.swift in Sources */,
+				OBJ_335 /* Result.swift in Sources */,
+				OBJ_336 /* Retry.swift in Sources */,
+				OBJ_337 /* SignpostObserver.swift in Sources */,
+				OBJ_338 /* SilentCondition.swift in Sources */,
+				OBJ_339 /* Support.swift in Sources */,
+				OBJ_340 /* TimeoutObserver.swift in Sources */,
+				OBJ_341 /* Transform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_336 /* Sources */ = {
+		OBJ_347 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_337 /* Package.swift in Sources */,
+				OBJ_348 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_341 /* Sources */ = {
+		OBJ_352 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_342 /* SwiftyJSON.swift in Sources */,
+				OBJ_353 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_348 /* Sources */ = {
+		OBJ_359 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_349 /* Package.swift in Sources */,
+				OBJ_360 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_177 /* PBXTargetDependency */ = {
+		OBJ_187 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Alamofire::Alamofire" /* Alamofire */;
-			targetProxy = 65C488742221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D74227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_178 /* PBXTargetDependency */ = {
+		OBJ_188 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::EndpointProcedure" /* EndpointProcedure */;
-			targetProxy = 65C488752221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D75227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_180 /* PBXTargetDependency */ = {
+		OBJ_190 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "ProcedureKit::ProcedureKit" /* ProcedureKit */;
-			targetProxy = 65C488762221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D76227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_195 /* PBXTargetDependency */ = {
+		OBJ_205 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "SwiftyJSON::SwiftyJSON" /* SwiftyJSON */;
-			targetProxy = 65C488772221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D79227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_197 /* PBXTargetDependency */ = {
+		OBJ_207 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::AlamofireProcedureFactory" /* AlamofireProcedureFactory */;
-			targetProxy = 65C488782221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D7A227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_198 /* PBXTargetDependency */ = {
+		OBJ_208 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Alamofire::Alamofire" /* Alamofire */;
-			targetProxy = 65C488792221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D7B227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_199 /* PBXTargetDependency */ = {
+		OBJ_209 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::EndpointProcedure" /* EndpointProcedure */;
-			targetProxy = 65C4887A2221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D7C227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_200 /* PBXTargetDependency */ = {
+		OBJ_210 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "ProcedureKit::ProcedureKit" /* ProcedureKit */;
-			targetProxy = 65C4887B2221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D7D227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_213 /* PBXTargetDependency */ = {
+		OBJ_223 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::EndpointProcedure" /* EndpointProcedure */;
-			targetProxy = 65C488712221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D77227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_214 /* PBXTargetDependency */ = {
+		OBJ_224 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "ProcedureKit::ProcedureKit" /* ProcedureKit */;
-			targetProxy = 65C488732221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D78227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_230 /* PBXTargetDependency */ = {
+		OBJ_240 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::DecodingProcedureFactory" /* DecodingProcedureFactory */;
-			targetProxy = 65C4887C2221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D7E227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_231 /* PBXTargetDependency */ = {
+		OBJ_241 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::EndpointProcedure" /* EndpointProcedure */;
-			targetProxy = 65C4887D2221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D7F227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_232 /* PBXTargetDependency */ = {
+		OBJ_242 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "ProcedureKit::ProcedureKit" /* ProcedureKit */;
-			targetProxy = 65C4887E2221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D80227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_254 /* PBXTargetDependency */ = {
+		OBJ_261 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "ProcedureKit::ProcedureKit" /* ProcedureKit */;
-			targetProxy = 65C488722221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D73227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_265 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "EndpointProcedure::EndpointProcedureTests" /* EndpointProcedureTests */;
-			targetProxy = 65C488812221268000252415 /* PBXContainerItemProxy */;
-		};
-		OBJ_267 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "EndpointProcedure::AlamofireProcedureFactoryTests" /* AlamofireProcedureFactoryTests */;
-			targetProxy = 65C488822221268000252415 /* PBXContainerItemProxy */;
-		};
-		OBJ_268 /* PBXTargetDependency */ = {
+		OBJ_272 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::DecodingProcedureFactoryTests" /* DecodingProcedureFactoryTests */;
-			targetProxy = 65C488832221268000252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D83227D679300C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_286 /* PBXTargetDependency */ = {
+		OBJ_273 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "EndpointProcedure::EndpointProcedureTests" /* EndpointProcedureTests */;
+			targetProxy = 65931D84227D679300C54763 /* PBXContainerItemProxy */;
+		};
+		OBJ_275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "EndpointProcedure::AlamofireProcedureFactoryTests" /* AlamofireProcedureFactoryTests */;
+			targetProxy = 65931D85227D679300C54763 /* PBXContainerItemProxy */;
+		};
+		OBJ_291 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "EndpointProcedure::EndpointProcedure" /* EndpointProcedure */;
-			targetProxy = 65C4887F2221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D81227D678B00C54763 /* PBXContainerItemProxy */;
 		};
-		OBJ_287 /* PBXTargetDependency */ = {
+		OBJ_292 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "ProcedureKit::ProcedureKit" /* ProcedureKit */;
-			targetProxy = 65C488802221267F00252415 /* PBXContainerItemProxy */;
+			targetProxy = 65931D82227D678B00C54763 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		OBJ_139 /* Debug */ = {
+		OBJ_149 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1321,7 +1375,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_140 /* Release */ = {
+		OBJ_150 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1345,25 +1399,25 @@
 			};
 			name = Release;
 		};
-		OBJ_162 /* Debug */ = {
+		OBJ_172 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.0;
+				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
-		OBJ_163 /* Release */ = {
+		OBJ_173 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 4.0;
+				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
-		OBJ_168 /* Debug */ = {
+		OBJ_178 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1382,12 +1436,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AlamofireProcedureFactory;
 			};
 			name = Debug;
 		};
-		OBJ_169 /* Release */ = {
+		OBJ_179 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1406,12 +1460,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AlamofireProcedureFactory;
 			};
 			name = Release;
 		};
-		OBJ_184 /* Debug */ = {
+		OBJ_194 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1427,12 +1481,12 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AlamofireProcedureFactoryTests;
 			};
 			name = Debug;
 		};
-		OBJ_185 /* Release */ = {
+		OBJ_195 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1448,12 +1502,12 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AlamofireProcedureFactoryTests;
 			};
 			name = Release;
 		};
-		OBJ_203 /* Debug */ = {
+		OBJ_213 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1472,12 +1526,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = DecodingProcedureFactory;
 			};
 			name = Debug;
 		};
-		OBJ_204 /* Release */ = {
+		OBJ_214 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1496,12 +1550,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = DecodingProcedureFactory;
 			};
 			name = Release;
 		};
-		OBJ_217 /* Debug */ = {
+		OBJ_227 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1517,12 +1571,12 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = DecodingProcedureFactoryTests;
 			};
 			name = Debug;
 		};
-		OBJ_218 /* Release */ = {
+		OBJ_228 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1538,12 +1592,12 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = DecodingProcedureFactoryTests;
 			};
 			name = Release;
 		};
-		OBJ_234 /* Debug */ = {
+		OBJ_244 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1562,12 +1616,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = EndpointProcedure;
 			};
 			name = Debug;
 		};
-		OBJ_235 /* Release */ = {
+		OBJ_245 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1586,12 +1640,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = EndpointProcedure;
 			};
 			name = Release;
 		};
-		OBJ_257 /* Debug */ = {
+		OBJ_264 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1600,49 +1654,28 @@
 			};
 			name = Debug;
 		};
-		OBJ_258 /* Release */ = {
+		OBJ_265 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
 				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_263 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		OBJ_264 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
 			};
 			name = Release;
 		};
 		OBJ_270 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = EndpointProcedure.xcodeproj/EndpointProcedureTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = EndpointProcedureTests;
 			};
 			name = Debug;
 		};
 		OBJ_271 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_277 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -1658,12 +1691,33 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = EndpointProcedureTests;
+			};
+			name = Debug;
+		};
+		OBJ_278 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = EndpointProcedure.xcodeproj/EndpointProcedureTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = EndpointProcedureTests;
 			};
 			name = Release;
 		};
-		OBJ_289 /* Debug */ = {
+		OBJ_294 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1687,7 +1741,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_290 /* Release */ = {
+		OBJ_295 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1722,8 +1776,9 @@
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1731,13 +1786,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "SWIFT_PACKAGE DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
 		};
-		OBJ_334 /* Debug */ = {
+		OBJ_345 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1746,7 +1801,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_335 /* Release */ = {
+		OBJ_346 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1755,7 +1810,7 @@
 			};
 			name = Release;
 		};
-		OBJ_339 /* Debug */ = {
+		OBJ_350 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1765,7 +1820,9 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EndpointProcedure.xcodeproj/SwiftyJSON_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -1774,12 +1831,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = SwiftyJSON;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
-		OBJ_340 /* Release */ = {
+		OBJ_351 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -1789,7 +1848,9 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EndpointProcedure.xcodeproj/SwiftyJSON_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -1798,26 +1859,28 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = SwiftyJSON;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
-		OBJ_346 /* Debug */ = {
+		OBJ_357 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 3 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 3.0;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		OBJ_347 /* Release */ = {
+		OBJ_358 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 3 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 3.0;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1830,12 +1893,16 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				USE_HEADERMAP = NO;
 			};
@@ -1844,38 +1911,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_138 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
+		OBJ_148 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_139 /* Debug */,
-				OBJ_140 /* Release */,
+				OBJ_149 /* Debug */,
+				OBJ_150 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_161 /* Build configuration list for PBXNativeTarget "AlamofirePackageDescription" */ = {
+		OBJ_171 /* Build configuration list for PBXNativeTarget "AlamofirePackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_162 /* Debug */,
-				OBJ_163 /* Release */,
+				OBJ_172 /* Debug */,
+				OBJ_173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_167 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactory" */ = {
+		OBJ_177 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_168 /* Debug */,
-				OBJ_169 /* Release */,
+				OBJ_178 /* Debug */,
+				OBJ_179 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_183 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactoryTests" */ = {
+		OBJ_193 /* Build configuration list for PBXNativeTarget "AlamofireProcedureFactoryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_184 /* Debug */,
-				OBJ_185 /* Release */,
+				OBJ_194 /* Debug */,
+				OBJ_195 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1889,52 +1956,43 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_202 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactory" */ = {
+		OBJ_212 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_203 /* Debug */,
-				OBJ_204 /* Release */,
+				OBJ_213 /* Debug */,
+				OBJ_214 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_216 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactoryTests" */ = {
+		OBJ_226 /* Build configuration list for PBXNativeTarget "DecodingProcedureFactoryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_217 /* Debug */,
-				OBJ_218 /* Release */,
+				OBJ_227 /* Debug */,
+				OBJ_228 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_233 /* Build configuration list for PBXNativeTarget "EndpointProcedure" */ = {
+		OBJ_243 /* Build configuration list for PBXNativeTarget "EndpointProcedure" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_234 /* Debug */,
-				OBJ_235 /* Release */,
+				OBJ_244 /* Debug */,
+				OBJ_245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_256 /* Build configuration list for PBXNativeTarget "EndpointProcedurePackageDescription" */ = {
+		OBJ_263 /* Build configuration list for PBXNativeTarget "EndpointProcedurePackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_257 /* Debug */,
-				OBJ_258 /* Release */,
+				OBJ_264 /* Debug */,
+				OBJ_265 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_262 /* Build configuration list for PBXAggregateTarget "EndpointProcedurePackageTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_263 /* Debug */,
-				OBJ_264 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_269 /* Build configuration list for PBXNativeTarget "EndpointProcedureTests" */ = {
+		OBJ_269 /* Build configuration list for PBXAggregateTarget "EndpointProcedurePackageTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_270 /* Debug */,
@@ -1943,38 +2001,47 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_288 /* Build configuration list for PBXNativeTarget "ProcedureKit" */ = {
+		OBJ_276 /* Build configuration list for PBXNativeTarget "EndpointProcedureTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_289 /* Debug */,
-				OBJ_290 /* Release */,
+				OBJ_277 /* Debug */,
+				OBJ_278 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_333 /* Build configuration list for PBXNativeTarget "ProcedureKitPackageDescription" */ = {
+		OBJ_293 /* Build configuration list for PBXNativeTarget "ProcedureKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_334 /* Debug */,
-				OBJ_335 /* Release */,
+				OBJ_294 /* Debug */,
+				OBJ_295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_338 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+		OBJ_344 /* Build configuration list for PBXNativeTarget "ProcedureKitPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_339 /* Debug */,
-				OBJ_340 /* Release */,
+				OBJ_345 /* Debug */,
+				OBJ_346 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_345 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */ = {
+		OBJ_349 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_346 /* Debug */,
-				OBJ_347 /* Release */,
+				OBJ_350 /* Debug */,
+				OBJ_351 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_356 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_357 /* Debug */,
+				OBJ_358 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

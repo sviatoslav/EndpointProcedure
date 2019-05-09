@@ -14,36 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EndpointProcedure::AlamofireProcedureFactory"
-               BuildableName = "AlamofireProcedureFactory.framework"
-               BlueprintName = "AlamofireProcedureFactory"
-               ReferencedContainer = "container:EndpointProcedure.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BuildableName = "&apos;lib$(TARGET_NAME)&apos;"
-               BlueprintName = "MagicalRecordProcedureFactory"
-               ReferencedContainer = "container:EndpointProcedure.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "EndpointProcedure::EndpointProcedure"
                BuildableName = "EndpointProcedure.framework"
                BlueprintName = "EndpointProcedure"
+               ReferencedContainer = "container:EndpointProcedure.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EndpointProcedure::AlamofireProcedureFactory"
+               BuildableName = "AlamofireProcedureFactory.framework"
+               BlueprintName = "AlamofireProcedureFactory"
                ReferencedContainer = "container:EndpointProcedure.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -67,39 +54,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EndpointProcedure::AlamofireProcedureFactory"
-            BuildableName = "AlamofireProcedureFactory.framework"
-            BlueprintName = "AlamofireProcedureFactory"
-            ReferencedContainer = "container:EndpointProcedure.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EndpointProcedure::DecodingProcedureFactory"
-            BuildableName = "DecodingProcedureFactory.framework"
-            BlueprintName = "DecodingProcedureFactory"
-            ReferencedContainer = "container:EndpointProcedure.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EndpointProcedure::EndpointProcedure"
-            BuildableName = "EndpointProcedure.framework"
-            BlueprintName = "EndpointProcedure"
-            ReferencedContainer = "container:EndpointProcedure.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BuildableName = "&apos;$(TARGET_NAME)&apos;"
-               BlueprintName = "MagicalRecordProcedureFactoryTests"
+               BlueprintIdentifier = "EndpointProcedure::AlamofireProcedureFactoryTests"
+               BuildableName = "AlamofireProcedureFactoryTests.xctest"
+               BlueprintName = "AlamofireProcedureFactoryTests"
                ReferencedContainer = "container:EndpointProcedure.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -110,16 +73,6 @@
                BlueprintIdentifier = "EndpointProcedure::DecodingProcedureFactoryTests"
                BuildableName = "DecodingProcedureFactoryTests.xctest"
                BlueprintName = "DecodingProcedureFactoryTests"
-               ReferencedContainer = "container:EndpointProcedure.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EndpointProcedure::AlamofireProcedureFactoryTests"
-               BuildableName = "AlamofireProcedureFactoryTests.xctest"
-               BlueprintName = "AlamofireProcedureFactoryTests"
                ReferencedContainer = "container:EndpointProcedure.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -150,9 +103,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EndpointProcedure::AlamofireProcedureFactory"
-            BuildableName = "AlamofireProcedureFactory.framework"
-            BlueprintName = "AlamofireProcedureFactory"
+            BlueprintIdentifier = "EndpointProcedure::EndpointProcedure"
+            BuildableName = "EndpointProcedure.framework"
+            BlueprintName = "EndpointProcedure"
             ReferencedContainer = "container:EndpointProcedure.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

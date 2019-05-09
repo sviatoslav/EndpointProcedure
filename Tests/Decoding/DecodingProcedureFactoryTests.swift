@@ -31,7 +31,7 @@ class EncoderProcedureFactoryTests: XCTestCase {
         do {
             let procedure = try factory.responseMappingProcedure(for: TestDecodable.self)
             procedure.input = .ready(Data())
-            ProcedureQueue.main.add(operation: procedure)
+            ProcedureQueue.main.addOperation(procedure)
         } catch {
             XCTFail()
         }

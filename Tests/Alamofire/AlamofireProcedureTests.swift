@@ -43,7 +43,7 @@ class AlamofireProcedureTests: XCTestCase {
         procedure.addCompletionBlock {
             expectation.fulfill()
         }
-        queue.add(operation: procedure)
+        queue.addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertNil(procedure.output.error)
@@ -56,7 +56,7 @@ class AlamofireProcedureTests: XCTestCase {
         procedure.addCompletionBlock {
             expectation.fulfill()
         }
-        queue.add(operation: procedure)
+        queue.addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertNotNil(procedure.output.error)
@@ -70,7 +70,7 @@ class AlamofireProcedureTests: XCTestCase {
         procedure.addCompletionBlock {
             expectation.fulfill()
         }
-        queue.add(operation: procedure)
+        queue.addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
 
         XCTAssertEqual(procedure.output.error.map {"\($0)"}, "\(AlamofireProcedureError.invalidDataRequest)")

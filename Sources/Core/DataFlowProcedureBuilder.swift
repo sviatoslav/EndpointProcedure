@@ -12,8 +12,8 @@ import ProcedureKit
 
 public struct DataFlowProcedureBuilder: ValidationProcedureBuilding {
     private let loading: Loading
-    private var validation = AnyInputProcedure(TransformProcedure<HTTPResponseData, Void> {_ in})
-    private var deserialization = AnyProcedure<Data, Any>(TransformProcedure { $0 })
+    private var validation = AnyValidationProcedureFactory.empty.validationProcedure()
+    private var deserialization = AnyDataDeserializationProcedureFactory.empty.dataDeserializationProcedure()
     private var interception = AnyProcedure<Any, Any>(TransformProcedure { $0 })
 
     private init(loading: Loading) {

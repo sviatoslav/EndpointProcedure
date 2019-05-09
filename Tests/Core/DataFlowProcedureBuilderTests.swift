@@ -81,7 +81,7 @@ extension DataFlowProcedureBuilderTests {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         return procedure.output
     }

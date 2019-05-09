@@ -8,15 +8,15 @@
 
 import Foundation
 
-public protocol HTTPRequestDataBuidlerProvider {
+public protocol HTTPRequestDataBuidlerProviding {
     func builder(for path: String) throws -> HTTPRequestData.Builder
 }
 
-public protocol BaseURLProvider {
+public protocol BaseURLProviding {
     var baseURL: URL { get }
 }
 
-public extension HTTPRequestDataBuidlerProvider where Self: BaseURLProvider {
+public extension HTTPRequestDataBuidlerProviding where Self: BaseURLProviding {
     func builder(for path: String) throws -> HTTPRequestData.Builder {
         guard let builder = URL(string: path, relativeTo: self.baseURL).map(HTTPRequestData.Builder.for) else {
             throw HTTPRequestData.Builder.Error.unableToCreateURL

@@ -89,7 +89,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         return procedure.output
     }
@@ -128,7 +128,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         XCTAssertEqual(1, procedure.output.success)
         XCTAssertFalse(procedure.urlResponse.isPending)
@@ -152,7 +152,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         XCTAssertEqual(1, procedure.output.success)
         XCTAssert(procedure.urlResponse.isPending)
@@ -196,7 +196,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
 
     func testProcedureKitError() {
         let interception = TransformProcedure<Any, Any> {_ in
-            throw ProcedureKitError.dependency(finishedWithErrors: [Error.interception])
+            throw ProcedureKitError.dependency(finishedWithError: Error.interception)
         }
         let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,

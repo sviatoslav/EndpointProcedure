@@ -9,7 +9,7 @@
 import XCTest
 @testable import EndpointProcedure
 
-struct MockHTTPRequestDataBuidlerProvider: HTTPRequestDataBuidlerProvider, BaseURLProvider {
+struct MockHTTPRequestDataBuidlerProvider: HTTPRequestDataBuidlerProviding, BaseURLProviding {
     let baseURL: URL
 }
 

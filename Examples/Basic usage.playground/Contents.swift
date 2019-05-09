@@ -15,7 +15,7 @@ struct Film {
 /*:
  For `EndpointProcedure` creation we should create new type that conforms to `EndpointProcedureFactory` protocol and implement `createOrThrow(with:)` method.
  
- `cereateOrThrow(with:)` method requires one input parameter of type `ConfigurationProtocol`. `EndpointProcedure.framework` contains struct `Configuration` which conforms to `ConfigurationProtocol`. Initializer of `Configuration` type has 3 input parameters: `HTTPDataLoadingProcedureFactory`, `DataDeserializationProcedureFactory` and `ResponseMappingProcedureFactory`.
+ `cereateOrThrow(with:)` method requires one input parameter of type `ConfigurationProtocol`. `EndpointProcedure.framework` contains struct `Configuration` which conforms to `ConfigurationProtocol`. Initializer of `Configuration` type has 3 input parameters: `HTTPRequestProcedureFactory`, `DataDeserializationProcedureFactory` and `ResponseMappingProcedureFactory`.
 
  We'll use `AlamofireProcedureFactory` for data loading.
  */

@@ -27,7 +27,7 @@ class AlamofireProcedureFactoryTests: XCTestCase {
         let data = HTTPRequestData.Builder.for(baseURL.appendingPathComponent("get")).build()
         let factory = AlamofireProcedureFactory()
         do {
-            let procedure = try factory.dataLoadingProcedure(with: data).children[0] as! AlamofireProcedure
+            let procedure = try factory.requestProcedure(with: data).children[0] as! AlamofireProcedure
             let configurationHeaders = procedure.request.session.configuration.httpAdditionalHeaders ?? [:]
             SessionManager.defaultHTTPHeaders.forEach {
                 XCTAssert((configurationHeaders[$0.key] as? String) == $0.value)
@@ -46,7 +46,7 @@ class AlamofireProcedureFactoryTests: XCTestCase {
         let sessionManager = SessionManager(configuration: configuration)
         let factory = AlamofireProcedureFactory(sessionManager: sessionManager)
         do {
-            let procedure = try factory.dataLoadingProcedure(with: data).children[0] as! AlamofireProcedure
+            let procedure = try factory.requestProcedure(with: data).children[0] as! AlamofireProcedure
             let configurationHeaders = procedure.request.session.configuration.httpAdditionalHeaders ?? [:]
             headers.forEach {
                 XCTAssert((configurationHeaders[$0.key] as? String) == $0.value)
@@ -190,16 +190,16 @@ class AlamofireProcedureFactoryTests: XCTestCase {
 
 fileprivate extension AlamofireProcedureFactoryTests {
     //MARK: - Helpers
-    fileprivate func configure(builder: HTTPRequestData.Builder) -> HTTPRequestData.Builder {
+    func configure(builder: HTTPRequestData.Builder) -> HTTPRequestData.Builder {
         return builder.appending(parameters: params).appending(headerFields: headers)
     }
 
-    fileprivate func request(for path: String, withEncoding encoding: HTTPRequestData.ParameterEncoding,
+    func request(for path: String, withEncoding encoding: HTTPRequestData.ParameterEncoding,
                       method: HTTPRequestData.Method) throws -> URLRequest {
         let url = self.baseURL.appendingPathComponent(path)
         let builder = try HTTPRequestData.Builder.for(url).with(method: method).with(parameterEncoding: encoding)
         let data = self.configure(builder: builder).build()
-        let procedure = try AlamofireProcedureFactory().dataLoadingProcedure(with: data)
+        let procedure = try AlamofireProcedureFactory().requestProcedure(with: data)
             .children.first as! AlamofireProcedure
         switch procedure.request.request {
         case let request?: return request
@@ -207,7 +207,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
         }
     }
 
-    fileprivate func assert(parameters args: HTTPRequestData.Parameters) {
+    func assert(parameters args: HTTPRequestData.Parameters) {
         XCTAssertEqual(self.params.count, args.count)
         var parameters: HTTPRequestData.Parameters = [:]
         params.forEach {
@@ -220,7 +220,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
         XCTAssert(NSDictionary(dictionary: self.params).isEqual(to: parameters))
     }
 
-    fileprivate func queryParameters(from url: URL) -> [String: String] {
+    func queryParameters(from url: URL) -> [String: String] {
         return url.query.map { (query: String) -> [String : String] in
             var parameters: [String: String] = [:]
             query.components(separatedBy: "&").forEach {
@@ -232,7 +232,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
             } ?? [:]
     }
 
-    fileprivate func assert(urlEncodingParameters: String) {
+    func assert(urlEncodingParameters: String) {
         let parameters: [String: String] = urlEncodingParameters.components(separatedBy: "&").reduce([:]) {
             var result = $0
             let keyValue = $1.components(separatedBy: "=")
@@ -242,7 +242,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
         self.assert(urlEncodingParameters: parameters)
     }
 
-    fileprivate func assert(urlEncodingParameters: [String: String]) {
+    func assert(urlEncodingParameters: [String: String]) {
         XCTAssertEqual(urlEncodingParameters.count, self.params.count)
         urlEncodingParameters.forEach {
             XCTAssertNotNil(self.params[$0.key])
@@ -251,7 +251,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
     }
 
 
-    fileprivate func assert(urlEncodingParameters: [String: JSON]) {
+    func assert(urlEncodingParameters: [String: JSON]) {
         XCTAssertEqual(urlEncodingParameters.count, self.params.count)
         urlEncodingParameters.forEach {
             XCTAssertNotNil(self.params[$0.key])
@@ -259,7 +259,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
         }
     }
 
-    fileprivate func assert(headers: [String: String]) {
+    func assert(headers: [String: String]) {
         self.headers.forEach { (key, value) in
             let values = headers.compactMap {
                 return key.caseInsensitiveCompare($0.key) == .orderedSame ? $0.value : nil
@@ -269,7 +269,7 @@ fileprivate extension AlamofireProcedureFactoryTests {
         }
     }
 
-    fileprivate func testRequest(forPath path: String, encoding: HTTPRequestData.ParameterEncoding,
+    func testRequest(forPath path: String, encoding: HTTPRequestData.ParameterEncoding,
                              method: HTTPRequestData.Method, testingClosure: (URLRequest) -> Void) {
         do {
             let request = try self.request(for: path, withEncoding: encoding, method: method)

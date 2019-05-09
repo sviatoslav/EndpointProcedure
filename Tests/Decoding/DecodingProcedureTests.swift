@@ -24,7 +24,7 @@ class DecodingProcedureTests: XCTestCase {
         }
         let procedure = DecodingProcedure<TestDecodable>(decoder: decoder)
         procedure.input = .ready(NestedData(codingPath: TestData.nestedKeys, data: inputData))
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
     }
     
@@ -39,7 +39,7 @@ class DecodingProcedureTests: XCTestCase {
         }
         let procedure = DecodingProcedure<TestDecodable>(decoder: decoder)
         procedure.input = .ready(inputData)
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
     }
     
@@ -52,7 +52,7 @@ class DecodingProcedureTests: XCTestCase {
             XCTAssertEqual(ProcedureKitError.requirementNotSatisfied(), procedure.output.error as? ProcedureKitError)
             expectation.fulfill()
         }
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
     }
     
@@ -69,7 +69,7 @@ class DecodingProcedureTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
     }
 
@@ -81,7 +81,7 @@ class DecodingProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver { (procedure, _) in
             expectation.fulfill()
         }
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
         XCTAssertEqual(procedure.output.success?.b, "a")
     }
@@ -94,7 +94,7 @@ class DecodingProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver { (procedure, _) in
             expectation.fulfill()
         }
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
         XCTAssertEqual(procedure.output.success?.count, 2)
         XCTAssertEqual(procedure.output.success?.first?.b, "a")
@@ -109,7 +109,7 @@ class DecodingProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver { (procedure, _) in
             expectation.fulfill()
         }
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
         XCTAssertNotNil(procedure.output.error)
     }
@@ -122,7 +122,7 @@ class DecodingProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver { (procedure, _) in
             expectation.fulfill()
         }
-        ProcedureQueue.main.add(operation: procedure)
+        ProcedureQueue.main.addOperation(procedure)
         self.wait(for: [expectation], timeout: 1)
         XCTAssert((procedure.output.error as? DecodingProcedureError) == .outputDoesNotConformToDecodable)
     }

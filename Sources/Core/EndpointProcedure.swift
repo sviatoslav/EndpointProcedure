@@ -22,8 +22,6 @@ public enum EndpointProcedureError: Error {
 }
 
 /// `EndpointProcedure` wraps `DataFlowProcedure` and is aimed for easy creation connections with endpoints.
-/// It's highly recommended to set `Configuration.default` and `HTTPRequestData.Builder.baseURL`
-/// before creating any `EndpointProcedure`
 ///
 /// Examples
 /// --------
@@ -68,45 +66,42 @@ public enum EndpointProcedureError: Error {
 ///     let dataLoadingProcedure = ContentsOfURLLoadingProcedure(url: url)
 ///     let usersProcedure = EndpointProcedure<[User]>(dataLoadingProcedure: dataLoadingProcedure)
 ///
-open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
+open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure, EndpointProcedureComponentsProviding {
+
     /// Result of `EndpointProcedure`.
     public var output: Pending<ProcedureResult<Result>> = .pending
-
-    private var embedDataFlowProcedure: DataFlowProcedure<Result>? = nil
-
+    open lazy var configuration: AnyEndpointProcedureComponentsProvider<Result> = {
+        do {
+            guard let container = (self as? ConfigurationProviderContaining & HTTPRequestDataContaining) else {
+                throw EndpointProcedureError.missingDataLoadingProcedure
+            }
+            return try container.configurationProvider.configuration(forRequestData: container.requestData(),
+                                                                     responseType: Result.self)
+        } catch let error {
+            return DefaultConfiguration(requestProcedureError: error).wrapped
+        }
+    }()
     public init() {
         super.init(operations: [])
     }
-
     open func dataLoadingProcedure() throws -> AnyOutputProcedure<Data> {
         throw EndpointProcedureError.Internal.unimplementedDataLoadingProcedure
     }
-    open func httpDataLoadingProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
-        guard let provider = self as? ConfigurationProviding & HTTPRequestDataProviding else {
-            throw EndpointProcedureError.missingDataLoadingProcedure
-        }
-        return try provider.configuration.dataLoadingProcedureFactory.dataLoadingProcedure(with: provider.requestData())
+    open func requestProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+        return try self.configuration.requestProcedure()
     }
     open func validationProcedure() -> AnyInputProcedure<HTTPResponseData> {
-        return AnyInputProcedure(TransformProcedure<HTTPResponseData, Void> {_ in})
+        return self.configuration.validationProcedure()
     }
     open func deserializationProcedure() -> AnyProcedure<Data, Any> {
-        guard let configurationProvider = self as? ConfigurationProviding else {
-            return AnyProcedure(TransformProcedure { $0 })
-        }
-        return configurationProvider.configuration.dataDeserializationProcedureFactory.dataDeserializationProcedure()
+        return self.configuration.deserializationProcedure()
     }
     open func interceptionProcedure() -> AnyProcedure<Any, Any> {
-        return AnyProcedure(TransformProcedure { $0 })
+        return self.configuration.interceptionProcedure()
     }
-    open func mappingProcedure() throws -> AnyProcedure<Any, Result> {
-        guard let configurationProvider = self as? ConfigurationProviding else {
-            throw EndpointProcedureError.missingMappingProcedure
-        }
-        return try configurationProvider.configuration.responseMappingProcedureFactory
-            .responseMappingProcedure(for: Result.self)
+    open func responseMappingProcedure() throws -> AnyProcedure<Any, Result> {
+        return try self.configuration.responseMappingProcedure()
     }
-
     open func dataFlowProcedure() throws -> DataFlowProcedure<Result> {
         let dataLoading: AnyOutputProcedure<Data>?
         do {
@@ -116,22 +111,20 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
         }
         return try dataLoading.map({
             DataFlowProcedure(dataLoadingProcedure: $0, deserializationProcedure: self.deserializationProcedure(),
-                              interceptionProcedure: self.interceptionProcedure(), resultMappingProcedure: try self.mappingProcedure())
-        }) ?? HTTPDataFlowProcedure(dataLoadingProcedure: self.httpDataLoadingProcedure(),
+                              interceptionProcedure: self.interceptionProcedure(), resultMappingProcedure: try self.responseMappingProcedure())
+        }) ?? HTTPDataFlowProcedure(dataLoadingProcedure: self.requestProcedure(),
                                     validationProcedure: self.validationProcedure(),
                                     deserializationProcedure: self.deserializationProcedure(),
                                     interceptionProcedure: self.interceptionProcedure(),
-                                    resultMappingProcedure: try self.mappingProcedure())
+                                    resultMappingProcedure: try self.responseMappingProcedure())
     }
-
     open override func execute() {
         do {
             let procedure = try self.dataFlowProcedure()
-            self.embedDataFlowProcedure = procedure
             procedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
                 self?.output = procedure.output
             }
-            self.add(child: procedure)
+            self.addChild(procedure)
         } catch let error {
             self.output = .ready(.failure(error))
         }
@@ -139,10 +132,23 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure {
     }
 }
 
-protocol ConfigurationProviding {
-    var configuration: ConfigurationProtocol { get }
+private struct DefaultConfiguration<Response>: EndpointProcedureComponentsProviding {
+    private let requestProcedureError: Error
+    init(requestProcedureError: Error = EndpointProcedureError.missingDataLoadingProcedure) {
+        self.requestProcedureError = requestProcedureError
+    }
+    func requestProcedure() throws -> AnyOutputProcedure<HTTPResponseData> {
+        throw self.requestProcedureError
+    }
+    func responseMappingProcedure() throws -> AnyProcedure<Any, Response> {
+        throw EndpointProcedureError.missingMappingProcedure
+    }
 }
 
-protocol HTTPRequestDataProviding {
+protocol ConfigurationProviderContaining {
+    var configurationProvider: EndpointProcedureConfigurationProviding { get }
+}
+
+protocol HTTPRequestDataContaining {
     func requestData() throws -> HTTPRequestData
 }

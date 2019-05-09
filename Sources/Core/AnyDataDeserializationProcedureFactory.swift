@@ -15,7 +15,7 @@ import ProcedureKit
 ///
 /// Creates deserialization procedure using given closure.
 public struct AnyDataDeserializationProcedureFactory: DataDeserializationProcedureFactory {
-
+    public static let empty = AnyDataDeserializationProcedureFactory(syncDeserialization: { $0 })
     /// Unified type for sync and async deserialization closures
     public enum Deserialization {
         public typealias Sync = TransformProcedure<Data, Any>.Transform

@@ -74,7 +74,7 @@ class DataFlowProcedureTests: XCTestCase {
         procedure.addDidFinishBlockObserver {_,_ in
             expectation.fulfill()
         }
-        ProcedureQueue().add(operation: procedure)
+        ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
         return procedure.output
     }
@@ -128,7 +128,7 @@ class DataFlowProcedureTests: XCTestCase {
 
     func testProcedureKitError() {
         let intercepting = TransformProcedure<Any, Any> {_ in
-            throw ProcedureKitError.dependency(finishedWithErrors: [Error.intercepting])
+            throw ProcedureKitError.dependency(finishedWithError: Error.intercepting)
         }
         let procedure = DataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
                                           deserializationProcedure: deserializationProcedureSuccess,
