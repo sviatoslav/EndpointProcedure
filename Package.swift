@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 import PackageDescription
 
 let package = Package(
@@ -39,5 +39,5 @@ let package = Package(
             dependencies: ["DecodingProcedureFactory", .product(name: "ProcedureKit", package: "ProcedureKit"), "EndpointProcedure"],
             path: "Tests/Decoding"),
         ],
-    swiftLanguageVersions: [5]
+    swiftLanguageVersions: [.v5]
 )
