@@ -111,39 +111,120 @@ class EndpointProcedureTests: XCTestCase {
         XCTAssertEqual(Error.value, result.error as? Error)
     }
     func testConfigurationProvider() {
-//        struct LoadingFactory: HTTPRequestProcedureFactory {
-//            func requestProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
-//                let transform = TransformProcedure<Void, HTTPResponseData> {
-//                    let data = try! JSONSerialization.data(withJSONObject: [1, 2, 3, 4], options: [])
-//                    return HTTPResponseData(urlResponse: nil, data: data)
-//                }
-//                transform.input = pendingVoid
-//                return AnyOutputProcedure(transform)
-//            }
-//        }
-//        struct DeserializationFactory: DataDeserializationProcedureFactory {
-//            func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
-//                return AnyProcedure(TransformProcedure<Data, Any> {
-//                    return try JSONSerialization.jsonObject(with: $0, options: [])
-//                })
-//            }
-//        }
-//        struct MappingFactory: ResponseMappingProcedureFactory {
-//            func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
-//                return AnyProcedure(TransformProcedure<Any, T> { return ($0 as! [Int]).reduce(0, +) as! T })
-//            }
-//        }
-//        class Procedure: EndpointProcedure<Int>, ConfigurationContaining, HTTPRequestDataContaining {
-//            let configuration: ConfigurationProtocol = Configuration(dataLoadingProcedureFactory: LoadingFactory(),
-//                                                                     dataDeserializationProcedureFactory: DeserializationFactory(),
-//                                                                     responseMappingProcedureFactory: MappingFactory())
-//            func requestData() throws -> HTTPRequestData {
-//                return HTTPRequestData.Builder.for(URL(string: "http://g")!).build()
-//            }
-//        }
-//        let result = self.procedureResult(for: Procedure())
-//        XCTAssertEqual(10, result.success)
-        XCTFail()
+        struct LoadingFactory: HTTPRequestProcedureFactory {
+            func requestProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
+                let transform = TransformProcedure<Void, HTTPResponseData> {
+                    let data = try! JSONSerialization.data(withJSONObject: [1, 2, 3, 4], options: [])
+                    return HTTPResponseData(urlResponse: nil, data: data)
+                }
+                transform.input = pendingVoid
+                return AnyOutputProcedure(transform)
+            }
+        }
+        struct DeserializationFactory: DataDeserializationProcedureFactory {
+            func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
+                return AnyProcedure(TransformProcedure<Data, Any> {
+                    return try JSONSerialization.jsonObject(with: $0, options: [])
+                })
+            }
+        }
+        struct MappingFactory: ResponseMappingProcedureFactory {
+            func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
+                return AnyProcedure(TransformProcedure<Any, T> { return ($0 as! [Int]).reduce(0, +) as! T })
+            }
+        }
+        class Procedure: EndpointProcedure<Int>, ConfigurationProviderContaining, HTTPRequestDataContaining {
+            let configurationProvider: EndpointProcedureConfigurationProviding
+                = FactoriesBasedEndpointProcedureConfigurationProvider(
+                    request: LoadingFactory(),
+                    deserialization: DeserializationFactory(),
+                    responseMapping: MappingFactory()
+            )
+            func requestData() throws -> HTTPRequestData {
+                return HTTPRequestData.Builder.for(URL(string: "http://g")!).build()
+            }
+        }
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(10, result.success)
+    }
+    func testSettingCustomConfiguration() {
+        struct LoadingFactory: HTTPRequestProcedureFactory {
+            func requestProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
+                let transform = TransformProcedure<Void, HTTPResponseData> {
+                    let data = try! JSONSerialization.data(withJSONObject: [1, 2, 3, 4], options: [])
+                    return HTTPResponseData(urlResponse: nil, data: data)
+                }
+                transform.input = pendingVoid
+                return AnyOutputProcedure(transform)
+            }
+        }
+        struct DeserializationFactory: DataDeserializationProcedureFactory {
+            func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
+                return AnyProcedure(TransformProcedure<Data, Any> {
+                    return try JSONSerialization.jsonObject(with: $0, options: [])
+                })
+            }
+        }
+        struct MappingFactory: ResponseMappingProcedureFactory {
+            func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
+                return AnyProcedure(TransformProcedure<Any, T> { return ($0 as! [Int]).reduce(0, +) as! T })
+            }
+        }
+        class Procedure: EndpointProcedure<Int> {
+            override init() {
+                super.init()
+                self.configuration = ClosureBasedEndpointProcedureComponentsProvider(
+                    request: try LoadingFactory().requestProcedure(with: self.requestData()),
+                    deserialization: DeserializationFactory().dataDeserializationProcedure(),
+                    responseMapping: try MappingFactory().responseMappingProcedure(for: Int.self)
+                ).wrapped
+            }
+            func requestData() throws -> HTTPRequestData {
+                return HTTPRequestData.Builder.for(URL(string: "http://g")!).build()
+            }
+        }
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(10, result.success)
+    }
+    func testRequestDataException() {
+        struct LoadingFactory: HTTPRequestProcedureFactory {
+            func requestProcedure(with data: HTTPRequestData) throws -> AnyOutputProcedure<HTTPResponseData> {
+                let transform = TransformProcedure<Void, HTTPResponseData> {
+                    let data = try! JSONSerialization.data(withJSONObject: [1, 2, 3, 4], options: [])
+                    return HTTPResponseData(urlResponse: nil, data: data)
+                }
+                transform.input = pendingVoid
+                return AnyOutputProcedure(transform)
+            }
+        }
+        struct DeserializationFactory: DataDeserializationProcedureFactory {
+            func dataDeserializationProcedure() -> AnyProcedure<Data, Any> {
+                return AnyProcedure(TransformProcedure<Data, Any> {
+                    return try JSONSerialization.jsonObject(with: $0, options: [])
+                })
+            }
+        }
+        struct MappingFactory: ResponseMappingProcedureFactory {
+            func responseMappingProcedure<T>(for type: T.Type) throws -> AnyProcedure<Any, T> {
+                return AnyProcedure(TransformProcedure<Any, T> { return ($0 as! [Int]).reduce(0, +) as! T })
+            }
+        }
+        class Procedure: EndpointProcedure<Int>, ConfigurationProviderContaining, HTTPRequestDataContaining {
+            enum Error: Swift.Error {
+                case requestData
+            }
+            let configurationProvider: EndpointProcedureConfigurationProviding
+                = FactoriesBasedEndpointProcedureConfigurationProvider(
+                    request: LoadingFactory(),
+                    deserialization: DeserializationFactory(),
+                    responseMapping: MappingFactory()
+            )
+            func requestData() throws -> HTTPRequestData {
+                throw Error.requestData
+            }
+        }
+        let result = self.procedureResult(for: Procedure())
+        XCTAssertEqual(Procedure.Error.requestData, result.error as? Procedure.Error)
     }
 }
 

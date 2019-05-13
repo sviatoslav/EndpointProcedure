@@ -14,7 +14,7 @@ public struct DataFlowProcedureBuilder: ValidationProcedureBuilding {
     private let loading: Loading
     private var validation = AnyValidationProcedureFactory.empty.validationProcedure()
     private var deserialization = AnyDataDeserializationProcedureFactory.empty.dataDeserializationProcedure()
-    private var interception = AnyProcedure<Any, Any>(TransformProcedure { $0 })
+    private var interception = AnyInterceptionProcedureFactory.empty.interceptionProcedure()
 
     private init(loading: Loading) {
         self.loading = loading

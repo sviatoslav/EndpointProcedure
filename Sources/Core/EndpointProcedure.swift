@@ -70,17 +70,24 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure, EndpointP
 
     /// Result of `EndpointProcedure`.
     public var output: Pending<ProcedureResult<Result>> = .pending
-    open lazy var configuration: AnyEndpointProcedureComponentsProvider<Result> = {
-        do {
-            guard let container = (self as? ConfigurationProviderContaining & HTTPRequestDataContaining) else {
-                throw EndpointProcedureError.missingDataLoadingProcedure
+    private var configurationStorage: AnyEndpointProcedureComponentsProvider<Result>? = nil
+    public var configuration: AnyEndpointProcedureComponentsProvider<Result> {
+        get {
+            if let storage = self.configurationStorage { return storage }
+            do {
+                guard let container = (self as? ConfigurationProviderContaining & HTTPRequestDataContaining) else {
+                    throw EndpointProcedureError.missingDataLoadingProcedure
+                }
+                return try container.configurationProvider.configuration(forRequestData: container.requestData(),
+                                                                         responseType: Result.self)
+            } catch let error {
+                return DefaultConfiguration(requestProcedureError: error).wrapped
             }
-            return try container.configurationProvider.configuration(forRequestData: container.requestData(),
-                                                                     responseType: Result.self)
-        } catch let error {
-            return DefaultConfiguration(requestProcedureError: error).wrapped
         }
-    }()
+        set {
+            self.configurationStorage = newValue
+        }
+    }
     public init() {
         super.init(operations: [])
     }
@@ -110,8 +117,10 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure, EndpointP
             dataLoading = nil
         }
         return try dataLoading.map({
-            DataFlowProcedure(dataLoadingProcedure: $0, deserializationProcedure: self.deserializationProcedure(),
-                              interceptionProcedure: self.interceptionProcedure(), resultMappingProcedure: try self.responseMappingProcedure())
+            DataFlowProcedure(dataLoadingProcedure: $0,
+                              deserializationProcedure: self.deserializationProcedure(),
+                              interceptionProcedure: self.interceptionProcedure(),
+                              resultMappingProcedure: try self.responseMappingProcedure())
         }) ?? HTTPDataFlowProcedure(dataLoadingProcedure: self.requestProcedure(),
                                     validationProcedure: self.validationProcedure(),
                                     deserializationProcedure: self.deserializationProcedure(),

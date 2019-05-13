@@ -36,7 +36,7 @@ public extension EndpointProcedureComponentsProviding {
         return AnyDataDeserializationProcedureFactory.empty.dataDeserializationProcedure()
     }
     func interceptionProcedure() -> AnyProcedure<Any, Any> {
-        return AnyProcedure(TransformProcedure { $0 })
+        return AnyInterceptionProcedureFactory.empty.interceptionProcedure()
     }
 }
 
@@ -102,18 +102,14 @@ public struct FactoriesBasedEndpointProcedureConfigurationProvider: EndpointProc
         responseMapping: ResponseMappingProcedureFactory
     )
     private let factories: Factories
-    init(request: HTTPRequestProcedureFactory,
+    public init(request: HTTPRequestProcedureFactory,
          validation: ValidationProcedureFactory = AnyValidationProcedureFactory.empty,
          deserialization: DataDeserializationProcedureFactory = AnyDataDeserializationProcedureFactory.empty,
          interception: InterceptionProcedureFactory = AnyInterceptionProcedureFactory.empty,
          responseMapping: ResponseMappingProcedureFactory) {
         self.factories = (request, validation, deserialization, interception, responseMapping)
     }
-
-    init(factories: Factories) {
-        self.factories = factories
-    }
-
+    
     public func configuration<T>(forRequestData requestData: HTTPRequestData,
                                  responseType: T.Type) -> AnyEndpointProcedureComponentsProvider<T> {
         return ClosureBasedEndpointProcedureComponentsProvider(
