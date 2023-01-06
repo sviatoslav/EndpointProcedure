@@ -16,27 +16,27 @@ let package = Package(
     targets: [
         .target(
             name: "EndpointProcedure",
-            dependencies: [.product(name: "ProcedureKit", package: "ProcedureKit")],
+            dependencies: ["ProcedureKit"],
             path: "Sources/Core"),
         .testTarget(
             name: "EndpointProcedureTests",
-            dependencies: ["EndpointProcedure", .product(name: "ProcedureKit", package: "ProcedureKit")],
+            dependencies: ["EndpointProcedure", "ProcedureKit"],
             path: "Tests/Core"),
         .target(
             name: "AlamofireProcedureFactory",
-            dependencies: [.product(name: "ProcedureKit", package: "ProcedureKit"), "Alamofire", "EndpointProcedure"],
+            dependencies: ["ProcedureKit", "Alamofire", "EndpointProcedure"],
             path: "Sources/Alamofire"),
         .testTarget(
             name: "AlamofireProcedureFactoryTests",
-            dependencies: ["AlamofireProcedureFactory", .product(name: "ProcedureKit", package: "ProcedureKit"), "Alamofire", "EndpointProcedure", "SwiftyJSON"],
+            dependencies: ["AlamofireProcedureFactory", "ProcedureKit", "Alamofire", "EndpointProcedure", "SwiftyJSON"],
             path: "Tests/Alamofire"),
         .target(
             name: "DecodingProcedureFactory",
-            dependencies: [.product(name: "ProcedureKit", package: "ProcedureKit"), "EndpointProcedure"],
+            dependencies: ["ProcedureKit", "EndpointProcedure"],
             path: "Sources/Decoding"),
         .testTarget(
             name: "DecodingProcedureFactoryTests",
-            dependencies: ["DecodingProcedureFactory", .product(name: "ProcedureKit", package: "ProcedureKit"), "EndpointProcedure"],
+            dependencies: ["DecodingProcedureFactory", "ProcedureKit", "EndpointProcedure"],
             path: "Tests/Decoding"),
         ],
     swiftLanguageVersions: [.v5]
