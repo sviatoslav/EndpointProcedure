@@ -8,9 +8,7 @@
 
 import XCTest
 import SwiftyJSON
-#if canImport(Alamofire)
 import Alamofire
-#endif
 import EndpointProcedure
 @testable import AlamofireProcedureFactory
 

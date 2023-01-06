@@ -7,9 +7,7 @@
 //
 
 import XCTest
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 @testable import EndpointProcedure
 
 class HTTPDataFlowProcedureTests: XCTestCase {
@@ -95,7 +93,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testAllProceduresSuccess() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               interceptionProcedure: interceptionProcedureSuccess,
@@ -104,7 +102,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testWithoutValidationProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               interceptionProcedure: interceptionProcedureSuccess,
                                               resultMappingProcedure: mappingProcedureSuccess)
@@ -112,7 +110,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testWithoutInterceptionProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               resultMappingProcedure: mappingProcedureSuccess)
@@ -121,7 +119,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
 
 
     func testWithoutValidationAndinterceptionProcedures() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               resultMappingProcedure: mappingProcedureSuccess)
         let expectation = self.expectation(description: "")
@@ -135,7 +133,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testFailureInDataLoadingProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureFailure,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureFailure,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               interceptionProcedure: interceptionProcedureSuccess,
@@ -144,7 +142,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testNilURLResponseInDataLoadingProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingNilURLResponseProcedure,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingNilURLResponseProcedure,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               resultMappingProcedure: mappingProcedureSuccess)
@@ -159,7 +157,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testFailureInValidationProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureFailure,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               interceptionProcedure: interceptionProcedureSuccess,
@@ -168,7 +166,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testFailureInDeserializationProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureFailure,
                                               interceptionProcedure: interceptionProcedureSuccess,
@@ -177,7 +175,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testFailureIninterceptionProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               interceptionProcedure: interceptionProcedureFailure,
@@ -186,7 +184,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     func testFailureInMappingProcedure() {
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               interceptionProcedure: interceptionProcedureSuccess,
@@ -198,7 +196,7 @@ class HTTPDataFlowProcedureTests: XCTestCase {
         let interception = TransformProcedure<Any, Any> {_ in
             throw ProcedureKitError.dependency(finishedWithError: Error.interception)
         }
-        let procedure = HTTPDataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+        let procedure = HTTPDataFlowProcedure(httpDataLoadingProcedure: dataLoadingProcedureSuccess,
                                               validationProcedure: validationProcedureSuccess,
                                               deserializationProcedure: deserializationProcedureSuccess,
                                               interceptionProcedure: interception,

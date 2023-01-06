@@ -8,12 +8,8 @@
 
 import XCTest
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
-#if canImport(Alamofire)
 import Alamofire
-#endif
 import EndpointProcedure
 @testable import AlamofireProcedureFactory
 

@@ -8,9 +8,7 @@
 
 import XCTest
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 @testable import EndpointProcedure
 
 class DataFlowProcedureTests: XCTestCase {

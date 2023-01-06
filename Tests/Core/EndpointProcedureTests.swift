@@ -7,9 +7,7 @@
 //
 
 import XCTest
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 @testable import EndpointProcedure
 
 class EndpointProcedureTests: XCTestCase {
