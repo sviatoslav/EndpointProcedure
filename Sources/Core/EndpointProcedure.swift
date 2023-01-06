@@ -7,9 +7,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 /// Errors that `EndpointProcedure` can return in `output` property.
 public enum EndpointProcedureError: Error {
@@ -121,7 +119,7 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure, EndpointP
                               deserializationProcedure: self.deserializationProcedure(),
                               interceptionProcedure: self.interceptionProcedure(),
                               resultMappingProcedure: try self.responseMappingProcedure())
-        }) ?? HTTPDataFlowProcedure(dataLoadingProcedure: self.requestProcedure(),
+        }) ?? HTTPDataFlowProcedure(httpDataLoadingProcedure: self.requestProcedure(),
                                     validationProcedure: self.validationProcedure(),
                                     deserializationProcedure: self.deserializationProcedure(),
                                     interceptionProcedure: self.interceptionProcedure(),
@@ -154,10 +152,10 @@ private struct DefaultConfiguration<Response>: EndpointProcedureComponentsProvid
     }
 }
 
-protocol ConfigurationProviderContaining {
+public protocol ConfigurationProviderContaining {
     var configurationProvider: EndpointProcedureConfigurationProviding { get }
 }
 
-protocol HTTPRequestDataContaining {
+public protocol HTTPRequestDataContaining {
     func requestData() throws -> HTTPRequestData
 }

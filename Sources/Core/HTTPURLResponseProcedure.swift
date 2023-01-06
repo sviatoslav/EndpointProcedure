@@ -7,9 +7,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 /// A procedure type that containts `HTTPURLResponse`
 public protocol HTTPURLResponseProcedure: ProcedureProtocol {

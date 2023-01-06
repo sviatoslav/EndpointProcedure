@@ -10,7 +10,7 @@ let package = Package(
         ],
     dependencies: [
         .package(url: "https://github.com/ProcedureKit/ProcedureKit.git", from: "5.2.0"),
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "4.8.2"),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .exact("4.9.1")),
         .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", from: "4.3.0")
         ],
     targets: [

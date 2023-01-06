@@ -6,9 +6,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 /// A type that can create HTTP data loading procedure
 public protocol HTTPRequestProcedureFactory {

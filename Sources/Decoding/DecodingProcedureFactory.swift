@@ -7,12 +7,8 @@
 //
 
 import Foundation
-#if canImport(EndpointProcedure)
 import EndpointProcedure
-#endif
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 /// Type that can be used as `DecodingProcedure`'s input, if requested data is under coding key path
 public typealias NestedData = (codingPath: [CodingKey], data: Data)

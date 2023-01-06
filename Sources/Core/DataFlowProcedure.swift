@@ -7,9 +7,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 /// `DataFlowProcedure` manages flow of data from loading to result mapping.
 ///

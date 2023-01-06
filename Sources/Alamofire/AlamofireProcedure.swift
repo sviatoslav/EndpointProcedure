@@ -5,15 +5,9 @@
 //  Created by Sviatoslav Yakymiv on 12/18/16.
 //  Copyright © 2016 Sviatoslav Yakymiv. All rights reserved.
 //
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
-#if canImport(Alamofire)
 import Alamofire
-#endif
-#if canImport(EndpointProcedure)
 import EndpointProcedure
-#endif
 
 /// Errors that `AlamofireProcedure` can return in `output` property.
 public enum AlamofireProcedureError: Swift.Error {

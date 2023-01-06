@@ -7,9 +7,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 public enum DecodingProcedureError: Error {
     case outputDoesNotConformToDecodable

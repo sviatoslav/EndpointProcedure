@@ -6,15 +6,9 @@
 //  Copyright © 2016 Sviatoslav Yakymiv. All rights reserved.
 //
 
-#if canImport(Alamofire)
 import Alamofire
-#endif
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
-#if canImport(EndpointProcedure)
 import EndpointProcedure
-#endif
 
 /// `HTTPRequestProcedureFactory` that creates `AlamofireProcedure`s
 public struct AlamofireProcedureFactory: HTTPRequestProcedureFactory {

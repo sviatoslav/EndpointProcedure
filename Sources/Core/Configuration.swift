@@ -7,9 +7,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 public protocol EndpointProcedureConfigurationProviding {
     func configuration<T>(forRequestData requestData: HTTPRequestData,

@@ -7,9 +7,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 /// Wrapps `Data(contensOf:)`. Sets result `Data` as `output`.
 ///

@@ -6,9 +6,7 @@
 //
 
 import Foundation
-#if canImport(ProcedureKit)
 import ProcedureKit
-#endif
 
 public struct DataFlowProcedureBuilder: ValidationProcedureBuilding {
     private let loading: Loading
@@ -48,7 +46,7 @@ public struct DataFlowProcedureBuilder: ValidationProcedureBuilding {
                                                               deserializationProcedure: self.deserialization,
                                                               interceptionProcedure: self.interception,
                                                               resultMappingProcedure: procedure)
-            case .httpData(let loading): return HTTPDataFlowProcedure(dataLoadingProcedure: loading,
+            case .httpData(let loading): return HTTPDataFlowProcedure(httpDataLoadingProcedure: loading,
                                                                       validationProcedure: self.validation,
                                                                       deserializationProcedure: self.deserialization,
                                                                       interceptionProcedure: self.interception,
