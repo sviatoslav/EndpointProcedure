@@ -47,7 +47,7 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
                        deserializationProcedure: deserializationProcedure,
                        interceptionProcedure: interceptionProcedure,
                        resultMappingProcedure: resultMappingProcedure)
-            validDataLoadingProcedure.addDidFinishBlockObserver { (procedure, _) in
+            validDataLoadingProcedure.addDidFinishBlockObserver { [unowned self] (procedure, _) in
                 self.urlResponse = procedure.urlResponse
             }
     }
