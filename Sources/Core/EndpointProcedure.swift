@@ -128,7 +128,7 @@ open class EndpointProcedure<Result>: GroupProcedure, OutputProcedure, EndpointP
     open override func execute() {
         do {
             let procedure = try self.dataFlowProcedure()
-            procedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
+            procedure.addWillFinishBlockObserver { [weak self] (procedure, _, _) in
                 self?.output = procedure.output
             }
             self.addChild(procedure)
