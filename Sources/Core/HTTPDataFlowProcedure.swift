@@ -47,8 +47,8 @@ public class HTTPDataFlowProcedure<Result>: DataFlowProcedure<Result>, HTTPURLRe
                        deserializationProcedure: deserializationProcedure,
                        interceptionProcedure: interceptionProcedure,
                        resultMappingProcedure: resultMappingProcedure)
-            validDataLoadingProcedure.addWillFinishBlockObserver { [unowned self] (procedure, _, _) in
-                self.urlResponse = procedure.urlResponse
+            validDataLoadingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
+                self?.urlResponse = procedure.urlResponse
             }
     }
 
@@ -127,11 +127,11 @@ fileprivate class ValidHTTPDataLoadingProcedure: GroupProcedure, OutputProcedure
             dataExtractingProcedure.addDependency(validationProcedure)
             dataExtractingProcedure.addCondition(NoFailedDependenciesCondition())
             super.init(operations: [httpDataLoadingProcedure, validationProcedure, dataExtractingProcedure])
-            dataExtractingProcedure.addWillFinishBlockObserver { [unowned self] (procedure, _, _) in
-                self.output = procedure.output
+            dataExtractingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
+                self?.output = procedure.output
             }
-            httpDataLoadingProcedure.addWillFinishBlockObserver { [unowned self] (procedure, _, _) in
-                self.urlResponse = procedure.output.success?.urlResponse.map(Pending.ready) ?? .pending
+            httpDataLoadingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
+                self?.urlResponse = procedure.output.success?.urlResponse.map(Pending.ready) ?? .pending
             }
     }
 }

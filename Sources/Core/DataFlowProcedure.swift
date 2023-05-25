@@ -44,7 +44,7 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
                                          resultMappingProcedure]
             children.forEach { $0.addCondition(NoFailedDependenciesCondition()) }
             super.init(operations: children)
-            resultMappingProcedure.addWillFinishBlockObserver { [weak self] (procedure, _, _) in
+            resultMappingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
                 self?.output = procedure.output
             }
     }
