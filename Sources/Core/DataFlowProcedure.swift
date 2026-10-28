@@ -6,7 +6,6 @@
 //  Copyright © 2017 Sviatoslav Yakymiv. All rights reserved.
 //
 
-import Dispatch
 import Foundation
 import ProcedureKit
 
@@ -45,26 +44,8 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
                                          resultMappingProcedure]
             children.forEach { $0.addCondition(NoFailedDependenciesCondition()) }
             super.init(operations: children)
-            var pendingMapping: DispatchGroup?
-            resultMappingProcedure.addWillFinishBlockObserver(synchronizedWith: self) { [weak self] (procedure, _, pendingFinish) in
-                guard let self = self else { return }
-                self.output = procedure.output
-                guard procedure.output.isPending else { return }
-                // A legacy mapper may publish in did-finish, after its isFinished changes.
-                // Keep the flow alive until that result has been copied.
-                let didFinish = DispatchGroup()
-                didFinish.enter()
-                pendingMapping = didFinish
-                let completion = BlockProcedure { }
-                completion.addWillFinishBlockObserver { _, _, pendingFinish in
-                    didFinish.notify(queue: .global()) { pendingFinish.doThisBeforeEvent() }
-                }
-                self.addChild(completion, before: pendingFinish)
-            }
-            resultMappingProcedure.addDidFinishBlockObserver(synchronizedWith: self) { [weak self] (procedure, _) in
-                defer { pendingMapping?.leave() }
-                guard let self = self, self.output.isPending else { return }
-                self.output = procedure.output
+            resultMappingProcedure.addWillFinishBlockObserver(synchronizedWith: self) { [weak self] (procedure, _, _) in
+                self?.output = procedure.output
             }
     }
 

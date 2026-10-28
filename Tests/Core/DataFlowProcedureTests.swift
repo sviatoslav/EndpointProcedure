@@ -186,52 +186,6 @@ class DataFlowProcedureTests: XCTestCase {
         wait(for: [finished], timeout: 2)
     }
 
-    func testMapperPublishingAtDidFinishPreservesItsResult() {
-        let mapper = LateOutputMapper()
-        let procedure = DataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
-            deserializationProcedure: deserializationProcedureSuccess,
-            resultMappingProcedure: mapper)
-        let copied = DispatchSemaphore(value: 0)
-        // Keep the flow alive until the mapper's did-finish observers, including the
-        // original result-copy observer, have run. This isolates copying from scheduling.
-        procedure.addChild(BlockProcedure { gate in
-            XCTAssertEqual(copied.wait(timeout: .now() + 5), .success)
-            gate.finish()
-        })
-        mapper.addDidFinishBlockObserver { _, _ in copied.signal() }
-
-        XCTAssertEqual(result(for: procedure).success, 42)
-    }
-
-    func testLateMapperResultReachesEndpointAndDependentBeforeCompletion() {
-        class Endpoint: EndpointProcedure<Int> {
-            let flow: DataFlowProcedure<Int>
-            init(flow: DataFlowProcedure<Int>) {
-                self.flow = flow
-                super.init()
-            }
-            override func dataFlowProcedure() throws -> DataFlowProcedure<Int> { flow }
-        }
-        let flow = DataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
-            deserializationProcedure: deserializationProcedureSuccess,
-            resultMappingProcedure: LateOutputMapper())
-        let endpoint = Endpoint(flow: flow)
-        endpoint.addWillFinishBlockObserver { endpoint, _, _ in
-            XCTAssertEqual(endpoint.output.success, 42)
-        }
-        let dependent = TransformProcedure<Int, Int> { $0 + 1 }
-        dependent.injectResult(from: endpoint)
-        let finished = expectation(description: "Dependent receives the late mapped result")
-        dependent.addDidFinishBlockObserver { dependent, _ in
-            XCTAssertEqual(dependent.output.success, 43)
-            finished.fulfill()
-        }
-        let queue = ProcedureQueue()
-        queue.addOperation(endpoint)
-        queue.addOperation(dependent)
-        wait(for: [finished], timeout: 3)
-    }
-
     func testCancellationBeforeExecutionPreservesOutput() {
         checkCancellation(afterStarting: false, error: nil)
         checkCancellation(afterStarting: false, error: .dataLoading)
@@ -280,17 +234,6 @@ class DataFlowProcedureTests: XCTestCase {
             queue.addOperation(procedure)
         }
         wait(for: [finished], timeout: 2)
-    }
-}
-
-private final class LateOutputMapper: Procedure, InputProcedure, OutputProcedure {
-    var input: Pending<Any> = .pending
-    var output: Pending<ProcedureResult<Int>> = .pending
-
-    override func execute() { finish() }
-
-    override func procedureDidFinish(with error: Swift.Error?) {
-        output = .ready(.success(42))
     }
 }
 
