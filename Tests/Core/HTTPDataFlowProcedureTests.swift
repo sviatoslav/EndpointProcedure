@@ -83,13 +83,15 @@ class HTTPDataFlowProcedureTests: XCTestCase {
     }
 
     private func result(for procedure: DataFlowProcedure<Int>) -> Pending<ProcedureResult<Int>> {
-        let expectation = self.expectation(description: "")
-        procedure.addDidFinishBlockObserver {_,_ in
+        let expectation = self.expectation(description: "Output is available before completion")
+        var result: Pending<ProcedureResult<Int>> = .pending
+        procedure.addWillFinishBlockObserver { procedure, _, _ in
+            result = procedure.output
             expectation.fulfill()
         }
         ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
-        return procedure.output
+        return result
     }
 
     func testAllProceduresSuccess() {

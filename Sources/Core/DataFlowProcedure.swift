@@ -6,6 +6,7 @@
 //  Copyright © 2017 Sviatoslav Yakymiv. All rights reserved.
 //
 
+import Dispatch
 import Foundation
 import ProcedureKit
 
@@ -44,8 +45,26 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
                                          resultMappingProcedure]
             children.forEach { $0.addCondition(NoFailedDependenciesCondition()) }
             super.init(operations: children)
-            resultMappingProcedure.addDidFinishBlockObserver { [weak self] (procedure, _) in
-                self?.output = procedure.output
+            var pendingMapping: DispatchGroup?
+            resultMappingProcedure.addWillFinishBlockObserver(synchronizedWith: self) { [weak self] (procedure, _, pendingFinish) in
+                guard let self = self else { return }
+                self.output = procedure.output
+                guard procedure.output.isPending else { return }
+                // A legacy mapper may publish in did-finish, after its isFinished changes.
+                // Keep the flow alive until that result has been copied.
+                let didFinish = DispatchGroup()
+                didFinish.enter()
+                pendingMapping = didFinish
+                let completion = BlockProcedure { }
+                completion.addWillFinishBlockObserver { _, _, pendingFinish in
+                    didFinish.notify(queue: .global()) { pendingFinish.doThisBeforeEvent() }
+                }
+                self.addChild(completion, before: pendingFinish)
+            }
+            resultMappingProcedure.addDidFinishBlockObserver(synchronizedWith: self) { [weak self] (procedure, _) in
+                defer { pendingMapping?.leave() }
+                guard let self = self, self.output.isPending else { return }
+                self.output = procedure.output
             }
     }
 
@@ -62,16 +81,33 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
                       resultMappingProcedure: resultMappingProcedure)
     }
 
-    /// Processes errors sets correct error as `output`
+    /// Publishes errors before completion observers and dependent procedures consume `output`.
+    open override func procedureWillFinish(with error: Error?) {
+        super.procedureWillFinish(with: error)
+        self.publishError(error)
+    }
+
+    /// Preserves error handling for subclasses that do not forward `procedureWillFinish`.
     final public override func procedureDidFinish(with error: Error?) {
-        guard case .pending = self.output, let error = error else {
+        self.publishError(error)
+    }
+
+    private func publishError(_ error: Error?) {
+        guard case .pending = self.output, let result = self.resolvedOutput(with: error).value else {
             return
+        }
+        self.output = .ready(result)
+    }
+
+    func resolvedOutput(with error: Error?) -> Pending<ProcedureResult<Result>> {
+        guard case .pending = self.output, let error = error else {
+            return self.output
         }
         let contexts: [ProcedureKitError.Context] = [.parentCancelledWithError, .dependencyFinishedWithError]
         if let procedureKitError = error as? ProcedureKitError, contexts.contains(procedureKitError.context) {
-            self.procedureDidFinish(with: procedureKitError.error)
+            return self.resolvedOutput(with: procedureKitError.error)
         } else {
-            self.output = .ready(.failure(error))
+            return .ready(.failure(error))
         }
     }
 }
