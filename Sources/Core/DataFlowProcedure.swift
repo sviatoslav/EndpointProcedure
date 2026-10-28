@@ -84,7 +84,8 @@ open class DataFlowProcedure<Result>: GroupProcedure, OutputProcedure {
         guard case .pending = self.output, let error = error else {
             return self.output
         }
-        let contexts: [ProcedureKitError.Context] = [.parentCancelledWithError, .dependencyFinishedWithError]
+        let contexts: [ProcedureKitError.Context] = [.parentCancelledWithError, .dependencyFinishedWithError,
+                                                    .dependencyCancelledWithError]
         if let procedureKitError = error as? ProcedureKitError, contexts.contains(procedureKitError.context) {
             return self.resolvedOutput(with: procedureKitError.error)
         } else {

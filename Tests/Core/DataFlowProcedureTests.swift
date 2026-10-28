@@ -141,6 +141,18 @@ class DataFlowProcedureTests: XCTestCase {
         XCTAssertEqual(Error.intercepting, self.result(for: procedure).error as? Error)
     }
 
+    func testDependencyCancellationPreservesUnderlyingNetworkError() {
+        let intercepting = TransformProcedure<Any, Any> {_ in
+            throw ProcedureKitError.dependency(cancelledWithError:
+                ProcedureKitError.dependency(finishedWithError: URLError(.notConnectedToInternet)))
+        }
+        let procedure = DataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+                                          deserializationProcedure: deserializationProcedureSuccess,
+                                          interceptionProcedure: intercepting,
+                                          resultMappingProcedure: mappingProcedureSuccess)
+        XCTAssertEqual((self.result(for: procedure).error as? URLError)?.code, .notConnectedToInternet)
+    }
+
     func testSubclassWithoutSuperStillPublishesErrorAtDidFinish() {
         let procedure = NonForwardingDataFlowProcedure(
             dataLoadingProcedure: dataLoadingProcedureFailure,
