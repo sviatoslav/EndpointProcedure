@@ -68,13 +68,19 @@ class DataFlowProcedureTests: XCTestCase {
     }
 
     private func result(for procedure: DataFlowProcedure<Int>) -> Pending<ProcedureResult<Int>> {
-        let expectation = self.expectation(description: "")
-        procedure.addDidFinishBlockObserver {_,_ in
+        let expectation = self.expectation(description: "Output is available before completion")
+        var result: Pending<ProcedureResult<Int>> = .pending
+        procedure.addWillFinishBlockObserver { procedure, _, _ in
+            result = procedure.output
+        }
+        procedure.addDidFinishBlockObserver { procedure, _ in
+            XCTAssertEqual(procedure.output.success, result.success)
+            XCTAssertEqual(procedure.output.error as NSError?, result.error as NSError?)
             expectation.fulfill()
         }
         ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
-        return procedure.output
+        return result
     }
 
     func testAllProceduresSuccess() {
@@ -133,5 +139,123 @@ class DataFlowProcedureTests: XCTestCase {
                                           interceptionProcedure: intercepting,
                                           resultMappingProcedure: mappingProcedureSuccess)
         XCTAssertEqual(Error.intercepting, self.result(for: procedure).error as? Error)
+    }
+
+    func testDependencyCancellationPreservesUnderlyingNetworkError() {
+        let intercepting = TransformProcedure<Any, Any> {_ in
+            throw ProcedureKitError.dependency(cancelledWithError:
+                ProcedureKitError.dependency(finishedWithError: URLError(.notConnectedToInternet)))
+        }
+        let procedure = DataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+                                          deserializationProcedure: deserializationProcedureSuccess,
+                                          interceptionProcedure: intercepting,
+                                          resultMappingProcedure: mappingProcedureSuccess)
+        XCTAssertEqual((self.result(for: procedure).error as? URLError)?.code, .notConnectedToInternet)
+    }
+
+    func testSubclassWithoutSuperStillPublishesErrorAtDidFinish() {
+        let procedure = NonForwardingDataFlowProcedure(
+            dataLoadingProcedure: dataLoadingProcedureFailure,
+            deserializationProcedure: deserializationProcedureSuccess,
+            interceptionProcedure: interceptionProcedureSuccess,
+            resultMappingProcedure: mappingProcedureSuccess)
+        let finished = expectation(description: "Legacy final error handling")
+        procedure.addWillFinishBlockObserver { procedure, _, _ in
+            XCTAssertTrue(procedure.output.isPending)
+        }
+        procedure.addDidFinishBlockObserver { procedure, _ in
+            XCTAssertEqual(procedure.output.error as? Error, .dataLoading)
+            finished.fulfill()
+        }
+        ProcedureQueue().addOperation(procedure)
+        wait(for: [finished], timeout: 2)
+    }
+
+    func testDidFinishPreservesSubclassResult() {
+        let procedure = RecoveringDataFlowProcedure(
+            dataLoadingProcedure: dataLoadingProcedureFailure,
+            deserializationProcedure: deserializationProcedureSuccess,
+            interceptionProcedure: interceptionProcedureSuccess,
+            resultMappingProcedure: mappingProcedureSuccess)
+        XCTAssertEqual(result(for: procedure).success, 42)
+    }
+
+    func testSuccessfulResultIsAvailableToDependentProcedure() {
+        let procedure = DataFlowProcedure(dataLoadingProcedure: dataLoadingProcedureSuccess,
+                                          deserializationProcedure: deserializationProcedureSuccess,
+                                          interceptionProcedure: interceptionProcedureSuccess,
+                                          resultMappingProcedure: mappingProcedureSuccess)
+        let dependent = TransformProcedure<Int, Int> { $0 + 1 }
+        dependent.injectResult(from: procedure)
+        let finished = expectation(description: "Dependent consumes the published result")
+        dependent.addDidFinishBlockObserver { dependent, _ in
+            XCTAssertEqual(dependent.output.success, 4)
+            finished.fulfill()
+        }
+        let queue = ProcedureQueue()
+        queue.addOperation(procedure)
+        queue.addOperation(dependent)
+        wait(for: [finished], timeout: 2)
+    }
+
+    func testCancellationBeforeExecutionPreservesOutput() {
+        checkCancellation(afterStarting: false, error: nil)
+        checkCancellation(afterStarting: false, error: .dataLoading)
+    }
+
+    func testCancellationDuringLoadingPreservesOutput() {
+        checkCancellation(afterStarting: true, error: nil)
+        checkCancellation(afterStarting: true, error: .dataLoading)
+    }
+
+    private func checkCancellation(afterStarting: Bool, error: Error?) {
+        let started = afterStarting ? expectation(description: "Loading started") : nil
+        var completeLoading: AsyncTransformProcedure<Void, Data>.FinishingBlock?
+        let loading = AsyncTransformProcedure<Void, Data> { _, completion in
+            completeLoading = completion
+            started?.fulfill()
+        }
+        loading.input = pendingVoid
+        let procedure = DataFlowProcedure(dataLoadingProcedure: loading,
+            deserializationProcedure: TransformProcedure<Data, Any> { $0 },
+            resultMappingProcedure: TransformProcedure<Any, Int> { _ in
+                XCTFail("Cancelled flow must not map a result")
+                return 0
+            })
+        let finished = expectation(description: "Cancelled flow finished")
+        procedure.addWillFinishBlockObserver { procedure, _, _ in
+            XCTAssertNil(procedure.output.success)
+            XCTAssertEqual(procedure.output.error as? Error, error)
+            XCTAssertEqual(procedure.output.isPending, error == nil)
+        }
+        procedure.addDidFinishBlockObserver { procedure, _ in
+            XCTAssertTrue(procedure.isCancelled)
+            XCTAssertNil(procedure.output.success)
+            XCTAssertEqual(procedure.output.error as? Error, error)
+            XCTAssertEqual(procedure.output.isPending, error == nil)
+            finished.fulfill()
+        }
+        let queue = ProcedureQueue()
+        if let started = started {
+            queue.addOperation(procedure)
+            wait(for: [started], timeout: 2)
+            procedure.cancel(with: error)
+            completeLoading?(.success(Data()))
+        } else {
+            procedure.cancel(with: error)
+            queue.addOperation(procedure)
+        }
+        wait(for: [finished], timeout: 2)
+    }
+}
+
+private final class NonForwardingDataFlowProcedure: DataFlowProcedure<Int> {
+    override func procedureWillFinish(with error: Swift.Error?) {}
+}
+
+private final class RecoveringDataFlowProcedure: DataFlowProcedure<Int> {
+    override func procedureWillFinish(with error: Swift.Error?) {
+        super.procedureWillFinish(with: error)
+        output = .ready(.success(42))
     }
 }

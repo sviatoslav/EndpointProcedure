@@ -22,6 +22,36 @@ class EndpointProcedureTests: XCTestCase {
         XCTAssertEqual(EndpointProcedureError.missingDataLoadingProcedure, result.error as? EndpointProcedureError)
     }
 
+    func testNonForwardingDataFlowErrorReachesEndpointBeforeCompletion() {
+        class NonForwardingFlow: DataFlowProcedure<Void> {
+            override func procedureWillFinish(with error: Swift.Error?) {}
+        }
+        class Procedure: EndpointProcedure<Void> {
+            override func dataFlowProcedure() throws -> DataFlowProcedure<Void> {
+                let loading = TransformProcedure<Void, Data> {
+                    throw ProcedureKitError.dependency(finishedWithError: URLError(.notConnectedToInternet))
+                }
+                loading.input = pendingVoid
+                return NonForwardingFlow(dataLoadingProcedure: loading,
+                    deserializationProcedure: TransformProcedure<Data, Any> { $0 },
+                    resultMappingProcedure: TransformProcedure<Any, Void> { _ in })
+            }
+        }
+        let procedure = Procedure()
+        let willFinish = expectation(description: "Endpoint publishes the underlying error before completion")
+        let didFinish = expectation(description: "Endpoint preserves the error after completion")
+        procedure.addWillFinishBlockObserver { procedure, _, _ in
+            XCTAssertEqual((procedure.output.error as? URLError)?.code, .notConnectedToInternet)
+            willFinish.fulfill()
+        }
+        procedure.addDidFinishBlockObserver { procedure, _ in
+            XCTAssertEqual((procedure.output.error as? URLError)?.code, .notConnectedToInternet)
+            didFinish.fulfill()
+        }
+        ProcedureQueue().addOperation(procedure)
+        wait(for: [willFinish, didFinish], timeout: 2, enforceOrder: true)
+    }
+
     func testDataLoadingProcedureInitializationFailure() {
         class Procedure: EndpointProcedure<Void> {
             override func dataLoadingProcedure() throws -> AnyOutputProcedure<Data> { throw Error.value }
@@ -228,12 +258,14 @@ class EndpointProcedureTests: XCTestCase {
 
 extension EndpointProcedureTests {
     fileprivate func procedureResult<T>(for procedure: EndpointProcedure<T>) -> Pending<ProcedureResult<T>> {
-        let expectation = self.expectation(description: "")
-        procedure.addDidFinishBlockObserver {_,_ in
+        let expectation = self.expectation(description: "Output is available before completion")
+        var result: Pending<ProcedureResult<T>> = .pending
+        procedure.addWillFinishBlockObserver { procedure, _, _ in
+            result = procedure.output
             expectation.fulfill()
         }
         ProcedureQueue().addOperation(procedure)
         self.waitForExpectations(timeout: 1, handler: nil)
-        return procedure.output
+        return result
     }
 }
